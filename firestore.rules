@@ -1,0 +1,107 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 0. Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Helpers ---
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isEmailVerified() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // --- Entity Validations ---
+
+    function isValidLead(data) {
+      return data.firstName is string && data.firstName.size() <= 100 &&
+             data.lastName is string && data.lastName.size() <= 100 &&
+             data.email is string && data.email.size() <= 200 &&
+             data.phone is string && data.phone.size() <= 20 &&
+             data.status in ['new', 'contacted', 'tour_scheduled', 'enrolled', 'archived'] &&
+             data.createdAt == request.time;
+    }
+
+    function isValidJob(data) {
+      return data.title is string && data.title.size() <= 200 &&
+             data.category is string &&
+             data.isActive is bool &&
+             data.createdAt == request.time;
+    }
+
+    function isValidFAQ(data) {
+      return data.question is string && data.question.size() <= 500 &&
+             data.answer is string && data.answer.size() <= 5000 &&
+             data.order is number && data.order >= 0;
+    }
+
+    function isValidLocation(data) {
+      return data.name is string && data.name.size() <= 200 &&
+             data.address is string && data.address.size() <= 500 &&
+             data.city is string &&
+             data.state is string &&
+             data.zip is string &&
+             data.phone is string &&
+             data.isActive is bool;
+    }
+
+    // --- Collection Rules ---
+
+    // Leads: Public can create, Admin can read/update
+    match /leads/{leadId} {
+      allow create: if isValidId(leadId) && isValidLead(incoming()) && (
+        !('smsConsent' in incoming()) || incoming().smsConsent is bool
+      );
+      allow get, list, update, delete: if isAdmin();
+    }
+
+    // Jobs: Public can read active, Admin can write
+    match /jobs/{jobId} {
+      allow list, get: if existing().isActive == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // FAQs: Public read, Admin write
+    match /faqs/{faqId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidFAQ(incoming());
+    }
+
+    // Locations: Public read, Admin write
+    match /locations/{locationId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidLocation(incoming());
+    }
+
+    // Admins: Read-only for signed-in (to check own role), write only via console/server
+    // Special bootstrap rule for the project owner
+    match /admins/{userId} {
+      allow get: if isSignedIn() && request.auth.uid == userId;
+      allow create: if isSignedIn() && request.auth.uid == userId && 
+                    request.auth.token.email == "syedfaraaz876@gmail.com" &&
+                    request.auth.token.email_verified == true;
+      allow list: if isAdmin();
+      allow update, delete: if isAdmin() && userId != request.auth.uid; // Prevent self-deletion
+    }
+  }
+}
