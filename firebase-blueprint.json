@@ -1,0 +1,109 @@
+{
+  "entities": {
+    "Lead": {
+      "title": "Lead",
+      "description": "Form submission from contact or interest forms",
+      "type": "object",
+      "properties": {
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "childName": { "type": "string" },
+        "childDob": { "type": "string" },
+        "zipCode": { "type": "string" },
+        "insuranceProvider": { "type": "string" },
+        "center": { "type": "string" },
+        "message": { "type": "string" },
+        "smsConsent": { "type": "boolean" },
+        "status": { "type": "string", "enum": ["new", "contacted", "tour_scheduled", "enrolled", "archived"] },
+        "source": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["firstName", "lastName", "email", "phone", "status", "createdAt"]
+    },
+    "Job": {
+      "title": "Job Posting",
+      "description": "Career opportunities at Auvia",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "location": { "type": "string" },
+        "type": { "type": "string" },
+        "description": { "type": "string" },
+        "requirements": { "type": "array", "items": { "type": "string" } },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "category", "location", "type", "isActive"]
+    },
+    "FAQ": {
+      "title": "FAQ Entry",
+      "description": "Frequently asked questions for various pages",
+      "type": "object",
+      "properties": {
+        "question": { "type": "string" },
+        "answer": { "type": "string" },
+        "category": { "type": "string" },
+        "order": { "type": "number" },
+        "isActive": { "type": "boolean" }
+      },
+      "required": ["question", "answer", "category", "order"]
+    },
+    "Admin": {
+      "title": "Admin User",
+      "description": "Authorized users for the admin dashboard",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "role": { "type": "string", "enum": ["super_admin", "center_manager"] },
+        "center": { "type": "string" }
+      },
+      "required": ["email", "role"]
+    },
+    "Location": {
+      "title": "Care Center",
+      "description": "Physical center locations",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "address": { "type": "string" },
+        "city": { "type": "string" },
+        "state": { "type": "string" },
+        "zip": { "type": "string" },
+        "phone": { "type": "string" },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" },
+        "insurance": { "type": "string" },
+        "type": { "type": "string" },
+        "image": { "type": "string" },
+        "isActive": { "type": "boolean" }
+      },
+      "required": ["name", "address", "city", "state", "zip", "phone", "lat", "lng", "type", "isActive"]
+    }
+  },
+  "firestore": {
+    "leads": {
+      "schema": "Lead",
+      "description": "Collection of all form submissions"
+    },
+    "jobs": {
+      "schema": "Job",
+      "description": "Collection of active and archived job postings"
+    },
+    "faqs": {
+      "schema": "FAQ",
+      "description": "Dynamic FAQ content"
+    },
+    "admins": {
+      "schema": "Admin",
+      "description": "Whitelisted admin users"
+    },
+    "locations": {
+      "schema": "Location",
+      "description": "Care center locations"
+    }
+  }
+}
