@@ -73,7 +73,7 @@ export const Navbar = () => {
     },
     { name: 'Locations', href: '/locations' },
     { name: 'Careers', href: '/careers' },
-    { name: 'About', href: '/about' },
+    { name: 'About Us', href: '/about' },
   ];
 
   const toggleMobileDropdown = (name: string) => {
@@ -177,17 +177,17 @@ export const Navbar = () => {
                       <AnimatePresence initial={false}>
                         {openMobileDropdown === item.name && (
                           <motion.div
-                            initial={{ height: 0, opacity: 0 }} 
-                            animate={{ height: 'auto', opacity: 1 }} 
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.3, ease: "easeInOut" }}
                             className="overflow-hidden flex flex-col gap-3 mt-2 mb-2 pl-4 border-l-2 border-brand-mint"
                           >
                             {item.items?.map(sub => (
-                              <Link 
-                                key={sub.name} 
-                                to={sub.href} 
-                                className="py-2 text-lg font-bold text-brand-ink/90 hover:text-brand-teal active:text-brand-teal transition-colors" 
+                              <Link
+                                key={sub.name}
+                                to={sub.href}
+                                className="py-2 text-lg font-bold text-brand-ink/90 hover:text-brand-teal active:text-brand-teal transition-colors"
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
                                 {sub.name}
@@ -198,10 +198,10 @@ export const Navbar = () => {
                       </AnimatePresence>
                     </div>
                   ) : (
-                    <Link 
-                      key={item.name} 
-                      to={item.href!} 
-                      className={`py-2 text-xl font-kids font-semibold transition-colors border-b border-gray-50 ${location.pathname === item.href ? 'text-brand-teal' : 'text-brand-ink'}`} 
+                    <Link
+                      key={item.name}
+                      to={item.href!}
+                      className={`py-2 text-xl font-kids font-semibold transition-colors border-b border-gray-50 ${location.pathname === item.href ? 'text-brand-teal' : 'text-brand-ink'}`}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.name}
