@@ -101,7 +101,7 @@ export const Navbar = () => {
             {navItems.map((item) => (
               item.type === 'dropdown' ? (
                 <div key={item.name} className="relative group">
-                  <button className="flex items-center gap-1 text-sm font-kids font-medium text-brand-ink/70 hover:text-brand-teal transition-colors py-2">
+                  <button className="flex items-center gap-1 text-sm font-kids font-bold text-brand-ink hover:text-brand-teal transition-colors py-2">
                     {item.name} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
                   </button>
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 w-64">
@@ -122,7 +122,7 @@ export const Navbar = () => {
                 <Link
                   key={item.name}
                   to={item.href!}
-                  className={`text-sm font-kids font-medium transition-all duration-300 hover:text-brand-teal ${location.pathname === item.href ? 'text-brand-teal' : 'text-brand-ink/70'}`}
+                  className={`text-sm font-kids font-bold transition-all duration-300 hover:text-brand-teal ${location.pathname === item.href ? 'text-brand-teal font-extrabold' : 'text-brand-ink'}`}
                 >
                   {item.name}
                 </Link>
