@@ -140,19 +140,23 @@ export const WhatIsABA = () => {
             </div>
           </div>
 
-          {/* Grid for Other Dimensions */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: "Effective", icon: <Target />, desc: "Focuses on interventions that produce meaningful changes in a child's life." },
-              { title: "Technological", icon: <Settings />, desc: "Procedures are described clearly enough for anyone to replicate them accurately." },
-              { title: "Applied", icon: <UserCheck />, desc: "Addresses behaviors that are socially significant and important to the family." },
-              { title: "Conceptually Systematic", icon: <BookOpen />, desc: "Interventions are consistent with established behavioral principles." },
-              { title: "Analytic", icon: <Search />, desc: "Data is used to make decisions and prove that an intervention is working." },
-              { title: "Behavioral", icon: <Activity />, desc: "Focuses on measurable, observable actions that need improvement." }
+              { num: "02", title: "Effective", icon: <Target />, desc: "Focuses on interventions that produce meaningful changes in a child's life." },
+              { num: "03", title: "Technological", icon: <Settings />, desc: "Procedures are described clearly enough for anyone to replicate them accurately." },
+              { num: "04", title: "Applied", icon: <UserCheck />, desc: "Addresses behaviors that are socially significant and important to the family." },
+              { num: "05", title: "Conceptually Systematic", icon: <BookOpen />, desc: "Interventions are consistent with established behavioral principles." },
+              { num: "06", title: "Analytic", icon: <Search />, desc: "Data is used to make decisions and prove that an intervention is working." },
+              { num: "07", title: "Behavioral", icon: <Activity />, desc: "Focuses on measurable, observable actions that need improvement." }
             ].map((dim, i) => (
               <motion.div key={i} whileHover={{ scale: 1.02 }} className="p-10 bg-white rounded-[50px] border border-gray-50 shadow-sm flex flex-col gap-6">
-                <div className="w-16 h-16 bg-[#E1F5FE] rounded-2xl flex items-center justify-center text-brand-teal">
-                  {React.cloneElement(dim.icon as React.ReactElement, { size: 32 })}
+                <div className="flex justify-between items-start">
+                  <div className="w-16 h-16 bg-[#E1F5FE] rounded-2xl flex items-center justify-center text-brand-teal">
+                    {React.cloneElement(dim.icon as React.ReactElement, { size: 32 })}
+                  </div>
+                  <div className="px-3 py-1 bg-brand-teal/10 text-brand-teal rounded-lg text-xs font-extrabold uppercase tracking-widest border border-brand-teal/10">
+                    Dimension {dim.num}
+                  </div>
                 </div>
                 <h4 className="text-2xl font-kids font-bold text-brand-ink">{dim.title}</h4>
                 <p className="text-lg text-brand-sage font-medium">{dim.desc}</p>
