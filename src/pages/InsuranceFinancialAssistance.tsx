@@ -85,7 +85,7 @@ export const InsuranceFinancialAssistance = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-brand-sky via-brand-cream to-brand-peach/30 selection:bg-brand-teal/20 text-brand-ink pt-28 lg:pt-36 font-sans overflow-x-hidden min-h-screen">
+    <div className="bg-gradient-to-br from-brand-sky via-brand-cream to-brand-peach/30 selection:bg-brand-teal/20 text-brand-ink pt-20 lg:pt-24 font-sans overflow-x-hidden min-h-screen">
       <SEO 
         title="Insurance & Financial Assistance | Auvia Behavior Centers"
         description="Navigating insurance coverage and financial options for ABA therapy at Auvia. We accept major Texas networks including BCBS, Aetna, Cigna, and Medicaid."

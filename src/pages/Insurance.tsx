@@ -4,7 +4,7 @@ import { SEO } from '../components/SEO';
 
 export const Insurance = () => {
   return (
-    <div className="pt-32 lg:pt-40 pb-20 lg:pb-32 bg-brand-cream overflow-x-hidden min-h-screen">
+    <div className="pt-20 lg:pt-24 pb-20 lg:pb-32 bg-brand-cream overflow-x-hidden min-h-screen">
       <SEO 
         title="Insurance Support & Verification | Auvia"
         description="Simplifying insurance for autism care. We offer complimentary insurance verification to ensure your child's ABA therapy journey starts with complete clarity."

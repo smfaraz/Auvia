@@ -95,7 +95,7 @@ const pillars = [
       />
       
       {/* 1. HERO SECTION: Massive and Minimalist */}
-      <section className="relative min-h-[80vh] lg:min-h-screen flex items-center pt-32 lg:pt-20 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-lavender/30 overflow-hidden">
+      <section className="relative min-h-[80vh] lg:min-h-screen flex items-center pt-20 lg:pt-24 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-lavender/30 overflow-hidden">
       
       {/* --- 1. THE REFINED MERGED BACKGROUND IMAGE --- */}
       <div className="absolute top-0 right-0 w-full lg:w-[65%] h-[50vh] lg:h-full z-0 overflow-hidden pointer-events-none opacity-50 lg:opacity-100">

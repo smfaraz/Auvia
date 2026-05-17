@@ -143,7 +143,7 @@ export const Locations = () => {
       />
 
       {/* BRAND HERO */}
-      <section className="pt-32 pb-16 px-6 lg:px-12 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-peach/30 relative">
+      <section className="pt-20 lg:pt-24 pb-16 px-6 lg:px-12 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-peach/30 relative">
         <div className="max-w-[1400px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

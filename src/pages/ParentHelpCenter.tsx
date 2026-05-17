@@ -62,7 +62,7 @@ export const ParentHelpCenter = () => {
   ];
 
   return (
-    <div className="pt-28 lg:pt-36 pb-20 lg:pb-28 relative overflow-x-hidden min-h-screen">
+    <div className="pt-20 lg:pt-24 pb-20 lg:pb-28 relative overflow-x-hidden min-h-screen">
       <SEO 
         title="Parent Help Center & Resources | Auvia"
         description="Explore curated guides, autism FAQs, and step-by-step enrollment info to help support your family's ABA therapy journey."

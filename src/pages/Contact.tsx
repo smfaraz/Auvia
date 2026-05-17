@@ -80,7 +80,7 @@ export const Contact = () => {
   };
 
   return (
-    <div className="pt-32 lg:pt-40 pb-20 lg:pb-32 bg-brand-cream overflow-x-hidden min-h-screen">
+    <div className="pt-20 lg:pt-24 pb-20 lg:pb-32 bg-brand-cream overflow-x-hidden min-h-screen">
       <SEO 
         title="Contact Us | Start ABA Therapy"
         description="Get in touch with Auvia Behavior Centers. Fill out our interest form, call us, or find a center near you to start your child's ABA therapy journey."

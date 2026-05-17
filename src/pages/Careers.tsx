@@ -158,7 +158,7 @@ export const Careers = () => {
   }, [jobs]);
 
   return (
-    <div className="pt-32 lg:pt-40 pb-20 lg:pb-32 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-peach/30 overflow-x-hidden relative min-h-screen">
+    <div className="pt-20 lg:pt-24 pb-20 lg:pb-32 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-peach/30 overflow-x-hidden relative min-h-screen">
       <SEO 
         title="Careers | Join Our BCBA and RBT Team"
         description="Join Auvia Behavior Centers. We are hiring passionate BCBAs and RBTs who want to provide compassionate, play-based ABA therapy."

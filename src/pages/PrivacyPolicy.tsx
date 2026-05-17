@@ -10,7 +10,7 @@ export const PrivacyPolicy = () => {
   const contactAddress = "1212 Cabernet Dr, Allen, TX 75002-0981";
 
   return (
-    <div className="pt-28 lg:pt-36 pb-20 lg:pb-28 relative overflow-x-hidden min-h-screen">
+    <div className="pt-20 lg:pt-24 pb-20 lg:pb-28 relative overflow-x-hidden min-h-screen">
       {/* Background Ornaments */}
       <div className="blob-bg w-[500px] h-[500px] bg-brand-mint/20 top-[-10%] right-[-10%]" />
       <div className="blob-bg w-[400px] h-[400px] bg-brand-peach/20 bottom-[10%] left-[-10%]" />

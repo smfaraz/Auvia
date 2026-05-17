@@ -75,7 +75,7 @@ export const InsuranceAcceptanceState = () => {
   }, [selectedState, searchQuery]);
 
   return (
-    <div className="bg-[#FCFAF7] selection:bg-brand-teal/20 text-[#1F2937] pt-28 lg:pt-36 font-sans min-h-screen overflow-x-hidden">
+    <div className="bg-[#FCFAF7] selection:bg-brand-teal/20 text-[#1F2937] pt-20 lg:pt-24 font-sans min-h-screen overflow-x-hidden">
       <SEO 
         title="Insurance Accepted by State | Auvia"
         description="Search our nationwide directory of accepted insurance providers for ABA therapy. We are in-network with over 120+ providers."
