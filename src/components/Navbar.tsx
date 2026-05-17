@@ -129,7 +129,7 @@ export const Navbar = () => {
               )
             ))}
 
-            <Link to="/contact" className="bg-brand-ink text-white py-3 px-8 rounded-[20px] font-kids font-semibold text-sm hover:bg-slate-700 transition-colors shadow-md ml-4">
+            <Link to="/contact" className="bg-brand-teal text-white py-3 px-8 rounded-[20px] font-kids font-bold text-sm hover:bg-[#3d7a6f] transition-all shadow-md shadow-brand-teal/15 ml-4">
               Find care
             </Link>
           </div>
