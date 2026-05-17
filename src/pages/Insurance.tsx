@@ -4,7 +4,7 @@ import { SEO } from '../components/SEO';
 
 export const Insurance = () => {
   return (
-    <div className="pt-32 lg:pt-48 pb-16 lg:pb-32 bg-brand-cream overflow-hidden min-h-screen">
+    <div className="pt-32 lg:pt-40 pb-20 lg:pb-32 bg-brand-cream overflow-x-hidden min-h-screen">
       <SEO 
         title="Insurance Support & Verification | Auvia"
         description="Simplifying insurance for autism care. We offer complimentary insurance verification to ensure your child's ABA therapy journey starts with complete clarity."
@@ -14,7 +14,7 @@ export const Insurance = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
         <div className="blob-bg w-[500px] h-[500px] bg-brand-sky top-[-10%] right-[-10%]" />
         
-        <div className="max-w-4xl mb-16 lg:mb-24 relative z-10 text-center lg:text-left">
+        <div className="max-w-4xl mb-12 lg:mb-20 relative z-10 text-center lg:text-left">
           <span className="text-brand-teal text-xs md:text-sm font-bold uppercase tracking-widest mb-6 block font-kids">Financial Harmony</span>
           <h1 className="text-display font-kids font-bold text-brand-ink mb-8 lg:mb-10 leading-tight">
             Easy for <br className="hidden lg:block" />

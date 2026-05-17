@@ -33,7 +33,7 @@ export const WhatIsABA = () => {
       />
       
       {/* 1. HERO: The Science of Behavior */}
-      <section className="relative pt-32 lg:pt-44 pb-20 lg:pb-32 px-6 lg:px-12 bg-gradient-to-b from-[#E0F7FA] via-white to-[#F8FBFA]">
+      <section className="relative pt-28 lg:pt-36 pb-20 lg:pb-32 px-6 lg:px-12 bg-gradient-to-b from-[#E0F7FA] via-white to-[#F8FBFA]">
         <div className="absolute top-20 -right-20 w-[600px] h-[600px] bg-brand-mint/10 rounded-full blur-[120px] -z-10 animate-pulse" />
         
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10 text-center lg:text-left">

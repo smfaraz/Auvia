@@ -80,7 +80,7 @@ export const Contact = () => {
   };
 
   return (
-    <div className="pt-48 pb-32 bg-brand-cream overflow-hidden">
+    <div className="pt-32 lg:pt-40 pb-20 lg:pb-32 bg-brand-cream overflow-x-hidden min-h-screen">
       <SEO 
         title="Contact Us | Start ABA Therapy"
         description="Get in touch with Auvia Behavior Centers. Fill out our interest form, call us, or find a center near you to start your child's ABA therapy journey."
@@ -90,7 +90,7 @@ export const Contact = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
         <div className="blob-bg w-[500px] h-[500px] bg-brand-sky top-[-10%] right-[-10%]" />
 
-        <div className="max-w-4xl mb-32 relative z-10">
+        <div className="max-w-4xl mb-12 lg:mb-20 relative z-10">
           <span className="text-brand-teal text-sm font-bold uppercase tracking-widest mb-6 block font-kids">Connect with Us</span>
           <h1 className="text-display font-kids font-bold text-brand-ink mb-10 leading-tight">
             Let's Start a <br />

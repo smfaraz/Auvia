@@ -158,7 +158,7 @@ export const Careers = () => {
   }, [jobs]);
 
   return (
-    <div className="pt-32 lg:pt-48 pb-16 lg:pb-32 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-peach/30 overflow-hidden relative">
+    <div className="pt-32 lg:pt-40 pb-20 lg:pb-32 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-peach/30 overflow-x-hidden relative min-h-screen">
       <SEO 
         title="Careers | Join Our BCBA and RBT Team"
         description="Join Auvia Behavior Centers. We are hiring passionate BCBAs and RBTs who want to provide compassionate, play-based ABA therapy."
@@ -173,7 +173,7 @@ export const Careers = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
 
         {/* Hero Section */}
-        <div className="max-w-4xl mb-16 lg:mb-32 relative z-10 text-center lg:text-left">
+        <div className="max-w-4xl mb-12 lg:mb-20 relative z-10 text-center lg:text-left">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

@@ -62,7 +62,7 @@ export const ParentHelpCenter = () => {
   ];
 
   return (
-    <div className="pt-32 pb-24 relative overflow-hidden">
+    <div className="pt-28 lg:pt-36 pb-20 lg:pb-28 relative overflow-x-hidden min-h-screen">
       <SEO 
         title="Parent Help Center & Resources | Auvia"
         description="Explore curated guides, autism FAQs, and step-by-step enrollment info to help support your family's ABA therapy journey."
@@ -75,7 +75,7 @@ export const ParentHelpCenter = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Hero Section */}
-        <div className="max-w-3xl mb-20">
+        <div className="max-w-3xl mb-12 lg:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

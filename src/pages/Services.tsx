@@ -86,7 +86,7 @@ const pillars = [
   ];
 
   return (
-    <div className="bg-brand-cream min-h-screen relative">
+    <div className="bg-brand-cream min-h-screen relative overflow-x-hidden">
       <SEO 
         title="Our Services | ABA Therapy & In-Home Care"
         description="Auvia Behavior Centers offers comprehensive center-based ABA therapy and in-home autism care. Evidence-based, data-driven, and compassionate treatment."

@@ -7,7 +7,7 @@ import { SEO } from '../components/SEO';
 export const About = () => {
   const navigate = useNavigate();
   return (
-    <div className="pt-48 pb-32 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-lavender/40 overflow-hidden relative">
+    <div className="pt-32 lg:pt-40 pb-20 lg:pb-32 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-lavender/40 overflow-x-hidden relative min-h-screen">
       <SEO 
         title="Our Story | Auvia Behavior Centers"
         description="Learn about the mission, values, and compassionate team behind Auvia Behavior Centers. Built with love, made for your child's success."
@@ -21,7 +21,7 @@ export const About = () => {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
 
-        <div className="max-w-4xl mb-32 relative z-10">
+        <div className="max-w-4xl mb-16 lg:mb-24 relative z-10">
           <span className="text-brand-teal text-sm font-bold uppercase tracking-widest mb-6 block font-kids">Our Story</span>
           <h1 className="text-display font-kids font-bold text-brand-ink mb-10 leading-tight">
             Built with Love, <br />
