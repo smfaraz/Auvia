@@ -81,7 +81,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'py-4' : 'py-8'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'py-2 lg:py-3' : 'py-4 lg:py-6'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className={`relative flex items-center justify-between px-4 sm:px-8 py-3 sm:py-4 rounded-[24px] sm:rounded-[32px] transition-all duration-500 ${isScrolled ? 'glass-panel' : 'bg-transparent border border-transparent'}`}>
 
@@ -101,7 +101,7 @@ export const Navbar = () => {
             {navItems.map((item) => (
               item.type === 'dropdown' ? (
                 <div key={item.name} className="relative group">
-                  <button className="flex items-center gap-1 text-sm font-kids font-medium text-brand-ink/70 hover:text-brand-teal transition-colors py-2">
+                  <button className="flex items-center gap-1 text-sm font-kids font-bold text-brand-ink hover:text-brand-teal transition-colors py-2">
                     {item.name} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
                   </button>
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 w-64">
@@ -122,7 +122,7 @@ export const Navbar = () => {
                 <Link
                   key={item.name}
                   to={item.href!}
-                  className={`text-sm font-kids font-medium transition-all duration-300 hover:text-brand-teal ${location.pathname === item.href ? 'text-brand-teal' : 'text-brand-ink/70'}`}
+                  className={`text-sm font-kids font-bold transition-all duration-300 hover:text-brand-teal ${location.pathname === item.href ? 'text-brand-teal' : 'text-brand-ink'}`}
                 >
                   {item.name}
                 </Link>
