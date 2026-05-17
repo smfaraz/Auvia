@@ -11,6 +11,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
 import { collection, addDoc, serverTimestamp, query, onSnapshot, orderBy } from 'firebase/firestore';
 import { DevelopmentalTimeline } from '../components/DevelopmentalTimeline';
+import { SEO } from '../components/SEO';
 
 // Define the FAQItem component with proper prop types
 const FAQItem = ({ faq, variants }: { key?: number; faq: { q: string; a: string }; variants: any }) => {
@@ -81,7 +82,6 @@ export const Home = () => {
   const [formSubmitting, setFormSubmitting] = useState(false);
 
   const randomSeed = useState(() => Math.floor(Math.random() * 50000))[0];
-  const heroImage = `https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1000&sig=34564`;
 
   const transitionSettings = {
     type: "spring",
@@ -160,7 +160,6 @@ export const Home = () => {
   };
 
   const [faqs, setFaqs] = useState<any[]>([]);
-  const [faqsLoading, setFaqsLoading] = useState(true);
 
   useEffect(() => {
     const q = query(collection(db, 'faqs'), orderBy('order', 'asc'));
@@ -171,13 +170,18 @@ export const Home = () => {
         a: doc.data().answer
       }));
       setFaqs(faqsData);
-      setFaqsLoading(false);
     });
     return () => unsubscribe();
   }, []);
 
   return (
     <div className="bg-[#FCFAF7] selection:bg-brand-teal/20 text-brand-ink font-sans">
+      <SEO 
+        title="Auvia Behavior Centers | ABA Therapy for Autism"
+        description="Compassionate, evidence-based ABA therapy for children with autism. Fast access to care, diagnostic support, and in-network insurance coverage in Texas and beyond."
+        keywords="ABA therapy, autism treatment, autism diagnosis, BCBA, autism centers, early intervention, Auvia"
+        canonicalUrl="https://auviatherapy.com/"
+      />
       <section className="relative min-h-[95vh] flex items-center pt-20 bg-gradient-to-br from-brand-sky via-white to-brand-peach/30 overflow-hidden">
 
         {/* --- 1. SETTLING REAL-WORLD VISUALS (Right Side) --- */}
@@ -196,12 +200,12 @@ export const Home = () => {
             initial={{ x: 600, y: 100, opacity: 0, rotate: 5 }}
             animate={{ x: 0, y: 0, opacity: 1, rotate: -2 }}
             transition={{ ...transitionSettings, delay: 0.7 }}
-            className="absolute top-[12%] right-[8%] w-[300px] h-[400px] lg:w-[500px] lg:h-[650px] z-20 hidden sm:block md:hidden lg:block opacity-30 lg:opacity-100"
+            className="absolute top-[12%] right-[8%] w-[500px] h-[650px] z-20 hidden lg:block"
           >
             <div className="relative w-full h-full rounded-[60px] lg:rounded-[120px] overflow-hidden border-[8px] lg:border-[16px] border-white shadow-[0_50px_100px_rgba(0,0,0,0.12)]">
               {/* Real professional ABA environment image */}
               <img
-                src="/images/kids-hero-Therapy.jpg"
+                src="/images/Gemini_Generated_Image_fsiyqjfsiyqjfsiy.png"
                 alt="Auvia Behavior Centers Clinical Sanctuary"
                 className="w-full h-full object-cover"
               />
@@ -214,7 +218,7 @@ export const Home = () => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 1.5, type: "spring" }}
-              className="absolute -bottom-4 -left-6 lg:-bottom-6 lg:-left-10 glass-panel p-4 lg:p-6 rounded-[25px] lg:rounded-[35px] premium-shadow flex items-center gap-3 lg:gap-4 z-30"
+              className="absolute bottom-2 -left-6 lg:bottom-6 lg:-left-10 bg-white/95 backdrop-blur-xl border-2 border-white shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)] p-4 lg:p-6 rounded-[25px] lg:rounded-[35px] flex items-center gap-3 lg:gap-4 z-30"
             >
               <div className="w-12 h-12 bg-gradient-to-br from-brand-teal-light to-brand-teal rounded-2xl flex items-center justify-center text-white shadow-inner">
                 <Zap size={24} fill="currentColor" />
@@ -252,7 +256,7 @@ export const Home = () => {
             </div>
             <h1 className="text-display font-kids font-semibold leading-[0.95] tracking-tight text-brand-ink mb-8 lg:mb-12">
               Helping every child <br />
-              discover they
+              discover they{" "}
               <span className="text-brand-teal inline-flex flex-col h-[1.1em] overflow-hidden relative top-1 lg:top-3">
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -311,7 +315,7 @@ export const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-section font-kids font-bold text-brand-ink mb-6">Why families choose <span className="text-brand-teal">Auvia</span></h2>
+            <h2 className="text-section font-kids font-bold text-brand-ink mb-6">Why Families Choose <span className="text-brand-teal">Auvia</span></h2>
             <p className="text-body-normal-normal-main text-brand-sage max-w-3xl mx-auto">
               We believe families deserve clear, trustworthy information about how ABA therapy can make a meaningful difference in their children's lives.
             </p>
@@ -339,7 +343,7 @@ export const Home = () => {
               <div className="w-14 h-14 bg-brand-mint/60 rounded-2xl flex items-center justify-center text-brand-teal mb-6 shadow-sm">
                 <Zap size={28} fill="currentColor" />
               </div>
-              <h3 className="text-small-heading font-kids font-bold mb-4">Immediate access to care</h3>
+              <h3 className="text-small-heading font-kids font-bold mb-4">Immediate Access to Care</h3>
               <p className="text-brand-sage mb-6 font-medium text-body-normal-normal-sm">
                 Early intervention makes all the difference. With conveniently located autism therapy centers near you, your child can start ABA therapy right away.
               </p>
@@ -355,7 +359,7 @@ export const Home = () => {
               <div className="w-14 h-14 bg-brand-peach/60 rounded-2xl flex items-center justify-center text-brand-teal mb-6 shadow-sm">
                 <ShieldCheck size={28} />
               </div>
-              <h3 className="text-small-heading font-kids font-bold mb-4">Diagnostic support</h3>
+              <h3 className="text-small-heading font-kids font-bold mb-4">Diagnostic Support</h3>
               <p className="text-brand-sage mb-6 text-body-normal-normal-sm">You don't have to wait for answers. If your child has many of the early signs of autism, we can help them get evaluated.</p>
               <button onClick={() => navigate('/services')} className="text-brand-teal font-bold flex items-center gap-2 hover:underline text-body-normal-normal-sm">Screen for autism <ArrowRight size={18} /></button>
             </motion.div>
@@ -364,7 +368,7 @@ export const Home = () => {
               <div className="w-14 h-14 bg-brand-lavender/60 rounded-2xl flex items-center justify-center text-brand-teal mb-6 shadow-sm">
                 <FileText size={28} />
               </div>
-              <h3 className="text-small-heading font-kids font-bold mb-4">Insurance made simple</h3>
+              <h3 className="text-small-heading font-kids font-bold mb-4">Insurance Made Simple</h3>
               <p className="text-brand-sage mb-6 text-body-normal-normal-sm">We accept most major plans, guide families through paperwork, and can provide financial assistance for out-of-pocket expenses.</p>
               <button onClick={() => navigate('/insurance-financial-assistance')} className="text-brand-teal font-bold flex items-center gap-2 hover:underline text-body-normal-normal-sm">Paying for ABA therapy <ArrowRight size={18} /></button>
             </motion.div>
@@ -373,7 +377,7 @@ export const Home = () => {
               <div className="w-14 h-14 bg-brand-mint/60 rounded-2xl flex items-center justify-center text-brand-teal mb-6 shadow-sm">
                 <Activity size={28} />
               </div>
-              <h3 className="text-small-heading font-kids font-bold mb-4">Coordinated care</h3>
+              <h3 className="text-small-heading font-kids font-bold mb-4">Coordinated Care</h3>
               <p className="text-brand-sage text-body-normal-normal-sm">We collaborate with your child's speech, occupational, feeding, and physical therapists to provide sessions directly in our centers. This allows your child to access other services in a familiar environment.</p>
             </motion.div>
 
@@ -439,7 +443,7 @@ export const Home = () => {
             <h2 className="text-section font-kids font-bold tracking-tight mb-6 text-white drop-shadow-md">
               Evidence-based ABA therapy <br /> that works for your family.
             </h2>
-            <p className="text-white text-body-main max-w-2xl mx-auto drop-shadow-sm font-medium">
+            <p className="!text-white text-body-main max-w-2xl mx-auto drop-shadow-sm font-medium">
               Every child's path is unique. Whether you are just beginning to look for answers or you're ready to start therapy, our compassionate team is here to guide you every step of the way.
             </p>
           </motion.div>

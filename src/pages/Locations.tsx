@@ -10,6 +10,7 @@ import { useLocation as useRouterLocation } from 'react-router-dom';
 import L from 'leaflet';
 import { db } from '../lib/firebase';
 import { collection, query as firestoreQuery, onSnapshot, orderBy } from 'firebase/firestore';
+import { SEO } from '../components/SEO';
 
 // Leaflet fix & custom icon
 import 'leaflet/dist/leaflet.css';
@@ -97,6 +98,12 @@ export const Locations = () => {
 
   return (
     <div className="bg-brand-cream min-h-screen font-sans flex flex-col overflow-x-hidden">
+      <SEO 
+        title="Find an ABA Center Near You | Locations"
+        description="Search for Auvia Behavior Centers across Texas and beyond. Find a sanctuary for center-based ABA therapy near your home."
+        keywords="ABA therapy locations, autism center near me, Texas ABA therapy, finding an autism clinic, local BCBA services"
+        canonicalUrl="https://auviatherapy.com/locations"
+      />
 
       {/* BRAND HERO */}
       <section className="pt-32 pb-16 px-6 lg:px-12 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-peach/30 relative">
@@ -123,10 +130,10 @@ export const Locations = () => {
       </section>
 
       {/* SPLIT-PANE HUB - RESPONSIVE ENHANCED */}
-      <section className="flex-grow flex flex-col lg:flex-row border-t border-gray-100 min-h-[500px] lg:min-h-[600px] relative">
+      <section className="flex-grow flex flex-col md:flex-row border-t border-gray-100 min-h-[500px] md:min-h-[600px] relative">
         
         {/* Mobile View Toggle */}
-        <div className="lg:hidden flex bg-white border-b border-gray-100 p-2 sticky top-[72px] md:top-[80px] z-30">
+        <div className="md:hidden flex bg-white border-b border-gray-100 p-2 sticky top-[72px] md:top-[80px] z-30">
           <button 
             onClick={() => setViewMode('list')}
             className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm transition-all ${viewMode === 'list' ? 'bg-brand-teal text-white shadow-lg' : 'text-brand-sage hover:bg-gray-50'}`}
@@ -142,7 +149,7 @@ export const Locations = () => {
         </div>
 
         {/* LEFT PANE: SEARCH & RESULTS */}
-        <div className={`w-full lg:w-[450px] xl:w-[550px] bg-white lg:border-r border-gray-100 flex flex-col ${viewMode === 'map' ? 'hidden lg:flex' : 'flex'}`}>
+        <div className={`w-full md:w-[350px] lg:w-[450px] xl:w-[550px] bg-white md:border-r border-gray-100 flex flex-col ${viewMode === 'map' ? 'hidden md:flex' : 'flex'}`}>
 
           <div className="p-8 sticky top-0 bg-white/95 backdrop-blur-sm z-20 border-b border-gray-100">
             <div className="space-y-4">
@@ -255,7 +262,7 @@ export const Locations = () => {
         </div>
 
         {/* RIGHT PANE: MAP */}
-        <div className={`flex-grow h-[500px] lg:h-auto relative ${viewMode === 'list' ? 'hidden lg:block' : 'block'}`}>
+        <div className={`flex-grow h-[500px] md:h-auto relative ${viewMode === 'list' ? 'hidden md:block' : 'block'}`}>
           <InternalMap centers={filtered} />
 
           {/* FLOATING STATUS BADGE */}

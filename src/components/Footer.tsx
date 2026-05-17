@@ -78,7 +78,10 @@ export const Footer = () => {
         </div>
 
         <div className="pt-12 border-t border-brand-teal/10 flex flex-col md:flex-row justify-between items-center gap-8 text-xs font-bold text-brand-sage/60 font-kids">
-          <p>© {new Date().getFullYear()} Auvia Behavior Centers. Built with Love.</p>
+          <div className="flex flex-col gap-2">
+            <p>© {new Date().getFullYear()} Auvia Behavior Centers. Built with Love.</p>
+            <p className="font-sans font-medium text-[10px] text-brand-sage/40">BCBA® and RBT® are registered trademarks of the Behavior Analyst Certification Board, Inc.®</p>
+          </div>
           <div className="flex gap-8">
             <Link to="/privacy" className="hover:text-brand-teal transition-colors">Privacy</Link>
             <Link to="/about" className="hover:text-brand-teal transition-colors">Terms</Link>

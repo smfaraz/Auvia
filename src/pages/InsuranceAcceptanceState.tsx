@@ -4,6 +4,7 @@ import {
   ChevronDown, ArrowRight, Search, MapPin 
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
 // --- DATA: Full List of Insurance Providers per State ---
 const insuranceData: Record<string, any[]> = {
@@ -75,6 +76,12 @@ export const InsuranceAcceptanceState = () => {
 
   return (
     <div className="bg-[#FCFAF7] selection:bg-brand-teal/20 text-[#1F2937] pt-32 lg:pt-44 font-sans min-h-screen">
+      <SEO 
+        title="Insurance Accepted by State | Auvia"
+        description="Search our nationwide directory of accepted insurance providers for ABA therapy. We are in-network with over 120+ providers."
+        keywords="aba therapy insurance, autism insurance coverage, in network aba providers, BCBS aba therapy, medicaid aba therapy"
+        canonicalUrl="https://auviatherapy.com/insurance-by-state"
+      />
       
       {/* 1. Functional Header Section (Based on image 2) */}
       <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-16">

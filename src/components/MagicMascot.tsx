@@ -15,12 +15,12 @@ export const MagicMascot = () => {
         whileHover={{ scale: 1.1, rotate: 10 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed right-6 bottom-24 sm:bottom-32 z-[100] cursor-pointer"
+        className="fixed right-4 bottom-18 sm:right-6 sm:bottom-32 z-[100] cursor-pointer"
       >
-        <div className="w-14 h-14 sm:w-16 sm:h-16 bg-brand-mint rounded-2xl flex items-center justify-center text-brand-teal shadow-2xl border-4 border-white group relative">
+        <div className="w-11 h-11 sm:w-16 sm:h-16 bg-brand-mint rounded-xl sm:rounded-2xl flex items-center justify-center text-brand-teal shadow-2xl border-2 sm:border-4 border-white group relative">
           <div className="absolute inset-0 bg-brand-teal rounded-xl opacity-0 group-hover:opacity-5 transition-opacity" />
-          <Smile size={32} className={`${isOpen ? 'hidden' : 'block'} sm:w-10 sm:h-10 animate-bounce`} />
-          <X size={32} className={`${isOpen ? 'block' : 'hidden'} sm:w-10 sm:h-10`} />
+          <Smile className={`${isOpen ? 'hidden' : 'block'} w-6 h-6 sm:w-10 sm:h-10 animate-bounce`} />
+          <X className={`${isOpen ? 'block' : 'hidden'} w-6 h-6 sm:w-10 sm:h-10`} />
           
           {/* Tooltip */}
           {!isOpen && (
@@ -39,7 +39,7 @@ export const MagicMascot = () => {
             initial={{ opacity: 0, scale: 0.8, y: 50, x: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 50, x: 20 }}
-            className="fixed right-6 bottom-40 sm:bottom-48 z-[101] w-[calc(100vw-48px)] sm:w-[400px] h-[500px] max-h-[60vh] flex flex-col glass-panel rounded-[40px] overflow-hidden premium-shadow border-2 border-white/50"
+            className="fixed right-4 bottom-32 sm:right-6 sm:bottom-48 z-[101] w-[calc(100vw-32px)] sm:w-[400px] h-[500px] max-h-[60vh] flex flex-col glass-panel rounded-[40px] overflow-hidden premium-shadow border-2 border-white/50"
           >
             {/* Header */}
             <div className="bg-brand-teal p-6 text-white flex items-center justify-between">

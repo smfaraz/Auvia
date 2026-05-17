@@ -1,9 +1,16 @@
 import React from 'react';
 import { Smile } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export const Insurance = () => {
   return (
     <div className="pt-32 lg:pt-48 pb-16 lg:pb-32 bg-brand-cream overflow-hidden min-h-screen">
+      <SEO 
+        title="Insurance Support & Verification | Auvia"
+        description="Simplifying insurance for autism care. We offer complimentary insurance verification to ensure your child's ABA therapy journey starts with complete clarity."
+        keywords="insurance verification, autism therapy insurance, aba clinic pricing, child autism coverage"
+        canonicalUrl="https://auviatherapy.com/insurance"
+      />
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
         <div className="blob-bg w-[500px] h-[500px] bg-brand-sky top-[-10%] right-[-10%]" />
         
@@ -22,7 +29,7 @@ export const Insurance = () => {
           <div className="card-friendly bg-white/80 backdrop-blur-sm">
             <h3 className="text-section font-kids font-bold text-brand-ink mb-8">Accepted Providers</h3>
             <div className="grid grid-cols-2 gap-8">
-              {['BCBS TX', 'Aetna Comercial', 'Cigna', 'UnitedHealthcare', 'Wellpoint Medicaid', 'Aetna Medicaid', 'Superior Health', 'Molina', 'Carelon', 'Tricare'].map(p => (
+              {['BCBS TX', 'Aetna Commercial', 'Cigna', 'UnitedHealthcare', 'Wellpoint Medicaid', 'Aetna Medicaid', 'Superior Health', 'Molina', 'Carelon', 'Tricare'].map(p => (
                 <div key={p} className="flex items-center gap-4 group">
                   <div className="w-3 h-3 rounded-full bg-brand-mint group-hover:bg-brand-teal transition-colors" />
                   <span className="text-brand-sage font-bold font-kids text-sm">{p}</span>

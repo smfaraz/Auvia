@@ -32,12 +32,16 @@ const ScrollToTopOnMount = () => {
   return null;
 };
 
+import { HelmetProvider } from 'react-helmet-async';
+
 export default function App() {
   return (
-    <Router>
-      <ScrollToTopOnMount />
-      <AppContent />
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <ScrollToTopOnMount />
+        <AppContent />
+      </Router>
+    </HelmetProvider>
   );
 }
 

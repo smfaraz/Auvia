@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { db } from '../lib/firebase';
 import { collection, addDoc, serverTimestamp, query, onSnapshot, orderBy } from 'firebase/firestore';
+import { SEO } from '../components/SEO';
 
 export const InsuranceFinancialAssistance = () => {
   const navigate = useNavigate();
@@ -85,6 +86,12 @@ export const InsuranceFinancialAssistance = () => {
 
   return (
     <div className="bg-gradient-to-br from-brand-sky via-brand-cream to-brand-peach/30 selection:bg-brand-teal/20 text-brand-ink pt-28 lg:pt-40 font-sans overflow-hidden">
+      <SEO 
+        title="Insurance & Financial Assistance | Auvia Behavior Centers"
+        description="Navigating insurance coverage and financial options for ABA therapy at Auvia. We accept major Texas networks including BCBS, Aetna, Cigna, and Medicaid."
+        keywords="aba therapy cost, autism financial assistance, medicaid aba therapy, bcbs autism coverage, autism grants, financial help for autism"
+        canonicalUrl="https://auviatherapy.com/insurance-financial-assistance"
+      />
       
       {/* 1. Hero Section */}
       <section className="relative px-6 lg:px-12 max-w-7xl mx-auto mb-16 lg:mb-32">
@@ -382,7 +389,7 @@ export const InsuranceFinancialAssistance = () => {
               <div className="px-8 py-6">
                 <h4 className="font-kids font-bold text-xl text-brand-ink mb-4">Does Auvia provide autism assessments or diagnoses?</h4>
                 <p className="text-brand-sage font-medium leading-relaxed">
-                  We will help to connect you to resources to get your child evaluated and get a diagnosis report.
+                  We will connect you with resources to have your child evaluated and receive a formal diagnosis report.
                 </p>
               </div>
             </div>

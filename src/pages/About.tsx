@@ -2,11 +2,18 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Heart, Users, Star, Smile, Sun } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
 export const About = () => {
   const navigate = useNavigate();
   return (
     <div className="pt-48 pb-32 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-lavender/40 overflow-hidden relative">
+      <SEO 
+        title="Our Story | Auvia Behavior Centers"
+        description="Learn about the mission, values, and compassionate team behind Auvia Behavior Centers. Built with love, made for your child's success."
+        keywords="about auvia behavior centers, our story, mission, compassionate ABA care, autism therapy team"
+        canonicalUrl="https://auviatherapy.com/about"
+      />
       <div className="absolute inset-0 w-full h-full pointer-events-none">
         <div className="blob-bg w-[800px] h-[800px] bg-brand-mint/30 top-[-10%] right-[-10%]" />
         <div className="blob-bg w-[600px] h-[600px] bg-brand-peach/30 bottom-[-10%] left-[-10%]" />

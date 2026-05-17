@@ -10,6 +10,7 @@ import {
   MessageCircle, Sunrise, Layout, Clock, Home
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -24,6 +25,12 @@ export const WhatIsABA = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
   return (
     <div className="bg-[#F8FBFA] selection:bg-brand-teal/20 text-[#1F2937] font-sans overflow-x-hidden">
+      <SEO 
+        title="What is ABA Therapy? | Science-Based Autism Care"
+        description="Learn about Applied Behavior Analysis (ABA) therapy. Explore how evidence-based behavioral intervention helps kids with autism build communication, social, and self-help skills."
+        keywords="what is aba therapy, applied behavior analysis, science based autism care, developmental milestones, clinical ABA therapy"
+        canonicalUrl="https://auviatherapy.com/what-is-aba"
+      />
       
       {/* 1. HERO: The Science of Behavior */}
       <section className="relative pt-32 lg:pt-44 pb-20 lg:pb-32 px-6 lg:px-12 bg-gradient-to-b from-[#E0F7FA] via-white to-[#F8FBFA]">
@@ -241,7 +248,7 @@ export const WhatIsABA = () => {
             >
               <div className="rounded-[80px] overflow-hidden shadow-3xl border-[16px] border-[#FCFAF7]">
                 <img 
-                  src="https://motherspet.com/blogs/wp-content/uploads/2025/04/6-Essential-Life-Skills-for-Kids-2.jpg" 
+                  src="https://images.unsplash.com/photo-1540479859555-17af45c78602?auto=format&fit=crop&q=80&w=1000" 
                   alt="Child practicing life skills" 
                   className="w-full aspect-[4/5] object-cover" 
                 />

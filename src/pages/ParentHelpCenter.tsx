@@ -12,6 +12,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
 export const ParentHelpCenter = () => {
   const resources = [
@@ -62,6 +63,12 @@ export const ParentHelpCenter = () => {
 
   return (
     <div className="pt-32 pb-24 relative overflow-hidden">
+      <SEO 
+        title="Parent Help Center & Resources | Auvia"
+        description="Explore curated guides, autism FAQs, and step-by-step enrollment info to help support your family's ABA therapy journey."
+        keywords="parent help center, autism resources, aba therapy guides, family support autism, new parent guide"
+        canonicalUrl="https://auviatherapy.com/parent-help-center"
+      />
       {/* Background Ornaments */}
       <div className="blob-bg w-[500px] h-[500px] bg-brand-mint/20 top-[-10%] right-[-10%]" />
       <div className="blob-bg w-[400px] h-[400px] bg-brand-peach/20 bottom-[10%] left-[-10%]" />

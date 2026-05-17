@@ -4,6 +4,7 @@ import { GraduationCap, Heart, Zap, Users, ArrowRight, Smile, Star, Shield, Coff
 import { useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
 import { collection, query, where, onSnapshot, orderBy } from 'firebase/firestore';
+import { SEO } from '../components/SEO';
 
 export const Careers = () => {
   const navigate = useNavigate();
@@ -112,6 +113,12 @@ export const Careers = () => {
 
   return (
     <div className="pt-32 lg:pt-48 pb-16 lg:pb-32 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-peach/30 overflow-hidden relative">
+      <SEO 
+        title="Careers | Join Our BCBA and RBT Team"
+        description="Join Auvia Behavior Centers. We are hiring passionate BCBAs and RBTs who want to provide compassionate, play-based ABA therapy."
+        keywords="BCBA jobs, RBT jobs, careers in ABA, autism therapy jobs, Auvia careers, behavior technician jobs"
+        canonicalUrl="https://auviatherapy.com/careers"
+      />
       <div className="absolute inset-0 w-full h-full pointer-events-none">
         <div className="blob-bg w-[700px] h-[700px] bg-brand-mint/30 bottom-[10%] right-[-10%]" />
         <div className="blob-bg w-[600px] h-[600px] bg-brand-lavender/30 top-[20%] left-[-10%]" />

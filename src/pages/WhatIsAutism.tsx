@@ -5,6 +5,7 @@ import {
   Users, Activity, ShieldCheck, Heart, Star, Phone, Sparkles, UserPlus, Brain, MessageCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -71,6 +72,12 @@ export const WhatIsAutism = () => {
 
   return (
     <div className="bg-[#F8FBFA] selection:bg-brand-teal/20 text-[#1F2937] font-sans overflow-x-hidden">
+      <SEO 
+        title="What is Autism? | Learning the Spectrum"
+        description="Understanding Autism Spectrum Disorder (ASD). Learn about the early signs of autism, developmental milestones, and how ABA therapy provides customized support."
+        keywords="what is autism, autism spectrum disorder, early signs of autism, asd diagnosis, autism support texas"
+        canonicalUrl="https://auviatherapy.com/what-is-autism"
+      />
       {/* 1. HERO SECTION: Premium Cinematic Fade */}
 {/* 1. HERO SECTION: Translucent Premium Fade */}
 <section className="relative min-h-[85vh] flex items-center pt-20 overflow-hidden bg-[#F8FBFA]">
@@ -400,7 +407,7 @@ export const WhatIsAutism = () => {
          className="rounded-[80px] overflow-hidden border-[12px] border-white/5 shadow-3xl bg-brand-ink"
        >
           <img 
-            src="https://www.kokilabenhospital.com/blog/wp-content/uploads/2025/04/Autism-Spectrum-Disorder-1.jpg" 
+            src="https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?auto=format&fit=crop&q=80&w=1000" 
             alt="Autism Signs" 
             className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity duration-700" 
           />
@@ -440,7 +447,7 @@ export const WhatIsAutism = () => {
                     "We're here to help you navigate this step."
                   </p>
                   <p className="text-base text-brand-sage">
-                    We will help to connect you to resources to get your child evaluated and get a diagnosis report.
+                    We will connect you with resources to have your child evaluated and receive a formal diagnosis report.
                   </p>
                 </div>
                 <p>

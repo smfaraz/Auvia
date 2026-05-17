@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { MagicMascot } from '../components/MagicMascot';
+import { SEO } from '../components/SEO';
 
 export const Services = () => {
   const navigate = useNavigate();
@@ -86,6 +87,12 @@ const pillars = [
 
   return (
     <div className="bg-brand-cream min-h-screen relative">
+      <SEO 
+        title="Our Services | ABA Therapy & In-Home Care"
+        description="Auvia Behavior Centers offers comprehensive center-based ABA therapy and in-home autism care. Evidence-based, data-driven, and compassionate treatment."
+        keywords="ABA therapy services, in-home ABA therapy, center-based autism care, autism treatment programs, BCBA supervision"
+        canonicalUrl="https://auviatherapy.com/services"
+      />
       
       {/* 1. HERO SECTION: Massive and Minimalist */}
       <section className="relative min-h-[80vh] lg:min-h-screen flex items-center pt-32 lg:pt-20 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-lavender/30 overflow-hidden">
@@ -142,7 +149,7 @@ const pillars = [
             We move beyond traditional therapy. By combining clinical precision with a nurturing environment, we empower children to communicate, connect, and thrive.
           </p>
           <div className="bg-brand-teal/5 p-4 rounded-2xl border border-brand-teal/10 text-brand-teal font-bold text-sm max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
-            We will help to connect you to resources to get your child evaluated and get a diagnosis report.
+            We will connect you with resources to have your child evaluated and receive a formal diagnosis report.
           </div>
         </motion.div>
       </div>

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Phone, Mail, MapPin, ArrowRight, Smile, CheckCircle2 } from 'lucide-react';
 import { db } from '../lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { SEO } from '../components/SEO';
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -80,6 +81,12 @@ export const Contact = () => {
 
   return (
     <div className="pt-48 pb-32 bg-brand-cream overflow-hidden">
+      <SEO 
+        title="Contact Us | Start ABA Therapy"
+        description="Get in touch with Auvia Behavior Centers. Fill out our interest form, call us, or find a center near you to start your child's ABA therapy journey."
+        keywords="contact auvia, aba therapy consultation, autism assessment contact, start aba therapy"
+        canonicalUrl="https://auviatherapy.com/contact"
+      />
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
         <div className="blob-bg w-[500px] h-[500px] bg-brand-sky top-[-10%] right-[-10%]" />
 
