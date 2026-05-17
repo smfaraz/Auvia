@@ -110,7 +110,7 @@ export const Navbar = () => {
                         <Link
                           key={subItem.name}
                           to={subItem.href}
-                          className="px-4 py-3 text-sm font-bold text-brand-sage hover:text-brand-teal hover:bg-brand-mint/40 rounded-xl transition-colors"
+                          className="px-4 py-3 text-sm font-bold text-brand-ink/90 hover:text-brand-teal hover:bg-brand-mint/40 rounded-xl transition-colors"
                         >
                           {subItem.name}
                         </Link>
@@ -187,7 +187,7 @@ export const Navbar = () => {
                               <Link 
                                 key={sub.name} 
                                 to={sub.href} 
-                                className="py-2 text-lg font-bold text-brand-sage hover:text-brand-teal active:text-brand-teal transition-colors" 
+                                className="py-2 text-lg font-bold text-brand-ink/90 hover:text-brand-teal active:text-brand-teal transition-colors" 
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
                                 {sub.name}
