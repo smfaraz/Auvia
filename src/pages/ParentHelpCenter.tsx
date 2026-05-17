@@ -168,20 +168,20 @@ export const ParentHelpCenter = () => {
                 learning feels like play and every small win is celebrated.
               </p>
               <ul className="space-y-4 mb-8">
-                <li className="flex items-center gap-3 font-bold text-brand-peach">
-                  <div className="w-2 h-2 rounded-full bg-brand-peach" /> 
+                <li className="flex items-center gap-3 font-bold text-[#c2410c]">
+                  <div className="w-2 h-2 rounded-full bg-[#c2410c]" /> 
                   Play-based learning sessions
                 </li>
-                <li className="flex items-center gap-3 font-bold text-brand-peach">
-                  <div className="w-2 h-2 rounded-full bg-brand-peach" /> 
+                <li className="flex items-center gap-3 font-bold text-[#c2410c]">
+                  <div className="w-2 h-2 rounded-full bg-[#c2410c]" /> 
                   Skill building through success
                 </li>
-                <li className="flex items-center gap-3 font-bold text-brand-peach">
-                  <div className="w-2 h-2 rounded-full bg-brand-peach" /> 
+                <li className="flex items-center gap-3 font-bold text-[#c2410c]">
+                  <div className="w-2 h-2 rounded-full bg-[#c2410c]" /> 
                   Families are partners in care
                 </li>
               </ul>
-              <Link to="/what-is-aba" className="text-brand-peach font-bold flex items-center gap-2 hover:underline">
+              <Link to="/what-is-aba" className="text-[#c2410c] font-bold flex items-center gap-2 hover:underline">
                 See our approach in action <ArrowRight size={16} />
               </Link>
             </div>
