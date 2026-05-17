@@ -7,6 +7,7 @@ interface SEOProps {
   keywords?: string;
   canonicalUrl?: string;
   ogType?: string;
+  jsonLd?: object | string;
 }
 
 export const SEO: React.FC<SEOProps> = ({ 
@@ -14,11 +15,12 @@ export const SEO: React.FC<SEOProps> = ({
   description, 
   keywords,
   canonicalUrl,
-  ogType = 'website'
+  ogType = 'website',
+  jsonLd
 }) => {
   const siteName = "Auvia Behavior Centers";
   const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
-  const currentUrl = canonicalUrl || typeof window !== 'undefined' ? window.location.href : 'https://auviatherapy.com';
+  const currentUrl = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : 'https://auviatherapy.com');
   
   // Default extensive keywords if none provided
   const defaultKeywords = "ABA therapy, autism treatment, behavior analysis, autism centers Texas, BCBA, early intervention, autism therapy, RBT, children with autism, autism spectrum disorder support, special needs care";
@@ -48,6 +50,12 @@ export const SEO: React.FC<SEOProps> = ({
 
       {/* Tell robots to index and follow links */}
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+      {jsonLd && (
+        <script type="application/ld+json">
+          {typeof jsonLd === 'string' ? jsonLd : JSON.stringify(jsonLd)}
+        </script>
+      )}
     </Helmet>
   );
 };

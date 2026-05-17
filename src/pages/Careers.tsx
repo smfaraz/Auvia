@@ -111,6 +111,52 @@ export const Careers = () => {
     }
   ];
 
+  const careersSchema = React.useMemo(() => {
+    const allPostings = [
+      ...jobs.map(j => ({
+        title: j.title,
+        description: j.description || `${j.title} position at Auvia Behavior Centers.`,
+        location: j.location || "Texas Sanctuary",
+        type: j.type || "Full-Time",
+        date: j.createdAt ? new Date(j.createdAt.seconds * 1000).toISOString().split('T')[0] : "2026-05-17"
+      })),
+      ...openings.map(o => ({
+        title: o.title,
+        description: o.description,
+        location: o.location,
+        type: o.type,
+        date: "2026-05-17"
+      }))
+    ];
+
+    return {
+      "@context": "https://schema.org",
+      "@graph": allPostings.map(post => ({
+        "@type": "JobPosting",
+        "title": post.title,
+        "description": post.description,
+        "datePosted": post.date,
+        "validThrough": "2027-05-17",
+        "employmentType": post.type.toLowerCase().includes('part') ? "PART_TIME" : "FULL_TIME",
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "Auvia Behavior Centers",
+          "sameAs": "https://auviatherapy.com",
+          "logo": "https://auviatherapy.com/favicon.svg"
+        },
+        "jobLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": post.location.split(' ')[0] || "Dallas",
+            "addressRegion": "TX",
+            "addressCountry": "US"
+          }
+        }
+      }))
+    };
+  }, [jobs]);
+
   return (
     <div className="pt-32 lg:pt-48 pb-16 lg:pb-32 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-peach/30 overflow-hidden relative">
       <SEO 
@@ -118,6 +164,7 @@ export const Careers = () => {
         description="Join Auvia Behavior Centers. We are hiring passionate BCBAs and RBTs who want to provide compassionate, play-based ABA therapy."
         keywords="BCBA jobs, RBT jobs, careers in ABA, autism therapy jobs, Auvia careers, behavior technician jobs"
         canonicalUrl="https://auviatherapy.com/careers"
+        jsonLd={careersSchema}
       />
       <div className="absolute inset-0 w-full h-full pointer-events-none">
         <div className="blob-bg w-[700px] h-[700px] bg-brand-mint/30 bottom-[10%] right-[-10%]" />

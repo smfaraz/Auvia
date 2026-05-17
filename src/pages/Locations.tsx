@@ -92,6 +92,42 @@ export const Locations = () => {
     });
   }, [query, program, allCenters]);
 
+  const locationsSchema = useMemo(() => {
+    if (!allCenters || allCenters.length === 0) return undefined;
+    return {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Auvia Behavior Centers Locations",
+      "description": "Find an Auvia ABA center near you across Texas and beyond.",
+      "itemListElement": allCenters.map((center, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "MedicalBusiness",
+          "name": center.name,
+          "image": center.image || "https://auviatherapy.com/favicon.svg",
+          "telephone": center.phone,
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": center.address,
+            "addressLocality": center.city || "Houston",
+            "addressRegion": center.state || "TX",
+            "postalCode": center.zip || "",
+            "addressCountry": "US"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": center.lat,
+            "longitude": center.lng
+          },
+          "priceRange": "$$",
+          "medicalSpecialty": "Pediatrics",
+          "knowsAbout": "Applied Behavior Analysis, Autism Therapy, ASD Early Intervention"
+        }
+      }))
+    };
+  }, [allCenters]);
+
   const handleScheduleTour = (centerName: string) => {
     alert(`Thank you for your interest in ${centerName}! A team member will contact you within 24 hours to schedule your tour.`);
   };
@@ -103,6 +139,7 @@ export const Locations = () => {
         description="Search for Auvia Behavior Centers across Texas and beyond. Find a sanctuary for center-based ABA therapy near your home."
         keywords="ABA therapy locations, autism center near me, Texas ABA therapy, finding an autism clinic, local BCBA services"
         canonicalUrl="https://auviatherapy.com/locations"
+        jsonLd={locationsSchema}
       />
 
       {/* BRAND HERO */}

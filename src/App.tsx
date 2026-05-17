@@ -23,6 +23,7 @@ import { WhatIsABA } from './pages/WhatIsABA';
 import { ParentHelpCenter } from './pages/ParentHelpCenter';
 import { AdminLogin } from './pages/Admin/Login';
 import { AdminDashboard } from './pages/Admin/Dashboard';
+import { NotFound } from './pages/NotFound';
 // Scroll to top on route change
 const ScrollToTopOnMount = () => {
   const { pathname } = useLocation();
@@ -75,6 +76,9 @@ const AppContent = () => {
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin" element={<AdminLogin />} />
+
+          {/* Catch-all Fallback Route */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       {!isAdminPage && <Footer />}
