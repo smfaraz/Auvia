@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Background Circle (Teal) -->
+  <circle cx="256" cy="256" r="240" fill="#0f766e"/>
+  
+  <!-- Outer Glow or Accent Ring (Mint) -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="#ccfbf1" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Eyes (Mint) -->
+  <circle cx="180" cy="220" r="24" fill="#ccfbf1"/>
+  <circle cx="332" cy="220" r="24" fill="#ccfbf1"/>
+  
+  <!-- Smile Mouth (Mint) -->
+  <path d="M160 300 C 160 380, 352 380, 352 300" fill="none" stroke="#ccfbf1" stroke-width="24" stroke-linecap="round"/>
+</svg>
