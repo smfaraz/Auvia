@@ -81,7 +81,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'py-2 lg:py-3' : 'py-4 lg:py-6'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'py-4' : 'py-8'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className={`relative flex items-center justify-between px-4 sm:px-8 py-3 sm:py-4 rounded-[24px] sm:rounded-[32px] transition-all duration-500 ${isScrolled ? 'glass-panel' : 'bg-transparent border border-transparent'}`}>
 
@@ -101,7 +101,7 @@ export const Navbar = () => {
             {navItems.map((item) => (
               item.type === 'dropdown' ? (
                 <div key={item.name} className="relative group">
-                  <button className="flex items-center gap-1 text-sm font-kids font-bold text-brand-ink hover:text-brand-teal transition-colors py-2">
+                  <button className="flex items-center gap-1 text-sm font-kids font-medium text-brand-ink/70 hover:text-brand-teal transition-colors py-2">
                     {item.name} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
                   </button>
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 w-64">
@@ -110,7 +110,7 @@ export const Navbar = () => {
                         <Link
                           key={subItem.name}
                           to={subItem.href}
-                          className="px-4 py-3 text-sm font-bold text-brand-ink/90 hover:text-brand-teal hover:bg-brand-mint/40 rounded-xl transition-colors"
+                          className="px-4 py-3 text-sm font-bold text-brand-sage hover:text-brand-teal hover:bg-brand-mint/40 rounded-xl transition-colors"
                         >
                           {subItem.name}
                         </Link>
@@ -122,14 +122,14 @@ export const Navbar = () => {
                 <Link
                   key={item.name}
                   to={item.href!}
-                  className={`text-sm font-kids font-bold transition-all duration-300 hover:text-brand-teal ${location.pathname === item.href ? 'text-brand-teal' : 'text-brand-ink'}`}
+                  className={`text-sm font-kids font-medium transition-all duration-300 hover:text-brand-teal ${location.pathname === item.href ? 'text-brand-teal' : 'text-brand-ink/70'}`}
                 >
                   {item.name}
                 </Link>
               )
             ))}
 
-            <Link to="/contact" className="bg-brand-teal text-white py-3 px-8 rounded-[20px] font-kids font-bold text-sm hover:bg-[#3d7a6f] transition-all shadow-md shadow-brand-teal/15 ml-4">
+            <Link to="/contact" className="bg-brand-ink text-white py-3 px-8 rounded-[20px] font-kids font-semibold text-sm hover:bg-slate-700 transition-colors shadow-md ml-4">
               Find care
             </Link>
           </div>
@@ -177,17 +177,17 @@ export const Navbar = () => {
                       <AnimatePresence initial={false}>
                         {openMobileDropdown === item.name && (
                           <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
+                            initial={{ height: 0, opacity: 0 }} 
+                            animate={{ height: 'auto', opacity: 1 }} 
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.3, ease: "easeInOut" }}
                             className="overflow-hidden flex flex-col gap-3 mt-2 mb-2 pl-4 border-l-2 border-brand-mint"
                           >
                             {item.items?.map(sub => (
-                              <Link
-                                key={sub.name}
-                                to={sub.href}
-                                className="py-2 text-lg font-bold text-brand-ink/90 hover:text-brand-teal active:text-brand-teal transition-colors"
+                              <Link 
+                                key={sub.name} 
+                                to={sub.href} 
+                                className="py-2 text-lg font-bold text-brand-sage hover:text-brand-teal active:text-brand-teal transition-colors" 
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
                                 {sub.name}
@@ -198,10 +198,10 @@ export const Navbar = () => {
                       </AnimatePresence>
                     </div>
                   ) : (
-                    <Link
-                      key={item.name}
-                      to={item.href!}
-                      className={`py-2 text-xl font-kids font-semibold transition-colors border-b border-gray-50 ${location.pathname === item.href ? 'text-brand-teal' : 'text-brand-ink'}`}
+                    <Link 
+                      key={item.name} 
+                      to={item.href!} 
+                      className={`py-2 text-xl font-kids font-semibold transition-colors border-b border-gray-50 ${location.pathname === item.href ? 'text-brand-teal' : 'text-brand-ink'}`} 
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.name}
