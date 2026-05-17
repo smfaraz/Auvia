@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { 
-  BookOpen, 
-  Heart, 
-  Shield, 
-  ClipboardList, 
-  Users, 
-  ArrowRight, 
+import {
+  BookOpen,
+  Heart,
+  Shield,
+  ClipboardList,
+  Users,
+  ArrowRight,
   FileText,
   MessageCircle,
   Sparkles
@@ -63,7 +63,7 @@ export const ParentHelpCenter = () => {
 
   return (
     <div className="pt-20 lg:pt-24 pb-20 lg:pb-28 relative overflow-x-hidden min-h-screen">
-      <SEO 
+      <SEO
         title="Parent Help Center & Resources | Auvia"
         description="Explore curated guides, autism FAQs, and step-by-step enrollment info to help support your family's ABA therapy journey."
         keywords="parent help center, autism resources, aba therapy guides, family support autism, new parent guide"
@@ -73,7 +73,7 @@ export const ParentHelpCenter = () => {
       <div className="blob-bg w-[500px] h-[500px] bg-brand-mint/20 top-[-10%] right-[-10%]" />
       <div className="blob-bg w-[400px] h-[400px] bg-brand-peach/20 bottom-[10%] left-[-10%]" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10" style={{ paddingTop: '50px' }}>
         {/* Hero Section */}
         <div className="max-w-3xl mb-12 lg:mb-16">
           <motion.div
@@ -84,7 +84,7 @@ export const ParentHelpCenter = () => {
             <BookOpen size={14} />
             Knowledge is Empowerment
           </motion.div>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -98,7 +98,7 @@ export const ParentHelpCenter = () => {
             transition={{ delay: 0.2 }}
             className="text-xl md:text-2xl text-brand-sage font-medium leading-relaxed"
           >
-            Explore our curated resources designed to guide you through diagnosis, 
+            Explore our curated resources designed to guide you through diagnosis,
             therapy options, and the everyday joys of parenting.
           </motion.p>
         </div>
@@ -137,21 +137,21 @@ export const ParentHelpCenter = () => {
             <div className="bg-brand-mint/10 rounded-[50px] p-10 md:p-14 border border-brand-mint/20">
               <h2 className="text-section font-kids font-bold text-brand-ink mb-6">What is Autism Like?</h2>
               <p className="text-brand-sage text-lg mb-8 leading-relaxed">
-                Autism is a spectrum of unique neurobiological differences. For children, it often means 
-                experiencing the world with heightened sensitivity, incredible focus on interests, 
-                and distinct ways of communicating and socializing. 
+                Autism is a spectrum of unique neurobiological differences. For children, it often means
+                experiencing the world with heightened sensitivity, incredible focus on interests,
+                and distinct ways of communicating and socializing.
               </p>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-center gap-3 font-bold text-brand-teal">
-                  <div className="w-2 h-2 rounded-full bg-brand-teal" /> 
+                  <div className="w-2 h-2 rounded-full bg-brand-teal" />
                   Sensory-rich experiences
                 </li>
                 <li className="flex items-center gap-3 font-bold text-brand-teal">
-                  <div className="w-2 h-2 rounded-full bg-brand-teal" /> 
+                  <div className="w-2 h-2 rounded-full bg-brand-teal" />
                   Visual learning strengths
                 </li>
                 <li className="flex items-center gap-3 font-bold text-brand-teal">
-                  <div className="w-2 h-2 rounded-full bg-brand-teal" /> 
+                  <div className="w-2 h-2 rounded-full bg-brand-teal" />
                   Unique social perspectives
                 </li>
               </ul>
@@ -159,25 +159,25 @@ export const ParentHelpCenter = () => {
                 Deep dive into the spectrum <ArrowRight size={16} />
               </Link>
             </div>
-            
+
             <div className="bg-brand-peach/10 rounded-[50px] p-10 md:p-14 border border-brand-peach/20">
               <h2 className="text-section font-kids font-bold text-brand-ink mb-6">What is ABA Therapy Like?</h2>
               <p className="text-brand-sage text-lg mb-8 leading-relaxed">
-                At Auvia, ABA therapy is playful, positive, and collaborative. Your child works 
-                1-on-1 with a dedicated therapist in our "Sensory Sanctuary" centers, where 
+                At Auvia, ABA therapy is playful, positive, and collaborative. Your child works
+                1-on-1 with a dedicated therapist in our "Sensory Sanctuary" centers, where
                 learning feels like play and every small win is celebrated.
               </p>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-center gap-3 font-bold text-[#c2410c]">
-                  <div className="w-2 h-2 rounded-full bg-[#c2410c]" /> 
+                  <div className="w-2 h-2 rounded-full bg-[#c2410c]" />
                   Play-based learning sessions
                 </li>
                 <li className="flex items-center gap-3 font-bold text-[#c2410c]">
-                  <div className="w-2 h-2 rounded-full bg-[#c2410c]" /> 
+                  <div className="w-2 h-2 rounded-full bg-[#c2410c]" />
                   Skill building through success
                 </li>
                 <li className="flex items-center gap-3 font-bold text-[#c2410c]">
-                  <div className="w-2 h-2 rounded-full bg-[#c2410c]" /> 
+                  <div className="w-2 h-2 rounded-full bg-[#c2410c]" />
                   Families are partners in care
                 </li>
               </ul>
@@ -191,7 +191,7 @@ export const ParentHelpCenter = () => {
         {/* Featured Guide Section */}
         <section className="bg-brand-ink rounded-[60px] p-8 md:p-16 text-white mb-32 overflow-hidden relative">
           <div className="absolute top-0 right-0 w-96 h-96 bg-brand-teal/20 blur-[100px] rounded-full -mr-48 -mt-48" />
-          
+
           <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-brand-peach text-xs font-bold uppercase tracking-widest mb-6">
@@ -200,8 +200,8 @@ export const ParentHelpCenter = () => {
               </div>
               <h2 className="text-section font-kids font-bold mb-8">What to expect in your <span className="text-brand-teal italic">first 90 days.</span></h2>
               <p className="text-white/70 text-lg mb-10 leading-relaxed max-w-xl">
-                The early stages of ABA therapy can feel overwhelming. We've created a comprehensive 
-                onboarding guide to help you understand the assessment phase, therapist matching, 
+                The early stages of ABA therapy can feel overwhelming. We've created a comprehensive
+                onboarding guide to help you understand the assessment phase, therapist matching,
                 and initial goal setting.
               </p>
               <Link to="/contact" className="inline-flex items-center gap-4 bg-brand-teal text-white px-10 py-5 rounded-2xl font-kids font-bold text-xl hover:bg-[#3d7a6f] transition-all shadow-lg active:scale-95">
