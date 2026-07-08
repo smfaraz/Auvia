@@ -84,13 +84,15 @@ service cloud.firestore {
     // FAQs: Public read, Admin write
     match /faqs/{faqId} {
       allow read: if true;
-      allow write: if isAdmin() && isValidFAQ(incoming());
+      allow create, update: if isAdmin() && isValidFAQ(incoming());
+      allow delete: if isAdmin();
     }
 
     // Locations: Public read, Admin write
     match /locations/{locationId} {
       allow read: if true;
-      allow write: if isAdmin() && isValidLocation(incoming());
+      allow create, update: if isAdmin() && isValidLocation(incoming());
+      allow delete: if isAdmin();
     }
 
     // Admins: Read-only for signed-in (to check own role), write only via console/server
