@@ -248,6 +248,30 @@ export const AdminDashboard = () => {
     lead.email?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const filteredJobs = jobs.filter(job =>
+    job.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    job.category?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    job.location?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const filteredFaqs = faqs.filter(faq =>
+    faq.question?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    faq.answer?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    faq.category?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const filteredLocations = locations.filter(center =>
+    center.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    center.city?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    center.state?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    center.address?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const filteredAdmins = admins.filter(admin =>
+    admin.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    admin.role?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="min-h-screen bg-[#E4E3E0] flex font-sans selection:bg-brand-ink selection:text-[#E4E3E0] overflow-hidden">
       {/* Toast Notification */}
@@ -388,11 +412,16 @@ export const AdminDashboard = () => {
                   setEditingItem(null);
                   if (activeTab === 'jobs') setJobForm({ title: '', category: '', location: '', type: 'Full-Time', description: '', isActive: true });
                   if (activeTab === 'faqs') setFaqForm({ question: '', answer: '', category: 'General', order: faqs.length });
+                  if (activeTab === 'locations') setLocationForm({ 
+                    name: '', address: '', city: '', state: '', zip: '', 
+                    phone: '', lat: 0, lng: 0, insurance: '', type: 'Center based care', 
+                    image: 'https://picsum.photos/seed/auvia-center/800/600', isActive: true 
+                  });
                   setIsModalOpen(true);
                 }}
                 className="w-full sm:w-auto btn-friendly-primary py-3 px-6 flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all"
               >
-                <Plus size={20} /> Add New {activeTab === 'jobs' ? 'Job' : 'FAQ'}
+                <Plus size={20} /> Add New {activeTab === 'jobs' ? 'Job' : activeTab === 'faqs' ? 'FAQ' : 'Center'}
               </button>
             )}
           </div>
@@ -519,7 +548,7 @@ export const AdminDashboard = () => {
                 className="bg-white border border-[#141414] rounded-none shadow-[4px_4px_0px_#141414] overflow-hidden"
               >
                 {/* Desktop Headers */}
-                <div className="hidden lg:grid grid-cols-12 border-bottom border-[#141414] bg-[#F8F7F4] p-4">
+                <div className="hidden lg:grid grid-cols-12 border-b border-[#141414] bg-[#F8F7F4] p-4">
                   <div className="col-span-5 font-serif italic text-[11px] uppercase tracking-wider opacity-50">Admin User</div>
                   <div className="col-span-3 font-serif italic text-[11px] uppercase tracking-wider opacity-50">Role</div>
                   <div className="col-span-2 font-serif italic text-[11px] uppercase tracking-wider opacity-50">Joined</div>
@@ -527,7 +556,7 @@ export const AdminDashboard = () => {
                 </div>
 
                 <div className="divide-y divide-[#141414]">
-                  {admins.map((admin) => (
+                  {filteredAdmins.map((admin) => (
                     <div key={admin.id} className="flex flex-col lg:grid lg:grid-cols-12 p-5 lg:p-6 hover:bg-[#141414] hover:text-white transition-all group cursor-default gap-3 lg:gap-0">
                       <div className="col-span-5">
                         <div className="lg:hidden text-[9px] font-bold text-brand-teal uppercase tracking-[0.2em] mb-2">Admin User</div>
@@ -549,7 +578,7 @@ export const AdminDashboard = () => {
                         <div className="flex items-center gap-3">
                           <button 
                             onClick={() => handleAdminDelete(admin.id)}
-                            disabled={admin.email === auth.currentUser?.email}
+                            disabled={admin.email?.toLowerCase() === auth.currentUser?.email?.toLowerCase()}
                             className="flex-1 lg:flex-none p-3 lg:p-2 border border-red-500/30 text-red-500/70 hover:bg-red-500 hover:text-white transition-all rounded-xl disabled:opacity-20 disabled:cursor-not-allowed flex justify-center items-center"
                           >
                             <Trash2 size={14} />
@@ -576,14 +605,14 @@ export const AdminDashboard = () => {
               >
                 {activeTab === 'jobs' ? (
                   <>
-                    <div className="hidden lg:grid grid-cols-12 border-bottom border-[#141414] bg-[#F8F7F4] p-4">
+                    <div className="hidden lg:grid grid-cols-12 border-b border-[#141414] bg-[#F8F7F4] p-4">
                       <div className="col-span-4 font-serif italic text-[11px] uppercase tracking-wider opacity-50">Title / Category</div>
                       <div className="col-span-3 font-serif italic text-[11px] uppercase tracking-wider opacity-50">Location / Type</div>
                       <div className="col-span-2 font-serif italic text-[11px] uppercase tracking-wider opacity-50">Status</div>
                       <div className="col-span-3 font-serif italic text-[11px] uppercase tracking-wider opacity-50 text-right">Actions</div>
                     </div>
                     <div className="divide-y divide-[#141414]">
-                      {jobs.map(job => (
+                      {filteredJobs.map(job => (
                         <div key={job.id} className="flex flex-col lg:grid lg:grid-cols-12 p-5 lg:p-6 hover:bg-[#141414] hover:text-white group transition-all gap-6 lg:gap-0">
                           <div className="col-span-4">
                             <div className="lg:hidden text-[9px] font-bold text-brand-teal uppercase tracking-[0.2em] mb-2">Job Details</div>
@@ -610,7 +639,14 @@ export const AdminDashboard = () => {
                               <button 
                                 onClick={() => {
                                   setEditingItem(job);
-                                  setJobForm({ title: job.title, category: job.category, location: job.location, type: job.type || 'Full-Time', description: job.description, isActive: job.isActive });
+                                  setJobForm({ 
+                                    title: job.title || '', 
+                                    category: job.category || '', 
+                                    location: job.location || '', 
+                                    type: job.type || 'Full-Time', 
+                                    description: job.description || '', 
+                                    isActive: job.isActive !== undefined ? job.isActive : true 
+                                  });
                                   setIsModalOpen(true);
                                 }}
                                 className="flex-1 lg:flex-none p-3 lg:p-2 border border-[#141414] lg:border-current rounded-xl lg:rounded-xl hover:bg-white hover:text-brand-ink transition-all flex justify-center items-center"
@@ -627,7 +663,7 @@ export const AdminDashboard = () => {
                           </div>
                         </div>
                       ))}
-                      {jobs.length === 0 && (
+                      {filteredJobs.length === 0 && (
                         <div className="p-20 text-center text-gray-400 font-mono text-sm uppercase tracking-widest">
                           no_job_postings_detected
                         </div>
@@ -636,14 +672,14 @@ export const AdminDashboard = () => {
                   </>
                 ) : activeTab === 'faqs' ? (
                   <>
-                    <div className="hidden lg:grid grid-cols-12 border-bottom border-[#141414] bg-[#F8F7F4] p-4">
+                    <div className="hidden lg:grid grid-cols-12 border-b border-[#141414] bg-[#F8F7F4] p-4">
                       <div className="col-span-1 font-serif italic text-[11px] uppercase tracking-wider opacity-50">Order</div>
                       <div className="col-span-4 font-serif italic text-[11px] uppercase tracking-wider opacity-50">Question</div>
                       <div className="col-span-4 font-serif italic text-[11px] uppercase tracking-wider opacity-50">Answer Preview</div>
                       <div className="col-span-3 font-serif italic text-[11px] uppercase tracking-wider opacity-50 text-right">Actions</div>
                     </div>
                     <div className="divide-y divide-[#141414]">
-                      {faqs.map(faq => (
+                      {filteredFaqs.map(faq => (
                         <div key={faq.id} className="flex flex-col lg:grid lg:grid-cols-12 p-5 lg:p-6 hover:bg-[#141414] hover:text-white group transition-all gap-6 lg:gap-0">
                           <div className="col-span-1">
                             <div className="lg:hidden text-[9px] font-bold text-brand-teal uppercase tracking-[0.2em] mb-2">Order</div>
@@ -663,7 +699,12 @@ export const AdminDashboard = () => {
                               <button 
                                 onClick={() => {
                                   setEditingItem(faq);
-                                  setFaqForm({ question: faq.question, answer: faq.answer, category: faq.category, order: faq.order });
+                                  setFaqForm({ 
+                                    question: faq.question || '', 
+                                    answer: faq.answer || '', 
+                                    category: faq.category || 'General', 
+                                    order: faq.order !== undefined ? faq.order : 0 
+                                  });
                                   setIsModalOpen(true);
                                 }}
                                 className="flex-1 lg:flex-none p-3 lg:p-2 border border-[#141414] lg:border-current rounded-xl lg:rounded-xl hover:bg-white hover:text-brand-ink transition-all flex justify-center items-center"
@@ -680,7 +721,7 @@ export const AdminDashboard = () => {
                           </div>
                         </div>
                       ))}
-                      {faqs.length === 0 && (
+                      {filteredFaqs.length === 0 && (
                         <div className="p-20 text-center text-gray-400 font-mono text-sm uppercase tracking-widest">
                           faq_database_empty
                         </div>
@@ -689,13 +730,13 @@ export const AdminDashboard = () => {
                   </>
                 ) : (
                   <>
-                    <div className="hidden lg:grid grid-cols-12 border-bottom border-[#141414] bg-[#F8F7F4] p-4">
+                    <div className="hidden lg:grid grid-cols-12 border-b border-[#141414] bg-[#F8F7F4] p-4">
                       <div className="col-span-4 font-serif italic text-[11px] uppercase tracking-wider opacity-50">Center Name / City</div>
                       <div className="col-span-5 font-serif italic text-[11px] uppercase tracking-wider opacity-50">Address / Phone</div>
                       <div className="col-span-3 font-serif italic text-[11px] uppercase tracking-wider opacity-50 text-right">Actions</div>
                     </div>
                     <div className="divide-y divide-[#141414]">
-                      {locations.map(center => (
+                      {filteredLocations.map(center => (
                         <div key={center.id} className="flex flex-col lg:grid lg:grid-cols-12 p-5 lg:p-6 hover:bg-[#141414] hover:text-white group transition-all gap-6 lg:gap-0">
                           <div className="col-span-4 pr-4">
                             <div className="lg:hidden text-[9px] font-bold text-brand-teal uppercase tracking-[0.2em] mb-2">Center Name</div>
@@ -714,10 +755,18 @@ export const AdminDashboard = () => {
                                 onClick={() => {
                                   setEditingItem(center);
                                   setLocationForm({ 
-                                    name: center.name, address: center.address, city: center.city, 
-                                    state: center.state, zip: center.zip, phone: center.phone, 
-                                    lat: center.lat, lng: center.lng, insurance: center.insurance, 
-                                    type: center.type, image: center.image, isActive: center.isActive 
+                                    name: center.name || '', 
+                                    address: center.address || '', 
+                                    city: center.city || '', 
+                                    state: center.state || '', 
+                                    zip: center.zip || '', 
+                                    phone: center.phone || '', 
+                                    lat: center.lat || 0, 
+                                    lng: center.lng || 0, 
+                                    insurance: center.insurance || '', 
+                                    type: center.type || 'Center based care', 
+                                    image: center.image || 'https://picsum.photos/seed/auvia-center/800/600', 
+                                    isActive: center.isActive !== undefined ? center.isActive : true 
                                   });
                                   setIsModalOpen(true);
                                 }}
@@ -735,7 +784,7 @@ export const AdminDashboard = () => {
                           </div>
                         </div>
                       ))}
-                      {locations.length === 0 && (
+                      {filteredLocations.length === 0 && (
                         <div className="p-20 text-center text-gray-400 font-mono text-sm uppercase tracking-widest">
                           no_centers_found_in_database
                         </div>
@@ -816,7 +865,7 @@ export const AdminDashboard = () => {
                       </div>
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-widest opacity-50">Order</label>
-                        <input type="number" value={faqForm.order} onChange={e => setFaqForm({...faqForm, order: parseInt(e.target.value)})} required className="w-full px-5 py-4 bg-[#F8F7F4] border border-[#141414] rounded-2xl outline-none focus:ring-4 focus:ring-brand-teal/20 transition-all font-medium" />
+                        <input type="number" value={faqForm.order} onChange={e => setFaqForm({...faqForm, order: parseInt(e.target.value) || 0})} required className="w-full px-5 py-4 bg-[#F8F7F4] border border-[#141414] rounded-2xl outline-none focus:ring-4 focus:ring-brand-teal/20 transition-all font-medium" />
                       </div>
                     </div>
                     <div className="space-y-1">
@@ -864,11 +913,11 @@ export const AdminDashboard = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-widest opacity-50">Latitude</label>
-                        <input type="number" step="any" value={locationForm.lat} onChange={e => setLocationForm({...locationForm, lat: parseFloat(e.target.value)})} required className="w-full px-4 py-3 bg-[#F8F7F4] border border-[#141414] rounded-xl outline-none" />
+                        <input type="number" step="any" value={locationForm.lat} onChange={e => setLocationForm({...locationForm, lat: parseFloat(e.target.value) || 0})} required className="w-full px-4 py-3 bg-[#F8F7F4] border border-[#141414] rounded-xl outline-none" />
                       </div>
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-widest opacity-50">Longitude</label>
-                        <input type="number" step="any" value={locationForm.lng} onChange={e => setLocationForm({...locationForm, lng: parseFloat(e.target.value)})} required className="w-full px-4 py-3 bg-[#F8F7F4] border border-[#141414] rounded-xl outline-none" />
+                        <input type="number" step="any" value={locationForm.lng} onChange={e => setLocationForm({...locationForm, lng: parseFloat(e.target.value) || 0})} required className="w-full px-4 py-3 bg-[#F8F7F4] border border-[#141414] rounded-xl outline-none" />
                       </div>
                     </div>
                     <div className="space-y-1">
