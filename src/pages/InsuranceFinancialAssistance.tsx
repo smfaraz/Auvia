@@ -519,7 +519,7 @@ export const InsuranceFinancialAssistance = () => {
                   className="mt-1.5 accent-brand-peach h-5 w-5 shrink-0 cursor-pointer" 
                 />
                 <label htmlFor="consent" className="text-sm text-white/80 leading-relaxed cursor-pointer">
-                  By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call 888-352-0091. Please see our Privacy Policy <Link to="/privacy" className="text-white underline hover:text-brand-peach transition-colors">here</Link>.
+                  By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call 945-(758)-1087. Please see our Privacy Policy <Link to="/privacy" className="text-white underline hover:text-brand-peach transition-colors">here</Link>.
                 </label>
               </div>
 

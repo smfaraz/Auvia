@@ -224,7 +224,7 @@ export const Contact = () => {
                         className="mt-1.5 accent-brand-teal h-5 w-5 shrink-0 cursor-pointer"
                       />
                       <label htmlFor="consent" className="text-[13px] text-brand-sage font-medium leading-relaxed cursor-pointer">
-                        By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call 888-352-0091. Please see our Privacy Policy <Link to="/privacy" className="text-brand-teal underline hover:text-brand-mint transition-colors">here</Link>.
+                        By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call 945-(758)-1087. Please see our Privacy Policy <Link to="/privacy" className="text-brand-teal underline hover:text-brand-mint transition-colors">here</Link>.
                       </label>
                     </div>
 
@@ -253,7 +253,7 @@ export const Contact = () => {
                   <div>
                     <h4 className="text-xl font-kids font-bold text-brand-ink mb-2">Call Us</h4>
                     <p className="text-brand-sage text-sm mb-3 font-medium">Monday – Friday, 8am – 6pm.</p>
-                    <a href="tel:8883520091" className="text-brand-teal font-bold text-lg hover:text-brand-ink transition-colors font-kids">888-352-0091</a>
+                    <a href="tel:9457581087" className="text-brand-teal font-bold text-lg hover:text-brand-ink transition-colors font-kids">945-(758)-1087</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-6">
@@ -272,8 +272,8 @@ export const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-xl font-kids font-bold text-brand-ink mb-2">Visit Us</h4>
-                    <p className="text-brand-sage text-sm mb-3 font-medium">Our main office is in Allen.</p>
-                    <p className="text-brand-ink font-bold text-sm font-kids">1212 Cabernet Dr, Allen, TX 75002-0981</p>
+                    <p className="text-brand-sage text-sm mb-3 font-medium">Our main office is in Irving.</p>
+                    <p className="text-brand-ink font-bold text-sm font-kids">3100 Premier Dr, Unit 236, Irving, TX 75063</p>
                   </div>
                 </div>
               </div>

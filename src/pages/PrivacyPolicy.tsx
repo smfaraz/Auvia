@@ -5,9 +5,9 @@ import { Shield, Lock, Eye, FileText, ChevronRight, MessageSquare, Globe, Clock,
 export const PrivacyPolicy = () => {
   const lastUpdated = "April 23, 2026";
   const companyName = "Auvia Behavior Centers";
-  const contactPhone = "888-352-0091";
+  const contactPhone = "945-(758)-1087";
   const contactEmail = "admin@auviatherapy.com";
-  const contactAddress = "1212 Cabernet Dr, Allen, TX 75002-0981";
+  const contactAddress = "3100 Premier Dr, Unit 236, Irving, TX 75063";
 
   return (
     <div className="pt-20 lg:pt-24 pb-20 lg:pb-28 relative overflow-x-hidden min-h-screen">

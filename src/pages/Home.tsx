@@ -753,7 +753,7 @@ export const Home = () => {
                         className="mt-1.5 accent-brand-teal h-5 w-5 shrink-0 cursor-pointer"
                       />
                       <label htmlFor="consent" className="text-small text-brand-sage leading-relaxed cursor-pointer">
-                        By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call 888-352-0091. Please see our Privacy Policy <Link to="/privacy" className="text-brand-teal underline">here</Link>.
+                        By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call 945-(758)-1087. Please see our Privacy Policy <Link to="/privacy" className="text-brand-teal underline">here</Link>.
                       </label>
                     </div>
 

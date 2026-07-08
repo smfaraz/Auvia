@@ -62,7 +62,7 @@ export const Footer = () => {
             <ul className="space-y-5 text-sm text-brand-sage font-medium">
               <li className="flex items-center gap-4">
                 <Phone size={18} className="text-brand-teal" />
-                <a href="tel:8883520091" className="hover:text-brand-teal transition-colors">888-352-0091</a>
+                <a href="tel:9457581087" className="hover:text-brand-teal transition-colors">945-(758)-1087</a>
               </li>
               <li className="flex items-center gap-4">
                 <Mail size={18} className="text-brand-teal" />
@@ -70,8 +70,8 @@ export const Footer = () => {
               </li>
               <li className="flex items-start gap-4">
                 <MapPin size={18} className="text-brand-teal mt-1" />
-                1212 Cabernet Dr <br />
-                Allen, TX 75002-0981
+                3100 Premier Dr, Unit 236 <br />
+                Irving, TX 75063
               </li>
             </ul>
           </div>
