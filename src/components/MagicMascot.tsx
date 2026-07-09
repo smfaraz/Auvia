@@ -33,20 +33,25 @@ export const MagicMascot = () => {
   const getChatResponse = (input: string): string => {
     const query = input.toLowerCase();
     
+    // 1. Careers / Jobs (evaluated early to prevent clinical/work collisions)
+    if (query.includes('career') || query.includes('job') || query.includes('role') || query.includes('hiring') || query.includes('bcba') || query.includes('rbt') || query.includes('work') || query.includes('apply')) {
+      return "Join the Auvia clinical family! We are actively recruiting BCBAs and RBTs. View open positions and apply at: /careers.";
+    }
+    // 2. Locations
     if (query.includes('location') || query.includes('center') || query.includes('irving') || query.includes('blaine') || query.includes('where')) {
       return "Auvia is actively operating at our Irving (TX) center. Additional locations (such as Blaine, MN) are coming soon! Please check our /locations page for the up-to-date listing of active and upcoming centers.";
     }
+    // 3. Insurance
     if (query.includes('insurance') || query.includes('pay') || query.includes('bcbs') || query.includes('aetna') || query.includes('cigna') || query.includes('medicaid') || query.includes('tricare')) {
       return "Auvia is in-network with BCBS TX, Aetna, Cigna, United Healthcare, Medicaid, Molina, Superior Health, and Tricare. You can request direct insurance coverage details on our /insurance-financial-assistance page.";
     }
-    if (query.includes('aba') || query.includes('therapy') || query.includes('autism') || query.includes('treatment') || query.includes('clinical')) {
-      return "We specialize in early-intervention, play-based ABA therapy to help children diagnosed with autism grow. Check out detailed clinical resources: /what-is-aba or learn about autism: /what-is-autism.";
-    }
-    if (query.includes('career') || query.includes('job') || query.includes('bcba') || query.includes('rbt') || query.includes('work') || query.includes('apply')) {
-      return "Join the Auvia clinical family! We are actively recruiting BCBAs and RBTs. View open positions and apply at: /careers.";
-    }
+    // 4. Contact Info
     if (query.includes('contact') || query.includes('phone') || query.includes('call') || query.includes('number') || query.includes('email')) {
       return "You can reach us at 945-(758)-1087, email admin@auviatherapy.com, or submit a request on our /contact page.";
+    }
+    // 5. ABA / Autism / Clinical
+    if (query.includes('aba') || query.includes('therapy') || query.includes('autism') || query.includes('treatment') || query.includes('clinical')) {
+      return "We specialize in early-intervention, play-based ABA therapy to help children diagnosed with autism grow. Check out detailed clinical resources: /what-is-aba or learn about autism: /what-is-autism.";
     }
     
     return "I'd love to help you! You can ask about our clinical locations, insurance, ABA therapy, careers, or submit a message to our intake team at: /contact.";
