@@ -70,7 +70,7 @@ export const Footer = () => {
               </li>
               <li className="flex items-start gap-4">
                 <MapPin size={18} className="text-brand-teal mt-1" />
-                3100 Premier Dr, Unit 236 <br />
+                3100 Premier Dr, Suite 236 <br />
                 Irving, TX 75063
               </li>
             </ul>

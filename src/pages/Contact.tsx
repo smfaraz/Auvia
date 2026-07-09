@@ -273,7 +273,7 @@ export const Contact = () => {
                   <div>
                     <h4 className="text-xl font-kids font-bold text-brand-ink mb-2">Visit Us</h4>
                     <p className="text-brand-sage text-sm mb-3 font-medium">Our main office is in Irving.</p>
-                    <p className="text-brand-ink font-bold text-sm font-kids">3100 Premier Dr, Unit 236, Irving, TX 75063</p>
+                    <p className="text-brand-ink font-bold text-sm font-kids">3100 Premier Dr, Suite 236, Irving, TX 75063</p>
                   </div>
                 </div>
               </div>
