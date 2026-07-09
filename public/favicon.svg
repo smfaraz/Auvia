@@ -1,46 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
-  <defs>
-    <!-- Teal Gradient (Top-Right Wing) -->
-    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#4D9689" />
-      <stop offset="100%" stop-color="#2a5d54" />
-    </linearGradient>
-    
-    <!-- Mint/Teal Gradient (Top-Left Wing) -->
-    <linearGradient id="mintGrad" x1="100%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#A2DED0" />
-      <stop offset="100%" stop-color="#4D9689" />
-    </linearGradient>
-    
-    <!-- Peach Gradient (Bottom-Left Wing) -->
-    <linearGradient id="peachGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FCDFD5" />
-      <stop offset="100%" stop-color="#e9a486" />
-    </linearGradient>
-
-    <!-- Sky Gradient (Bottom-Right Wing) -->
-    <linearGradient id="skyGrad" x1="100%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#D4F0FC" />
-      <stop offset="100%" stop-color="#7ebce0" />
-    </linearGradient>
-  </defs>
-
-  <!-- Top-Left Wing (Mint) -->
-  <path d="M 256,266 C 180,266 110,210 110,140 C 110,70 190,70 256,190 Z" fill="url(#mintGrad)" opacity="0.9" />
-
-  <!-- Top-Right Wing (Teal) -->
-  <path d="M 256,266 C 332,266 402,210 402,140 C 402,70 322,70 256,190 Z" fill="url(#tealGrad)" opacity="0.95" />
-
-  <!-- Bottom-Left Wing (Peach) -->
-  <path d="M 256,266 C 190,266 140,310 140,370 C 140,430 210,420 256,330 Z" fill="url(#peachGrad)" opacity="0.85" />
-
-  <!-- Bottom-Right Wing (Sky Blue) -->
-  <path d="M 256,266 C 322,266 372,310 372,370 C 372,430 302,420 256,330 Z" fill="url(#skyGrad)" opacity="0.85" />
-
-  <!-- Antennae (Soft Peach/Beige) -->
-  <path d="M 248,150 Q 230,110 200,120" fill="none" stroke="#e9a486" stroke-width="12" stroke-linecap="round" />
-  <path d="M 264,150 Q 282,110 312,120" fill="none" stroke="#e9a486" stroke-width="12" stroke-linecap="round" />
-
-  <!-- Center Body (Sleek Rounded Pill in Warm Peach) -->
-  <rect x="242" y="150" width="28" height="210" rx="14" fill="#e9a486" />
+  <!-- Squircle Base matching the official navbar logo container (brand-teal #4D9689) -->
+  <rect x="32" y="32" width="448" height="448" rx="120" ry="120" fill="#4D9689" />
+  
+  <!-- Bold, rounded Capital "A" for Auvia (White #ffffff) -->
+  <path d="M 256,100 
+           C 275,100 290,115 298,135 
+           L 398,365 
+           C 406,383 398,405 380,412 
+           C 362,420 340,412 332,394 
+           L 308,340 
+           L 204,340 
+           L 180,394 
+           C 172,412 150,420 132,412 
+           C 114,405 106,383 114,365 
+           L 214,135 
+           C 222,115 237,100 256,100 Z 
+           M 256,180 
+           L 222,290 
+           L 290,290 
+           Z" 
+        fill="#ffffff" />
 </svg>
