@@ -447,32 +447,33 @@ export const InsuranceFinancialAssistance = () => {
             <form className="space-y-6 relative z-10 bg-white/10 p-8 lg:p-12 rounded-[40px] backdrop-blur-md border border-white/20" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-bold mb-2">Parent/Guardian First Name*</label>
-                  <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none font-medium" />
+                  <label htmlFor="ia-firstName" className="block text-sm font-bold mb-2">Parent/Guardian First Name*</label>
+                  <input type="text" id="ia-firstName" name="firstName" value={formData.firstName} onChange={handleChange} required className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none font-medium" />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold mb-2">Parent/Guardian Last Name*</label>
-                  <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none font-medium" />
+                  <label htmlFor="ia-lastName" className="block text-sm font-bold mb-2">Parent/Guardian Last Name*</label>
+                  <input type="text" id="ia-lastName" name="lastName" value={formData.lastName} onChange={handleChange} required className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none font-medium" />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold mb-2">Email*</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleChange} required className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none font-medium" />
+                  <label htmlFor="ia-email" className="block text-sm font-bold mb-2">Email*</label>
+                  <input type="email" id="ia-email" name="email" value={formData.email} onChange={handleChange} required className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none font-medium" />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold mb-2">Phone number*</label>
-                  <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none font-medium" />
+                  <label htmlFor="ia-phone" className="block text-sm font-bold mb-2">Phone number*</label>
+                  <input type="tel" id="ia-phone" name="phone" value={formData.phone} onChange={handleChange} required className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none font-medium" />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold mb-2">Child's Date of Birth</label>
-                  <input type="date" name="childDob" value={formData.childDob} onChange={handleChange} className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none font-medium" />
+                  <label htmlFor="ia-childDob" className="block text-sm font-bold mb-2">Child's Date of Birth</label>
+                  <input type="date" id="ia-childDob" name="childDob" value={formData.childDob} onChange={handleChange} className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none font-medium" />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold mb-2">Child's First Name</label>
-                  <input type="text" name="childName" value={formData.childName} onChange={handleChange} className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none font-medium" />
+                  <label htmlFor="ia-childName" className="block text-sm font-bold mb-2">Child's First Name</label>
+                  <input type="text" id="ia-childName" name="childName" value={formData.childName} onChange={handleChange} className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none font-medium" />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold mb-2">Current Insurance Provider*</label>
+                  <label htmlFor="ia-insuranceProvider" className="block text-sm font-bold mb-2">Current Insurance Provider*</label>
                   <select 
+                    id="ia-insuranceProvider"
                     name="insuranceProvider" 
                     value={formData.insuranceProvider} 
                     onChange={handleChange} 
@@ -493,12 +494,12 @@ export const InsuranceFinancialAssistance = () => {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-bold mb-2">Zip code*</label>
-                  <input type="text" name="zip" value={formData.zip} onChange={handleChange} required placeholder="ex. 73301" className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none font-medium" />
+                  <label htmlFor="ia-zip" className="block text-sm font-bold mb-2">Zip code*</label>
+                  <input type="text" id="ia-zip" name="zip" value={formData.zip} onChange={handleChange} required placeholder="ex. 73301" className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none font-medium" />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold mb-2">Find nearby Centers*</label>
-                  <select name="center" value={formData.center} onChange={handleChange} required className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none appearance-none cursor-pointer font-medium">
+                  <label htmlFor="ia-center" className="block text-sm font-bold mb-2">Find nearby Centers*</label>
+                  <select id="ia-center" name="center" value={formData.center} onChange={handleChange} required className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none appearance-none cursor-pointer font-medium">
                     <option value="">Please Select</option>
                     <option value="allen">Allen, TX</option>
                     <option value="austin">Austin, TX</option>
@@ -512,14 +513,14 @@ export const InsuranceFinancialAssistance = () => {
               <div className="flex gap-4 items-start bg-white/5 p-6 rounded-[32px] border border-white/20 mt-6">
                 <input 
                   type="checkbox" 
-                  id="consent" 
+                  id="ia-consent" 
                   name="consent"
                   checked={formData.consent}
                   onChange={handleChange}
                   className="mt-1.5 accent-brand-peach h-5 w-5 shrink-0 cursor-pointer" 
                 />
-                <label htmlFor="consent" className="text-sm text-white/80 leading-relaxed cursor-pointer">
-                  By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call 945-(758)-1087. Please see our Privacy Policy <Link to="/privacy" className="text-white underline hover:text-brand-peach transition-colors">here</Link>.
+                <label htmlFor="ia-consent" className="text-sm text-white/80 leading-relaxed cursor-pointer">
+                  By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call 945-(758)-1087. Please see our <Link to="/privacy" className="text-white underline hover:text-brand-peach transition-colors">Privacy Policy</Link> for details.
                 </label>
               </div>
 

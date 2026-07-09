@@ -36,7 +36,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-brand-ink font-bold text-xs uppercase tracking-widest mb-8 font-kids">Our Programs</h4>
+            <h3 className="text-brand-ink font-bold text-xs uppercase tracking-widest mb-8 font-kids">Our Programs</h3>
             <ul className="space-y-4 text-sm font-bold text-brand-sage font-kids">
               <li><Link to="/services" className="hover:text-brand-teal transition-colors">ABA Therapy</Link></li>
               <li><Link to="/services" className="hover:text-brand-teal transition-colors">Early Intervention</Link></li>
@@ -45,7 +45,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-brand-ink font-bold text-xs uppercase tracking-widest mb-8 font-kids">Quick Links</h4>
+            <h3 className="text-brand-ink font-bold text-xs uppercase tracking-widest mb-8 font-kids">Quick Links</h3>
             <ul className="space-y-4 text-sm font-bold text-brand-sage font-kids">
               <li><Link to="/about" className="hover:text-brand-teal transition-colors">Our Story</Link></li>
               <li><Link to="/locations" className="hover:text-brand-teal transition-colors">Locations</Link></li>
@@ -58,7 +58,7 @@ export const Footer = () => {
           </div>
 
           <div className="space-y-8">
-            <h4 className="text-brand-ink font-bold text-xs uppercase tracking-widest mb-8 font-kids">Get in Touch</h4>
+            <h3 className="text-brand-ink font-bold text-xs uppercase tracking-widest mb-8 font-kids">Get in Touch</h3>
             <ul className="space-y-5 text-sm text-brand-sage font-medium">
               <li className="flex items-center gap-4">
                 <Phone size={18} className="text-brand-teal" />
@@ -77,10 +77,10 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-12 border-t border-brand-teal/10 flex flex-col md:flex-row justify-between items-center gap-8 text-xs font-bold text-brand-sage/60 font-kids">
+        <div className="pt-12 border-t border-brand-teal/10 flex flex-col md:flex-row justify-between items-center gap-8 text-xs font-bold text-brand-sage font-kids">
           <div className="flex flex-col gap-2">
             <p>© {new Date().getFullYear()} Auvia Behavior Centers. Built with Love.</p>
-            <p className="font-sans font-medium text-[10px] text-brand-sage/40">BCBA® and RBT® are registered trademarks of the Behavior Analyst Certification Board, Inc.®</p>
+            <p className="font-sans font-medium text-[10px] text-brand-sage/70">BCBA® and RBT® are registered trademarks of the Behavior Analyst Certification Board, Inc.®</p>
           </div>
           <div className="flex gap-8">
             <Link to="/privacy" className="hover:text-brand-teal transition-colors">Privacy</Link>

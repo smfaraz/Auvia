@@ -677,41 +677,41 @@ export const Home = () => {
                   <motion.form key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4 md:space-y-5" onSubmit={handleInterestFormSubmit}>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <label className="text-label-custom text-brand-ink ml-1">Parent/Guardian First Name<span className="text-red-500">*</span></label>
-                        <input type="text" name="firstName" value={interestForm.firstName} onChange={handleInterestChange} required className="glass-input w-full p-4 rounded-2xl outline-none text-body-normal-normal" />
+                        <label htmlFor="home-firstName" className="text-label-custom text-brand-ink ml-1">Parent/Guardian First Name<span className="text-red-500">*</span></label>
+                        <input type="text" id="home-firstName" name="firstName" value={interestForm.firstName} onChange={handleInterestChange} required className="glass-input w-full p-4 rounded-2xl outline-none text-body-normal-normal" />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-label-custom text-brand-ink ml-1">Parent/Guardian Last Name<span className="text-red-500">*</span></label>
-                        <input type="text" name="lastName" value={interestForm.lastName} onChange={handleInterestChange} required className="glass-input w-full p-4 rounded-2xl outline-none text-body-normal-normal" />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <label className="text-label-custom text-brand-ink ml-1">Email<span className="text-red-500">*</span></label>
-                        <input type="email" name="email" value={interestForm.email} onChange={handleInterestChange} required className="glass-input w-full p-4 rounded-2xl outline-none text-body-normal-normal" />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-label-custom text-brand-ink ml-1">Phone number<span className="text-red-500">*</span></label>
-                        <input type="tel" name="phone" value={interestForm.phone} onChange={handleInterestChange} required className="glass-input w-full p-4 rounded-2xl outline-none text-body-normal-normal" />
+                        <label htmlFor="home-lastName" className="text-label-custom text-brand-ink ml-1">Parent/Guardian Last Name<span className="text-red-500">*</span></label>
+                        <input type="text" id="home-lastName" name="lastName" value={interestForm.lastName} onChange={handleInterestChange} required className="glass-input w-full p-4 rounded-2xl outline-none text-body-normal-normal" />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <label className="text-label-custom text-brand-ink ml-1">Child's Date of Birth</label>
-                        <input type="date" name="childDob" value={interestForm.childDob} onChange={handleInterestChange} className="glass-input w-full p-4 rounded-2xl outline-none text-body-normal-normal" />
+                        <label htmlFor="home-email" className="text-label-custom text-brand-ink ml-1">Email<span className="text-red-500">*</span></label>
+                        <input type="email" id="home-email" name="email" value={interestForm.email} onChange={handleInterestChange} required className="glass-input w-full p-4 rounded-2xl outline-none text-body-normal-normal" />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-label-custom text-brand-ink ml-1">Child's First Name</label>
-                        <input type="text" name="childName" value={interestForm.childName} onChange={handleInterestChange} className="glass-input w-full p-4 rounded-2xl outline-none text-body-normal-normal" />
+                        <label htmlFor="home-phone" className="text-label-custom text-brand-ink ml-1">Phone number<span className="text-red-500">*</span></label>
+                        <input type="tel" id="home-phone" name="phone" value={interestForm.phone} onChange={handleInterestChange} required className="glass-input w-full p-4 rounded-2xl outline-none text-body-normal-normal" />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <label className="text-label-custom text-brand-ink ml-1">Current Insurance Provider<span className="text-red-500">*</span></label>
-                        <select name="insuranceProvider" value={interestForm.insuranceProvider} onChange={handleInterestChange} required className="glass-input w-full p-4 rounded-2xl outline-none appearance-none cursor-pointer text-body-normal-normal">
+                        <label htmlFor="home-childDob" className="text-label-custom text-brand-ink ml-1">Child's Date of Birth</label>
+                        <input type="date" id="home-childDob" name="childDob" value={interestForm.childDob} onChange={handleInterestChange} className="glass-input w-full p-4 rounded-2xl outline-none text-body-normal-normal" />
+                      </div>
+                      <div className="space-y-2">
+                        <label htmlFor="home-childName" className="text-label-custom text-brand-ink ml-1">Child's First Name</label>
+                        <input type="text" id="home-childName" name="childName" value={interestForm.childName} onChange={handleInterestChange} className="glass-input w-full p-4 rounded-2xl outline-none text-body-normal-normal" />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <label htmlFor="home-insuranceProvider" className="text-label-custom text-brand-ink ml-1">Current Insurance Provider<span className="text-red-500">*</span></label>
+                        <select id="home-insuranceProvider" name="insuranceProvider" value={interestForm.insuranceProvider} onChange={handleInterestChange} required className="glass-input w-full p-4 rounded-2xl outline-none appearance-none cursor-pointer text-body-normal-normal">
                           <option value="">Please Select</option>
                           <option value="BCBS TX">BCBS TX</option>
                           <option value="AETNA COMMERCIAL">AETNA COMMERCIAL</option>
@@ -726,14 +726,14 @@ export const Home = () => {
                         </select>
                       </div>
                       <div className="space-y-2">
-                        <label className="text-label-custom text-brand-ink ml-1">Zip code<span className="text-red-500">*</span></label>
-                        <input type="text" name="zip" value={interestForm.zip} onChange={handleInterestChange} required placeholder="ex: 73301" className="glass-input w-full p-4 rounded-2xl outline-none text-body-normal-normal" />
+                        <label htmlFor="home-zip" className="text-label-custom text-brand-ink ml-1">Zip code<span className="text-red-500">*</span></label>
+                        <input type="text" id="home-zip" name="zip" value={interestForm.zip} onChange={handleInterestChange} required placeholder="ex: 73301" className="glass-input w-full p-4 rounded-2xl outline-none text-body-normal-normal" />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-label-custom text-brand-ink ml-1">Find nearby Centers<span className="text-red-500">*</span></label>
-                      <select name="center" value={interestForm.center} onChange={handleInterestChange} required className="glass-input w-full p-4 rounded-2xl outline-none appearance-none cursor-pointer text-body-normal-normal">
+                      <label htmlFor="home-center" className="text-label-custom text-brand-ink ml-1">Find nearby Centers<span className="text-red-500">*</span></label>
+                      <select id="home-center" name="center" value={interestForm.center} onChange={handleInterestChange} required className="glass-input w-full p-4 rounded-2xl outline-none appearance-none cursor-pointer text-body-normal-normal">
                         <option value="">Please Select</option>
                         <option value="allen">Allen, TX</option>
                         <option value="austin">Austin, TX</option>
@@ -746,14 +746,14 @@ export const Home = () => {
                     <div className="flex gap-4 items-start bg-brand-mint/5 p-4 rounded-2xl border border-brand-teal/10">
                       <input
                         type="checkbox"
-                        id="consent"
+                        id="home-consent"
                         name="consent"
                         checked={interestForm.consent}
                         onChange={handleInterestChange}
                         className="mt-1.5 accent-brand-teal h-5 w-5 shrink-0 cursor-pointer"
                       />
-                      <label htmlFor="consent" className="text-small text-brand-sage leading-relaxed cursor-pointer">
-                        By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call 945-(758)-1087. Please see our Privacy Policy <Link to="/privacy" className="text-brand-teal underline">here</Link>.
+                      <label htmlFor="home-consent" className="text-small text-brand-sage leading-relaxed cursor-pointer">
+                        By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call 945-(758)-1087. Please see our <Link to="/privacy" className="text-brand-teal underline">Privacy Policy</Link> for details.
                       </label>
                     </div>
 

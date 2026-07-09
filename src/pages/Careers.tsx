@@ -427,9 +427,10 @@ export const Careers = () => {
                   <form onSubmit={handleApplySubmit} className="space-y-5 overflow-y-auto pr-1 flex-1">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div className="space-y-1">
-                        <label className="text-[10px] font-bold uppercase tracking-widest opacity-50">First Name</label>
+                        <label htmlFor="careers-firstName" className="text-[10px] font-bold uppercase tracking-widest opacity-50">First Name</label>
                         <input 
                           type="text" 
+                          id="careers-firstName"
                           required 
                           value={applyForm.firstName} 
                           onChange={e => setApplyForm({...applyForm, firstName: e.target.value})} 
@@ -437,9 +438,10 @@ export const Careers = () => {
                         />
                       </div>
                       <div className="space-y-1">
-                        <label className="text-[10px] font-bold uppercase tracking-widest opacity-50">Last Name</label>
+                        <label htmlFor="careers-lastName" className="text-[10px] font-bold uppercase tracking-widest opacity-50">Last Name</label>
                         <input 
                           type="text" 
+                          id="careers-lastName"
                           required 
                           value={applyForm.lastName} 
                           onChange={e => setApplyForm({...applyForm, lastName: e.target.value})} 
@@ -450,9 +452,10 @@ export const Careers = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div className="space-y-1">
-                        <label className="text-[10px] font-bold uppercase tracking-widest opacity-50">Email Address</label>
+                        <label htmlFor="careers-email" className="text-[10px] font-bold uppercase tracking-widest opacity-50">Email Address</label>
                         <input 
                           type="email" 
+                          id="careers-email"
                           required 
                           value={applyForm.email} 
                           onChange={e => setApplyForm({...applyForm, email: e.target.value})} 
@@ -460,9 +463,10 @@ export const Careers = () => {
                         />
                       </div>
                       <div className="space-y-1">
-                        <label className="text-[10px] font-bold uppercase tracking-widest opacity-50">Phone Number</label>
+                        <label htmlFor="careers-phone" className="text-[10px] font-bold uppercase tracking-widest opacity-50">Phone Number</label>
                         <input 
                           type="tel" 
+                          id="careers-phone"
                           required 
                           value={applyForm.phone} 
                           onChange={e => setApplyForm({...applyForm, phone: e.target.value})} 
@@ -472,9 +476,10 @@ export const Careers = () => {
                     </div>
 
                     <div className="space-y-1">
-                      <label className="text-[10px] font-bold uppercase tracking-widest opacity-50">Resume Link (Google Drive, Dropbox, etc.)</label>
+                      <label htmlFor="careers-resumeUrl" className="text-[10px] font-bold uppercase tracking-widest opacity-50">Resume Link (Google Drive, Dropbox, etc.)</label>
                       <input 
                         type="url" 
+                        id="careers-resumeUrl"
                         required 
                         placeholder="https://drive.google.com/..." 
                         value={applyForm.resumeUrl} 
@@ -484,9 +489,10 @@ export const Careers = () => {
                     </div>
 
                     <div className="space-y-1">
-                      <label className="text-[10px] font-bold uppercase tracking-widest opacity-50">Message / Cover Note</label>
+                      <label htmlFor="careers-message" className="text-[10px] font-bold uppercase tracking-widest opacity-50">Message / Cover Note</label>
                       <textarea 
                         rows={3} 
+                        id="careers-message"
                         value={applyForm.message} 
                         onChange={e => setApplyForm({...applyForm, message: e.target.value})} 
                         placeholder="Tell us briefly about your experience and why you want to join Auvia..." 

@@ -132,9 +132,10 @@ export const Contact = () => {
                   <form className="space-y-8" onSubmit={handleSubmit}>
                     <div className="grid md:grid-cols-2 gap-8">
                       <div className="space-y-3">
-                        <label className="text-xs font-bold text-brand-teal uppercase tracking-widest font-kids">First Name *</label>
+                        <label htmlFor="contact-firstName" className="text-xs font-bold text-brand-teal uppercase tracking-widest font-kids">First Name *</label>
                         <input
                           type="text"
+                          id="contact-firstName"
                           name="firstName"
                           value={formData.firstName}
                           onChange={handleChange}
@@ -144,9 +145,10 @@ export const Contact = () => {
                         {errors.firstName && <p className="text-[10px] font-bold text-red-500 uppercase tracking-wider">{errors.firstName}</p>}
                       </div>
                       <div className="space-y-3">
-                        <label className="text-xs font-bold text-brand-teal uppercase tracking-widest font-kids">Last Name *</label>
+                        <label htmlFor="contact-lastName" className="text-xs font-bold text-brand-teal uppercase tracking-widest font-kids">Last Name *</label>
                         <input
                           type="text"
+                          id="contact-lastName"
                           name="lastName"
                           value={formData.lastName}
                           onChange={handleChange}
@@ -157,9 +159,10 @@ export const Contact = () => {
                       </div>
                     </div>
                     <div className="space-y-3">
-                      <label className="text-xs font-bold text-brand-teal uppercase tracking-widest font-kids">Email Address *</label>
+                      <label htmlFor="contact-email" className="text-xs font-bold text-brand-teal uppercase tracking-widest font-kids">Email Address *</label>
                       <input
                         type="text"
+                        id="contact-email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
@@ -169,9 +172,10 @@ export const Contact = () => {
                       {errors.email && <p className="text-[10px] font-bold text-red-500 uppercase tracking-wider">{errors.email}</p>}
                     </div>
                     <div className="space-y-3">
-                      <label className="text-xs font-bold text-brand-teal uppercase tracking-widest font-kids">Phone Number *</label>
+                      <label htmlFor="contact-phone" className="text-xs font-bold text-brand-teal uppercase tracking-widest font-kids">Phone Number *</label>
                       <input
                         type="tel"
+                        id="contact-phone"
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
@@ -181,8 +185,9 @@ export const Contact = () => {
                       {errors.phone && <p className="text-[10px] font-bold text-red-500 uppercase tracking-wider">{errors.phone}</p>}
                     </div>
                     <div className="space-y-3">
-                      <label className="text-xs font-bold text-brand-teal uppercase tracking-widest font-kids">Current Insurance Provider *</label>
+                      <label htmlFor="contact-insuranceProvider" className="text-xs font-bold text-brand-teal uppercase tracking-widest font-kids">Current Insurance Provider *</label>
                       <select
+                        id="contact-insuranceProvider"
                         name="insuranceProvider"
                         value={formData.insuranceProvider}
                         onChange={handleChange as any}
@@ -203,8 +208,9 @@ export const Contact = () => {
                       </select>
                     </div>
                     <div className="space-y-3">
-                      <label className="text-xs font-bold text-brand-teal uppercase tracking-widest font-kids">How can we help?</label>
+                      <label htmlFor="contact-message" className="text-xs font-bold text-brand-teal uppercase tracking-widest font-kids">How can we help?</label>
                       <textarea
+                        id="contact-message"
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
@@ -217,14 +223,14 @@ export const Contact = () => {
                     <div className="flex gap-4 items-start bg-brand-cream/20 p-4 rounded-2xl border border-brand-teal/5">
                       <input
                         type="checkbox"
-                        id="consent"
+                        id="contact-consent"
                         name="consent"
                         checked={formData.consent}
                         onChange={handleChange}
                         className="mt-1.5 accent-brand-teal h-5 w-5 shrink-0 cursor-pointer"
                       />
-                      <label htmlFor="consent" className="text-[13px] text-brand-sage font-medium leading-relaxed cursor-pointer">
-                        By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call 945-(758)-1087. Please see our Privacy Policy <Link to="/privacy" className="text-brand-teal underline hover:text-brand-mint transition-colors">here</Link>.
+                      <label htmlFor="contact-consent" className="text-small text-brand-sage leading-relaxed cursor-pointer">
+                        By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call 945-(758)-1087. Please see our <Link to="/privacy" className="text-brand-teal underline hover:text-brand-mint transition-colors">Privacy Policy</Link> for details.
                       </label>
                     </div>
 
