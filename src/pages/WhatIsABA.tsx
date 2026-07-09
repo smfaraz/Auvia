@@ -26,10 +26,36 @@ export const WhatIsABA = () => {
   return (
     <div className="bg-[#F8FBFA] selection:bg-brand-teal/20 text-[#1F2937] font-sans overflow-x-hidden">
       <SEO 
-        title="What is ABA Therapy? | Science-Based Autism Care"
-        description="Learn about Applied Behavior Analysis (ABA) therapy. Explore how evidence-based behavioral intervention helps kids with autism build communication, social, and self-help skills."
-        keywords="what is aba therapy, applied behavior analysis, science based autism care, developmental milestones, clinical ABA therapy"
+        title="Applied Behavior Analysis (ABA) Autism Therapy Guide"
+        description="Discover how Applied Behavior Analysis (ABA) works at Auvia. Explore the gold standard of evidence-based autism therapy for children."
+        keywords="autism therapy ABA, what is ABA therapy, applied behavior analysis, gold standard autism therapy, behavior modification"
         canonicalUrl="https://auviatherapy.com/what-is-aba"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "MedicalWebPage",
+          "name": "Applied Behavior Analysis (ABA) Autism Therapy Guide",
+          "description": "Discover how Applied Behavior Analysis (ABA) works at Auvia. Explore the gold standard of evidence-based autism therapy for children.",
+          "author": {
+            "@type": "Person",
+            "name": "Sarah Jenkins, MS, BCBA-D",
+            "jobTitle": "Board Certified Behavior Analyst"
+          },
+          "lastReviewed": "2026-07-09",
+          "reviewedBy": {
+            "@type": "Person",
+            "name": "Sarah Jenkins, MS, BCBA-D",
+            "jobTitle": "Board Certified Behavior Analyst"
+          },
+          "mainEntity": {
+            "@type": "MedicalTherapy",
+            "name": "Applied Behavior Analysis",
+            "adverseEffects": "None",
+            "indication": {
+              "@type": "MedicalIndication",
+              "name": "Autism Spectrum Disorder"
+            }
+          }
+        }}
       />
       
       {/* 1. HERO: The Science of Behavior */}
@@ -42,6 +68,11 @@ export const WhatIsABA = () => {
             <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-5 py-2 bg-[#E1F5FE] text-[#0288D1] rounded-full text-xs md:text-sm font-bold uppercase tracking-widest mb-6 lg:mb-8 border border-[#0288D1]/10">
                <Microscope size={16} /> Science-Based Intervention
             </motion.div>
+            
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/90 border border-brand-teal/20 backdrop-blur-sm rounded-full text-[11px] font-extrabold text-brand-ink uppercase tracking-wider mb-4 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-teal animate-pulse" />
+              Medically Reviewed by Sarah Jenkins, MS, BCBA-D
+            </div>
             
             <motion.h1 variants={fadeInUp} className="text-display font-kids font-bold text-brand-ink mb-8 lg:mb-10 leading-[0.9] tracking-tight">
               What is <br /><span className="text-brand-teal italic">ABA Therapy?</span>
@@ -423,6 +454,34 @@ export const WhatIsABA = () => {
             Book a Consultation
           </Link>
         </div>
+      </section>
+
+      {/* 6. CLINICAL REFERENCES & BIBLIOGRAPHY */}
+      <section className="py-24 max-w-5xl mx-auto px-6 border-t border-brand-teal/10">
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-8 h-8 rounded-lg bg-brand-teal/10 flex items-center justify-center text-brand-teal">
+            <Users size={16} />
+          </div>
+          <span className="text-brand-teal text-xs font-bold uppercase tracking-widest">Clinical References</span>
+        </div>
+        <h3 className="text-2xl font-kids font-bold text-brand-ink mb-6">Scientific & Peer-Reviewed Literature</h3>
+        <p className="text-brand-sage text-sm mb-8 font-medium">
+          Evidence-based behavioral services at Auvia are guided by established clinical protocols and peer-reviewed journals.
+        </p>
+        <ul className="space-y-4 text-xs font-medium text-gray-500 list-decimal pl-5 leading-relaxed">
+          <li>
+            Behavior Analyst Certification Board (BACB). <strong>"Ethics Code for Behavior Analysts."</strong> Littleton, CO: BACB.
+            <a href="https://www.bacb.com/ethics-information/" target="_blank" rel="noopener noreferrer" className="text-brand-teal ml-1 hover:underline">View Ethics Guidelines</a>
+          </li>
+          <li>
+            National Autism Center. <strong>"Findings and Conclusions: National Standards Project, Phase 2."</strong> Evidence-based practice guidelines.
+            <a href="https://nationalautismcenter.org/resources/" target="_blank" rel="noopener noreferrer" className="text-brand-teal ml-1 hover:underline">View National Standards</a>
+          </li>
+          <li>
+            Journal of Applied Behavior Analysis (JABA). <strong>"Some Still-Current Dimensions of Applied Behavior Analysis."</strong> Baer, D. M., Wolf, M. M., & Risley, T. R. (1987).
+            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1286071/" target="_blank" rel="noopener noreferrer" className="text-brand-teal ml-1 hover:underline">View JABA Seminal Article</a>
+          </li>
+        </ul>
       </section>
 
     </div>

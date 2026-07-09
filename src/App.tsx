@@ -11,6 +11,7 @@ import { Home } from './pages/Home';
 import { Services } from './pages/Services';
 import { InsuranceAcceptanceState } from './pages/InsuranceAcceptanceState';
 import { Locations } from './pages/Locations';
+import { LocationDetail } from './pages/LocationDetail';
 import { About } from './pages/About';
 import { Careers } from './pages/Careers';
 import { Contact } from './pages/Contact';
@@ -67,6 +68,7 @@ const AppContent = () => {
           <Route path="/insurance-financial-assistance" element={<InsuranceFinancialAssistance />} />
           {/* Company & Support Section */}
           <Route path="/locations" element={<Locations />} />
+          <Route path="/locations/:locationSlug" element={<LocationDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />

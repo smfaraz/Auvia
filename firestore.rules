@@ -97,13 +97,31 @@ service cloud.firestore {
 
     // Admins: Read-only for signed-in (to check own role), write only via console/server
     // Special bootstrap rule for the project owner
-    match /admins/{userId} {
-      allow get: if isSignedIn() && request.auth.uid == userId;
-      allow create: if isSignedIn() && request.auth.uid == userId && 
-                    request.auth.token.email == "syedfaraaz876@gmail.com" &&
-                    request.auth.token.email_verified == true;
+    match /admins/{userIdOrEmail} {
+      allow get: if isSignedIn() && (request.auth.uid == userIdOrEmail || request.auth.token.email == userIdOrEmail);
+      allow create: if isSignedIn() && (
+        (request.auth.uid == userIdOrEmail && request.auth.token.email == "syedfaraaz876@gmail.com" && request.auth.token.email_verified == true)
+        ||
+        (request.auth.uid == userIdOrEmail && exists(/databases/$(database)/documents/admins/$(request.auth.token.email)))
+        ||
+        isAdmin()
+      );
+      allow update: if isAdmin() || (isSignedIn() && request.auth.uid == userIdOrEmail);
+      allow delete: if isAdmin() || (isSignedIn() && request.auth.token.email == userIdOrEmail);
       allow list: if isAdmin();
-      allow update, delete: if isAdmin() && userId != request.auth.uid; // Prevent self-deletion
+    }
+
+    // Job Applications: Public can create, Admin can read/write
+    match /job_applications/{applicationId} {
+      allow create: if isValidId(applicationId) && 
+                    incoming().firstName is string && incoming().firstName.size() <= 100 &&
+                    incoming().lastName is string && incoming().lastName.size() <= 100 &&
+                    incoming().email is string && incoming().email.size() <= 200 &&
+                    incoming().phone is string && incoming().phone.size() <= 20 &&
+                    incoming().jobId is string &&
+                    incoming().status in ['applied', 'reviewing', 'interviewing', 'offered', 'rejected'] &&
+                    incoming().createdAt == request.time;
+      allow get, list, update, delete: if isAdmin();
     }
   }
 }

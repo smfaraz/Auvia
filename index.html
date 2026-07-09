@@ -5,6 +5,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Speed & Performance Preloads -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="https://images.unsplash.com" />
+  <link rel="dns-prefetch" href="https://firestore.googleapis.com" />
+
   <!-- Primary SEO -->
   <title>Auvia Behavior Centers | Expert ABA Therapy for Children with Autism</title>
   <meta name="description"
@@ -12,8 +18,45 @@
   <meta name="keywords"
     content="ABA therapy, autism therapy, applied behavior analysis, autism treatment, ASD therapy, pediatric behavior therapy, early intervention autism, BCBA, RBT" />
   <meta name="author" content="Auvia Behavior Centers" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="https://auviatherapy.com/" />
+
+  <!-- Structured Schema.org Metadata (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "Auvia Behavior Centers",
+    "alternateName": "Auvia Therapy",
+    "description": "Evidence-based Applied Behavior Analysis (ABA) therapy for children diagnosed with autism spectrum disorder (ASD). We offer compassionate early intervention, center-based care, and school readiness programs.",
+    "url": "https://auviatherapy.com",
+    "logo": "https://auviatherapy.com/favicon.svg",
+    "image": "https://auviatherapy.com/images/kids-hero.jpg",
+    "telephone": "+1-945-758-1087",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "3100 Premier Dr, Suite 236",
+      "addressLocality": "Irving",
+      "addressRegion": "TX",
+      "postalCode": "75063",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    "medicalSpecialty": "PediatricBehavioralTherapy"
+  }
+  </script>
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />

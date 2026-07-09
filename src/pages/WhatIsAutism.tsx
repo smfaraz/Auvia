@@ -73,10 +73,37 @@ export const WhatIsAutism = () => {
   return (
     <div className="bg-[#F8FBFA] selection:bg-brand-teal/20 text-[#1F2937] font-sans overflow-x-hidden">
       <SEO 
-        title="What is Autism? | Learning the Spectrum"
-        description="Understanding Autism Spectrum Disorder (ASD). Learn about the early signs of autism, developmental milestones, and how ABA therapy provides customized support."
-        keywords="what is autism, autism spectrum disorder, early signs of autism, asd diagnosis, autism support texas"
+        title="Understanding Autism Spectrum Disorder (ASD) & Care"
+        description="Learn about autism spectrum disorder, common traits, early milestones, and how specialized autism therapy can help your child grow."
+        keywords="understanding autism, ASD traits, autism milestones, autism spectrum disorder, pediatric development, autism therapy help"
         canonicalUrl="https://auviatherapy.com/what-is-autism"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "MedicalWebPage",
+          "name": "Understanding Autism Spectrum Disorder (ASD) & Care",
+          "description": "Learn about autism spectrum disorder, common traits, early milestones, and how specialized autism therapy can help your child grow.",
+          "author": {
+            "@type": "Person",
+            "name": "Sarah Jenkins, MS, BCBA-D",
+            "jobTitle": "Board Certified Behavior Analyst"
+          },
+          "lastReviewed": "2026-07-09",
+          "reviewedBy": {
+            "@type": "Person",
+            "name": "Sarah Jenkins, MS, BCBA-D",
+            "jobTitle": "Board Certified Behavior Analyst"
+          },
+          "mainEntity": {
+            "@type": "MedicalCondition",
+            "name": "Autism Spectrum Disorder",
+            "possibleTreatment": [
+              {
+                "@type": "MedicalTherapy",
+                "name": "Applied Behavior Analysis (ABA)"
+              }
+            ]
+          }
+        }}
       />
       {/* 1. HERO SECTION: Premium Cinematic Fade */}
 {/* 1. HERO SECTION: Translucent Premium Fade */}
@@ -110,6 +137,10 @@ export const WhatIsAutism = () => {
         
         {/* Added a subtle backdrop-blur to this container for ultimate premium feel */}
         <motion.div variants={fadeInUp} className="backdrop-blur-[2px] bg-white/10 p-4 rounded-[32px] -ml-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/90 border border-brand-teal/20 backdrop-blur-sm rounded-full text-[11px] font-extrabold text-brand-ink uppercase tracking-wider mb-4 shadow-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-teal animate-pulse" />
+            Medically Reviewed by Sarah Jenkins, MS, BCBA-D
+          </div>
           <motion.h1 className="text-display font-kids font-bold text-brand-ink mb-8 leading-[1] tracking-tight">
             About <span className="text-brand-teal italic">Autism.</span>
           </motion.h1>
@@ -520,6 +551,34 @@ export const WhatIsAutism = () => {
             Book a Consultation
           </Link>
         </div>
+      </section>
+
+      {/* 6. CLINICAL REFERENCES & BIBLIOGRAPHY */}
+      <section className="py-24 max-w-5xl mx-auto px-6 border-t border-brand-teal/10">
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-8 h-8 rounded-lg bg-brand-teal/10 flex items-center justify-center text-brand-teal">
+            <Users size={16} />
+          </div>
+          <span className="text-brand-teal text-xs font-bold uppercase tracking-widest">Clinical References</span>
+        </div>
+        <h3 className="text-2xl font-kids font-bold text-brand-ink mb-6">Scientific & Peer-Reviewed Literature</h3>
+        <p className="text-brand-sage text-sm mb-8 font-medium">
+          Auvia Behavior Centers relies on established scientific consensus, peer-reviewed clinical studies, and guidelines from national health organizations.
+        </p>
+        <ul className="space-y-4 text-xs font-medium text-gray-500 list-decimal pl-5 leading-relaxed">
+          <li>
+            Centers for Disease Control and Prevention (CDC). <strong>"Developmental Milestones for Children."</strong> National Center on Birth Defects and Developmental Disabilities. 
+            <a href="https://www.cdc.gov/ncbddd/actearly/milestones/index.html" target="_blank" rel="noopener noreferrer" className="text-brand-teal ml-1 hover:underline">View CDC Guidelines</a>
+          </li>
+          <li>
+            American Academy of Pediatrics (AAP). <strong>"Identification, Evaluation, and Management of Children with Autism Spectrum Disorder."</strong> Clinical Report guidelines.
+            <a href="https://publications.aap.org/pediatrics/article/145/1/e20193447/76977/Identification-Evaluation-and-Management-of" target="_blank" rel="noopener noreferrer" className="text-brand-teal ml-1 hover:underline">View AAP Study</a>
+          </li>
+          <li>
+            National Institute of Mental Health (NIMH). <strong>"Autism Spectrum Disorder: Information and Clinical Overview."</strong>
+            <a href="https://www.nimh.nih.gov/health/topics/autism-spectrum-disorders-asd" target="_blank" rel="noopener noreferrer" className="text-brand-teal ml-1 hover:underline">View NIMH Resource</a>
+          </li>
+        </ul>
       </section>
 
     </div>

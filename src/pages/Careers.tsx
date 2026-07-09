@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
-import { GraduationCap, Heart, Zap, Users, ArrowRight, Smile, Star, Shield, Coffee, Sun } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { GraduationCap, Heart, Zap, Users, ArrowRight, Smile, Star, Shield, Coffee, Sun, X, CheckCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
-import { collection, query, where, onSnapshot, orderBy } from 'firebase/firestore';
+import { collection, query, where, onSnapshot, orderBy, addDoc, serverTimestamp } from 'firebase/firestore';
 import { SEO } from '../components/SEO';
 
 export const Careers = () => {
@@ -12,6 +12,47 @@ export const Careers = () => {
   const [roleFilter, setRoleFilter] = useState('all');
   const [jobs, setJobs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // Apply Modal Form States
+  const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
+  const [selectedJobForApply, setSelectedJobForApply] = useState<any | null>(null);
+  const [applyForm, setApplyForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    resumeUrl: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
+
+  const handleApplySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedJobForApply) return;
+    setIsSubmitting(true);
+    try {
+      await addDoc(collection(db, 'job_applications'), {
+        ...applyForm,
+        jobId: selectedJobForApply.id,
+        jobTitle: selectedJobForApply.title,
+        status: 'applied',
+        createdAt: serverTimestamp()
+      });
+      setIsSubmitSuccess(true);
+      setApplyForm({ firstName: '', lastName: '', email: '', phone: '', resumeUrl: '', message: '' });
+      setTimeout(() => {
+        setIsApplyModalOpen(false);
+        setIsSubmitSuccess(false);
+        setSelectedJobForApply(null);
+      }, 3000);
+    } catch (error: any) {
+      console.error('Error submitting job application:', error);
+      alert(`There was an error submitting your application: ${error.message || error}`);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     const q = query(
@@ -308,7 +349,13 @@ export const Careers = () => {
                     <span className="flex items-center gap-2"><Star size={14} className="text-brand-teal" /> {job.location}</span>
                   </div>
                 </div>
-                <button onClick={() => navigate('/contact')} className="btn-friendly-primary py-4 px-10 flex items-center justify-center gap-3 whitespace-nowrap">
+                <button 
+                  onClick={() => {
+                    setSelectedJobForApply(job);
+                    setIsApplyModalOpen(true);
+                  }} 
+                  className="btn-friendly-primary py-4 px-10 flex items-center justify-center gap-3 whitespace-nowrap"
+                >
                   Apply Now <ArrowRight size={20} />
                 </button>
               </motion.div>
@@ -333,6 +380,134 @@ export const Careers = () => {
           </div>
         </div>
       </div>
+
+      {/* Apply Modal */}
+      <AnimatePresence>
+        {isApplyModalOpen && selectedJobForApply && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-6 lg:p-0">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsApplyModalOpen(false)}
+              className="absolute inset-0 bg-brand-ink/60 backdrop-blur-sm"
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-2xl bg-white rounded-[40px] shadow-2xl p-8 md:p-12 overflow-hidden max-h-[90vh] flex flex-col border border-brand-teal/5"
+            >
+              <button 
+                onClick={() => setIsApplyModalOpen(false)} 
+                className="absolute top-6 right-6 p-2 text-brand-ink hover:bg-brand-cream rounded-full transition-all"
+              >
+                <X size={20} />
+              </button>
+
+              {isSubmitSuccess ? (
+                <div className="flex flex-col items-center justify-center py-12 text-center space-y-4">
+                  <div className="w-16 h-16 bg-brand-mint text-brand-teal rounded-full flex items-center justify-center shadow-inner">
+                    <CheckCircle size={36} />
+                  </div>
+                  <h3 className="text-2xl font-kids font-bold text-brand-ink">Application Submitted!</h3>
+                  <p className="text-brand-sage text-sm max-w-sm">
+                    Thank you for applying for the **{selectedJobForApply.title}** role. Our clinical recruitment team will review your credentials and follow up soon.
+                  </p>
+                </div>
+              ) : (
+                <>
+                  <div className="mb-8">
+                    <span className="text-xs font-bold text-brand-teal uppercase tracking-widest block font-kids mb-2">Job Application</span>
+                    <h3 className="text-2xl md:text-3xl font-kids font-bold text-brand-ink leading-tight">
+                      Apply for <span className="text-brand-teal italic">{selectedJobForApply.title}</span>
+                    </h3>
+                  </div>
+
+                  <form onSubmit={handleApplySubmit} className="space-y-5 overflow-y-auto pr-1 flex-1">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-bold uppercase tracking-widest opacity-50">First Name</label>
+                        <input 
+                          type="text" 
+                          required 
+                          value={applyForm.firstName} 
+                          onChange={e => setApplyForm({...applyForm, firstName: e.target.value})} 
+                          className="w-full px-5 py-4 bg-brand-cream border border-brand-teal/10 rounded-2xl focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/5 outline-none font-medium" 
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-bold uppercase tracking-widest opacity-50">Last Name</label>
+                        <input 
+                          type="text" 
+                          required 
+                          value={applyForm.lastName} 
+                          onChange={e => setApplyForm({...applyForm, lastName: e.target.value})} 
+                          className="w-full px-5 py-4 bg-brand-cream border border-brand-teal/10 rounded-2xl focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/5 outline-none font-medium" 
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-bold uppercase tracking-widest opacity-50">Email Address</label>
+                        <input 
+                          type="email" 
+                          required 
+                          value={applyForm.email} 
+                          onChange={e => setApplyForm({...applyForm, email: e.target.value})} 
+                          className="w-full px-5 py-4 bg-brand-cream border border-brand-teal/10 rounded-2xl focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/5 outline-none font-medium font-mono" 
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-bold uppercase tracking-widest opacity-50">Phone Number</label>
+                        <input 
+                          type="tel" 
+                          required 
+                          value={applyForm.phone} 
+                          onChange={e => setApplyForm({...applyForm, phone: e.target.value})} 
+                          className="w-full px-5 py-4 bg-brand-cream border border-brand-teal/10 rounded-2xl focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/5 outline-none font-medium" 
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold uppercase tracking-widest opacity-50">Resume Link (Google Drive, Dropbox, etc.)</label>
+                      <input 
+                        type="url" 
+                        required 
+                        placeholder="https://drive.google.com/..." 
+                        value={applyForm.resumeUrl} 
+                        onChange={e => setApplyForm({...applyForm, resumeUrl: e.target.value})} 
+                        className="w-full px-5 py-4 bg-brand-cream border border-brand-teal/10 rounded-2xl focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/5 outline-none font-medium font-mono" 
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold uppercase tracking-widest opacity-50">Message / Cover Note</label>
+                      <textarea 
+                        rows={3} 
+                        value={applyForm.message} 
+                        onChange={e => setApplyForm({...applyForm, message: e.target.value})} 
+                        placeholder="Tell us briefly about your experience and why you want to join Auvia..." 
+                        className="w-full px-5 py-4 bg-brand-cream border border-brand-teal/10 rounded-2xl focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/5 outline-none font-medium resize-none" 
+                      />
+                    </div>
+
+                    <button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="w-full py-5 bg-[#141414] hover:bg-brand-teal text-white rounded-[24px] font-kids font-bold text-xl transition-all shadow-xl disabled:opacity-50 active:scale-95"
+                    >
+                      {isSubmitting ? 'Submitting...' : 'Submit Application'}
+                    </button>
+                  </form>
+                </>
+              )}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

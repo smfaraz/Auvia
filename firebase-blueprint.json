@@ -82,6 +82,24 @@
         "isActive": { "type": "boolean" }
       },
       "required": ["name", "address", "city", "state", "zip", "phone", "lat", "lng", "type", "isActive"]
+    },
+    "JobApplication": {
+      "title": "Job Application",
+      "description": "Candidate application for careers",
+      "type": "object",
+      "properties": {
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "jobId": { "type": "string" },
+        "jobTitle": { "type": "string" },
+        "resumeUrl": { "type": "string" },
+        "message": { "type": "string" },
+        "status": { "type": "string", "enum": ["applied", "reviewing", "interviewing", "offered", "rejected"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["firstName", "lastName", "email", "phone", "jobId", "jobTitle", "resumeUrl", "status", "createdAt"]
     }
   },
   "firestore": {
@@ -104,6 +122,10 @@
     "locations": {
       "schema": "Location",
       "description": "Care center locations"
+    },
+    "job_applications": {
+      "schema": "JobApplication",
+      "description": "Recruitment applications"
     }
   }
 }

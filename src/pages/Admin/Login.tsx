@@ -19,24 +19,42 @@ export const AdminLogin = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
-      // Check if user is in authorized admins collection
+      // Check if user is in authorized admins collection by UID
       const adminDocRef = doc(db, 'admins', user.uid);
       const adminDoc = await getDoc(adminDocRef);
       
       if (adminDoc.exists()) {
         navigate('/admin/dashboard');
-      } else if (user.email === 'syedfaraaz876@gmail.com') {
-        // Bootstrap the first admin if it's the authorized owner email
-        const { setDoc } = await import('firebase/firestore');
-        await setDoc(adminDocRef, {
-          email: user.email,
-          role: 'super_admin',
-          createdAt: new Date().toISOString()
-        });
-        navigate('/admin/dashboard');
       } else {
-        await signOut(auth);
-        setError('Access Denied: You are not authorized to access the admin panel.');
+        // Check if whitelisted by email
+        const emailDocRef = doc(db, 'admins', user.email || '');
+        const emailDoc = await getDoc(emailDocRef);
+        
+        if (emailDoc.exists()) {
+          // Activate the user by copying data to UID doc, and deleting the email doc
+          const emailData = emailDoc.data();
+          const { setDoc, deleteDoc } = await import('firebase/firestore');
+          await setDoc(adminDocRef, {
+            ...emailData,
+            status: 'active',
+            activatedAt: new Date().toISOString()
+          });
+          await deleteDoc(emailDocRef);
+          navigate('/admin/dashboard');
+        } else if (user.email === 'syedfaraaz876@gmail.com') {
+          // Bootstrap the first admin if it's the authorized owner email
+          const { setDoc } = await import('firebase/firestore');
+          await setDoc(adminDocRef, {
+            email: user.email,
+            role: 'super_admin',
+            createdAt: new Date().toISOString(),
+            status: 'active'
+          });
+          navigate('/admin/dashboard');
+        } else {
+          await signOut(auth);
+          setError('Access Denied: You are not authorized to access the admin panel.');
+        }
       }
     } catch (err: any) {
       console.error('Login error:', err);

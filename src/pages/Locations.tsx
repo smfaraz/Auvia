@@ -6,7 +6,7 @@ import {
   ListOrdered
 } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { useLocation as useRouterLocation } from 'react-router-dom';
+import { useLocation as useRouterLocation, Link } from 'react-router-dom';
 import L from 'leaflet';
 import { db } from '../lib/firebase';
 import { collection, query as firestoreQuery, onSnapshot, orderBy } from 'firebase/firestore';
@@ -273,22 +273,30 @@ export const Locations = () => {
                         </div>
                       </div>
 
-                      <div className="flex gap-3">
-                        <button
-                          onClick={() => handleScheduleTour(center.name)}
-                          className="flex-1 bg-brand-teal text-white py-3.5 rounded-xl font-bold hover:brightness-95 transition-all shadow-lg shadow-brand-teal/10"
+                      <div className="flex flex-col gap-2.5">
+                        <div className="flex gap-3">
+                          <button
+                            onClick={() => handleScheduleTour(center.name)}
+                            className="flex-1 bg-brand-teal text-white py-3.5 rounded-xl font-bold hover:brightness-95 transition-all shadow-lg shadow-brand-teal/10 text-sm"
+                          >
+                            Schedule Tour
+                          </button>
+                          <a
+                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(center.address)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-all flex items-center justify-center"
+                            aria-label="Get directions"
+                          >
+                            <ChevronRight size={20} className="text-gray-400" />
+                          </a>
+                        </div>
+                        <Link
+                          to={`/locations/${center.city.toLowerCase()}-${center.state.toLowerCase()}`}
+                          className="w-full text-center py-2.5 bg-brand-mint/20 hover:bg-brand-mint/40 text-brand-teal rounded-xl font-bold text-xs transition-colors flex items-center justify-center gap-1.5"
                         >
-                          Schedule Tour
-                        </button>
-                        <a
-                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(center.address)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-all flex items-center justify-center"
-                          aria-label="Get directions"
-                        >
-                          <ChevronRight size={20} className="text-gray-400" />
-                        </a>
+                          View Clinic & Insurance Details <ArrowRight size={14} />
+                        </Link>
                       </div>
                     </motion.div>
                   ))}
