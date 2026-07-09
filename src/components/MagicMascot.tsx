@@ -34,7 +34,7 @@ export const MagicMascot = () => {
     const query = input.toLowerCase();
     
     if (query.includes('location') || query.includes('center') || query.includes('irving') || query.includes('blaine') || query.includes('where')) {
-      return "We have clinical therapy centers in Irving (TX), Blaine (MN), Dallas (TX), Austin (TX), Houston (TX), and Allen (TX). Check out clinic hours and maps on our /locations page.";
+      return "Auvia is actively operating at our Irving (TX) center. Additional locations (such as Blaine, MN) are coming soon! Please check our /locations page for the up-to-date listing of active and upcoming centers.";
     }
     if (query.includes('insurance') || query.includes('pay') || query.includes('bcbs') || query.includes('aetna') || query.includes('cigna') || query.includes('medicaid') || query.includes('tricare')) {
       return "Auvia is in-network with BCBS TX, Aetna, Cigna, United Healthcare, Medicaid, Molina, Superior Health, and Tricare. You can request direct insurance coverage details on our /insurance-financial-assistance page.";
@@ -108,28 +108,27 @@ export const MagicMascot = () => {
   return (
     <>
       {/* Floating Mascot Button */}
-      <motion.div
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        whileHover={{ scale: 1.1, rotate: 10 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed right-4 bottom-18 sm:right-6 sm:bottom-32 z-[100] cursor-pointer"
-      >
-        <div className="w-11 h-11 sm:w-16 sm:h-16 bg-brand-mint rounded-xl sm:rounded-2xl flex items-center justify-center text-brand-teal shadow-2xl border-2 sm:border-4 border-white group relative">
-          <div className="absolute inset-0 bg-brand-teal rounded-xl opacity-0 group-hover:opacity-5 transition-opacity" />
-          <Smile className={`${isOpen ? 'hidden' : 'block'} w-6 h-6 sm:w-10 sm:h-10 animate-bounce`} />
-          <X className={`${isOpen ? 'block' : 'hidden'} w-6 h-6 sm:w-10 sm:h-10`} />
-          
-          {/* Tooltip */}
-          {!isOpen && (
+      {!isOpen && (
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          whileHover={{ scale: 1.1, rotate: 10 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setIsOpen(true)}
+          className="fixed right-4 bottom-4 sm:right-6 sm:bottom-6 z-[100] cursor-pointer"
+        >
+          <div className="w-11 h-11 sm:w-16 sm:h-16 bg-brand-mint rounded-xl sm:rounded-2xl flex items-center justify-center text-brand-teal shadow-2xl border-2 sm:border-4 border-white group relative">
+            <div className="absolute inset-0 bg-brand-teal rounded-xl opacity-0 group-hover:opacity-5 transition-opacity" />
+            <Smile className="w-6 h-6 sm:w-10 sm:h-10 animate-bounce" />
+            
+            {/* Tooltip */}
             <div className="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-4 py-2 bg-brand-ink text-white text-xs font-bold rounded-xl whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
               Chat with Auvie
               <div className="absolute top-1/2 -right-1 -translate-y-1/2 border-4 border-transparent border-l-brand-ink" />
             </div>
-          )}
-        </div>
-      </motion.div>
+          </div>
+        </motion.div>
+      )}
 
       {/* Chat Window */}
       <AnimatePresence>
@@ -138,7 +137,7 @@ export const MagicMascot = () => {
             initial={{ opacity: 0, scale: 0.8, y: 50, x: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 50, x: 20 }}
-            className="fixed right-4 bottom-32 sm:right-6 sm:bottom-48 z-[101] w-[calc(100vw-32px)] sm:w-[400px] h-[500px] max-h-[60vh] flex flex-col glass-panel rounded-[40px] overflow-hidden premium-shadow border-2 border-white/50"
+            className="fixed right-4 bottom-4 sm:right-6 sm:bottom-6 z-[101] w-[calc(100vw-32px)] sm:w-[400px] h-[620px] max-h-[82vh] flex flex-col glass-panel rounded-[40px] overflow-hidden premium-shadow border-2 border-white/50"
           >
             {/* Header */}
             <div className="bg-brand-teal p-6 text-white flex items-center justify-between">
