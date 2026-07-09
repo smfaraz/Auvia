@@ -57,7 +57,7 @@ export const MagicMascot = () => {
     return "I'd love to help you! You can ask about our clinical locations, insurance, ABA therapy, careers, or submit a message to our intake team at: /contact.";
   };
 
-  const handleSendMessage = (textToSend: string) => {
+  const handleSendMessage = async (textToSend: string) => {
     if (!textToSend.trim()) return;
 
     // 1. Add User Message
@@ -72,7 +72,60 @@ export const MagicMascot = () => {
     setMessage('');
     setIsTyping(true);
 
-    // 2. Simulate typing delay and respond
+    // 2. Respond (Try Gemini live first, fallback to rule router if key is missing or call fails)
+    const apiKey = process.env.GEMINI_API_KEY;
+    const hasValidKey = apiKey && apiKey !== 'MY_GEMINI_API_KEY' && apiKey.length > 10;
+
+    if (hasValidKey) {
+      try {
+        const historyContents = messages
+          .slice(1) // Skip the first welcome message to start history with 'user'
+          .map(msg => ({
+            role: msg.sender === 'user' ? 'user' : 'model',
+            parts: [{ text: msg.text }]
+          }));
+        
+        historyContents.push({
+          role: 'user',
+          parts: [{ text: textToSend }]
+        });
+
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            contents: historyContents,
+            systemInstruction: {
+              parts: [{
+                text: "You are Auvie, a friendly, professional AI chatbot assistant for Auvia Behavior Centers, located at 3100 Premier Dr, Suite 236, Irving, TX 75063 (Phone: 945-758-1087, Email: admin@auviatherapy.com). We specialize in play-based Applied Behavior Analysis (ABA) therapy for children diagnosed with autism (ASD).\n\nYou must strictly follow these brand guidelines:\n1. Auvia is ONLY operating in Irving, TX right now (additional locations like Blaine, MN are coming soon!). If the user asks about locations, tell them we are currently open in Irving, TX and link to our Locations page by writing the exact relative URL: /locations.\n2. Auvia is in-network with BCBS TX, Aetna, Cigna, United Healthcare, Medicaid (Wellpoint, Superior Health, Molina), and Tricare. Link to our Insurance page by writing: /insurance-financial-assistance.\n3. We are actively hiring BCBAs and RBTs! Link to our Careers page by writing: /careers.\n4. To schedule a tour, apply, or get direct human help, link to our Contact page: /contact.\n5. Keep responses concise, warm, supportive, and pediatric-focused. Never provide formal medical diagnoses or prescribe treatments.\n6. Always output relative links starting with / (e.g. /locations, /contact, /careers, /insurance-financial-assistance) in your replies so the UI can format them as buttons. Do not write full http URLs."
+              }]
+            }
+          })
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+          if (responseText) {
+            const botMsg: ChatMessage = {
+              sender: 'auvie',
+              text: responseText,
+              time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            };
+            setMessages(prev => [...prev, botMsg]);
+            setIsTyping(false);
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('Gemini request failed, falling back to local response router:', err);
+      }
+    }
+
+    // Fallback logic (runs if no key is present or if fetch fails)
     setTimeout(() => {
       const responseText = getChatResponse(textToSend);
       const botMsg: ChatMessage = {
@@ -82,7 +135,7 @@ export const MagicMascot = () => {
       };
       setMessages(prev => [...prev, botMsg]);
       setIsTyping(false);
-    }, 850);
+    }, 750);
   };
 
   // Parses route links like /locations in answers and displays them as beautiful internal Link tags
