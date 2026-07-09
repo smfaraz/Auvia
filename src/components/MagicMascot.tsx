@@ -1,14 +1,113 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Smile, X, Send } from 'lucide-react';
+
+interface ChatMessage {
+  sender: 'auvie' | 'user';
+  text: string;
+  time: string;
+}
 
 export const MagicMascot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    {
+      sender: 'auvie',
+      text: 'Hi there! I am Auvie, your Auvia assistant. How can I help you today?',
+      time: 'Just now'
+    }
+  ]);
+
+  const chatEndRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll to bottom of chat body when messages change
+  useEffect(() => {
+    if (chatEndRef.current) {
+      chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages, isTyping]);
+
+  const getChatResponse = (input: string): string => {
+    const query = input.toLowerCase();
+    
+    if (query.includes('location') || query.includes('center') || query.includes('irving') || query.includes('blaine') || query.includes('where')) {
+      return "We have clinical therapy centers in Irving (TX), Blaine (MN), Dallas (TX), Austin (TX), Houston (TX), and Allen (TX). Check out clinic hours and maps on our /locations page.";
+    }
+    if (query.includes('insurance') || query.includes('pay') || query.includes('bcbs') || query.includes('aetna') || query.includes('cigna') || query.includes('medicaid') || query.includes('tricare')) {
+      return "Auvia is in-network with BCBS TX, Aetna, Cigna, United Healthcare, Medicaid, Molina, Superior Health, and Tricare. You can request direct insurance coverage details on our /insurance-financial-assistance page.";
+    }
+    if (query.includes('aba') || query.includes('therapy') || query.includes('autism') || query.includes('treatment') || query.includes('clinical')) {
+      return "We specialize in early-intervention, play-based ABA therapy to help children diagnosed with autism grow. Check out detailed clinical resources: /what-is-aba or learn about autism: /what-is-autism.";
+    }
+    if (query.includes('career') || query.includes('job') || query.includes('bcba') || query.includes('rbt') || query.includes('work') || query.includes('apply')) {
+      return "Join the Auvia clinical family! We are actively recruiting BCBAs and RBTs. View open positions and apply at: /careers.";
+    }
+    if (query.includes('contact') || query.includes('phone') || query.includes('call') || query.includes('number') || query.includes('email')) {
+      return "You can reach us at 945-(758)-1087, email admin@auviatherapy.com, or submit a request on our /contact page.";
+    }
+    
+    return "I'd love to help you! You can ask about our clinical locations, insurance, ABA therapy, careers, or submit a message to our intake team at: /contact.";
+  };
+
+  const handleSendMessage = (textToSend: string) => {
+    if (!textToSend.trim()) return;
+
+    // 1. Add User Message
+    const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const userMsg: ChatMessage = {
+      sender: 'user',
+      text: textToSend,
+      time: timestamp
+    };
+    
+    setMessages(prev => [...prev, userMsg]);
+    setMessage('');
+    setIsTyping(true);
+
+    // 2. Simulate typing delay and respond
+    setTimeout(() => {
+      const responseText = getChatResponse(textToSend);
+      const botMsg: ChatMessage = {
+        sender: 'auvie',
+        text: responseText,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+      setMessages(prev => [...prev, botMsg]);
+      setIsTyping(false);
+    }, 850);
+  };
+
+  // Parses route links like /locations in answers and displays them as beautiful internal Link tags
+  const formatMessageText = (text: string) => {
+    const linkRegex = /(\/[a-zA-Z0-9-/_]+)/g;
+    const parts = text.split(linkRegex);
+    return parts.map((part, i) => {
+      if (part.startsWith('/')) {
+        let linkLabel = part.replace('/', '').replace(/-/g, ' ');
+        linkLabel = linkLabel.charAt(0).toUpperCase() + linkLabel.slice(1);
+        if (!linkLabel) linkLabel = "Home";
+        
+        return (
+          <Link 
+            key={i} 
+            to={part} 
+            onClick={() => setIsOpen(false)}
+            className="inline-block px-3 py-1 bg-brand-teal/10 text-brand-teal font-bold text-xs rounded-xl underline decoration-brand-peach hover:bg-brand-teal hover:text-white transition-colors duration-300 mx-1"
+          >
+            {linkLabel}
+          </Link>
+        );
+      }
+      return part;
+    });
+  };
 
   return (
     <>
-      {/* Floating Mascot Button - Simple Smiley Only */}
+      {/* Floating Mascot Button */}
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -61,28 +160,70 @@ export const MagicMascot = () => {
             </div>
 
             {/* Chat Body */}
-            <div className="flex-grow p-6 overflow-y-auto bg-white/50 space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 bg-brand-mint text-brand-teal rounded-lg flex items-center justify-center shrink-0 shadow-sm">
-                  <Smile size={18} />
-                </div>
-                <div className="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 max-w-[80%]">
-                  <p className="text-body-normal text-brand-ink font-medium">Hi there! I am Auvie chatbot, your Auvia assistant. How can I help you today?</p>
-                  <p className="text-[10px] text-brand-sage mt-2 font-bold uppercase opacity-50">Auvie • Just now</p>
-                </div>
+            <div className="flex-grow p-6 overflow-y-auto bg-white/50 space-y-4 flex flex-col">
+              <div className="space-y-4 flex-1">
+                {messages.map((msg, idx) => (
+                  <div 
+                    key={idx} 
+                    className={`flex items-start gap-3 ${msg.sender === 'user' ? 'flex-row-reverse' : ''}`}
+                  >
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm ${msg.sender === 'user' ? 'bg-brand-peach text-brand-ink' : 'bg-brand-mint text-brand-teal'}`}>
+                      <Smile size={18} />
+                    </div>
+                    <div className={`p-4 rounded-2xl shadow-sm border border-slate-100 max-w-[80%] ${msg.sender === 'user' ? 'bg-brand-peach/10 rounded-tr-none' : 'bg-white rounded-tl-none'}`}>
+                      <p className="text-body-normal text-brand-ink font-medium leading-relaxed">
+                        {formatMessageText(msg.text)}
+                      </p>
+                      <p className="text-[9px] text-brand-sage mt-2 font-bold uppercase opacity-50">
+                        {msg.sender === 'user' ? 'You' : 'Auvie'} • {msg.time}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+
+                {/* Simulated Typing Indicator */}
+                {isTyping && (
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 bg-brand-mint text-brand-teal rounded-lg flex items-center justify-center shrink-0 shadow-sm animate-pulse">
+                      <Smile size={18} />
+                    </div>
+                    <div className="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 max-w-[80%] flex items-center gap-1.5">
+                      <span className="w-2 h-2 bg-brand-teal rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                      <span className="w-2 h-2 bg-brand-teal rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                      <span className="w-2 h-2 bg-brand-teal rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                    </div>
+                  </div>
+                )}
+                <div ref={chatEndRef} />
               </div>
               
-              <div className="flex flex-wrap gap-2 pt-2">
-                {['Find a Location', 'Insurance Info', 'ABA Therapy', 'Careers'].map(tag => (
-                  <button key={tag} className="text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 bg-brand-teal/5 text-brand-teal rounded-full border border-brand-teal/10 hover:bg-brand-teal hover:text-white transition-all">
-                    {tag}
+              {/* Suggestion Chips */}
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100/50">
+                {[
+                  { tag: 'Find a Location', query: 'Find center locations' },
+                  { tag: 'Insurance Info', query: 'In-network insurance plans' },
+                  { tag: 'ABA Therapy', query: 'What is ABA therapy?' },
+                  { tag: 'Careers', query: 'Join open clinical roles' }
+                ].map(item => (
+                  <button 
+                    key={item.tag} 
+                    onClick={() => handleSendMessage(item.query)}
+                    className="text-[9px] font-bold uppercase tracking-wider px-3 py-1.5 bg-brand-teal/5 text-brand-teal rounded-full border border-brand-teal/10 hover:bg-brand-teal hover:text-white transition-all cursor-pointer"
+                  >
+                    {item.tag}
                   </button>
                 ))}
               </div>
             </div>
 
             {/* Input Area */}
-            <div className="p-4 bg-white border-t border-slate-100 flex items-center gap-3">
+            <form 
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSendMessage(message);
+              }}
+              className="p-4 bg-white border-t border-slate-100 flex items-center gap-3"
+            >
               <div className="flex-grow relative">
                 <input 
                   type="text" 
@@ -91,11 +232,14 @@ export const MagicMascot = () => {
                   placeholder="Type your message..."
                   className="w-full pl-4 pr-12 py-3 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-brand-teal focus:bg-white transition-all text-sm font-medium"
                 />
-                <button className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-brand-teal text-white rounded-xl flex items-center justify-center hover:bg-brand-teal-light transition-all shadow-md">
+                <button 
+                  type="submit"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-brand-teal text-white rounded-xl flex items-center justify-center hover:bg-brand-teal-light transition-all shadow-md cursor-pointer"
+                >
                   <Send size={16} />
                 </button>
               </div>
-            </div>
+            </form>
           </motion.div>
         )}
       </AnimatePresence>
