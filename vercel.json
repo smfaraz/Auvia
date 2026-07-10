@@ -1,0 +1,19 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/services", "destination": "/services/index.html" },
+    { "source": "/locations", "destination": "/locations/index.html" },
+    { "source": "/about", "destination": "/about/index.html" },
+    { "source": "/careers", "destination": "/careers/index.html" },
+    { "source": "/contact", "destination": "/contact/index.html" },
+    { "source": "/privacy", "destination": "/privacy/index.html" },
+    { "source": "/parent-help-center", "destination": "/parent-help-center/index.html" },
+    { "source": "/what-is-autism", "destination": "/what-is-autism/index.html" },
+    { "source": "/what-is-aba", "destination": "/what-is-aba/index.html" },
+    { "source": "/insurance-by-state", "destination": "/insurance-by-state/index.html" },
+    { "source": "/insurance-financial-assistance", "destination": "/insurance-financial-assistance/index.html" },
+    { "source": "/admin", "destination": "/index.html" },
+    { "source": "/admin/(.*)", "destination": "/index.html" }
+  ]
+}
