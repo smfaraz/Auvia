@@ -62,7 +62,7 @@ export const Footer = () => {
             <ul className="space-y-5 text-sm text-brand-sage font-medium">
               <li className="flex items-center gap-4">
                 <Phone size={18} className="text-brand-teal" />
-                <a href="tel:9457581087" className="hover:text-brand-teal transition-colors">945-(758)-1087</a>
+                <a href="tel:9457581087" className="hover:text-brand-teal transition-colors">(945) 758-1087</a>
               </li>
               <li className="flex items-center gap-4">
                 <Mail size={18} className="text-brand-teal" />
@@ -84,8 +84,8 @@ export const Footer = () => {
           </div>
           <div className="flex gap-8">
             <Link to="/privacy" className="hover:text-brand-teal transition-colors">Privacy</Link>
-            <Link to="/about" className="hover:text-brand-teal transition-colors">Terms</Link>
-            <Link to="/about" className="hover:text-brand-teal transition-colors">Accessibility</Link>
+            <Link to="/terms" className="hover:text-brand-teal transition-colors">Terms</Link>
+            <Link to="/accessibility" className="hover:text-brand-teal transition-colors">Accessibility</Link>
           </div>
         </div>
       </div>

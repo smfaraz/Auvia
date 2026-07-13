@@ -259,7 +259,7 @@ export const Contact = () => {
                   <div>
                     <h4 className="text-xl font-kids font-bold text-brand-ink mb-2">Call Us</h4>
                     <p className="text-brand-sage text-sm mb-3 font-medium">Monday – Friday, 8am – 6pm.</p>
-                    <a href="tel:9457581087" className="text-brand-teal font-bold text-lg hover:text-brand-ink transition-colors font-kids">945-(758)-1087</a>
+                    <a href="tel:9457581087" className="text-brand-teal font-bold text-lg hover:text-brand-ink transition-colors font-kids">(945) 758-1087</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-6">

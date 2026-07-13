@@ -316,10 +316,9 @@ const pillars = [
           <div className="mt-12 lg:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4">
             {/* Clinical Professional Image */}
             <img 
-               src="https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=200" 
+               src="/images/kids-team.jpg" 
                alt="Clinical Director" 
                className="w-14 h-14 lg:w-16 lg:h-16 rounded-full object-cover border-2 border-brand-teal" 
-               referrerPolicy="no-referrer"
             />
             <div className="text-center sm:text-left">
               <p className="font-bold text-brand-ink font-kids">Clinical Director</p>

@@ -25,6 +25,10 @@ import { ParentHelpCenter } from './pages/ParentHelpCenter';
 import { AdminLogin } from './pages/Admin/Login';
 import { AdminDashboard } from './pages/Admin/Dashboard';
 import { NotFound } from './pages/NotFound';
+import { Terms } from './pages/Terms';
+import { Accessibility } from './pages/Accessibility';
+import { ParentGuide } from './pages/ParentGuide';
+import { Insurance } from './pages/Insurance';
 // Scroll to top on route change
 const ScrollToTopOnMount = () => {
   const { pathname } = useLocation();
@@ -73,6 +77,12 @@ const AppContent = () => {
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
+
+          {/* Legal & Info Pages */}
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/accessibility" element={<Accessibility />} />
+          <Route path="/parent-guide" element={<ParentGuide />} />
+          <Route path="/insurance" element={<Insurance />} />
 
           {/* Admin Section */}
           <Route path="/admin/login" element={<AdminLogin />} />

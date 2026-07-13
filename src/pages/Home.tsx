@@ -205,7 +205,7 @@ export const Home = () => {
             <div className="relative w-full h-full rounded-[60px] lg:rounded-[120px] overflow-hidden border-[8px] lg:border-[16px] border-white shadow-[0_50px_100px_rgba(0,0,0,0.12)]">
               {/* Real professional ABA environment image */}
               <img
-                src="/images/Gemini_Generated_Image_fsiyqjfsiyqjfsiy.png"
+                src="/images/hero-main.png"
                 alt="Auvia Behavior Centers Clinical Sanctuary"
                 className="w-full h-full object-cover"
               />

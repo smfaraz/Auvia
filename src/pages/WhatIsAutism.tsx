@@ -159,7 +159,7 @@ export const WhatIsAutism = () => {
               Find ABA Care <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             
-            <a href="tel:8554648559" className="flex items-center gap-3 text-brand-ink font-extrabold group">
+            <a href="tel:9457581087" className="flex items-center gap-3 text-brand-ink font-extrabold group">
               <div className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center group-hover:bg-brand-mint/20 transition-colors border border-brand-mint/20">
                 <Phone size={20} className="text-brand-teal" />
               </div>
@@ -437,8 +437,7 @@ export const WhatIsAutism = () => {
          viewport={{ once: true }}
          className="rounded-[80px] overflow-hidden border-[12px] border-white/5 shadow-3xl bg-brand-ink"
        >
-          <img 
-            src="https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?auto=format&fit=crop&q=80&w=1000" 
+          <img                src="/images/autism-therapy.jpg" 
             alt="Autism Signs" 
             className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity duration-700" 
           />

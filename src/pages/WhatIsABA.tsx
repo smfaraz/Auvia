@@ -91,7 +91,7 @@ export const WhatIsABA = () => {
               <Link to="/contact" className="w-full sm:w-auto bg-brand-teal text-white px-8 lg:px-10 py-4 lg:py-5 rounded-[18px] lg:rounded-[22px] font-kids font-bold text-lg lg:text-xl hover:bg-[#3d7a6f] transition-all shadow-2xl flex items-center justify-center gap-3 group">
                 Find ABA Care <ArrowRight className="group-hover:translate-x-2 transition-transform" />
               </Link>
-              <a href="tel:8554648559" className="w-full sm:w-auto flex items-center justify-center gap-3 text-brand-ink font-bold px-8 py-4 lg:py-5 rounded-[18px] lg:rounded-[22px] bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all">
+              <a href="tel:9457581087" className="w-full sm:w-auto flex items-center justify-center gap-3 text-brand-ink font-bold px-8 py-4 lg:py-5 rounded-[18px] lg:rounded-[22px] bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all">
                 <ShieldCheck size={20} className="text-brand-teal" /> Insurance Verification
               </a>
             </motion.div>
@@ -219,7 +219,7 @@ export const WhatIsABA = () => {
             
             <div className="lg:w-1/2 relative">
                <div className="rounded-[80px] overflow-hidden shadow-3xl border-[16px] border-[#FCFAF7] rotate-2">
-                 <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&q=80&w=1000" alt="Child Learning Success" className="w-full aspect-square object-cover" />
+                 <img src="/images/autism-therapy.jpg" alt="Child Learning Success" className="w-full aspect-square object-cover" />
                </div>
             </div>
           </div>
@@ -283,7 +283,7 @@ export const WhatIsABA = () => {
             >
               <div className="rounded-[80px] overflow-hidden shadow-3xl border-[16px] border-[#FCFAF7]">
                 <img 
-                  src="https://images.unsplash.com/photo-1540479859555-17af45c78602?auto=format&fit=crop&q=80&w=1000" 
+                  src="/images/kids-aba.jpg" 
                   alt="Child practicing life skills" 
                   className="w-full aspect-[4/5] object-cover" 
                 />

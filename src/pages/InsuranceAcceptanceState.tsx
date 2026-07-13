@@ -31,7 +31,7 @@ const insuranceData: Record<string, any[]> = {
     },
     { 
       name: "Wellpoint Medicaid", 
-      logo: "https://www.wellpoint.com/themes/custom/wellpoint/logo.svg",
+      logo: "/images/insurers/wellpoint-logo.png",
       abbr: "WP"
     },
     { 
@@ -41,7 +41,7 @@ const insuranceData: Record<string, any[]> = {
     },
     { 
       name: "Superior Health", 
-      logo: "https://www.superiorhealthplan.com/content/dam/centene/superior/images/logo/superior-healthplan-logo.png",
+      logo: "/images/insurers/superior-health-logo.png",
       abbr: "SH"
     },
     { 
@@ -51,7 +51,7 @@ const insuranceData: Record<string, any[]> = {
     },
     { 
       name: "Carelon", 
-      logo: "https://www.carelon.com/content/dam/carelon/common/images/logo/carelon-logo-horizontal.svg",
+      logo: "/images/insurers/carelon-logo.png",
       abbr: "Carelon"
     },
     { 

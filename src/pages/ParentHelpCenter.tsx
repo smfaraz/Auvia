@@ -204,8 +204,8 @@ export const ParentHelpCenter = () => {
                 onboarding guide to help you understand the assessment phase, therapist matching,
                 and initial goal setting.
               </p>
-              <Link to="/contact" className="inline-flex items-center gap-4 bg-brand-teal text-white px-10 py-5 rounded-2xl font-kids font-bold text-xl hover:bg-[#3d7a6f] transition-all shadow-lg active:scale-95">
-                Download Guide <ArrowRight />
+              <Link to="/parent-guide" className="inline-flex items-center gap-4 bg-brand-teal text-white px-10 py-5 rounded-2xl font-kids font-bold text-xl hover:bg-[#3d7a6f] transition-all shadow-lg active:scale-95">
+                View Family Guide <ArrowRight />
               </Link>
             </div>
             <div className="relative">
