@@ -1,0 +1,519 @@
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { GraduationCap, Heart, Zap, Users, ArrowRight, Smile, Star, Shield, Coffee, Sun, X, CheckCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { db } from '../lib/firebase';
+import { collection, query, where, onSnapshot, orderBy, addDoc, serverTimestamp } from 'firebase/firestore';
+import { SEO } from '../components/SEO';
+
+export const Careers = () => {
+  const navigate = useNavigate();
+  const [locationFilter, setLocationFilter] = useState('all');
+  const [roleFilter, setRoleFilter] = useState('all');
+  const [jobs, setJobs] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Apply Modal Form States
+  const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
+  const [selectedJobForApply, setSelectedJobForApply] = useState<any | null>(null);
+  const [applyForm, setApplyForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    resumeUrl: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
+
+  const handleApplySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedJobForApply) return;
+    setIsSubmitting(true);
+    try {
+      await addDoc(collection(db, 'job_applications'), {
+        ...applyForm,
+        jobId: selectedJobForApply.id,
+        jobTitle: selectedJobForApply.title,
+        status: 'applied',
+        createdAt: serverTimestamp()
+      });
+      setIsSubmitSuccess(true);
+      setApplyForm({ firstName: '', lastName: '', email: '', phone: '', resumeUrl: '', message: '' });
+      setTimeout(() => {
+        setIsApplyModalOpen(false);
+        setIsSubmitSuccess(false);
+        setSelectedJobForApply(null);
+      }, 3000);
+    } catch (error: any) {
+      console.error('Error submitting job application:', error);
+      alert(`There was an error submitting your application: ${error.message || error}`);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  useEffect(() => {
+    const q = query(
+      collection(db, 'jobs'), 
+      where('isActive', '==', true),
+      orderBy('createdAt', 'desc')
+    );
+    
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const jobsData = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setJobs(jobsData);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+  const benefits = [
+    {
+      icon: <GraduationCap />,
+      title: "Clinical Excellence",
+      text: "We provide industry-leading training, regular BCBA supervision, and a clear path for your professional growth including RBT certification support.",
+      color: "bg-brand-mint"
+    },
+    {
+      icon: <Heart />,
+      title: "Meaningful Impact",
+      text: "Join a mission-driven team where you'll see the direct results of your work as children reach life-changing milestone moments.",
+      color: "bg-brand-peach"
+    },
+    {
+      icon: <Zap />,
+      title: "Total Rewards",
+      text: "Competitive salary, comprehensive health/dental/vision, 401(k) matching, and generous PTO to ensure you stay refreshed.",
+      color: "bg-brand-lavender"
+    },
+    {
+      icon: <Smile />,
+      title: "Joyful Environment",
+      text: "Work in bright, engaging sanctuaries designed for play and progress. We believe a happy team leads to happy children.",
+      color: "bg-brand-sky"
+    }
+  ];
+
+  const values = [
+    { icon: <Heart size={24} />, title: "Compassionate Care", text: "We lead with empathy, treating every child and teammate with the kindness they deserve." },
+    { icon: <Shield size={24} />, title: "Clinical Integrity", text: "Our decisions are rooted in evidence-based practices and the highest ethical standards." },
+    { icon: <Users size={24} />, title: "Collaborative Spirit", text: "We are a family. We share knowledge, celebrate wins, and support each other through challenges." },
+    { icon: <Sun size={24} />, title: "Relentless Optimism", text: "We believe in the potential of every child and the power of a positive mindset." }
+  ];
+
+  const testimonials = [
+    {
+      name: "Jessica Miller",
+      role: "Senior RBT",
+      quote: "Auvia isn't just a workplace; it's a community. The support I receive from my BCBA has helped me grow more in one year than I did in three years elsewhere.",
+      image: "https://picsum.photos/seed/staff1/200/200"
+    },
+    {
+      name: "David Thompson",
+      role: "BCBA",
+      quote: "The focus on clinical quality over quantity is what sets us apart. I have the time and resources to truly personalize care for every child on my caseload.",
+      image: "https://picsum.photos/seed/staff2/200/200"
+    }
+  ];
+
+  const openings = [
+    {
+      title: "Board Certified Behavior Analyst (BCBA)",
+      location: "Dallas Sanctuary",
+      type: "Full-Time",
+      description: "Lead a team of RBTs, develop personalized treatment plans, and provide family guidance in our state-of-the-art center.",
+      color: "bg-brand-mint"
+    },
+    {
+      title: "Registered Behavior Technician (RBT)",
+      location: "Fort Worth Retreat",
+      type: "Full-Time",
+      description: "Work 1:1 with children to implement behavior plans through play-based therapy and celebrate daily milestone moments.",
+      color: "bg-brand-peach"
+    },
+    {
+      title: "Clinical Director",
+      location: "Plano Haven",
+      type: "Full-Time",
+      description: "Oversee clinical operations, mentor BCBAs, and ensure the highest standards of care across our Plano sanctuary.",
+      color: "bg-brand-lavender"
+    },
+    {
+      title: "Center Administrator",
+      location: "Frisco Oasis",
+      type: "Full-Time",
+      description: "The heart of our center operations. Manage scheduling, insurance coordination, and welcome families with a smile.",
+      color: "bg-brand-sky"
+    }
+  ];
+
+  const careersSchema = React.useMemo(() => {
+    const allPostings = [
+      ...jobs.map(j => ({
+        title: j.title,
+        description: j.description || `${j.title} position at Auvia Behavior Centers.`,
+        location: j.location || "Texas Sanctuary",
+        type: j.type || "Full-Time",
+        date: j.createdAt ? new Date(j.createdAt.seconds * 1000).toISOString().split('T')[0] : "2026-05-17"
+      })),
+      ...openings.map(o => ({
+        title: o.title,
+        description: o.description,
+        location: o.location,
+        type: o.type,
+        date: "2026-05-17"
+      }))
+    ];
+
+    return {
+      "@context": "https://schema.org",
+      "@graph": allPostings.map(post => ({
+        "@type": "JobPosting",
+        "title": post.title,
+        "description": post.description,
+        "datePosted": post.date,
+        "validThrough": "2027-05-17",
+        "employmentType": post.type.toLowerCase().includes('part') ? "PART_TIME" : "FULL_TIME",
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "Auvia Behavior Centers",
+          "sameAs": "https://auviatherapy.com",
+          "logo": "https://auviatherapy.com/favicon.svg"
+        },
+        "jobLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": post.location.split(' ')[0] || "Dallas",
+            "addressRegion": "TX",
+            "addressCountry": "US"
+          }
+        }
+      }))
+    };
+  }, [jobs]);
+
+  return (
+    <div className="pt-20 lg:pt-24 pb-20 lg:pb-32 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-peach/30 overflow-x-hidden relative min-h-screen">
+      <SEO 
+        title="Careers | Join Our BCBA and RBT Team"
+        description="Join Auvia Behavior Centers. We are hiring passionate BCBAs and RBTs who want to provide compassionate, play-based ABA therapy."
+        keywords="BCBA jobs, RBT jobs, careers in ABA, autism therapy jobs, Auvia careers, behavior technician jobs"
+        canonicalUrl="https://auviatherapy.com/careers"
+        jsonLd={careersSchema}
+      />
+      <div className="absolute inset-0 w-full h-full pointer-events-none">
+        <div className="blob-bg w-[700px] h-[700px] bg-brand-mint/30 bottom-[10%] right-[-10%]" />
+        <div className="blob-bg w-[600px] h-[600px] bg-brand-lavender/30 top-[20%] left-[-10%]" />
+      </div>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+
+        {/* Hero Section */}
+        <div className="max-w-4xl mb-12 lg:mb-20 relative z-10 text-center lg:text-left">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-brand-teal text-xs md:text-sm font-bold uppercase tracking-widest mb-6 block font-kids">Careers at Auvia</span>
+            <h1 className="text-display font-kids font-bold text-brand-ink mb-8 lg:mb-10 leading-tight">
+              A Supportive Team, <br className="hidden lg:block" />
+              <span className="text-brand-teal italic">A Happy Family.</span>
+            </h1>
+            <p className="text-body-main text-brand-sage font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              Join a team that celebrates neurodiversity. We provide a calm, supportive environment where you can help children thrive while growing your own career.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Benefits Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-24 lg:mb-40 relative z-10">
+          {benefits.map((benefit, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="glass-panel card-friendly group relative overflow-hidden h-full p-8 rounded-[40px]"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className={`w-16 h-16 rounded-[24px] ${benefit.color}/60 text-brand-teal flex items-center justify-center mb-10 shadow-sm relative z-10`}>
+                {benefit.icon}
+              </div>
+              <h3 className="text-2xl font-kids font-bold text-brand-ink mb-6 relative z-10">{benefit.title}</h3>
+              <p className="text-brand-sage leading-relaxed font-medium relative z-10">{benefit.text}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Culture & Values */}
+        <div className="mb-40 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <div>
+              <h2 className="text-section font-kids font-bold text-brand-ink mb-12 leading-tight">Our Culture is Rooted in <span className="text-brand-teal italic">Our Values.</span></h2>
+              <div className="grid sm:grid-cols-2 gap-8">
+                {values.map((value, i) => (
+                  <div key={i} className="space-y-4">
+                    <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-brand-teal shadow-sm">
+                      {value.icon}
+                    </div>
+                    <h4 className="text-xl font-kids font-bold text-brand-ink">{value.title}</h4>
+                    <p className="text-brand-sage font-medium text-sm leading-relaxed">{value.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="relative">
+              <div className="rounded-[60px] overflow-hidden shadow-2xl rotate-2">
+                <img src="/images/kids-team.jpg" alt="Team culture" className="w-full aspect-auto object-cover" referrerPolicy="no-referrer" />
+              </div>
+              <div className="absolute -bottom-10 -right-10 bg-brand-peach p-8 rounded-[40px] shadow-xl max-w-xs border-4 border-white">
+                <p className="text-brand-ink font-kids font-bold text-lg mb-2">Team First</p>
+                <p className="text-brand-sage text-sm font-medium">We believe that taking care of our team is the first step in taking care of our families.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Testimonials */}
+        <div className="mb-40 relative z-10">
+          <h2 className="text-section font-kids font-bold text-brand-ink mb-16 text-center">Hear From <span className="text-brand-teal italic">Our Team.</span></h2>
+          <div className="grid md:grid-cols-2 gap-12">
+            {testimonials.map((t, i) => (
+              <div key={i} className="glass-panel p-12 rounded-[48px] premium-shadow border border-white/60 relative hover:-translate-y-2 transition-transform duration-500">
+                <div className="flex items-center gap-6 mb-8">
+                  <img src={t.image} alt={t.name} className="w-20 h-20 rounded-3xl object-cover shadow-md" referrerPolicy="no-referrer" />
+                  <div>
+                    <h4 className="text-2xl font-kids font-bold text-brand-ink">{t.name}</h4>
+                    <p className="text-brand-teal font-bold text-sm uppercase tracking-widest">{t.role}</p>
+                  </div>
+                </div>
+                <p className="text-brand-sage text-lg font-medium leading-relaxed italic">"{t.quote}"</p>
+                <div className="absolute top-8 right-12 text-brand-teal/10">
+                  <Smile size={80} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Job Openings */}
+        <div className="mb-24 lg:mb-40 relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 lg:mb-16 gap-8">
+            <div className="max-w-2xl">
+              <h2 className="text-section font-kids font-bold text-brand-ink mb-6 leading-tight">Current Opportunities</h2>
+              <p className="text-brand-sage font-medium text-base lg:text-lg">Find your place in our growing family. We're looking for passionate individuals to join us in Dallas, Fort Worth, Plano, and Frisco.</p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <button onClick={() => setLocationFilter(locationFilter === 'all' ? 'clinical' : 'all')} className={`px-5 py-2 rounded-full font-bold text-xs shadow-sm border transition-all ${locationFilter === 'all' ? 'bg-brand-teal text-white border-brand-teal' : 'bg-white text-brand-teal border-brand-teal/5 hover:border-brand-teal'}`}>All Locations</button>
+              <button onClick={() => setRoleFilter(roleFilter === 'all' ? 'clinical' : 'all')} className={`px-5 py-2 rounded-full font-bold text-xs shadow-sm border transition-all ${roleFilter === 'clinical' ? 'bg-brand-teal text-white border-brand-teal' : 'bg-white text-brand-teal border-brand-teal/5 hover:border-brand-teal'}`}>Clinical Roles</button>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            {loading ? (
+              <div className="text-center py-20 text-brand-sage font-medium">Opening sanctuary doors (Loading jobs)...</div>
+            ) : jobs.length === 0 ? (
+              <div className="text-center py-20 bg-white rounded-[40px] border border-brand-teal/5">
+                <Smile size={48} className="mx-auto mb-4 text-brand-teal opacity-20" />
+                <p className="text-brand-sage font-medium">Our family is currently full, but please check back soon or send your resume below!</p>
+              </div>
+            ) : jobs
+                .filter(job => {
+                  if (roleFilter === 'clinical') return job.category?.toLowerCase().includes('clinical');
+                  return true;
+                })
+                .map((job, i) => (
+              <motion.div
+                key={job.id}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
+                className="flex flex-col lg:flex-row justify-between lg:items-center p-10 glass-panel card-friendly rounded-[40px] transition-all duration-500 group relative overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-teal to-brand-mint opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="mb-8 lg:mb-0 lg:max-w-2xl relative z-10">
+                  <div className="flex items-center gap-4 mb-4">
+                    <h3 className="text-2xl font-kids font-bold text-brand-ink group-hover:text-brand-teal transition-colors duration-500">{job.title}</h3>
+                    <span className={`px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-brand-mint/20 text-brand-teal`}>{job.type}</span>
+                  </div>
+                  <p className="text-brand-sage font-medium mb-4 leading-relaxed">{job.description}</p>
+                  <div className="flex gap-6 text-sm font-bold text-brand-sage/60 font-kids">
+                    <span className="flex items-center gap-2"><Star size={14} className="text-brand-teal" /> {job.location}</span>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => {
+                    setSelectedJobForApply(job);
+                    setIsApplyModalOpen(true);
+                  }} 
+                  className="btn-friendly-primary py-4 px-10 flex items-center justify-center gap-3 whitespace-nowrap"
+                >
+                  Apply Now <ArrowRight size={20} />
+                </button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Resume Drop */}
+        <div className="bg-brand-teal rounded-[40px] lg:rounded-[60px] p-10 md:p-16 lg:p-32 text-center text-white relative overflow-hidden shadow-2xl">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent)]" />
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <h2 className="text-section font-kids font-bold mb-8 lg:mb-10 leading-tight">
+              A Warm <br className="hidden lg:block" />
+              <span className="text-brand-peach italic">Career Path.</span>
+            </h2>
+            <p className="text-white/80 text-body-main mb-12 lg:mb-16 font-medium">
+              If you don't see a role that matches your expertise, we invite you to share your resume for future consideration within our sanctuaries.
+            </p>
+            <a href="mailto:admin@auviatherapy.com?subject=Resume%20Submission" className="inline-block bg-white text-brand-teal px-12 lg:px-16 py-5 lg:py-6 rounded-[20px] lg:rounded-[24px] font-kids font-bold hover:bg-brand-peach hover:text-white transition-all duration-300 shadow-xl text-lg">
+              Send Your Resume
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Apply Modal */}
+      <AnimatePresence>
+        {isApplyModalOpen && selectedJobForApply && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-6 lg:p-0">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsApplyModalOpen(false)}
+              className="absolute inset-0 bg-brand-ink/60 backdrop-blur-sm"
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-2xl bg-white rounded-[40px] shadow-2xl p-8 md:p-12 overflow-hidden max-h-[90vh] flex flex-col border border-brand-teal/5"
+            >
+              <button 
+                onClick={() => setIsApplyModalOpen(false)} 
+                className="absolute top-6 right-6 p-2 text-brand-ink hover:bg-brand-cream rounded-full transition-all"
+              >
+                <X size={20} />
+              </button>
+
+              {isSubmitSuccess ? (
+                <div className="flex flex-col items-center justify-center py-12 text-center space-y-4">
+                  <div className="w-16 h-16 bg-brand-mint text-brand-teal rounded-full flex items-center justify-center shadow-inner">
+                    <CheckCircle size={36} />
+                  </div>
+                  <h3 className="text-2xl font-kids font-bold text-brand-ink">Application Submitted!</h3>
+                  <p className="text-brand-sage text-sm max-w-sm">
+                    Thank you for applying for the **{selectedJobForApply.title}** role. Our clinical recruitment team will review your credentials and follow up soon.
+                  </p>
+                </div>
+              ) : (
+                <>
+                  <div className="mb-8">
+                    <span className="text-xs font-bold text-brand-teal uppercase tracking-widest block font-kids mb-2">Job Application</span>
+                    <h3 className="text-2xl md:text-3xl font-kids font-bold text-brand-ink leading-tight">
+                      Apply for <span className="text-brand-teal italic">{selectedJobForApply.title}</span>
+                    </h3>
+                  </div>
+
+                  <form onSubmit={handleApplySubmit} className="space-y-5 overflow-y-auto pr-1 flex-1">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <div className="space-y-1">
+                        <label htmlFor="careers-firstName" className="text-[10px] font-bold uppercase tracking-widest opacity-50">First Name</label>
+                        <input 
+                          type="text" 
+                          id="careers-firstName"
+                          required 
+                          value={applyForm.firstName} 
+                          onChange={e => setApplyForm({...applyForm, firstName: e.target.value})} 
+                          className="w-full px-5 py-4 bg-brand-cream border border-brand-teal/10 rounded-2xl focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/5 outline-none font-medium" 
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label htmlFor="careers-lastName" className="text-[10px] font-bold uppercase tracking-widest opacity-50">Last Name</label>
+                        <input 
+                          type="text" 
+                          id="careers-lastName"
+                          required 
+                          value={applyForm.lastName} 
+                          onChange={e => setApplyForm({...applyForm, lastName: e.target.value})} 
+                          className="w-full px-5 py-4 bg-brand-cream border border-brand-teal/10 rounded-2xl focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/5 outline-none font-medium" 
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <div className="space-y-1">
+                        <label htmlFor="careers-email" className="text-[10px] font-bold uppercase tracking-widest opacity-50">Email Address</label>
+                        <input 
+                          type="email" 
+                          id="careers-email"
+                          required 
+                          value={applyForm.email} 
+                          onChange={e => setApplyForm({...applyForm, email: e.target.value})} 
+                          className="w-full px-5 py-4 bg-brand-cream border border-brand-teal/10 rounded-2xl focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/5 outline-none font-medium font-mono" 
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label htmlFor="careers-phone" className="text-[10px] font-bold uppercase tracking-widest opacity-50">Phone Number</label>
+                        <input 
+                          type="tel" 
+                          id="careers-phone"
+                          required 
+                          value={applyForm.phone} 
+                          onChange={e => setApplyForm({...applyForm, phone: e.target.value})} 
+                          className="w-full px-5 py-4 bg-brand-cream border border-brand-teal/10 rounded-2xl focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/5 outline-none font-medium" 
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <label htmlFor="careers-resumeUrl" className="text-[10px] font-bold uppercase tracking-widest opacity-50">Resume Link (Google Drive, Dropbox, etc.)</label>
+                      <input 
+                        type="url" 
+                        id="careers-resumeUrl"
+                        required 
+                        placeholder="https://drive.google.com/..." 
+                        value={applyForm.resumeUrl} 
+                        onChange={e => setApplyForm({...applyForm, resumeUrl: e.target.value})} 
+                        className="w-full px-5 py-4 bg-brand-cream border border-brand-teal/10 rounded-2xl focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/5 outline-none font-medium font-mono" 
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label htmlFor="careers-message" className="text-[10px] font-bold uppercase tracking-widest opacity-50">Message / Cover Note</label>
+                      <textarea 
+                        rows={3} 
+                        id="careers-message"
+                        value={applyForm.message} 
+                        onChange={e => setApplyForm({...applyForm, message: e.target.value})} 
+                        placeholder="Tell us briefly about your experience and why you want to join Auvia..." 
+                        className="w-full px-5 py-4 bg-brand-cream border border-brand-teal/10 rounded-2xl focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/5 outline-none font-medium resize-none" 
+                      />
+                    </div>
+
+                    <button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="w-full py-5 bg-[#141414] hover:bg-brand-teal text-white rounded-[24px] font-kids font-bold text-xl transition-all shadow-xl disabled:opacity-50 active:scale-95"
+                    >
+                      {isSubmitting ? 'Submitting...' : 'Submit Application'}
+                    </button>
+                  </form>
+                </>
+              )}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};

@@ -1,0 +1,11 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow access to administration panels
+Disallow: /admin/
+Disallow: /admin
+
+# Host and Sitemap locations
+Host: https://auviatherapy.com
+Sitemap: https://auviatherapy.com/sitemap.xml
