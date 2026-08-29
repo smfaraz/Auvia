@@ -230,7 +230,7 @@ export const Contact = () => {
                         className="mt-1.5 accent-brand-teal h-5 w-5 shrink-0 cursor-pointer"
                       />
                       <label htmlFor="contact-consent" className="text-small text-brand-sage leading-relaxed cursor-pointer">
-                        By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call 945-(758)-1087. Please see our <Link to="/privacy" className="text-brand-teal underline hover:text-brand-mint transition-colors">Privacy Policy</Link> for details.
+                        By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call (945) 758-1087. Please see our <Link to="/privacy" className="text-brand-teal underline hover:text-brand-mint transition-colors">Privacy Policy</Link> for details.
                       </label>
                     </div>
 
@@ -286,12 +286,12 @@ export const Contact = () => {
             </div>
 
             <div className="card-friendly bg-brand-mint/30 border-brand-teal/10">
-              <h3 className="text-2xl font-kids font-bold text-brand-ink mb-4">For Doctors</h3>
+              <h3 className="text-2xl font-kids font-bold text-brand-ink mb-4">Physician & Pediatric Referrals</h3>
               <p className="text-brand-sage leading-relaxed mb-8 font-medium">
-                We love working with other healthcare providers. If you'd like to refer a patient, please use our secure portal.
+                We partner closely with pediatricians, neurologists, and clinical psychologists to ensure continuous, coordinated care for children with autism.
               </p>
               <a href="mailto:admin@auviatherapy.com?subject=Patient%20Referral" className="text-brand-teal font-bold text-sm font-kids hover:text-brand-ink transition-colors flex items-center gap-2">
-                Secure Referral Portal <ArrowRight size={16} />
+                Submit a Patient Referral <ArrowRight size={16} />
               </a>
             </div>
           </div>

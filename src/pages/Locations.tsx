@@ -129,7 +129,7 @@ export const Locations = () => {
   }, [allCenters]);
 
   const handleScheduleTour = (centerName: string) => {
-    alert(`Thank you for your interest in ${centerName}! A team member will contact you within 24 hours to schedule your tour.`);
+    navigate('/contact', { state: { preferredCenter: centerName, intent: 'tour' } });
   };
 
   return (

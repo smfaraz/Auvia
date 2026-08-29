@@ -361,7 +361,7 @@ export const Home = () => {
               </div>
               <h3 className="text-small-heading font-kids font-bold mb-4">Diagnostic Support</h3>
               <p className="text-brand-sage mb-6 text-body-normal-normal-sm">You don't have to wait for answers. If your child has many of the early signs of autism, we can help them get evaluated.</p>
-              <button onClick={() => navigate('/services')} className="text-brand-teal font-bold flex items-center gap-2 hover:underline text-body-normal-normal-sm">Screen for autism <ArrowRight size={18} /></button>
+              <button onClick={() => navigate('/what-is-autism')} className="text-brand-teal font-bold flex items-center gap-2 hover:underline text-body-normal-normal-sm">Screen for autism <ArrowRight size={18} /></button>
             </motion.div>
 
             <motion.div variants={itemVariants} className="p-8 rounded-[40px] glass-panel card-friendly">
@@ -575,7 +575,7 @@ export const Home = () => {
               </div>
 
               <button
-                onClick={() => navigate('/services')}
+                onClick={() => navigate('/what-is-autism')}
                 className="w-full py-5 bg-white border-2 border-brand-teal text-brand-teal rounded-3xl font-kids font-bold text-small-heading hover:bg-brand-teal hover:text-white transition-all"
               >
                 Explore diagnostic support
@@ -735,11 +735,12 @@ export const Home = () => {
                       <label htmlFor="home-center" className="text-label-custom text-brand-ink ml-1">Find nearby Centers<span className="text-red-500">*</span></label>
                       <select id="home-center" name="center" value={interestForm.center} onChange={handleInterestChange} required className="glass-input w-full p-4 rounded-2xl outline-none appearance-none cursor-pointer text-body-normal-normal">
                         <option value="">Please Select</option>
-                        <option value="allen">Allen, TX</option>
-                        <option value="austin">Austin, TX</option>
-                        <option value="dallas">Dallas, TX</option>
-                        <option value="houston">Houston, TX</option>
-                        <option value="blaine">Blaine, MN</option>
+                        <option value="irving">Irving, TX (Active Sanctuary)</option>
+                        <option value="allen">Allen, TX (Upcoming)</option>
+                        <option value="austin">Austin, TX (Upcoming)</option>
+                        <option value="dallas">Dallas, TX (Upcoming)</option>
+                        <option value="houston">Houston, TX (Upcoming)</option>
+                        <option value="blaine">Blaine, MN (Upcoming)</option>
                       </select>
                     </div>
 
@@ -753,7 +754,7 @@ export const Home = () => {
                         className="mt-1.5 accent-brand-teal h-5 w-5 shrink-0 cursor-pointer"
                       />
                       <label htmlFor="home-consent" className="text-small text-brand-sage leading-relaxed cursor-pointer">
-                        By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call 945-(758)-1087. Please see our <Link to="/privacy" className="text-brand-teal underline">Privacy Policy</Link> for details.
+                        By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call (945) 758-1087. Please see our <Link to="/privacy" className="text-brand-teal underline">Privacy Policy</Link> for details.
                       </label>
                     </div>
 

@@ -501,11 +501,12 @@ export const InsuranceFinancialAssistance = () => {
                   <label htmlFor="ia-center" className="block text-sm font-bold mb-2">Find nearby Centers*</label>
                   <select id="ia-center" name="center" value={formData.center} onChange={handleChange} required className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none appearance-none cursor-pointer font-medium">
                     <option value="">Please Select</option>
-                    <option value="allen">Allen, TX</option>
-                    <option value="austin">Austin, TX</option>
-                    <option value="dallas">Dallas, TX</option>
-                    <option value="houston">Houston, TX</option>
-                    <option value="blaine">Blaine, MN</option>
+                    <option value="irving">Irving, TX (Active Sanctuary)</option>
+                    <option value="allen">Allen, TX (Upcoming)</option>
+                    <option value="austin">Austin, TX (Upcoming)</option>
+                    <option value="dallas">Dallas, TX (Upcoming)</option>
+                    <option value="houston">Houston, TX (Upcoming)</option>
+                    <option value="blaine">Blaine, MN (Upcoming)</option>
                   </select>
                 </div>
               </div>
@@ -514,13 +515,13 @@ export const InsuranceFinancialAssistance = () => {
                 <input 
                   type="checkbox" 
                   id="ia-consent" 
-                  name="consent"
+                  name="consent" 
                   checked={formData.consent}
                   onChange={handleChange}
                   className="mt-1.5 accent-brand-peach h-5 w-5 shrink-0 cursor-pointer" 
                 />
                 <label htmlFor="ia-consent" className="text-sm text-white/80 leading-relaxed cursor-pointer">
-                  By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call 945-(758)-1087. Please see our <Link to="/privacy" className="text-white underline hover:text-brand-peach transition-colors">Privacy Policy</Link> for details.
+                  By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call (945) 758-1087. Please see our <Link to="/privacy" className="text-white underline hover:text-brand-peach transition-colors">Privacy Policy</Link> for details.
                 </label>
               </div>
 

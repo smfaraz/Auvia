@@ -110,42 +110,42 @@ export const Careers = () => {
     {
       name: "Jessica Miller",
       role: "Senior RBT",
-      quote: "Auvia isn't just a workplace; it's a community. The support I receive from my BCBA has helped me grow more in one year than I did in three years elsewhere.",
-      image: "https://picsum.photos/seed/staff1/200/200"
+      quote: "Auvia isn't just a workplace; it's a community. The mentorship I receive from our BCBA clinical leadership has helped me develop advanced assent-based skills and grow my career.",
+      image: "/images/kids-team.jpg"
     },
     {
       name: "David Thompson",
-      role: "BCBA",
-      quote: "The focus on clinical quality over quantity is what sets us apart. I have the time and resources to truly personalize care for every child on my caseload.",
-      image: "https://picsum.photos/seed/staff2/200/200"
+      role: "Board Certified Behavior Analyst (BCBA)",
+      quote: "The focus on clinical quality over caseload quantity is what sets Auvia apart. I have the time and dedicated resources to truly personalize care for every child.",
+      image: "/images/about-kids.jpg"
     }
   ];
 
   const openings = [
     {
       title: "Board Certified Behavior Analyst (BCBA)",
-      location: "Dallas Sanctuary",
+      location: "Irving Sanctuary (Suite 236)",
       type: "Full-Time",
       description: "Lead a team of RBTs, develop personalized treatment plans, and provide family guidance in our state-of-the-art center.",
       color: "bg-brand-mint"
     },
     {
       title: "Registered Behavior Technician (RBT)",
-      location: "Fort Worth Retreat",
+      location: "Irving Sanctuary (DFW)",
       type: "Full-Time",
       description: "Work 1:1 with children to implement behavior plans through play-based therapy and celebrate daily milestone moments.",
       color: "bg-brand-peach"
     },
     {
       title: "Clinical Director",
-      location: "Plano Haven",
+      location: "DFW Regional Network",
       type: "Full-Time",
-      description: "Oversee clinical operations, mentor BCBAs, and ensure the highest standards of care across our Plano sanctuary.",
+      description: "Oversee clinical operations, mentor BCBAs, and ensure the highest standards of care across our Texas sanctuaries.",
       color: "bg-brand-lavender"
     },
     {
       title: "Center Administrator",
-      location: "Frisco Oasis",
+      location: "Irving Sanctuary",
       type: "Full-Time",
       description: "The heart of our center operations. Manage scheduling, insurance coordination, and welcome families with a smile.",
       color: "bg-brand-sky"
