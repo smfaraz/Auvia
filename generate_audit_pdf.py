@@ -558,7 +558,7 @@ def build_pdf(filename="Auvia_Website_Audit_and_Remediation_Report.pdf"):
     story.append(checklist_table)
 
     story.append(Spacer(1, 12))
-    story.append(Paragraph("<b>Report Prepared by:</b> Antigravity Engineering & Healthcare Compliance Analysis Team", body_bold))
+    story.append(Paragraph("<b>Report Prepared by:</b> Zemprolabs", body_bold))
 
     doc.build(story, canvasmaker=NumberedCanvas)
     print(f"Successfully generated PDF: {filename}")
