@@ -15,9 +15,9 @@ export const Services = () => {
 const pillars = [
     {
       title: "Evidence-Based",
-      description: "ABA is the gold standard of autism treatment, backed by decades of peer-reviewed clinical research and medical consensus.",
+      description: "ABA is widely recognized as a leading evidence-based therapy for autism, backed by decades of peer-reviewed clinical research and medical consensus.",
       icon: <Target className="text-brand-teal" size={32} />,
-      details: ["Peer-reviewed methodology", "Scientifically proven outcomes", "Assent-based clinical care"]
+      details: ["Peer-reviewed methodology", "Scientifically supported outcomes", "Assent-based clinical care"]
     },
     {
       title: "Data-Driven Precision",
@@ -114,7 +114,7 @@ const pillars = [
     {
       icon: <Target className="text-brand-teal" />,
       title: "Evidence-Based",
-      text: "ABA is the gold standard of autism treatment, backed by decades of scientific research."
+      text: "ABA is a leading evidence-based approach to autism therapy, supported by decades of scientific research."
     },
     {
       icon: <Brain className="text-brand-teal" />,

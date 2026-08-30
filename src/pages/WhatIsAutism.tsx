@@ -414,7 +414,7 @@ export const WhatIsAutism = () => {
                   </p>
                 </div>
                 <p>
-                  The ADOS-2 (Autism Diagnostic Observation Schedule, Second Edition) is considered the gold standard evaluation tool required by most commercial insurance carriers.
+                  Standardized evaluation tools such as the ADOS-2 (Autism Diagnostic Observation Schedule, Second Edition) are frequently utilized by developmental clinicians during comprehensive diagnostic evaluations.
                 </p>
               </div>
               

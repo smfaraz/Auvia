@@ -27,14 +27,14 @@ export const WhatIsABA = () => {
     <div className="bg-[#F8FBFA] selection:bg-brand-teal/20 text-[#1F2937] font-sans overflow-x-hidden">
       <SEO 
         title="Applied Behavior Analysis (ABA) Autism Therapy Guide"
-        description="Discover how Applied Behavior Analysis (ABA) works at Auvia. Explore the gold standard of evidence-based autism therapy for children."
-        keywords="autism therapy ABA, what is ABA therapy, applied behavior analysis, gold standard autism therapy, pediatric ABA, positive behavior supports"
+        description="Discover how Applied Behavior Analysis (ABA) works at Auvia. Explore our individualized, evidence-based autism therapy programs for children."
+        keywords="autism therapy ABA, what is ABA therapy, applied behavior analysis, evidence-based autism therapy, pediatric ABA, positive behavior supports"
         canonicalUrl="https://auviatherapy.com/what-is-aba"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "MedicalWebPage",
           "name": "Applied Behavior Analysis (ABA) Autism Therapy Guide",
-          "description": "Discover how Applied Behavior Analysis (ABA) works at Auvia. Explore the gold standard of evidence-based autism therapy for children.",
+          "description": "Discover how Applied Behavior Analysis (ABA) works at Auvia. Explore our individualized, evidence-based autism therapy programs for children.",
           "author": {
             "@type": "Person",
             "name": "Sarah Jenkins, MS, BCBA-D",

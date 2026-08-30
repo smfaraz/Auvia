@@ -132,8 +132,11 @@ export const DevelopmentalTimeline = () => {
           <h3 className="text-display font-kids font-bold text-white mb-6">
             Every Journey is <span className="text-brand-peach italic">Unique.</span>
           </h3>
-          <p className="text-lg sm:text-xl text-white/80 font-medium leading-relaxed max-w-2xl mx-auto">
-            While these milestones are common, every child grows in their own special way. We're here to celebrate and support your child's individual path to success.
+          <p className="text-base sm:text-lg text-white/90 font-medium leading-relaxed max-w-2xl mx-auto mb-4">
+            Developmental milestones are general benchmarks from pediatric guidance (including CDC and AAP frameworks) to help families observe growth patterns. Every child develops at their own pace.
+          </p>
+          <p className="text-sm text-white/70 font-medium leading-relaxed max-w-2xl mx-auto">
+            Differences in reaching milestones are natural and do not constitute a clinical diagnosis on their own. If you have questions about your child's progress, our team and your pediatrician can help provide personalized guidance.
           </p>
         </div>
       </motion.div>

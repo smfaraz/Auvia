@@ -300,10 +300,13 @@ export const Home = () => {
             {['BCBS TX', 'Aetna', 'Cigna', 'United Healthcare', 'Wellpoint'].map(p => (
               <motion.span key={p} variants={itemVariants} className="text-small-heading font-kids font-bold text-brand-ink tracking-tight hover:text-brand-teal transition-colors cursor-pointer">{p}</motion.span>
             ))}
-            <Link to="/insurance-by-state">
-              <motion.span variants={itemVariants} className="text-brand-teal font-bold text-body-normal-normal hover:underline">+ All Accepted</motion.span>
+            <Link to="/insurance-financial-assistance">
+              <motion.span variants={itemVariants} className="text-brand-teal font-bold text-body-normal-normal hover:underline">+ View All Accepted Plans</motion.span>
             </Link>
           </motion.div>
+          <p className="text-center text-xs text-brand-sage/70 font-medium mt-4 max-w-2xl mx-auto">
+            We work with many major commercial insurance plans and Medicaid. Coverage varies by plan, employer, location, and medical necessity criteria.
+          </p>
         </div>
       </section>
       {/* Why families choose Auvia */}
@@ -345,7 +348,7 @@ export const Home = () => {
               </div>
               <h3 className="text-small-heading font-kids font-bold mb-4">Immediate Access to Care</h3>
               <p className="text-brand-sage mb-6 font-medium text-body-normal-normal-sm">
-                Early intervention makes all the difference. With conveniently located autism therapy centers near you, your child can start ABA therapy right away.
+                Early support can help children build important skills and give families practical tools for everyday life. With convenient centers, we help your child get started promptly.
               </p>
               <button
                 onClick={() => navigate('/locations')}
@@ -569,7 +572,7 @@ export const Home = () => {
 
                 <div className="p-8 bg-brand-peach/5 rounded-3xl border-2 border-dashed border-brand-peach/20">
                   <p className="text-brand-sage font-medium italic text-body-normal-normal">
-                    ADOS-2 clinical assessments are the gold standard for autism diagnosis and are typically required by insurance providers.
+                    Autism diagnosis involves a comprehensive clinical evaluation. Depending on individual circumstances, clinicians may use standardized assessment tools such as the ADOS-2 as part of the evaluation.
                   </p>
                 </div>
               </div>
@@ -598,7 +601,7 @@ export const Home = () => {
                   To connect with us, fill out our online interest form. A teammate from a nearby center will contact you to learn more about your family and confirm your insurance coverage. We will then schedule your center tour.
                 </p>
                 <p className="p-6 bg-white/10 rounded-3xl border border-white/20 font-medium italic text-body-normal-normal">
-                  Early intervention makes all the difference. Auvia offers immediate access to care so your child can begin reaching meaningful developmental milestones right away.
+                  Early support can help children develop communication, social engagement, and lifelong independence. Auvia offers personalized care to help your family thrive.
                 </p>
               </div>
 
@@ -639,7 +642,7 @@ export const Home = () => {
 
               <div className="flex items-center justify-center lg:justify-start gap-4 md:gap-6 text-brand-teal font-bold text-body-normal-normal">
                 <div className="flex items-center gap-2">
-                  <ShieldCheck size={20} /> HIPAA Compliant
+                  <ShieldCheck size={20} /> <Link to="/privacy" className="hover:underline">Your Privacy Matters</Link>
                 </div>
                 <div className="flex items-center gap-2">
                   <Users size={20} /> Sanctuary Network

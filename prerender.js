@@ -166,10 +166,6 @@ function getSemanticBody(route) {
     </footer>
   `;
 
-  const keywordsList = route.keywords
-    ? route.keywords.split(',').map(kw => `<li style="margin-bottom: 10px;"><strong>${kw.trim()}</strong>: Dedicated clinical focus to help children reach development milestones.</li>`).join('')
-    : '';
-
   return `
     <div style="display: flex; flex-direction: column; min-height: 100vh; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #faf9f6; color: #2d3748;">
       ${commonHeader}
@@ -179,10 +175,10 @@ function getSemanticBody(route) {
           <p style="font-size: 1.25rem; line-height: 1.7; color: #4a5568; margin-bottom: 40px; font-weight: 500;">${route.description}</p>
           
           <section style="margin-top: 40px; padding: 35px; background: #faf9f6; border: 1px solid #e2e8f0; border-radius: 24px;">
-            <h2 style="font-size: 1.8rem; color: #141414; margin-top: 0; margin-bottom: 20px;">Services & Core Clinical Competencies</h2>
-            <ul style="line-height: 1.8; color: #4a5568; padding-left: 24px; font-size: 1.1rem; margin: 0;">
-              ${keywordsList}
-            </ul>
+            <h2 style="font-size: 1.8rem; color: #141414; margin-top: 0; margin-bottom: 20px;">Compassionate, Evidence-Based Autism Care</h2>
+            <p style="line-height: 1.8; color: #4a5568; font-size: 1.1rem; margin: 0;">
+              Auvia Behavior Centers provides individualized, play-based Applied Behavior Analysis (ABA) therapy designed to support communication, social connection, and everyday life skills. Our clinical team of BCBAs and RBTs partners closely with each family to nurture growth in sensory-friendly learning environments.
+            </p>
           </section>
           
           <div style="margin-top: 45px; text-align: center;">

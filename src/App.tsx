@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
@@ -88,6 +88,10 @@ const AppContent = () => {
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin" element={<AdminLogin />} />
+
+          {/* Legacy route redirects to prevent duplicate indexing */}
+          <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route path="/home-based" element={<Navigate to="/services" replace />} />
 
           {/* Catch-all Fallback Route */}
           <Route path="*" element={<NotFound />} />

@@ -327,11 +327,11 @@ export const InsuranceFinancialAssistance = () => {
           {/* RIGHT SIDE: SCROLLABLE CARDS */}
           <div className="lg:col-span-7 space-y-10 pb-20">
             {[
-              { title: "The Texas Mandate", desc: "Under Texas Insurance Code (SB 1484, amending prior HB 1919), state-regulated health plans are required to provide coverage for the screening, diagnosis, and treatment of Autism Spectrum Disorder." },
-              { title: "Age & Enrollment", desc: "Coverage applies to individuals diagnosed with ASD before their 10th birthday. Texas law imposes no upper age ceiling — coverage continues as long as the individual meets medical necessity criteria." },
-              { title: "No Benefit Caps", desc: "Texas law prohibits insurance companies from placing annual dollar limits on ABA therapy for children age 10 and under. A $36,000 annual cap may apply for individuals over age 10." },
-              { title: "Qualified Providers", desc: "For ABA services to be covered in Texas, they must be provided or supervised by a Board Certified Behavior Analyst (BCBA)." },
-              { title: "Important: Plan Type Matters", desc: "The Texas mandate applies to fully insured (state-regulated) plans only. Self-funded employer plans governed by federal ERISA law are not required to follow Texas mandates. Contact your HR department to confirm your plan type. Our team can help verify your specific benefits." }
+              { title: "The Texas Mandate", desc: "Under Texas Insurance Code (including HB 813 effective 2026 and SB 1484), state-regulated health plans are required to provide coverage for the screening, diagnosis, and treatment of Autism Spectrum Disorder." },
+              { title: "Age & Enrollment", desc: "Under Texas HB 813 (for plans issued or renewed on or after January 1, 2026), coverage applies from the date of diagnosis without an age-at-diagnosis restriction or upper age limit. For plans under prior law, diagnosis was required before age 10." },
+              { title: "No Dollar Benefit Caps", desc: "Texas HB 813 eliminated annual dollar caps on ABA therapy for state-regulated plans. Insurers may not place arbitrary dollar limitations on medically necessary ABA treatment." },
+              { title: "Qualified Providers", desc: "For ABA services to be covered in Texas, they must be prescribed by a physician and provided or supervised by a Board Certified Behavior Analyst (BCBA)." },
+              { title: "Important: Plan Type Matters", desc: "The Texas mandate applies to fully insured (state-regulated) plans only. Self-funded employer plans governed by federal ERISA law are not required to follow Texas state mandates. Contact your HR department or let our admissions team verify your specific plan." }
             ].map((benefit, i) => (
               <motion.div 
                 key={benefit.title} 
@@ -547,5 +547,5 @@ const stateMandates = [
   { name: "Colorado", desc: "Colorado's 2009 Senate Bill 09-244 requires most major insurance plans to provide diagnostic support and treatment for children with autism. In 2015, Senate Bill 15-015 removed all age and dollar caps on autism care, including for applied behavior analysis services." },
   { name: "Illinois", desc: "Public Law 095-1005 in Illinois mandates certain health insurers to cover the diagnostic support and treatment of autism spectrum disorder for individuals under 21 years old. Treatment includes therapeutic services such as applied behavior analysis therapy." },
   { name: "Minnesota", desc: "Minnesota's autism insurance bill, HF 1233, was enacted in 2013 and covers individuals with autism under 18 years of age. Under this law, young people can receive diagnostic support, early intensive behavioral interventions like ABA therapy, and speech therapy." },
-  { name: "Texas", desc: "SB 1484 (amending prior HB 1919) requires state-regulated insurance plans to cover all generally recognized autism-related services, including ABA therapy, when the autism diagnosis was made before the individual's tenth birthday. Texas imposes no upper age ceiling on coverage. Note: self-funded ERISA plans are not subject to this state mandate." }
+  { name: "Texas", desc: "Texas Insurance Code (including HB 813 and SB 1484) requires state-regulated plans to cover recognized autism services including ABA therapy. For plans issued or renewed in 2026 and beyond, HB 813 eliminates age and dollar restrictions. Self-funded ERISA employer plans are governed federally and are not subject to state mandates." }
 ];
