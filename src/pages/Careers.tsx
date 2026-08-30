@@ -106,20 +106,7 @@ export const Careers = () => {
     { icon: <Sun size={24} />, title: "Relentless Optimism", text: "We believe in the potential of every child and the power of a positive mindset." }
   ];
 
-  const testimonials = [
-    {
-      name: "Jessica Miller",
-      role: "Senior RBT",
-      quote: "Auvia isn't just a workplace; it's a community. The mentorship I receive from our BCBA clinical leadership has helped me develop advanced assent-based skills and grow my career.",
-      image: "/images/kids-team.jpg"
-    },
-    {
-      name: "David Thompson",
-      role: "Board Certified Behavior Analyst (BCBA)",
-      quote: "The focus on clinical quality over caseload quantity is what sets Auvia apart. I have the time and dedicated resources to truly personalize care for every child.",
-      image: "/images/about-kids.jpg"
-    }
-  ];
+
 
   const openings = [
     {
@@ -281,34 +268,14 @@ export const Careers = () => {
           </div>
         </div>
 
-        {/* Testimonials */}
-        <div className="mb-40 relative z-10">
-          <h2 className="text-section font-kids font-bold text-brand-ink mb-16 text-center">Hear From <span className="text-brand-teal italic">Our Team.</span></h2>
-          <div className="grid md:grid-cols-2 gap-12">
-            {testimonials.map((t, i) => (
-              <div key={i} className="glass-panel p-12 rounded-[48px] premium-shadow border border-white/60 relative hover:-translate-y-2 transition-transform duration-500">
-                <div className="flex items-center gap-6 mb-8">
-                  <img src={t.image} alt={t.name} className="w-20 h-20 rounded-3xl object-cover shadow-md" referrerPolicy="no-referrer" />
-                  <div>
-                    <h4 className="text-2xl font-kids font-bold text-brand-ink">{t.name}</h4>
-                    <p className="text-brand-teal font-bold text-sm uppercase tracking-widest">{t.role}</p>
-                  </div>
-                </div>
-                <p className="text-brand-sage text-lg font-medium leading-relaxed italic">"{t.quote}"</p>
-                <div className="absolute top-8 right-12 text-brand-teal/10">
-                  <Smile size={80} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+
 
         {/* Job Openings */}
         <div className="mb-24 lg:mb-40 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 lg:mb-16 gap-8">
             <div className="max-w-2xl">
               <h2 className="text-section font-kids font-bold text-brand-ink mb-6 leading-tight">Current Opportunities</h2>
-              <p className="text-brand-sage font-medium text-base lg:text-lg">Find your place in our growing family. We're looking for passionate individuals to join us in Dallas, Fort Worth, Plano, and Frisco.</p>
+              <p className="text-brand-sage font-medium text-base lg:text-lg">Find your place in our growing family. We're looking for passionate individuals to join us in Irving, Allen, Austin, Dallas, Houston, and beyond.</p>
             </div>
             <div className="flex flex-wrap gap-3">
               <button onClick={() => setLocationFilter(locationFilter === 'all' ? 'clinical' : 'all')} className={`px-5 py-2 rounded-full font-bold text-xs shadow-sm border transition-all ${locationFilter === 'all' ? 'bg-brand-teal text-white border-brand-teal' : 'bg-white text-brand-teal border-brand-teal/5 hover:border-brand-teal'}`}>All Locations</button>
@@ -318,7 +285,7 @@ export const Careers = () => {
 
           <div className="space-y-6">
             {loading ? (
-              <div className="text-center py-20 text-brand-sage font-medium">Opening sanctuary doors (Loading jobs)...</div>
+              <div className="text-center py-20 text-brand-sage font-medium">Loading open positions...</div>
             ) : jobs.length === 0 ? (
               <div className="text-center py-20 bg-white rounded-[40px] border border-brand-teal/5">
                 <Smile size={48} className="mx-auto mb-4 text-brand-teal opacity-20" />
@@ -412,7 +379,7 @@ export const Careers = () => {
                   </div>
                   <h3 className="text-2xl font-kids font-bold text-brand-ink">Application Submitted!</h3>
                   <p className="text-brand-sage text-sm max-w-sm">
-                    Thank you for applying for the **{selectedJobForApply.title}** role. Our clinical recruitment team will review your credentials and follow up soon.
+                    Thank you for applying for the <strong>{selectedJobForApply.title}</strong> role. Our clinical recruitment team will review your credentials and follow up soon.
                   </p>
                 </div>
               ) : (

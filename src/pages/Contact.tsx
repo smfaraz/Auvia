@@ -167,7 +167,7 @@ export const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         className={`w-full bg-brand-cream/30 border-b-2 ${errors.email ? 'border-red-400' : 'border-brand-teal/10'} px-0 py-3 text-sm focus:border-brand-teal outline-none transition-colors font-medium`}
-                        placeholder="admin@auviatherapy.com"
+                        placeholder="your@email.com"
                       />
                       {errors.email && <p className="text-[10px] font-bold text-red-500 uppercase tracking-wider">{errors.email}</p>}
                     </div>
@@ -196,14 +196,14 @@ export const Contact = () => {
                       >
                         <option value="">Please Select</option>
                         <option value="BCBS TX">BCBS TX</option>
-                        <option value="AETNA COMMERCIAL">AETNA COMMERCIAL</option>
-                        <option value="CIGNA">CIGNA</option>
-                        <option value="UNITED HEALTHCARE">UNITED HEALTHCARE</option>
-                        <option value="WELLPOINT MEDICAID">WELLPOINT MEDICAID</option>
-                        <option value="AETNA MEDICAID">AETNA MEDICAID</option>
-                        <option value="SUPERIOR HEALTH">SUPERIOR HEALTH</option>
-                        <option value="MOLINA">MOLINA</option>
-                        <option value="CARELON">CARELON</option>
+                        <option value="AETNA COMMERCIAL">Aetna Commercial</option>
+                        <option value="CIGNA">Cigna</option>
+                        <option value="UNITED HEALTHCARE">UnitedHealthcare</option>
+                        <option value="WELLPOINT MEDICAID">Wellpoint Medicaid</option>
+                        <option value="AETNA MEDICAID">Aetna Medicaid</option>
+                        <option value="SUPERIOR HEALTH">Superior Health</option>
+                        <option value="MOLINA">Molina Healthcare</option>
+                        <option value="CARELON">Carelon</option>
                         <option value="TRICARE">TRICARE</option>
                       </select>
                     </div>
@@ -230,7 +230,7 @@ export const Contact = () => {
                         className="mt-1.5 accent-brand-teal h-5 w-5 shrink-0 cursor-pointer"
                       />
                       <label htmlFor="contact-consent" className="text-small text-brand-sage leading-relaxed cursor-pointer">
-                        By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call (945) 758-1087. Please see our <Link to="/privacy" className="text-brand-teal underline hover:text-brand-mint transition-colors">Privacy Policy</Link> for details.
+                        By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answering your questions, providing follow-up, and general communication from Auvia Behavior Centers. Consent is not a condition of receiving services. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call (945) 758-1087. Please see our <Link to="/privacy" className="text-brand-teal underline hover:text-brand-mint transition-colors">Privacy Policy</Link> for details.
                       </label>
                     </div>
 

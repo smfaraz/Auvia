@@ -394,6 +394,12 @@ export const WhatIsAutism = () => {
               <h2 className="text-section font-kids font-bold text-brand-ink mb-8 leading-tight">
                 Navigating the Path to <br /><span className="text-brand-teal italic">a Formal Evaluation.</span>
               </h2>
+              <p className="text-xl text-brand-sage font-medium leading-relaxed max-w-2xl">
+            A deep-dive into the science, signs, and strengths of Autism Spectrum Disorder — written for families, by clinicians.
+          </p>
+          <p className="text-sm text-brand-sage/70 font-medium mt-4 max-w-2xl italic">
+            A note on language: This page uses person-first language (e.g., "child with autism") as a clinical default, following guidance from the American Academy of Pediatrics (AAP, 2025). We also respect identity-first language (e.g., "autistic child"), preferred by many in the autistic community. We honor each family's individual preference.
+          </p>
               <div className="space-y-6 text-lg text-brand-sage font-medium leading-relaxed">
                 <p>
                   Obtaining a formal clinical diagnosis from a licensed developmental pediatrician or clinical psychologist is the key that unlocks in-network insurance coverage for Applied Behavior Analysis.

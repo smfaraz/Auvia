@@ -361,7 +361,7 @@ export const Home = () => {
               </div>
               <h3 className="text-small-heading font-kids font-bold mb-4">Diagnostic Support</h3>
               <p className="text-brand-sage mb-6 text-body-normal-normal-sm">You don't have to wait for answers. If your child has many of the early signs of autism, we can help them get evaluated.</p>
-              <button onClick={() => navigate('/what-is-autism')} className="text-brand-teal font-bold flex items-center gap-2 hover:underline text-body-normal-normal-sm">Screen for autism <ArrowRight size={18} /></button>
+              <button onClick={() => navigate('/what-is-autism')} className="text-brand-teal font-bold flex items-center gap-2 hover:underline text-body-normal-normal-sm">Explore Diagnostic Resources <ArrowRight size={18} /></button>
             </motion.div>
 
             <motion.div variants={itemVariants} className="p-8 rounded-[40px] glass-panel card-friendly">
@@ -370,7 +370,7 @@ export const Home = () => {
               </div>
               <h3 className="text-small-heading font-kids font-bold mb-4">Insurance Made Simple</h3>
               <p className="text-brand-sage mb-6 text-body-normal-normal-sm">We accept most major plans, guide families through paperwork, and can provide financial assistance for out-of-pocket expenses.</p>
-              <button onClick={() => navigate('/insurance-financial-assistance')} className="text-brand-teal font-bold flex items-center gap-2 hover:underline text-body-normal-normal-sm">Paying for ABA therapy <ArrowRight size={18} /></button>
+              <button onClick={() => navigate('/insurance-financial-assistance')} className="text-brand-teal font-bold flex items-center gap-2 hover:underline text-body-normal-normal-sm">Learn About Insurance & Financing <ArrowRight size={18} /></button>
             </motion.div>
 
             <motion.div variants={itemVariants} className="p-8 rounded-[40px] glass-panel card-friendly lg:col-span-1">
@@ -595,7 +595,7 @@ export const Home = () => {
 
               <div className="flex-1 space-y-8">
                 <p className="text-white/90 text-body-normal-normal-main">
-                  To Connect With Us, fill out our online interest form. A teammate from a nearby center will contact you to learn more about your family and confirm your insurance coverage. We will then schedule your center tour.
+                  To connect with us, fill out our online interest form. A teammate from a nearby center will contact you to learn more about your family and confirm your insurance coverage. We will then schedule your center tour.
                 </p>
                 <p className="p-6 bg-white/10 rounded-3xl border border-white/20 font-medium italic text-body-normal-normal">
                   Early intervention makes all the difference. Auvia offers immediate access to care so your child can begin reaching meaningful developmental milestones right away.
@@ -714,14 +714,14 @@ export const Home = () => {
                         <select id="home-insuranceProvider" name="insuranceProvider" value={interestForm.insuranceProvider} onChange={handleInterestChange} required className="glass-input w-full p-4 rounded-2xl outline-none appearance-none cursor-pointer text-body-normal-normal">
                           <option value="">Please Select</option>
                           <option value="BCBS TX">BCBS TX</option>
-                          <option value="AETNA COMMERCIAL">AETNA COMMERCIAL</option>
-                          <option value="CIGNA">CIGNA</option>
-                          <option value="UNITED HEALTHCARE">UNITED HEALTHCARE</option>
-                          <option value="WELLPOINT MEDICAID">WELLPOINT MEDICAID</option>
-                          <option value="AETNA MEDICAID">AETNA MEDICAID</option>
-                          <option value="SUPERIOR HEALTH">SUPERIOR HEALTH</option>
-                          <option value="MOLINA">MOLINA</option>
-                          <option value="CARELON">CARELON</option>
+                          <option value="AETNA COMMERCIAL">Aetna Commercial</option>
+                          <option value="CIGNA">Cigna</option>
+                          <option value="UNITED HEALTHCARE">UnitedHealthcare</option>
+                          <option value="WELLPOINT MEDICAID">Wellpoint Medicaid</option>
+                          <option value="AETNA MEDICAID">Aetna Medicaid</option>
+                          <option value="SUPERIOR HEALTH">Superior Health</option>
+                          <option value="MOLINA">Molina Healthcare</option>
+                          <option value="CARELON">Carelon</option>
                           <option value="TRICARE">TRICARE</option>
                         </select>
                       </div>
@@ -732,7 +732,7 @@ export const Home = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="home-center" className="text-label-custom text-brand-ink ml-1">Find nearby Centers<span className="text-red-500">*</span></label>
+                      <label htmlFor="home-center" className="text-label-custom text-brand-ink ml-1">Find Nearby Centers<span className="text-red-500">*</span></label>
                       <select id="home-center" name="center" value={interestForm.center} onChange={handleInterestChange} required className="glass-input w-full p-4 rounded-2xl outline-none appearance-none cursor-pointer text-body-normal-normal">
                         <option value="">Please Select</option>
                         <option value="irving">Irving, TX (Active Sanctuary)</option>
@@ -754,7 +754,7 @@ export const Home = () => {
                         className="mt-1.5 accent-brand-teal h-5 w-5 shrink-0 cursor-pointer"
                       />
                       <label htmlFor="home-consent" className="text-small text-brand-sage leading-relaxed cursor-pointer">
-                        By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call (945) 758-1087. Please see our <Link to="/privacy" className="text-brand-teal underline">Privacy Policy</Link> for details.
+                        By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answering your questions, providing follow-up, and general communication from Auvia Behavior Centers. Consent is not a condition of receiving services. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call (945) 758-1087. Please see our <Link to="/privacy" className="text-brand-teal underline">Privacy Policy</Link> for details.
                       </label>
                     </div>
 

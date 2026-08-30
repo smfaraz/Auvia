@@ -234,8 +234,8 @@ export const InsuranceFinancialAssistance = () => {
                 </p>
                 <p className="font-bold text-brand-ink mb-4">Here's how we can help ease that burden:</p>
                 <ul className="space-y-4 text-brand-sage font-medium mb-8">
-                  <li className="bg-[#FCFAF7] p-4 rounded-2xl border border-brand-teal/5"><strong>Insurance navigation:</strong> Our team will review your benefits and explain your coverage options.</li>
-                  <li className="bg-brand-mint/30 p-4 rounded-2xl border border-brand-teal/5"><strong>Charity Care program:</strong> Families who qualify under federal poverty guidelines may receive financial assistance.</li>
+                  <li className="bg-[#FCFAF7] p-4 rounded-2xl border border-brand-teal/5"><strong>Insurance navigation:</strong> Our team will review your benefits and explain your coverage options in full.</li>
+                  <li className="bg-brand-mint/30 p-4 rounded-2xl border border-brand-teal/5"><strong>Charity Care program:</strong> Families with financial hardship may be eligible for assistance. Please contact our billing team to discuss your situation confidentially.</li>
                 </ul>
                 <button className="bg-brand-teal text-white px-8 py-4 rounded-2xl font-kids font-bold hover:bg-[#3d7a6f] transition-all">
                   Contact us today
@@ -259,7 +259,7 @@ export const InsuranceFinancialAssistance = () => {
               <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, margin: "-100px" }}>
                 <h3 className="text-section font-kids font-bold mb-6">How much does ABA therapy cost in the U.S.?</h3>
                 <p className="text-brand-sage font-medium leading-relaxed mb-6">
-                  All private commercial health insurance companies and Medicaid programs in the U.S. cover ABA therapy to some degree. Since coverage can be complex, our specialists verify your benefits for you.
+                  All state-regulated private commercial health insurance plans and Medicaid programs in the U.S. are required to cover ABA therapy to some degree. Note: self-funded employer plans (governed by federal ERISA law) are not subject to state mandates — our specialists will verify your specific benefits for you.
                 </p>
                 <p className="font-bold text-brand-ink mb-4">We provide clear information on:</p>
                 <ul className="space-y-3 text-brand-sage font-medium list-disc list-inside ml-2">
@@ -327,11 +327,11 @@ export const InsuranceFinancialAssistance = () => {
           {/* RIGHT SIDE: SCROLLABLE CARDS */}
           <div className="lg:col-span-7 space-y-10 pb-20">
             {[
-              { title: "The Texas Mandate", desc: "Under the Texas Insurance Code Chapter 1355, state-regulated health plans are required to provide coverage for the screening, diagnosis, and treatment of Autism Spectrum Disorder." },
-              { title: "Age & Enrollment", desc: "The mandate typically requires coverage for children from the time of diagnosis through age 18. This ensures consistent support through the most critical developmental years." },
-              { title: "No Benefit Caps", desc: "Texas law prohibits insurance companies from placing dollar limits on ABA therapy that are different from other medical services." },
+              { title: "The Texas Mandate", desc: "Under Texas Insurance Code (SB 1484, amending prior HB 1919), state-regulated health plans are required to provide coverage for the screening, diagnosis, and treatment of Autism Spectrum Disorder." },
+              { title: "Age & Enrollment", desc: "Coverage applies to individuals diagnosed with ASD before their 10th birthday. Texas law imposes no upper age ceiling — coverage continues as long as the individual meets medical necessity criteria." },
+              { title: "No Benefit Caps", desc: "Texas law prohibits insurance companies from placing annual dollar limits on ABA therapy for children age 10 and under. A $36,000 annual cap may apply for individuals over age 10." },
               { title: "Qualified Providers", desc: "For ABA services to be covered in Texas, they must be provided or supervised by a Board Certified Behavior Analyst (BCBA)." },
-              { title: "Treatment Plans", desc: "Auvia handles the creation of these clinical plans and manages the submission to your insurance provider." }
+              { title: "Important: Plan Type Matters", desc: "The Texas mandate applies to fully insured (state-regulated) plans only. Self-funded employer plans governed by federal ERISA law are not required to follow Texas mandates. Contact your HR department to confirm your plan type. Our team can help verify your specific benefits." }
             ].map((benefit, i) => (
               <motion.div 
                 key={benefit.title} 
@@ -482,14 +482,14 @@ export const InsuranceFinancialAssistance = () => {
                   >
                     <option value="">Please Select</option>
                     <option value="BCBS TX">BCBS TX</option>
-                    <option value="AETNA COMMERCIAL">AETNA COMMERCIAL</option>
-                    <option value="CIGNA">CIGNA</option>
-                    <option value="UNITED HEALTHCARE">UNITED HEALTHCARE</option>
-                    <option value="WELLPOINT MEDICAID">WELLPOINT MEDICAID</option>
-                    <option value="AETNA MEDICAID">AETNA MEDICAID</option>
-                    <option value="SUPERIOR HEALTH">SUPERIOR HEALTH</option>
-                    <option value="MOLINA">MOLINA</option>
-                    <option value="CARELON">CARELON</option>
+                    <option value="AETNA COMMERCIAL">Aetna Commercial</option>
+                    <option value="CIGNA">Cigna</option>
+                    <option value="UNITED HEALTHCARE">UnitedHealthcare</option>
+                    <option value="WELLPOINT MEDICAID">Wellpoint Medicaid</option>
+                    <option value="AETNA MEDICAID">Aetna Medicaid</option>
+                    <option value="SUPERIOR HEALTH">Superior Health</option>
+                    <option value="MOLINA">Molina Healthcare</option>
+                    <option value="CARELON">Carelon</option>
                     <option value="TRICARE">TRICARE</option>
                   </select>
                 </div>
@@ -498,7 +498,7 @@ export const InsuranceFinancialAssistance = () => {
                   <input type="text" id="ia-zip" name="zip" value={formData.zip} onChange={handleChange} required placeholder="ex. 73301" className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none font-medium" />
                 </div>
                 <div>
-                  <label htmlFor="ia-center" className="block text-sm font-bold mb-2">Find nearby Centers*</label>
+                  <label htmlFor="ia-center" className="block text-sm font-bold mb-2">Find Nearby Centers*</label>
                   <select id="ia-center" name="center" value={formData.center} onChange={handleChange} required className="glass-input w-full text-brand-ink rounded-2xl px-5 py-4 outline-none appearance-none cursor-pointer font-medium">
                     <option value="">Please Select</option>
                     <option value="irving">Irving, TX (Active Sanctuary)</option>
@@ -521,7 +521,7 @@ export const InsuranceFinancialAssistance = () => {
                   className="mt-1.5 accent-brand-peach h-5 w-5 shrink-0 cursor-pointer" 
                 />
                 <label htmlFor="ia-consent" className="text-sm text-white/80 leading-relaxed cursor-pointer">
-                  By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answer your questions, provide follow-up, and general communication from Auvia Behavior Centers. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call (945) 758-1087. Please see our <Link to="/privacy" className="text-white underline hover:text-brand-peach transition-colors">Privacy Policy</Link> for details.
+                  By checking the box, and submitting this form, you consent to receive text messages (SMS) regarding, but not limited to answering your questions, providing follow-up, and general communication from Auvia Behavior Centers. Consent is not a condition of receiving services. Message frequency may vary. Message and data rates may apply. You can reply STOP to opt out of further messaging, reply HELP for assistance, or call (945) 758-1087. Please see our <Link to="/privacy" className="text-white underline hover:text-brand-peach transition-colors">Privacy Policy</Link> for details.
                 </label>
               </div>
 
@@ -547,5 +547,5 @@ const stateMandates = [
   { name: "Colorado", desc: "Colorado's 2009 Senate Bill 09-244 requires most major insurance plans to provide diagnostic support and treatment for children with autism. In 2015, Senate Bill 15-015 removed all age and dollar caps on autism care, including for applied behavior analysis services." },
   { name: "Illinois", desc: "Public Law 095-1005 in Illinois mandates certain health insurers to cover the diagnostic support and treatment of autism spectrum disorder for individuals under 21 years old. Treatment includes therapeutic services such as applied behavior analysis therapy." },
   { name: "Minnesota", desc: "Minnesota's autism insurance bill, HF 1233, was enacted in 2013 and covers individuals with autism under 18 years of age. Under this law, young people can receive diagnostic support, early intensive behavioral interventions like ABA therapy, and speech therapy." },
-  { name: "Texas", desc: "SB 946, the autism insurance bill in Texas, requires insurance companies to cover all generally recognized autism-related services prescribed by the child's primary care physician (PCP) so long as the autism diagnosis was made before the child's tenth birthday." }
+  { name: "Texas", desc: "SB 1484 (amending prior HB 1919) requires state-regulated insurance plans to cover all generally recognized autism-related services, including ABA therapy, when the autism diagnosis was made before the individual's tenth birthday. Texas imposes no upper age ceiling on coverage. Note: self-funded ERISA plans are not subject to this state mandate." }
 ];

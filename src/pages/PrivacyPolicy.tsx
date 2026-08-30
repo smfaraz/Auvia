@@ -5,7 +5,7 @@ import { Shield, Lock, Eye, FileText, ChevronRight, MessageSquare, Globe, Clock,
 export const PrivacyPolicy = () => {
   const lastUpdated = "April 23, 2026";
   const companyName = "Auvia Behavior Centers";
-  const contactPhone = "945-(758)-1087";
+  const contactPhone = "(945) 758-1087";
   const contactEmail = "admin@auviatherapy.com";
   const contactAddress = "3100 Premier Dr, Suite 236, Irving, TX 75063";
 
@@ -205,7 +205,55 @@ export const PrivacyPolicy = () => {
             </div>
           </section>
 
-          {/* 10. Policy Changes */}
+          {/* 10. HIPAA Notice of Privacy Practices */}
+          <section className="space-y-4 p-8 bg-brand-sky/20 rounded-[30px] border border-brand-teal/10">
+            <div className="flex items-center gap-3 text-brand-teal mb-2">
+              <Shield size={24} />
+              <h2 className="text-2xl font-kids font-bold tracking-tight">HIPAA Notice of Privacy Practices</h2>
+            </div>
+            <p className="text-brand-sage font-medium leading-relaxed">
+              {companyName} is a covered entity under the Health Insurance Portability and Accountability Act (HIPAA). We are required by law to maintain the privacy of your Protected Health Information (PHI), to provide you with this Notice of our legal duties and privacy practices, and to follow the terms of the Notice currently in effect.
+            </p>
+            <p className="text-brand-sage font-medium leading-relaxed font-bold text-brand-ink">
+              How We May Use and Disclose Your PHI:
+            </p>
+            <ul className="space-y-3 pl-4">
+              {[
+                "Treatment: We may use or disclose your PHI to provide, coordinate, or manage your child's healthcare and related services, including sharing information with other clinicians involved in your care.",
+                "Payment: We may use and disclose PHI to obtain payment for services we provide, including submitting claims to insurance companies on your behalf.",
+                "Healthcare Operations: We may use and disclose PHI for our own healthcare operations, such as quality improvement activities, staff training, and compliance reviews.",
+                "As Required by Law: We will disclose PHI when required to do so by federal, state, or local law.",
+                "No Other Uses Without Authorization: Any other use or disclosure of your PHI not described above requires your written authorization, which you may revoke at any time."
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-4 text-brand-sage font-medium leading-relaxed">
+                  <div className="w-1.5 h-1.5 rounded-full bg-brand-teal mt-2.5 shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="text-brand-sage font-medium leading-relaxed font-bold text-brand-ink">
+              Your Rights Regarding Your PHI:
+            </p>
+            <ul className="space-y-3 pl-4">
+              {[
+                "Right to Access: You have the right to inspect and obtain a copy of your PHI that we maintain.",
+                "Right to Amend: You have the right to request that we amend PHI that you believe is incorrect or incomplete.",
+                "Right to an Accounting of Disclosures: You have the right to request a list of certain disclosures we have made of your PHI.",
+                "Right to Restrict: You have the right to request restrictions on how we use or disclose your PHI for treatment, payment, or healthcare operations.",
+                "Right to Complain: You have the right to file a complaint with us or with the U.S. Department of Health and Human Services (HHS) Office for Civil Rights if you believe your privacy rights have been violated. Filing a complaint will not affect your care."
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-4 text-brand-sage font-medium leading-relaxed">
+                  <div className="w-1.5 h-1.5 rounded-full bg-brand-teal mt-2.5 shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="text-brand-sage font-medium leading-relaxed">
+              To exercise any of these rights, or to file a complaint, please contact our Privacy Officer at {contactEmail} or {contactPhone}.
+            </p>
+          </section>
+
+          {/* 11. Policy Changes */}
           <section className="space-y-4">
             <h2 className="text-2xl font-kids font-bold text-brand-ink tracking-tight">Policy Changes</h2>
             <p className="text-brand-sage font-medium leading-relaxed">

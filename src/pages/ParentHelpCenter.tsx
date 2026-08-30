@@ -53,7 +53,7 @@ export const ParentHelpCenter = () => {
     },
     {
       q: "What age is ideal to begin therapy?",
-      a: "Early intervention (ages 18 months to 6 years) capitalizes on peak neuroplasticity and typically yields the most impactful outcomes, though individualized ABA therapy is highly effective for school-age children and adolescents as well."
+      a: "Early intervention (ages 18 months to 6 years) capitalizes on peak neuroplasticity and typically yields the most impactful outcomes — though individual results vary based on each child's unique profile. ABA therapy is also highly effective for school-age children and adolescents."
     },
     {
       q: "Is ABA therapy covered by commercial insurance and Medicaid?",
