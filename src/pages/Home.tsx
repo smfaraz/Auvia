@@ -204,11 +204,19 @@ export const Home = () => {
           >
             <div className="relative w-full h-full rounded-[60px] lg:rounded-[120px] overflow-hidden border-[8px] lg:border-[16px] border-white shadow-[0_50px_100px_rgba(0,0,0,0.12)]">
               {/* Real professional ABA environment image */}
-              <img
-                src="/images/hero-main.png"
-                alt="Auvia Behavior Centers Clinical Sanctuary"
-                className="w-full h-full object-cover"
-              />
+              <picture>
+                <source srcSet="/images/hero-main.webp" type="image/webp" />
+                <img
+                  src="/images/hero-main.jpg"
+                  alt="Auvia Behavior Centers Clinical Sanctuary"
+                  className="w-full h-full object-cover"
+                  fetchPriority="high"
+                  loading="eager"
+                  decoding="async"
+                  width={500}
+                  height={650}
+                />
+              </picture>
               {/* Subtle glass overlay for that rich feel */}
               <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/20 to-transparent" />
             </div>

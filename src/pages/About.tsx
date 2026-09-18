@@ -93,12 +93,17 @@ export const About = () => {
           <div className="lg:w-1/2 relative">
             <div className="absolute inset-0 bg-brand-teal/10 rounded-[60px] blur-3xl transform rotate-3 scale-105" />
             <div className="rounded-[60px] overflow-hidden shadow-2xl aspect-[4/5] border-[16px] border-white/80 backdrop-blur-sm rotate-2 relative z-10">
-              <img
-                src="/images/about-kids.jpg"
-                alt="Auvia Behavior Centers clinical therapy environment"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s]"
-                referrerPolicy="no-referrer"
-              />
+              <picture>
+                <source srcSet="/images/about-kids.webp" type="image/webp" />
+                <img
+                  src="/images/about-kids.jpg"
+                  alt="Auvia Behavior Centers clinical therapy environment"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s]"
+                  loading="lazy"
+                  decoding="async"
+                  referrerPolicy="no-referrer"
+                />
+              </picture>
             </div>
           </div>
         </div>

@@ -138,7 +138,10 @@ export const InsuranceFinancialAssistance = () => {
             <div className="absolute top-[-10%] right-[-10%] w-full h-full bg-brand-mint/40 rounded-full blur-3xl -z-10" />
             
             <div className="rounded-[40px] lg:rounded-[60px] overflow-hidden border-[8px] lg:border-[12px] border-white shadow-3xl rotate-1 lg:rotate-2 hover:rotate-0 transition-transform duration-700">
-              <img src="/images/kids-insurance.jpg" alt="Happy family" className="w-full aspect-[4/3] lg:aspect-square object-cover" />
+              <picture>
+                <source srcSet="/images/kids-insurance.webp" type="image/webp" />
+                <img src="/images/kids-insurance.jpg" alt="Happy family" className="w-full aspect-[4/3] lg:aspect-square object-cover" loading="lazy" decoding="async" />
+              </picture>
             </div>
           </motion.div>
         </div>

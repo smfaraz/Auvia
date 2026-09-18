@@ -128,7 +128,7 @@ export const WhatIsAutism = () => {
         <div 
           className="absolute inset-0 z-0"
           style={{ 
-            backgroundImage: `url('/images/kids-hero.jpg')`,
+            backgroundImage: `url('/images/kids-hero.webp')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center center', 
           }}
@@ -369,11 +369,16 @@ export const WhatIsAutism = () => {
 
           <div className="lg:col-span-6 relative">
             <div className="rounded-[60px] overflow-hidden border-[10px] border-white/5 shadow-3xl bg-brand-ink">
-              <img 
-                src="/images/autism-therapy.jpg" 
-                alt="Developmental assessment and support" 
-                className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity duration-700" 
-              />
+              <picture>
+                <source srcSet="/images/autism-therapy.webp" type="image/webp" />
+                <img 
+                  src="/images/autism-therapy.jpg" 
+                  alt="Developmental assessment and support" 
+                  className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity duration-700" 
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             
             <div className="absolute -bottom-8 -right-2 bg-brand-mint text-brand-ink px-8 py-4 rounded-[32px] font-kids font-bold text-xl shadow-2xl z-20 border-4 border-brand-ink flex items-center gap-2">
@@ -428,11 +433,16 @@ export const WhatIsAutism = () => {
 
           <div className="relative">
             <div className="rounded-[60px] overflow-hidden shadow-3xl border-[12px] border-white">
-              <img 
-                src="/images/kids-diagnosis.jpg" 
-                alt="Clinical assessment support and guidance" 
-                className="w-full aspect-square object-cover" 
-              />
+              <picture>
+                <source srcSet="/images/kids-diagnosis.webp" type="image/webp" />
+                <img 
+                  src="/images/kids-diagnosis.jpg" 
+                  alt="Clinical assessment support and guidance" 
+                  className="w-full aspect-square object-cover" 
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div className="absolute top-8 -left-6 bg-white p-6 rounded-[32px] shadow-xl border border-gray-100 max-w-[220px]">
               <p className="text-brand-teal font-kids font-bold text-base leading-tight">Clinical Diagnostic Referral Network</p>

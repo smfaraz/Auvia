@@ -358,11 +358,16 @@ const pillars = [
           </h3>
           <div className="mt-12 lg:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4">
             {/* Clinical Professional Image */}
-            <img 
-               src="/images/kids-team.jpg" 
-               alt="Clinical Director" 
-               className="w-14 h-14 lg:w-16 lg:h-16 rounded-full object-cover border-2 border-brand-teal" 
-            />
+            <picture>
+              <source srcSet="/images/kids-team.webp" type="image/webp" />
+              <img 
+                 src="/images/kids-team.jpg" 
+                 alt="Clinical Director" 
+                 className="w-14 h-14 lg:w-16 lg:h-16 rounded-full object-cover border-2 border-brand-teal" 
+                 loading="lazy"
+                 decoding="async"
+              />
+            </picture>
             <div className="text-center sm:text-left">
               <p className="font-bold text-brand-ink font-kids">Clinical Leadership Team</p>
               <p className="text-brand-sage text-[10px] lg:text-sm font-bold tracking-widest uppercase">Board Certified Behavior Analysts (BCBA / BCBA-D)</p>

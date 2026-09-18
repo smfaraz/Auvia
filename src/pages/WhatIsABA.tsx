@@ -103,7 +103,10 @@ export const WhatIsABA = () => {
             className="relative"
           >
             <div className="rounded-[60px] lg:rounded-[80px] overflow-hidden border-[16px] border-white shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] relative z-10">
-              <img src="/images/kids-aba.jpg" alt="ABA therapy engagement" className="w-full aspect-[4/5] lg:aspect-[5/6] object-cover" />
+              <picture>
+                <source srcSet="/images/kids-aba.webp" type="image/webp" />
+                <img src="/images/kids-aba.jpg" alt="ABA therapy engagement" className="w-full aspect-[4/5] lg:aspect-[5/6] object-cover" loading="lazy" decoding="async" />
+              </picture>
             </div>
             
             <motion.div 
@@ -219,7 +222,10 @@ export const WhatIsABA = () => {
             
             <div className="lg:w-1/2 relative">
                <div className="rounded-[80px] overflow-hidden shadow-3xl border-[16px] border-[#FCFAF7] rotate-2">
-                 <img src="/images/autism-therapy.jpg" alt="Child Learning Success" className="w-full aspect-square object-cover" />
+                 <picture>
+                   <source srcSet="/images/autism-therapy.webp" type="image/webp" />
+                   <img src="/images/autism-therapy.jpg" alt="Child Learning Success" className="w-full aspect-square object-cover" loading="lazy" decoding="async" />
+                 </picture>
                </div>
             </div>
           </div>
@@ -282,11 +288,16 @@ export const WhatIsABA = () => {
               className="relative"
             >
               <div className="rounded-[80px] overflow-hidden shadow-3xl border-[16px] border-[#FCFAF7]">
-                <img 
-                  src="/images/kids-aba.jpg" 
-                  alt="Child practicing life skills" 
-                  className="w-full aspect-[4/5] object-cover" 
-                />
+                <picture>
+                  <source srcSet="/images/kids-aba.webp" type="image/webp" />
+                  <img 
+                    src="/images/kids-aba.jpg" 
+                    alt="Child practicing life skills" 
+                    className="w-full aspect-[4/5] object-cover" 
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
               </div>
               <div className="absolute -bottom-10 -right-10 bg-brand-lavender p-10 rounded-[50px] text-white shadow-2xl max-w-xs rotate-3 border-8 border-white">
                  <p className="font-kids font-bold text-xl italic">"Practice at home helps build a foundation for life."</p>

@@ -258,7 +258,10 @@ export const Careers = () => {
             </div>
             <div className="relative">
               <div className="rounded-[60px] overflow-hidden shadow-2xl rotate-2">
-                <img src="/images/kids-team.jpg" alt="Team culture" className="w-full aspect-auto object-cover" referrerPolicy="no-referrer" />
+                <picture>
+                  <source srcSet="/images/kids-team.webp" type="image/webp" />
+                  <img src="/images/kids-team.jpg" alt="Team culture" className="w-full aspect-auto object-cover" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
+                </picture>
               </div>
               <div className="absolute -bottom-10 -right-10 bg-brand-peach p-8 rounded-[40px] shadow-xl max-w-xs border-4 border-white">
                 <p className="text-brand-ink font-kids font-bold text-lg mb-2">Team First</p>
