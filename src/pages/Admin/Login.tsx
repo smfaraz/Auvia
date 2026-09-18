@@ -26,8 +26,8 @@ export const AdminLogin = () => {
       if (adminDoc.exists()) {
         navigate('/admin/dashboard');
       } else {
-        // Check if whitelisted by email
-        const emailDocRef = doc(db, 'admins', user.email || '');
+        const userEmail = (user.email || '').toLowerCase().trim();
+        const emailDocRef = doc(db, 'admins', userEmail);
         const emailDoc = await getDoc(emailDocRef);
         
         if (emailDoc.exists()) {
@@ -41,7 +41,7 @@ export const AdminLogin = () => {
           });
           await deleteDoc(emailDocRef);
           navigate('/admin/dashboard');
-        } else if (user.email === 'syedfaraaz876@gmail.com') {
+        } else if (userEmail === 'syedfaraaz876@gmail.com') {
           // Bootstrap the first admin if it's the authorized owner email
           const { setDoc } = await import('firebase/firestore');
           await setDoc(adminDocRef, {
@@ -53,12 +53,20 @@ export const AdminLogin = () => {
           navigate('/admin/dashboard');
         } else {
           await signOut(auth);
-          setError('Access Denied: You are not authorized to access the admin panel.');
+          setError(`Access Denied: ${user.email} is not authorized to access the admin panel.`);
         }
       }
     } catch (err: any) {
       console.error('Login error:', err);
-      setError('An error occurred during login. Please try again.');
+      if (err?.code === 'auth/unauthorized-domain') {
+        setError('Firebase Error (auth/unauthorized-domain): This domain is not in your Firebase Console Authorized Domains list. Please add your live domain under Firebase Console > Authentication > Settings > Authorized domains.');
+      } else if (err?.code === 'auth/popup-closed-by-user') {
+        setError('Sign-in cancelled: The Google popup was closed.');
+      } else if (err?.code === 'permission-denied' || err?.message?.includes('permission-denied')) {
+        setError('Firestore permission denied: Your account is not recognized in the admin security rules.');
+      } else {
+        setError(err?.message || 'An error occurred during login. Please check the browser console.');
+      }
     } finally {
       setLoading(false);
     }
