@@ -6,7 +6,7 @@ import {
   ListOrdered
 } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { useLocation as useRouterLocation, Link } from 'react-router-dom';
+import { useLocation as useRouterLocation, Link, useNavigate } from 'react-router-dom';
 import L from 'leaflet';
 import { db } from '../lib/firebase';
 import { collection, query as firestoreQuery, onSnapshot, orderBy } from 'firebase/firestore';
@@ -58,6 +58,7 @@ const InternalMap = ({ centers }: { centers: any[] }) => {
 
 // Main Locations Page
 export const Locations = () => {
+  const navigate = useNavigate();
   const routerLocation = useRouterLocation();
   const initialQuery = (routerLocation.state as any)?.query || '';
   const [query, setQuery] = useState(initialQuery);

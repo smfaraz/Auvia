@@ -32,11 +32,12 @@ export const LocationDetail = () => {
         const querySnapshot = await getDocs(collection(db, 'locations'));
         const centers = querySnapshot.docs.map(doc => ({
           id: doc.id,
-          ...doc.data()
-        }));
+          ...(doc.data() as any)
+        })) as any[];
 
         // Find the center matching the slug (e.g. "irving-tx")
         const matched = centers.find(c => {
+          if (!c.city || !c.state) return false;
           const slug = `${c.city.toLowerCase()}-${c.state.toLowerCase()}`;
           return slug === locationSlug;
         });

@@ -118,6 +118,38 @@ const routes = [
     keywords: 'autism therapy Blaine, ABA therapy Blaine MN, autism center Blaine, pediatric therapist Blaine, early intervention autism',
     canonical: 'https://auviatherapy.com/locations/blaine-mn',
     image: 'https://auviatherapy.com/images/kids-hero.jpg'
+  },
+  {
+    path: 'terms',
+    title: 'Terms of Service | Auvia Behavior Centers',
+    description: 'Read the Terms of Service for Auvia Behavior Centers. Understand your rights, our policies on services, appointments, insurance billing, and HIPAA compliance.',
+    keywords: 'auvia terms of service, aba therapy terms, auvia behavior centers policies, autism therapy terms',
+    canonical: 'https://auviatherapy.com/terms',
+    image: 'https://auviatherapy.com/images/kids-hero.jpg'
+  },
+  {
+    path: 'accessibility',
+    title: 'Accessibility Statement | Auvia Behavior Centers',
+    description: 'Auvia Behavior Centers is committed to ensuring digital accessibility for people with disabilities. Learn about our WCAG 2.1 AA compliance and accessibility features.',
+    keywords: 'auvia accessibility, wcag compliance, aba therapy accessibility, accessible website autism',
+    canonical: 'https://auviatherapy.com/accessibility',
+    image: 'https://auviatherapy.com/images/kids-hero.jpg'
+  },
+  {
+    path: 'parent-guide',
+    title: 'New Family Guide — Your First 90 Days | Auvia',
+    description: 'Everything you need to know about starting ABA therapy at Auvia. A comprehensive guide for new families covering the first 90 days, what to expect, and how to prepare.',
+    keywords: 'aba therapy guide, new family aba, first day aba therapy, auvia family guide, autism therapy what to expect',
+    canonical: 'https://auviatherapy.com/parent-guide',
+    image: 'https://auviatherapy.com/images/kids-hero.jpg'
+  },
+  {
+    path: 'insurance',
+    title: 'Insurance Support & Verification | Auvia Behavior Centers',
+    description: 'Simplifying insurance for autism care. We offer complimentary insurance verification to ensure your child\'s ABA therapy journey starts with complete clarity.',
+    keywords: 'insurance verification, autism therapy insurance, aba clinic pricing, child autism coverage, in network aba therapy',
+    canonical: 'https://auviatherapy.com/insurance',
+    image: 'https://auviatherapy.com/images/kids-insurance.jpg'
   }
 ];
 
