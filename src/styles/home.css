@@ -270,9 +270,57 @@ main[data-route='/'] .home-cycling-word { display: block; position: relative; he
 .home-page .home-benefits .home-tile--feature > button:focus-visible { outline-color: #fff; }
 .home-page .home-benefits .home-tile > button:not([class~='bg-brand-teal']) { color: #0f574f; text-align: left; }
 .home-tile__photo { display: none; }
-@media (hover: hover) {
-  .home-benefits .home-tile:hover > div:first-child svg, .timeline-item:hover .timeline-node svg, .home-step:hover .home-bubble svg { animation: home-wiggle .6s ease-in-out; }
+
+/* Why families choose Auvia: Mobile horizontal sliding cards */
+@media (max-width: 767px) {
+  .home-benefits .home-bento {
+    display: flex !important;
+    gap: 16px;
+    margin-inline: -24px;
+    padding: 8px 24px 24px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 24px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .home-benefits .home-bento::-webkit-scrollbar {
+    display: none;
+  }
+  .home-page .home-benefits .home-bento .home-tile {
+    flex: 0 0 85%;
+    min-width: 85%;
+    max-width: 85%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 20px;
+    border-radius: 28px;
+    box-shadow: 0 6px 0 var(--ink);
+  }
+  .home-page .home-benefits .home-tile > p {
+    flex-grow: 1;
+    margin-bottom: 18px;
+  }
+  .home-page .home-benefits .home-tile > button {
+    margin-top: auto;
+  }
+  .home-page .home-benefits .home-tile--feature {
+    flex: 0 0 85%;
+    min-width: 85%;
+    max-width: 85%;
+  }
+  .home-page .home-benefits .home-tile--feature > button {
+    width: 100%;
+  }
+  .home-page .home-benefits .home-tile--banner {
+    flex: 0 0 85%;
+    min-width: 85%;
+    max-width: 85%;
+  }
 }
+
 @media (min-width: 768px) {
   .home-benefits .home-bento { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .home-benefits .home-tile--feature, .home-benefits .home-tile--banner { grid-column: 1 / -1; }

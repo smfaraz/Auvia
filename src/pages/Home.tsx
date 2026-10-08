@@ -441,6 +441,12 @@ export const Home = () => {
               <p className="text-brand-sage text-body-normal-normal-sm">Personalized ABA therapy designed to support meaningful progress for every child and family.</p>
             </motion.div>
           </motion.div>
+
+          {/* Mobile swipe indicator */}
+          <div className="flex md:hidden items-center justify-center gap-2 mt-4 text-xs font-bold text-brand-teal uppercase tracking-wider">
+            <span>Swipe cards</span>
+            <ArrowRight size={14} className="animate-pulse" />
+          </div>
         </div>
       </section>
 

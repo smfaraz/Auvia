@@ -14,18 +14,25 @@ export default async function handler(req, res) {
     .map((item) => ({ role: item.role, parts: [{ text: item.parts[0].text.slice(0, MAX_CHARS) }] }));
   if (!clean.length || clean[clean.length - 1].role !== 'user') return res.status(400).json({ error: 'Invalid request' });
 
-  try {
-    const upstream = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
-      body: JSON.stringify({ contents: clean, systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] } })
-    });
-    if (!upstream.ok) return res.status(502).json({ error: 'Chat is unavailable' });
-    const data = await upstream.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-    if (!text) return res.status(502).json({ error: 'Chat is unavailable' });
-    return res.status(200).json({ text });
-  } catch {
-    return res.status(502).json({ error: 'Chat is unavailable' });
+  const models = ['gemini-3.1-flash-lite', 'gemini-flash-latest'];
+  for (const model of models) {
+    try {
+      const upstream = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contents: clean, systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] } })
+      });
+      if (!upstream.ok) {
+        continue;
+      }
+      const data = await upstream.json();
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (text) {
+        return res.status(200).json({ text });
+      }
+    } catch {
+      // try next model
+    }
   }
+  return res.status(502).json({ error: 'Chat is unavailable' });
 }

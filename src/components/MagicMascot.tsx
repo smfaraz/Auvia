@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, useReducedMotion } from 'motion/react';
-import { Smile, X, Send, ArrowUpRight } from 'lucide-react';
+import { Smile, X, Send, ArrowUpRight, Sparkles } from 'lucide-react';
 import WelcomeCharacter from './WelcomeCharacter';
 import { REVIEW_MODE } from '../lib/review';
+import { burstConfetti } from '../lib/confetti';
+import { auvieAudio } from '../lib/auvie-audio';
 import '../styles/auvie.css';
 
 interface ChatMessage {
@@ -17,6 +19,8 @@ export const MagicMascot = () => {
   const previousFocus = useRef<HTMLElement | null>(null);
   const reduced = useReducedMotion();
   const [isOpen, setIsOpen] = useState(false);
+  const [mascotAction, setMascotAction] = useState<string | null>(null);
+
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!isOpen || !dialog) return;
@@ -85,6 +89,7 @@ export const MagicMascot = () => {
     setMessages(prev => [...prev, userMsg]);
     setMessage('');
     setIsTyping(true);
+    setMascotAction('yes'); // Auvie nods along as they read the message
 
     // 2. Respond (ask the server endpoint first, fall back to the rule router if it is unavailable)
     try {
@@ -118,6 +123,14 @@ export const MagicMascot = () => {
           };
           setMessages(prev => [...prev, botMsg]);
           setIsTyping(false);
+          const isCelebration = responseText.includes('/locations') || responseText.includes('/insurance') || responseText.includes('/careers') || responseText.toLowerCase().includes('welcome');
+          setMascotAction(isCelebration ? 'jump' : 'yes');
+          if (isCelebration) {
+            burstConfetti();
+            auvieAudio.playCheer();
+          } else {
+            auvieAudio.playPop();
+          }
           return;
         }
       }
@@ -135,8 +148,17 @@ export const MagicMascot = () => {
       };
       setMessages(prev => [...prev, botMsg]);
       setIsTyping(false);
+      const isCelebration = responseText.includes('/locations') || responseText.includes('/insurance') || responseText.includes('/careers');
+      setMascotAction(isCelebration ? 'jump' : 'yes');
+      if (isCelebration) {
+        burstConfetti();
+        auvieAudio.playCheer();
+      } else {
+        auvieAudio.playPop();
+      }
     }, 750);
   };
+
 
   // Parses route links like /locations in answers and displays them as beautiful internal Link tags
   const formatMessageText = (text: string) => {
@@ -165,7 +187,15 @@ export const MagicMascot = () => {
 
   return (
     <>
-      <WelcomeCharacter chatOpen={isOpen} onChat={() => setIsOpen(true)} />
+      <WelcomeCharacter
+        chatOpen={isOpen}
+        onChat={() => {
+          setIsOpen(true);
+          setMascotAction('wave');
+        }}
+        chatAction={mascotAction}
+        onActionDone={() => setMascotAction(null)}
+      />
 
       {/* Chat Window */}
       <AnimatePresence>

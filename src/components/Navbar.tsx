@@ -72,7 +72,6 @@ export const Navbar = () => {
   }, [location.pathname]);
 
   const navItems = [
-    { name: 'Home', href: '/' },
     {
       name: 'Services', href: '/services',
       type: 'dropdown',
@@ -133,15 +132,39 @@ export const Navbar = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="auvia-desktop-nav hidden xl:flex items-center gap-4 xl:gap-5">
+          <div className="auvia-desktop-nav hidden xl:flex items-center gap-1.5">
             {navItems.map((item) => (
               item.type === 'dropdown' ? (
-                <div key={item.name} className="auvia-nav-group relative group" onMouseEnter={() => { if (openDesktopDropdown !== item.name) { hoverOpenedDropdown.current = item.name; setOpenDesktopDropdown(item.name); } }} onMouseLeave={(event) => { hoverOpenedDropdown.current = null; if (!event.currentTarget.contains(document.activeElement)) setOpenDesktopDropdown(null); }} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node)) { hoverOpenedDropdown.current = null; setOpenDesktopDropdown(null); } }}>
-                  <div className="flex items-center gap-1">
-                    <Link to={item.href!} data-active={location.pathname === item.href || item.items?.some(subItem => subItem.href === location.pathname) || undefined} aria-current={location.pathname === item.href ? 'page' : undefined} className="auvia-nav-link text-sm font-kids font-bold text-brand-ink hover:text-brand-teal py-2">{item.name}</Link>
-                    <button ref={(node) => { dropdownTriggerRefs.current[item.name] = node; }} type="button" aria-label={`${openDesktopDropdown === item.name ? 'Hide' : 'Show'} ${item.name} submenu`} aria-controls={`desktop-${item.href.slice(1)}`} aria-expanded={openDesktopDropdown === item.name} onClick={() => toggleDesktopDropdown(item.name)} onKeyDown={(event) => { if (event.key === 'ArrowDown') { event.preventDefault(); hoverOpenedDropdown.current = null; setOpenDesktopDropdown(item.name); requestAnimationFrame(() => document.getElementById(`desktop-${item.href.slice(1)}`)?.querySelector<HTMLAnchorElement>('a')?.focus()); } }} className="auvia-submenu-toggle p-1 text-brand-teal"><ChevronDown size={14} /></button>
+                <div
+                  key={item.name}
+                  className="auvia-nav-group relative group"
+                  onMouseEnter={() => { if (openDesktopDropdown !== item.name) { hoverOpenedDropdown.current = item.name; setOpenDesktopDropdown(item.name); } }}
+                  onMouseLeave={(event) => { hoverOpenedDropdown.current = null; if (!event.currentTarget.contains(document.activeElement)) setOpenDesktopDropdown(null); }}
+                  onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node)) { hoverOpenedDropdown.current = null; setOpenDesktopDropdown(null); } }}
+                >
+                  <div className="flex items-center gap-1 px-3 py-2 rounded-xl transition-colors hover:bg-brand-mint/25 cursor-pointer">
+                    <Link
+                      to={item.href!}
+                      data-active={location.pathname === item.href || item.items?.some(subItem => subItem.href === location.pathname) || undefined}
+                      aria-current={location.pathname === item.href ? 'page' : undefined}
+                      className={`auvia-nav-link text-sm font-kids font-bold transition-colors ${location.pathname === item.href ? 'text-brand-teal font-extrabold' : 'text-brand-ink hover:text-brand-teal'}`}
+                    >
+                      {item.name}
+                    </Link>
+                    <button
+                      ref={(node) => { dropdownTriggerRefs.current[item.name] = node; }}
+                      type="button"
+                      aria-label={`${openDesktopDropdown === item.name ? 'Hide' : 'Show'} ${item.name} submenu`}
+                      aria-controls={`desktop-${item.href.slice(1)}`}
+                      aria-expanded={openDesktopDropdown === item.name}
+                      onClick={() => toggleDesktopDropdown(item.name)}
+                      onKeyDown={(event) => { if (event.key === 'ArrowDown') { event.preventDefault(); hoverOpenedDropdown.current = null; setOpenDesktopDropdown(item.name); requestAnimationFrame(() => document.getElementById(`desktop-${item.href.slice(1)}`)?.querySelector<HTMLAnchorElement>('a')?.focus()); } }}
+                      className="auvia-submenu-toggle p-0 text-brand-teal flex items-center justify-center"
+                    >
+                      <ChevronDown size={14} />
+                    </button>
                   </div>
-                  <div id={`desktop-${item.href.slice(1)}`} hidden={openDesktopDropdown !== item.name} className="auvia-desktop-submenu absolute top-full left-1/2 -translate-x-1/2 pt-3 w-64">
+                  <div id={`desktop-${item.href.slice(1)}`} hidden={openDesktopDropdown !== item.name} className="auvia-desktop-submenu absolute top-full left-1/2 -translate-x-1/2 pt-2 w-64">
                     <div className="bg-white rounded-2xl shadow-xl border border-brand-teal/10 p-2 flex flex-col">
                       {item.items?.map(subItem => (
                         <Link
@@ -161,14 +184,14 @@ export const Navbar = () => {
                   key={item.name}
                   to={item.href!}
                   aria-current={location.pathname === item.href ? 'page' : undefined}
-                  className={`auvia-nav-link text-sm font-kids font-bold transition-all duration-300 hover:text-brand-teal ${location.pathname === item.href ? 'text-brand-teal font-extrabold' : 'text-brand-ink'}`}
+                  className={`auvia-nav-link text-sm font-kids font-bold px-3 py-2 rounded-xl transition-all duration-200 hover:bg-brand-mint/25 hover:text-brand-teal ${location.pathname === item.href ? 'text-brand-teal font-extrabold' : 'text-brand-ink'}`}
                 >
                   {item.name}
                 </Link>
               )
             ))}
 
-            <Link to="/contact" className="auvia-find-care bg-brand-ink text-white py-3 px-5 rounded-2xl font-kids font-semibold text-sm hover:bg-slate-700 transition-colors shadow-md ml-1">
+            <Link to="/contact" className="auvia-find-care bg-brand-ink text-white py-2.5 px-5 rounded-2xl font-kids font-semibold text-sm hover:bg-slate-700 transition-colors shadow-md ml-3">
               Find care <ArrowUpRight size={16} aria-hidden="true" />
             </Link>
           </div>
@@ -202,20 +225,20 @@ export const Navbar = () => {
               transition={reduceMotion ? { duration: 0 } : { type: 'spring', damping: 25, stiffness: 200 }}
               className="auvia-mobile-panel fixed top-0 right-0 bottom-0 w-[90%] max-w-sm bg-white shadow-2xl p-6 xl:hidden flex flex-col overflow-y-auto"
             >
-              <div className="flex justify-between items-center mb-10 mt-4">
+              <div className="flex justify-between items-center mb-6 mt-4">
                 <div><span className="text-2xl font-kids font-bold text-brand-ink">Explore Auvia</span><p className="auvia-menu-caption">Care for your family's next step.</p></div>
                 <button onClick={() => setIsMobileMenuOpen(false)} className="text-brand-ink p-2 bg-brand-cream rounded-full" aria-label="Close menu">
                   <X size={24} />
                 </button>
               </div>
 
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col">
                 {navItems.map((item) => (
                   item.type === 'dropdown' ? (
-                    <div key={item.name} className="flex flex-col">
-                      <div className="flex items-center justify-between border-b border-gray-50">
-                        <Link to={item.href!} data-active={location.pathname === item.href || item.items?.some(subItem => subItem.href === location.pathname) || undefined} aria-current={location.pathname === item.href ? 'page' : undefined} onClick={() => setIsMobileMenuOpen(false)} className="auvia-mobile-link py-2 text-xl font-kids font-semibold text-brand-ink">{item.name}</Link>
-                        <button type="button" onClick={() => toggleMobileDropdown(item.name)} aria-controls={`mobile-${item.href.slice(1)}`} aria-label={`${openMobileDropdown === item.name ? 'Hide' : 'Show'} ${item.name} submenu`} aria-expanded={openMobileDropdown === item.name} className="auvia-submenu-toggle p-3 text-brand-teal"><ChevronDown size={18} /></button>
+                    <div key={item.name} className="flex flex-col border-b border-gray-100">
+                      <div className="flex items-center justify-between min-h-[52px]">
+                        <Link to={item.href!} data-active={location.pathname === item.href || item.items?.some(subItem => subItem.href === location.pathname) || undefined} aria-current={location.pathname === item.href ? 'page' : undefined} onClick={() => setIsMobileMenuOpen(false)} className="auvia-mobile-link text-lg font-kids font-semibold text-brand-ink flex-1 py-3 px-2">{item.name}</Link>
+                        <button type="button" onClick={() => toggleMobileDropdown(item.name)} aria-controls={`mobile-${item.href.slice(1)}`} aria-label={`${openMobileDropdown === item.name ? 'Hide' : 'Show'} ${item.name} submenu`} aria-expanded={openMobileDropdown === item.name} className="auvia-submenu-toggle p-2 text-brand-teal"><ChevronDown size={18} /></button>
                       </div>
                       <AnimatePresence initial={false}>
                         {openMobileDropdown === item.name && (
@@ -225,14 +248,14 @@ export const Navbar = () => {
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: reduceMotion ? 0 : 0.2, ease: "easeInOut" }}
-                            className="overflow-hidden flex flex-col gap-3 mt-2 mb-2 pl-4 border-l-2 border-brand-mint"
+                            className="overflow-hidden flex flex-col gap-2 pb-3 pl-4 border-l-2 border-brand-mint"
                           >
                             {item.items?.map(sub => (
                               <Link
                                 key={sub.name}
                                 to={sub.href}
                                 aria-current={location.pathname === sub.href ? 'page' : undefined}
-                                className="py-2 text-lg font-bold text-brand-sage hover:text-brand-teal active:text-brand-teal transition-colors"
+                                className="py-2 px-2 text-base font-bold text-brand-sage hover:text-brand-teal active:text-brand-teal transition-colors"
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
                                 {sub.name}
@@ -243,15 +266,18 @@ export const Navbar = () => {
                       </AnimatePresence>
                     </div>
                   ) : (
-                    <Link
-                      key={item.name}
-                      to={item.href!}
-                      aria-current={location.pathname === item.href ? 'page' : undefined}
-                      className={`py-2 text-xl font-kids font-semibold transition-colors border-b border-gray-50 ${location.pathname === item.href ? 'text-brand-teal' : 'text-brand-ink'}`}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
+                    <div key={item.name} className="flex flex-col border-b border-gray-100">
+                      <div className="flex items-center justify-between min-h-[52px]">
+                        <Link
+                          to={item.href!}
+                          aria-current={location.pathname === item.href ? 'page' : undefined}
+                          className={`auvia-mobile-link text-lg font-kids font-semibold transition-colors flex-1 py-3 px-2 ${location.pathname === item.href ? 'text-brand-teal' : 'text-brand-ink'}`}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                      </div>
+                    </div>
                   )
                 ))}
               </div>

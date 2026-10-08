@@ -65,3 +65,174 @@ button.auvia-character__care { width: 100%; background: none; border: 0; cursor:
   .auvia-character__options a { font-size: 13px; padding: 6px 12px; }
   .auvia-character__hello--prompt .auvia-character__care { min-height: 32px; margin-top: 4px; }
 }
+
+/* Intro Blur Backdrop */
+.auvia-character__intro-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 105;
+  background: rgba(18, 38, 32, 0.42);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: auvieBackdropFade .45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  cursor: pointer;
+  touch-action: none;
+}
+
+@keyframes auvieBackdropFade {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+.auvia-character__intro-skip {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(45, 106, 93, 0.12);
+  color: var(--color-brand-teal);
+  border: 1px solid rgba(45, 106, 93, 0.25);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color .15s, transform .15s, color .15s;
+}
+.auvia-character__intro-skip:hover {
+  background: var(--color-brand-teal);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Interactive Floating Celebration Toast */
+.auvia-character__toast {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  right: 0;
+  z-index: 10;
+  width: min(250px, calc(100vw - 32px));
+  padding: 12px 32px 12px 16px;
+  background: #ffffff;
+  border: 2px solid var(--color-brand-ink);
+  border-radius: 20px 20px 4px 20px;
+  box-shadow: 0 6px 0 var(--color-brand-ink);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-brand-ink);
+  line-height: 1.4;
+  animation: auvie-pop .35s cubic-bezier(.34,1.56,.64,1) both;
+  cursor: pointer;
+}
+.auvia-character__toast-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: none;
+  background: #f1f5f3;
+  color: #4a5568;
+  cursor: pointer;
+}
+.auvia-character__toast-close:hover {
+  background: #ffc93c;
+  color: var(--color-brand-ink);
+}
+
+/* Playful Action Buttons */
+.auvia-character__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+.auvia-character__play-btn {
+  width: 38px !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  background: #fff9ea !important;
+  color: #d97706 !important;
+  border: 2px solid var(--color-brand-ink) !important;
+  box-shadow: 0 3px 0 var(--color-brand-ink) !important;
+  cursor: pointer;
+}
+.auvia-character__play-btn:hover {
+  transform: translateY(-2px);
+  background: #ffc93c !important;
+}
+
+/* Interactive Floating Emote Dock */
+.auvia-character__emote-dock {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  background: #ffffff;
+  border: 2px solid var(--color-brand-ink);
+  border-radius: 999px;
+  box-shadow: 0 6px 0 var(--color-brand-ink);
+  animation: auvie-pop .3s cubic-bezier(.34,1.56,.64,1) both;
+  z-index: 15;
+}
+.auvia-character__emote-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-brand-ink);
+  background: #f8faf9;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform .15s, background-color .15s;
+}
+.auvia-character__emote-btn:hover {
+  transform: scale(1.18);
+  background: #e6f4ea;
+}
+.auvia-character__emote-btn--coral { background: #ffe4de; color: #dc2626; }
+.auvia-character__emote-btn--coral:hover { background: #ff7a59; color: #fff; }
+.auvia-character__emote-btn--yellow { background: #fef3c7; }
+.auvia-character__emote-btn--yellow:hover { background: #ffc93c; }
+.auvia-character__emote-btn--teal { background: #cbf3e4; }
+.auvia-character__emote-btn--teal:hover { background: #2d6a5d; color: #fff; }
+.auvia-character__emote-btn--active { background: #2d6a5d; color: #fff; }
+
+.auvia-character__emote-quick {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 14px;
+  border-radius: 14px;
+  border: 1.5px solid var(--color-brand-ink);
+  background: #ffe4de;
+  color: var(--color-brand-ink);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: transform .15s, background-color .15s;
+}
+.auvia-character__emote-quick:hover {
+  background: #ff7a59;
+  color: #fff;
+  transform: translateY(-1px);
+}

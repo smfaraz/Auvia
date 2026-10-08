@@ -9,21 +9,30 @@
 .auvia-scroll-top:focus-visible { outline: 3px solid #398780; outline-offset: 4px; }
 .auvia-logo { border-radius: 12px; flex-shrink: 0; }
 .auvia-nav-link { position: relative; border-radius: 8px; white-space: nowrap; }
-.auvia-desktop-nav { gap: 10px; }
-.auvia-desktop-nav .auvia-nav-link { font-size: 13px; }
-.auvia-desktop-nav .auvia-find-care { padding-left: 14px; padding-right: 14px; font-size: 13px; }
+.auvia-desktop-nav { gap: 8px; }
+.auvia-desktop-nav .auvia-nav-link { font-size: 14px; }
+.auvia-desktop-nav .auvia-find-care { padding-left: 18px; padding-right: 18px; font-size: 13.5px; }
 .auvia-nav-link[aria-current="page"], .auvia-nav-link[data-active="true"] { color: #16665b; }
 .auvia-nav-link[aria-current="page"]::after, .auvia-nav-link[data-active="true"]::after {
-  content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+  content: ''; position: absolute; bottom: 2px; left: 12px; right: 12px;
   height: 2px; background: #81b9a8; border-radius: 4px;
 }
 .auvia-submenu-toggle {
   display: inline-flex; align-items: center; justify-content: center;
-  min-width: 36px; min-height: 40px; border-radius: 12px;
+  border-radius: 8px;
   transition: background-color .18s ease;
 }
-.auvia-submenu-toggle:hover,
-.auvia-submenu-toggle[aria-expanded="true"] { background: #e7f2ec; }
+.auvia-desktop-nav .auvia-submenu-toggle {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+  border-radius: 6px;
+  background: transparent;
+}
+.auvia-desktop-nav .auvia-nav-group:hover .auvia-submenu-toggle svg {
+  transform: rotate(180deg);
+}
 .auvia-submenu-toggle svg { transition: transform .2s ease; }
 .auvia-submenu-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
 .auvia-desktop-submenu[hidden] { display: none !important; }
@@ -40,17 +49,16 @@
 .auvia-find-care:hover svg { transform: translate(2px, -2px); }
 .auvia-menu-toggle { width: 44px; height: 44px; border-radius: 12px; background: #eaf4ee; }
 .auvia-mobile-panel { border-radius: 24px 0 0 24px; padding-bottom: max(24px, env(safe-area-inset-bottom)); overscroll-behavior: contain; }
-.auvia-mobile-panel > div:first-child { margin-top: 8px; margin-bottom: 24px; }
+.auvia-mobile-panel > div:first-child { margin-top: 8px; margin-bottom: 20px; }
 .auvia-menu-caption { margin-top: 5px; color: #61776f; font-size: 12px; }
 .auvia-mobile-panel :is(a, button) { min-height: 44px; }
 .auvia-mobile-panel a { font-family: var(--font-sans); font-size: 17px; line-height: 1.45; font-weight: 600; }
 .auvia-mobile-panel a:hover { background-color: #eff6f2; }
-.auvia-mobile-panel > div:nth-child(2) > a { padding: 10px 8px; }
 .auvia-desktop-submenu a { line-height: 1.5; }
-.auvia-mobile-panel .auvia-submenu-toggle { min-width: 44px; }
-.auvia-mobile-link { flex: 1; padding: 10px 8px; border-radius: 12px; }
-.auvia-mobile-panel > div:nth-child(2) { gap: 8px; }
-.auvia-mobile-panel > div:nth-child(2) > a { padding-left: 8px; border-radius: 12px; }
+.auvia-mobile-panel .auvia-submenu-toggle { min-width: 44px; min-height: 44px; border-radius: 12px; }
+.auvia-mobile-panel .auvia-submenu-toggle:hover,
+.auvia-mobile-panel .auvia-submenu-toggle[aria-expanded="true"] { background: #e7f2ec; }
+.auvia-mobile-link { flex: 1; border-radius: 12px; }
 .auvia-menu-note { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 16px; color: #61776f; font-size: 12px; }
 .auvia-menu-note svg { color: #b8846c; flex-shrink: 0; }
 .auvia-scroll-top { min-width: 44px; min-height: 44px; box-shadow: 0 6px 20px rgba(33, 67, 62, .16); }
