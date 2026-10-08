@@ -1,0 +1,53 @@
+/* Scoped refinement for the public information pages. */
+.inner-public-page { --page-panel-radius: 28px; }
+.inner-public-page .blob-bg { opacity: .22; pointer-events: none; }
+.inner-public-page section[class~='min-h-screen'] { min-height: 0; }
+.inner-public-page :where(.grid, .flex) > * { min-width: 0; }
+.inner-public-page :where(p, li) { overflow-wrap: break-word; }
+.inner-public-page p.text-body-main { font-size: clamp(1rem, 1.15vw, 1.125rem); line-height: 1.75; }
+.inner-public-page h2.text-section { font-size: clamp(1.5rem, 2.3vw, 2.125rem); line-height: 1.3; }
+.inner-public-page :where(button, select, input, textarea, .btn-friendly-primary, .btn-friendly-outline) { font-family: var(--font-sans); }
+.inner-public-page :where([class~='rounded-[40px]'], [class~='rounded-[48px]'], [class~='rounded-[64px]']) { border-radius: var(--page-panel-radius); }
+.inner-public-page [class~='group-hover:scale-110'] { transform: none; }
+.inner-public-page :where(p, li) > a:not([class*='btn-friendly']) { text-decoration: underline; text-underline-offset: 4px; }
+.inner-public-page .route-title-block { margin-bottom: 48px; }
+.inner-public-page h2 { letter-spacing: -.025em; }
+.inner-public-page h3, .inner-public-page h4 { letter-spacing: -.015em; }
+.inner-public-page [class~='bg-brand-ink'] :where(h1, h2, h3) .text-brand-teal { color: var(--color-brand-mint); }
+.inner-public-page :where(.card-friendly, .glass-panel) { border-radius: 24px; box-shadow: 0 8px 30px #193e3210; }
+.inner-public-page :where(.card-friendly, .glass-panel) h3 { margin-bottom: 16px; }
+.inner-public-page :where(button, a):focus-visible { outline-offset: 5px; }
+.inner-public-page :where(button, a.btn-friendly-primary, a.btn-friendly-outline) { min-height: 44px; }
+.inner-public-page button:disabled { cursor: not-allowed; transform: none; }
+.inner-public-page button[aria-expanded] { min-height: 64px; gap: 16px; line-height: 1.4; }
+.inner-public-page button[aria-expanded]:hover { background: #eff7f480; }
+.inner-public-page button[aria-expanded='true'] { color: var(--color-brand-teal); }
+.inner-public-page :where(input, select, textarea) { min-height: 48px; }
+.inner-public-page input[type='checkbox'] { min-height: auto; accent-color: var(--color-brand-teal); }
+.inner-public-page :where(input, select, textarea)[aria-invalid='true'] { border-color: #b42318; }
+.inner-public-page form label { display: inline-block; font-family: var(--font-sans); letter-spacing: .05em; }
+.inner-public-page form [role='alert'] { font-size: 12px; line-height: 1.5; letter-spacing: 0; text-transform: none; color: #b42318; }
+.inner-public-page :where(.w-12, .w-14, .w-16):has(> svg.lucide) { background-color: #e9f3ef; color: var(--color-brand-teal); box-shadow: none; }
+.inner-public-page :where(.w-12, .w-14, .w-16) > svg.lucide { color: inherit; }
+.inner-public-page [class~='text-white'] :where(.w-12, .w-14, .w-16):has(> svg.lucide) { background-color: #ffffff15; color: #c9e5dc; }
+.inner-public-page a[href^='mailto:'] { overflow-wrap: anywhere; }
+@media (max-width: 640px) {
+  .inner-public-page { --page-panel-radius: 22px; }
+  .inner-public-page .route-title-block { text-align: left; }
+  .inner-public-page .route-title-block > p { margin-left: 0; margin-right: 0; }
+  .inner-public-page .route-title-block > span { font-size: 11px; line-height: 1.6; letter-spacing: .12em; }
+  .inner-public-page .route-title-block { margin-bottom: 32px; }
+  .inner-public-page button[aria-expanded] { padding: 20px; font-size: 1.05rem; }
+  .inner-public-page button[aria-expanded] :where(h3, p) { overflow-wrap: anywhere; }
+  .inner-public-page [role='region'] :where([class~='px-10'], [class~='px-8']) { padding: 20px; }
+  .inner-public-page [id^='guide-details-'] { padding: 0 20px 20px; }
+  .inner-public-page [class~='border-[8px]'] { border-width: 5px; }
+}
+@media print {
+  .inner-public-page [id^='guide-details-'][hidden] { display: block; }
+  .inner-public-page button[aria-expanded] { background: transparent; }
+  .inner-public-page :where(.card-friendly, .glass-panel) { box-shadow: none; break-inside: avoid; }
+}
+@media (max-width: 400px) {
+  main[data-route='/insurance'] .grid[class~='grid-cols-2'] { grid-template-columns: minmax(0, 1fr); }
+}

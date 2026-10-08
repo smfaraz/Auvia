@@ -1,5 +1,6 @@
+import '../styles/pages.css';
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Eye, Monitor, Volume2, MousePointer, Keyboard, Phone, Mail, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
@@ -7,7 +8,7 @@ import { SEO } from '../components/SEO';
 export const Accessibility = () => {
   const features = [
     {
-      icon: <Eye className="text-brand-teal" size={28} />,
+      icon: <Eye strokeWidth={1.75} aria-hidden="true" className="text-brand-teal" size={28} />,
       title: "Visual Accessibility",
       items: [
         "Color contrast ratio of at least 4.5:1 for all text",
@@ -18,7 +19,7 @@ export const Accessibility = () => {
       ]
     },
     {
-      icon: <Keyboard className="text-brand-teal" size={28} />,
+      icon: <Keyboard strokeWidth={1.75} aria-hidden="true" className="text-brand-teal" size={28} />,
       title: "Keyboard Navigation",
       items: [
         "All functionality accessible via keyboard alone",
@@ -29,7 +30,7 @@ export const Accessibility = () => {
       ]
     },
     {
-      icon: <Volume2 className="text-brand-teal" size={28} />,
+      icon: <Volume2 strokeWidth={1.75} aria-hidden="true" className="text-brand-teal" size={28} />,
       title: "Screen Reader Support",
       items: [
         "Semantic HTML structure throughout",
@@ -40,7 +41,7 @@ export const Accessibility = () => {
       ]
     },
     {
-      icon: <Monitor className="text-brand-teal" size={28} />,
+      icon: <Monitor strokeWidth={1.75} aria-hidden="true" className="text-brand-teal" size={28} />,
       title: "Responsive Design",
       items: [
         "Fully responsive across mobile, tablet, and desktop",
@@ -64,7 +65,7 @@ export const Accessibility = () => {
   ];
 
   return (
-    <div className="pt-20 lg:pt-24 pb-20 lg:pb-32 bg-[#FCFAF7] min-h-screen overflow-x-hidden">
+    <div className="legal-page inner-public-page public-page pt-20 lg:pt-24 pb-20 lg:pb-32 bg-[#FCFAF7] min-h-screen overflow-x-hidden">
       <SEO
         title="Accessibility Statement | Auvia Behavior Centers"
         description="Auvia Behavior Centers is committed to ensuring digital accessibility for people with disabilities. Learn about our WCAG 2.1 AA compliance and accessibility features."
@@ -81,10 +82,10 @@ export const Accessibility = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-16"
+          className="route-title-block mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-teal/10 text-brand-teal text-xs font-bold uppercase tracking-widest mb-6">
-            <Eye size={14} />
+          <div className="legal-eyebrow inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-teal/10 text-brand-teal text-xs font-bold uppercase tracking-widest mb-6">
+            <Eye strokeWidth={1.75} aria-hidden="true" size={14} />
             Accessibility
           </div>
           <h1 className="text-display font-kids font-bold text-brand-ink mb-6 leading-tight">
@@ -93,18 +94,31 @@ export const Accessibility = () => {
           <p className="text-lg text-brand-sage font-medium leading-relaxed max-w-2xl">
             Auvia Behavior Centers is committed to ensuring that our website is accessible to everyone, including people with disabilities. We strive to meet WCAG 2.1 Level AA standards.
           </p>
-          <div className="mt-6 inline-flex items-center gap-3 bg-brand-mint/20 px-5 py-3 rounded-2xl">
-            <CheckCircle size={16} className="text-brand-teal" />
+          <div className="legal-badge mt-6 inline-flex items-center gap-3 bg-brand-mint/20 px-5 py-3 rounded-2xl">
+            <CheckCircle strokeWidth={1.75} aria-hidden="true" size={16} className="text-brand-teal" />
             <span className="text-sm font-bold text-brand-teal">WCAG 2.1 Level AA · Section 508 · ADA Compliant</span>
           </div>
         </motion.div>
 
+        <nav aria-label="On this page" className="legal-toc">
+          <ul>
+            <li><a href="#our-commitment">Our Commitment</a></li>
+            {features.map((feature, index) => (
+              <li key={index}><a href={`#accessibility-feature-${index + 1}`}>{feature.title}</a></li>
+            ))}
+            <li><a href="#supported-assistive-technologies">Supported Assistive Technologies</a></li>
+            <li><a href="#known-limitations">Known Limitations & Ongoing Work</a></li>
+            <li><a href="#accessibility-feedback">Accessibility Feedback</a></li>
+          </ul>
+        </nav>
+
         {/* Our Commitment */}
         <motion.div
+          id="our-commitment"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-white rounded-[32px] p-8 border border-brand-teal/5 shadow-sm mb-8"
+          className="legal-card bg-white rounded-[32px] p-8 border border-brand-teal/5 shadow-sm mb-8"
         >
           <h2 className="text-2xl font-kids font-bold text-brand-ink mb-4">Our Commitment</h2>
           <p className="text-brand-sage font-medium leading-relaxed">
@@ -117,20 +131,21 @@ export const Accessibility = () => {
           {features.map((feature, index) => (
             <motion.div
               key={index}
+              id={`accessibility-feature-${index + 1}`}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-[32px] p-8 border border-brand-teal/5 shadow-sm"
+              className="legal-card bg-white rounded-[32px] p-8 border border-brand-teal/5 shadow-sm"
             >
-              <div className="w-14 h-14 bg-brand-mint/20 rounded-2xl flex items-center justify-center mb-5">
+              <div className="legal-feature-icon w-14 h-14 bg-brand-mint/20 rounded-2xl flex items-center justify-center mb-5">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-kids font-bold text-brand-ink mb-4">{feature.title}</h3>
               <ul className="space-y-2">
                 {feature.items.map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-brand-sage font-medium text-sm">
-                    <CheckCircle size={14} className="text-brand-teal mt-0.5 shrink-0" />
+                    <CheckCircle strokeWidth={1.75} aria-hidden="true" size={14} className="text-brand-teal mt-0.5 shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -141,19 +156,20 @@ export const Accessibility = () => {
 
         {/* Assistive Tech */}
         <motion.div
+          id="supported-assistive-technologies"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-white rounded-[32px] p-8 border border-brand-teal/5 shadow-sm mb-8"
+          className="legal-card bg-white rounded-[32px] p-8 border border-brand-teal/5 shadow-sm mb-8"
         >
           <div className="flex items-center gap-3 mb-5">
-            <MousePointer size={22} className="text-brand-teal" />
+            <MousePointer strokeWidth={1.75} aria-hidden="true" size={22} className="text-brand-teal" />
             <h2 className="text-2xl font-kids font-bold text-brand-ink">Supported Assistive Technologies</h2>
           </div>
           <p className="text-brand-sage font-medium mb-6">Our website has been tested with the following assistive technologies:</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {assistiveTech.map((tech, i) => (
-              <div key={i} className="bg-brand-mint/10 rounded-2xl px-4 py-3 text-sm font-bold text-brand-teal text-center">
+              <div key={i} className="legal-tech bg-brand-mint/10 rounded-2xl px-4 py-3 text-sm font-bold text-brand-teal text-center">
                 {tech}
               </div>
             ))}
@@ -162,10 +178,11 @@ export const Accessibility = () => {
 
         {/* Known Limitations */}
         <motion.div
+          id="known-limitations"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-white rounded-[32px] p-8 border border-brand-teal/5 shadow-sm mb-8"
+          className="legal-card bg-white rounded-[32px] p-8 border border-brand-teal/5 shadow-sm mb-8"
         >
           <h2 className="text-2xl font-kids font-bold text-brand-ink mb-4">Known Limitations & Ongoing Work</h2>
           <p className="text-brand-sage font-medium leading-relaxed mb-4">
@@ -187,10 +204,11 @@ export const Accessibility = () => {
 
         {/* Feedback CTA */}
         <motion.div
+          id="accessibility-feedback"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-brand-ink rounded-[40px] p-10 text-white"
+          className="legal-cta bg-brand-ink rounded-[32px] p-10 text-white"
         >
           <h3 className="text-2xl font-kids font-bold mb-4">Accessibility Feedback</h3>
           <p className="text-white/70 mb-6 leading-relaxed">
@@ -198,17 +216,17 @@ export const Accessibility = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href="tel:9457581087" className="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-5 py-3 rounded-2xl transition-all font-bold text-sm">
-              <Phone size={16} className="text-brand-teal" /> (945) 758-1087
+              <Phone strokeWidth={1.75} aria-hidden="true" size={16} className="text-brand-teal" /> (945) 758-1087
             </a>
             <a href="mailto:admin@auviatherapy.com" className="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-5 py-3 rounded-2xl transition-all font-bold text-sm">
-              <Mail size={16} className="text-brand-teal" /> admin@auviatherapy.com
+              <Mail strokeWidth={1.75} aria-hidden="true" size={16} className="text-brand-teal" /> admin@auviatherapy.com
             </a>
           </div>
           <p className="text-white/40 text-xs mt-6">This statement was last reviewed and updated on January 1, 2026.</p>
         </motion.div>
 
         {/* Footer nav */}
-        <div className="mt-12 pt-8 border-t border-brand-teal/10 flex flex-wrap gap-4 text-sm font-bold text-brand-sage">
+        <div className="legal-footnav mt-12 pt-8 border-t border-brand-teal/10 flex flex-wrap gap-4 text-sm font-bold text-brand-sage">
           <Link to="/privacy" className="hover:text-brand-teal transition-colors">Privacy Policy</Link>
           <span className="text-brand-teal/30">·</span>
           <Link to="/terms" className="hover:text-brand-teal transition-colors">Terms of Service</Link>

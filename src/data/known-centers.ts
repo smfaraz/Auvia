@@ -1,0 +1,2 @@
+// Existing repository contact information; used when the managed directory is unavailable.
+export const knownCenters = [{ id: 'irving-contact', name: 'Auvia Behavior Centers - Irving', city: 'Irving', state: 'TX', zip: '75063', address: '3100 Premier Dr, Suite 236', phone: '(945) 758-1087', type: 'Center based care', insurance: 'Contact the team to confirm your plan', image: '/images/about-kids.webp' }];

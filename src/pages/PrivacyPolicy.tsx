@@ -1,3 +1,4 @@
+import '../styles/pages.css';
 import React from 'react';
 import { motion } from 'motion/react';
 import { Shield, Lock, Eye, FileText, ChevronRight, MessageSquare, Globe, Clock, Cookie, Bell, Users } from 'lucide-react';
@@ -8,9 +9,23 @@ export const PrivacyPolicy = () => {
   const contactPhone = "(945) 758-1087";
   const contactEmail = "admin@auviatherapy.com";
   const contactAddress = "3100 Premier Dr, Suite 236, Irving, TX 75063";
+  // In-page jump links: ids and labels mirror the section headings below.
+  const jumpLinks = [
+    ['introduction', 'Introduction'],
+    ['information-collection', 'Information Collection'],
+    ['how-we-use-your-information', 'How We Use Your Information'],
+    ['sms-disclosure', 'SMS Disclosure'],
+    ['disclosure-of-your-information', 'Disclosure of Your Information'],
+    ['international-data-transfers', 'International Data Transfers'],
+    ['data-retention', 'Data Retention'],
+    ['cookies-and-tracking-technologies', 'Cookies and Tracking Technologies'],
+    ['your-choices', 'Your Choices'],
+    ['hipaa-notice-of-privacy-practices', 'HIPAA Notice of Privacy Practices'],
+    ['policy-changes', 'Policy Changes']
+  ];
 
   return (
-    <div className="pt-20 lg:pt-24 pb-20 lg:pb-28 relative overflow-x-hidden min-h-screen">
+    <div className="legal-page legal-privacy inner-public-page public-page pt-20 lg:pt-24 pb-20 lg:pb-28 relative overflow-x-hidden min-h-screen">
       {/* Background Ornaments */}
       <div className="blob-bg w-[500px] h-[500px] bg-brand-mint/20 top-[-10%] right-[-10%]" />
       <div className="blob-bg w-[400px] h-[400px] bg-brand-peach/20 bottom-[10%] left-[-10%]" />
@@ -19,10 +34,10 @@ export const PrivacyPolicy = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="route-title-block text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-mint/30 text-brand-teal text-xs font-bold uppercase tracking-widest mb-6">
-            <Shield size={14} />
+          <div className="legal-eyebrow inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-mint/30 text-brand-teal text-xs font-bold uppercase tracking-widest mb-6">
+            <Shield strokeWidth={1.75} aria-hidden="true" size={14} />
             Your Privacy Matters
           </div>
           <h1 className="text-section font-kids font-bold text-brand-ink mb-6">Privacy Policy</h1>
@@ -31,16 +46,24 @@ export const PrivacyPolicy = () => {
           </p>
         </motion.div>
 
+        <nav aria-label="On this page" className="legal-toc">
+          <ul>
+            {jumpLinks.map(([id, label]) => (
+              <li key={id}><a href={`#${id}`}>{label}</a></li>
+            ))}
+          </ul>
+        </nav>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-white rounded-[40px] p-8 md:p-12 shadow-xl border border-brand-teal/5 space-y-12 text-brand-ink"
+          className="legal-sheet bg-white rounded-[32px] p-8 md:p-12 shadow-xl border border-brand-teal/5 space-y-12 text-brand-ink"
         >
           {/* 1. Introduction */}
-          <section className="space-y-4">
+          <section id="introduction" className="space-y-4">
             <div className="flex items-center gap-3 text-brand-teal mb-2">
-              <FileText size={24} />
+              <FileText strokeWidth={1.75} aria-hidden="true" size={24} />
               <h2 className="text-2xl font-kids font-bold tracking-tight">Introduction</h2>
             </div>
             <p className="text-brand-sage font-medium leading-relaxed">
@@ -55,9 +78,9 @@ export const PrivacyPolicy = () => {
           </section>
 
           {/* 2. Information Collection */}
-          <section className="space-y-4">
+          <section id="information-collection" className="space-y-4">
             <div className="flex items-center gap-3 text-brand-teal mb-2">
-              <Eye size={24} />
+              <Eye strokeWidth={1.75} aria-hidden="true" size={24} />
               <h2 className="text-2xl font-kids font-bold tracking-tight">Information Collection</h2>
             </div>
             <p className="text-brand-sage font-medium leading-relaxed">
@@ -66,9 +89,9 @@ export const PrivacyPolicy = () => {
           </section>
 
           {/* 3. How We Use Your Information */}
-          <section className="space-y-4">
+          <section id="how-we-use-your-information" className="space-y-4">
             <div className="flex items-center gap-3 text-brand-teal mb-2">
-              <Lock size={24} />
+              <Lock strokeWidth={1.75} aria-hidden="true" size={24} />
               <h2 className="text-2xl font-kids font-bold tracking-tight">How We Use Your Information</h2>
             </div>
             <p className="text-brand-sage font-medium leading-relaxed">
@@ -101,9 +124,9 @@ export const PrivacyPolicy = () => {
           </section>
 
           {/* 4. SMS Disclosure */}
-          <section className="space-y-4">
+          <section id="sms-disclosure" className="space-y-4">
             <div className="flex items-center gap-3 text-brand-teal mb-2">
-              <MessageSquare size={24} />
+              <MessageSquare strokeWidth={1.75} aria-hidden="true" size={24} />
               <h2 className="text-2xl font-kids font-bold tracking-tight">SMS Disclosure</h2>
             </div>
             <p className="text-brand-sage font-medium leading-relaxed">
@@ -115,9 +138,9 @@ export const PrivacyPolicy = () => {
           </section>
 
           {/* 5. Disclosure of Your Information */}
-          <section className="space-y-4">
+          <section id="disclosure-of-your-information" className="space-y-4">
             <div className="flex items-center gap-3 text-brand-teal mb-2">
-              <Bell size={24} />
+              <Bell strokeWidth={1.75} aria-hidden="true" size={24} />
               <h2 className="text-2xl font-kids font-bold tracking-tight">Disclosure of Your Information</h2>
             </div>
             <p className="text-brand-sage font-medium leading-relaxed">
@@ -148,9 +171,9 @@ export const PrivacyPolicy = () => {
           </section>
 
           {/* 6. International Data Transfers */}
-          <section className="space-y-4">
+          <section id="international-data-transfers" className="space-y-4">
             <div className="flex items-center gap-3 text-brand-teal mb-2">
-              <Globe size={24} />
+              <Globe strokeWidth={1.75} aria-hidden="true" size={24} />
               <h2 className="text-2xl font-kids font-bold tracking-tight">International Data Transfers</h2>
             </div>
             <p className="text-brand-sage font-medium leading-relaxed">
@@ -159,9 +182,9 @@ export const PrivacyPolicy = () => {
           </section>
 
           {/* 7. Data Retention */}
-          <section className="space-y-4">
+          <section id="data-retention" className="space-y-4">
             <div className="flex items-center gap-3 text-brand-teal mb-2">
-              <Clock size={24} />
+              <Clock strokeWidth={1.75} aria-hidden="true" size={24} />
               <h2 className="text-2xl font-kids font-bold tracking-tight">Data Retention</h2>
             </div>
             <p className="text-brand-sage font-medium leading-relaxed">
@@ -170,9 +193,9 @@ export const PrivacyPolicy = () => {
           </section>
 
           {/* 8. Cookies and Tracking Technologies */}
-          <section className="space-y-4">
+          <section id="cookies-and-tracking-technologies" className="space-y-4">
             <div className="flex items-center gap-3 text-brand-teal mb-2">
-              <Cookie size={24} />
+              <Cookie strokeWidth={1.75} aria-hidden="true" size={24} />
               <h2 className="text-2xl font-kids font-bold tracking-tight">Cookies and Tracking Technologies</h2>
             </div>
             <p className="text-brand-sage font-medium leading-relaxed">
@@ -181,9 +204,9 @@ export const PrivacyPolicy = () => {
           </section>
 
           {/* 9. Your Choices */}
-          <section className="space-y-4 p-8 bg-brand-mint/10 rounded-[30px] border border-brand-teal/5">
+          <section id="your-choices" className="space-y-4 p-8 bg-brand-mint/10 rounded-[30px] border border-brand-teal/5">
             <div className="flex items-center gap-3 text-brand-teal mb-2">
-              <Users size={24} />
+              <Users strokeWidth={1.75} aria-hidden="true" size={24} />
               <h2 className="text-2xl font-kids font-bold tracking-tight">Your Choices</h2>
             </div>
             <p className="text-brand-sage font-medium leading-relaxed mb-6">
@@ -191,24 +214,24 @@ export const PrivacyPolicy = () => {
             </p>
             <div className="space-y-3 font-bold text-brand-ink">
               <p className="flex items-center gap-3">
-                <ChevronRight size={18} className="text-brand-teal" />
+                <ChevronRight strokeWidth={1.75} aria-hidden="true" size={18} className="text-brand-teal" />
                 {contactPhone}
               </p>
               <p className="flex items-center gap-3">
-                <ChevronRight size={18} className="text-brand-teal" />
+                <ChevronRight strokeWidth={1.75} aria-hidden="true" size={18} className="text-brand-teal" />
                 {contactEmail}
               </p>
               <p className="flex items-center gap-3">
-                <ChevronRight size={18} className="text-brand-teal" />
+                <ChevronRight strokeWidth={1.75} aria-hidden="true" size={18} className="text-brand-teal" />
                 {contactAddress}
               </p>
             </div>
           </section>
 
           {/* 10. HIPAA Notice of Privacy Practices */}
-          <section className="space-y-4 p-8 bg-brand-sky/20 rounded-[30px] border border-brand-teal/10">
+          <section id="hipaa-notice-of-privacy-practices" className="space-y-4 p-8 bg-brand-sky/20 rounded-[30px] border border-brand-teal/10">
             <div className="flex items-center gap-3 text-brand-teal mb-2">
-              <Shield size={24} />
+              <Shield strokeWidth={1.75} aria-hidden="true" size={24} />
               <h2 className="text-2xl font-kids font-bold tracking-tight">HIPAA Notice of Privacy Practices</h2>
             </div>
             <p className="text-brand-sage font-medium leading-relaxed">
@@ -254,7 +277,7 @@ export const PrivacyPolicy = () => {
           </section>
 
           {/* 11. Policy Changes */}
-          <section className="space-y-4">
+          <section id="policy-changes" className="space-y-4">
             <h2 className="text-2xl font-kids font-bold text-brand-ink tracking-tight">Policy Changes</h2>
             <p className="text-brand-sage font-medium leading-relaxed">
               We may update our privacy policy from time to time. Any changes will be communicated to you, and your continued use of our services implies your acceptance of the updated policy.

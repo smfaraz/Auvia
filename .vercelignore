@@ -1,0 +1,7 @@
+.browser-qa
+review-dist
+dist
+.local-backup-before-restoration
+.local-npm-cache
+docs
+*.pdf

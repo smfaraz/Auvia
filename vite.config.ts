@@ -1,14 +1,22 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig, loadEnv} from 'vite';
+import {defineConfig} from 'vite';
 
 export default defineConfig(({mode}) => {
-  const env = loadEnv(mode, '.', '');
+  const review = mode === 'review';
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), {
+      name: 'review-html',
+      transformIndexHtml(html) {
+        if (!review) return html;
+        return html.replace(/<!-- Meta Pixel Code -->[\s\S]*?<!-- End Meta Pixel Code -->/g, '')
+          .replace(/<!-- Meta Pixel Fallback \(noscript\) -->\s*<noscript>[\s\S]*?<\/noscript>/g, '')
+          .replace(/<meta name="robots"[^>]*>/, '<meta name="robots" content="noindex, nofollow" />');
+      },
+    }],
     define: {
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+      '__AUVIA_REVIEW__': JSON.stringify(review),
     },
     resolve: {
       alias: {

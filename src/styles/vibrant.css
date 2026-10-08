@@ -1,0 +1,87 @@
+/* Vibrant theme layer for every public route: colour, type, buttons, cards and forms.
+   Scoped to <main> so the navbar, mobile sidebar, footer links and Auvie keep their look. Content is untouched. */
+main:not([data-route^='/admin']) {
+  --color-brand-mint: #c4f1dc;
+  --color-brand-peach: #ffdc8a;
+  --color-brand-lavender: #ddd6ff;
+  --color-brand-sky: #c8e7ff;
+  --color-brand-cream: #fffdf6;
+  --font-kids: "Outfit", "Quicksand", sans-serif;
+  --sun: #ffc93c;
+  --coral: #f25a34;
+  --sky: #8fd0ff;
+  --grape: #8c7ef2;
+  --leaf: #37c594;
+  --route-hero: var(--color-brand-sky);
+  --flower: var(--coral);
+}
+main[data-route='/parent-help-center'], main[data-route='/parent-guide'], main[data-route^='/insurance'] { --route-hero: #ffe08a; --flower: var(--grape); }
+main[data-route='/what-is-aba'], main[data-route='/contact'] { --route-hero: #bdf0d8; --flower: var(--coral); }
+main[data-route='/what-is-autism'], main[data-route='/careers'] { --route-hero: #ddd6ff; --flower: var(--sun); }
+main[data-route='/about'] { --route-hero: #ffd3c4; --flower: var(--grape); }
+main[data-route='/privacy'], main[data-route='/terms'], main[data-route='/accessibility'] { --route-hero: #e6f3ff; --flower: var(--sun); }
+
+/* Type */
+main:not([data-route^='/admin']) :is(h1, h2) { font-weight: 800; letter-spacing: -.03em; }
+main:not([data-route^='/admin']) :is(h3, h4) { font-weight: 700; letter-spacing: -.015em; }
+
+/* Buttons: pills with a solid drop that presses down */
+main:not([data-route^='/admin']) :is(a, button):is(.btn-friendly-primary, .btn-friendly-outline, [class~='bg-brand-teal'], [class~='bg-brand-ink'], [class~='border-brand-teal']) { border-radius: 999px; transition: transform .18s cubic-bezier(.34,1.5,.64,1), box-shadow .18s, background-color .18s, color .18s; }
+main:not([data-route^='/admin']) :is(a, button):is(.btn-friendly-primary, [class~='bg-brand-teal']) { box-shadow: 0 4px 0 #0b443c; }
+main:not([data-route^='/admin']) :is(a, button)[class~='bg-brand-ink'] { box-shadow: 0 4px 0 #000; }
+main:not([data-route^='/admin']) :is(a, button):is(.btn-friendly-outline, [class~='border-brand-teal']) { border-width: 2px; border-color: var(--color-brand-teal); box-shadow: 0 4px 0 #19332f1f; }
+main:not([data-route^='/admin']) :is(a, button):is(.btn-friendly-primary, .btn-friendly-outline, [class~='bg-brand-teal'], [class~='bg-brand-ink'], [class~='border-brand-teal']):hover { transform: translateY(-2px); }
+main:not([data-route^='/admin']) :is(a, button):is(.btn-friendly-primary, .btn-friendly-outline, [class~='bg-brand-teal'], [class~='bg-brand-ink'], [class~='border-brand-teal']):active { transform: translateY(3px); box-shadow: 0 1px 0 #0b443c; }
+main:not([data-route^='/admin']) :is(a, button) .lucide-arrow-right { transition: transform .2s; }
+main:not([data-route^='/admin']) :is(a, button):hover .lucide-arrow-right { transform: translateX(4px); }
+
+/* Cards: flat, outlined, and they lift onto a colour block on hover */
+main:not([data-route^='/admin']) :is(.card-friendly, .timeline-card, div[class~='group'][class~='border'][class*='rounded']) { --pop: var(--sun); border: 2px solid #19332f14; box-shadow: none; transition: transform .28s cubic-bezier(.34,1.4,.64,1), box-shadow .28s, border-color .28s; }
+main:not([data-route^='/admin']) :is(.card-friendly, .timeline-item, div[class~='group'][class~='border'][class*='rounded']):nth-child(4n+2) { --pop: var(--coral); }
+main:not([data-route^='/admin']) :is(.card-friendly, .timeline-item, div[class~='group'][class~='border'][class*='rounded']):nth-child(4n+3) { --pop: var(--sky); }
+main:not([data-route^='/admin']) :is(.card-friendly, .timeline-item, div[class~='group'][class~='border'][class*='rounded']):nth-child(4n+4) { --pop: var(--grape); }
+@media (hover: hover) {
+  main:not([data-route^='/admin']) :is(.card-friendly, div[class~='group'][class~='border'][class*='rounded']):hover { transform: translateY(-6px); border-color: #19332f; box-shadow: 0 10px 0 0 var(--pop); }
+}
+
+/* Forms: one field style on every route */
+main:not([data-route^='/admin']) :is(input:not([type='checkbox']):not([type='radio']):not([type='file']):not([type='range']), select, textarea) { border: 2px solid #19332f24; border-radius: 14px; background-color: #fff; padding-block: 11px; box-shadow: none; transition: border-color .15s, box-shadow .15s; }
+main:not([data-route^='/admin']) :is(input, select, textarea)[class~='px-0'] { padding-inline: 14px; }
+main:not([data-route^='/admin']) :is(input:not([type='checkbox']):not([type='radio']):not([type='file']):not([type='range']), select, textarea):focus { border-color: var(--color-brand-teal); box-shadow: 0 0 0 4px #ffc93c80; outline: 2px solid transparent; }
+main:not([data-route^='/admin']) input:is([type='checkbox'], [type='radio']) { accent-color: var(--color-brand-teal); }
+
+/* Inner-page hero: a colour block that starts under the navbar and ends in a wave */
+main:not([data-route='/']):not([data-route^='/admin']) > div { background: linear-gradient(var(--route-hero), var(--route-hero)) top / 100% 113px no-repeat, var(--color-brand-cream); }
+main:not([data-route='/']):not([data-route^='/admin']) > div > section:first-of-type { position: relative; padding-bottom: 96px; background: var(--route-hero); overflow: hidden; }
+main:not([data-route='/']):not([data-route^='/admin']) > div > section:first-of-type::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 44px; z-index: 5; pointer-events: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 44' preserveAspectRatio='none'%3E%3Cpath fill='%23fffdf6' d='M0 22c240 30 480 30 720 8s480-36 720-8v22H0z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+main:not([data-route='/']):not([data-route^='/admin']) > div > section:first-of-type::before, .home-hero::before { content: ''; position: absolute; right: 4%; top: 18%; width: 96px; aspect-ratio: 1; z-index: 0; pointer-events: none; background: var(--flower); -webkit-mask: var(--flower-shape) center / contain no-repeat; mask: var(--flower-shape) center / contain no-repeat; animation: vibrant-spin 28s linear infinite; }
+main { --flower-shape: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg%3E%3Ccircle cx='50' cy='20' r='17'/%3E%3Ccircle cx='71' cy='29' r='17'/%3E%3Ccircle cx='80' cy='50' r='17'/%3E%3Ccircle cx='71' cy='71' r='17'/%3E%3Ccircle cx='50' cy='80' r='17'/%3E%3Ccircle cx='29' cy='71' r='17'/%3E%3Ccircle cx='20' cy='50' r='17'/%3E%3Ccircle cx='29' cy='29' r='17'/%3E%3Ccircle cx='50' cy='50' r='24'/%3E%3C/g%3E%3C/svg%3E"); }
+@keyframes vibrant-spin { to { transform: rotate(360deg); } }
+@keyframes vibrant-float { 50% { transform: translateY(-10px) rotate(4deg); } }
+
+/* The stacked full-screen panels on What Is Autism become ordinary sections */
+main[data-route='/what-is-autism'] section.sticky { position: relative; min-height: 0; }
+
+@media (max-width: 1023px) {
+  main:not([data-route='/']):not([data-route^='/admin']) > div > section:first-of-type::before { width: 56px; top: auto; bottom: 56px; right: 16px; }
+}
+@media (max-width: 640px) {
+  main:not([data-route='/']):not([data-route^='/admin']) > div { background-size: 100% 105px; }
+  main:not([data-route='/']):not([data-route^='/admin']) > div > section:first-of-type { padding-bottom: 72px; }
+}
+
+/* Flowers sit behind hero content, never over a control */
+main:not([data-route='/']):not([data-route^='/admin']) > div > section:first-of-type { isolation: isolate; }
+main:not([data-route='/']):not([data-route^='/admin']) > div > section:first-of-type::before { z-index: -1; }
+main[data-route='/services'] > div > section:first-of-type > [class~='bg-gradient-to-l'] { display: none; }
+
+/* Pages whose title sits inside a centred column get the same colour band behind the title */
+.inner-public-page .route-title-block:not(section .route-title-block) { position: relative; isolation: isolate; padding-bottom: 84px; margin-bottom: 40px; }
+.inner-public-page .route-title-block:not(section .route-title-block)::before { content: ''; position: absolute; z-index: -1; top: -120px; bottom: 0; left: -100vw; right: -100vw; pointer-events: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 44' preserveAspectRatio='none'%3E%3Cpath fill='%23fffdf6' d='M0 22c240 30 480 30 720 8s480-36 720-8v22H0z'/%3E%3C/svg%3E") bottom / 100vw 44px repeat-x, var(--route-hero); }
+.inner-public-page .route-title-block:not(section .route-title-block)::after { content: ''; position: absolute; z-index: -1; right: -4px; top: 0; width: 88px; aspect-ratio: 1; pointer-events: none; background: var(--flower); -webkit-mask: var(--flower-shape) center / contain no-repeat; mask: var(--flower-shape) center / contain no-repeat; animation: vibrant-spin 28s linear infinite; }
+.inner-public-page > .blob-bg, .inner-public-page > div > .blob-bg { display: none; }
+@media (max-width: 1023px) {
+  .inner-public-page .route-title-block:not(section .route-title-block) { padding-bottom: 64px; margin-bottom: 28px; }
+  .inner-public-page .route-title-block:not(section .route-title-block)::after { width: 44px; top: auto; bottom: 12px; right: 0; }
+}
+

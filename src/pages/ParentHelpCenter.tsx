@@ -1,5 +1,6 @@
+import '../styles/pages.css';
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion, MotionConfig } from 'motion/react';
 import {
   BookOpen,
   Heart,
@@ -9,7 +10,7 @@ import {
   ArrowRight,
   FileText,
   MessageCircle,
-  Sparkles
+  Sparkles, Brain
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
@@ -19,30 +20,30 @@ export const ParentHelpCenter = () => {
     {
       title: "Understanding Autism",
       description: "Learn about the signs, strengths, and unique developmental paths of autism.",
-      icon: <Sparkles className="text-brand-peach" />,
+      icon: <Brain strokeWidth={1.75} aria-hidden="true" />,
       link: "/what-is-autism",
-      bgColor: "bg-brand-peach/5"
+      bgColor: "lp-c-sky"
     },
     {
       title: "ABA Therapy Explained",
       description: "Discover how Applied Behavior Analysis creates meaningful changes in daily life.",
-      icon: <Heart className="text-brand-teal" />,
+      icon: <Heart strokeWidth={1.75} aria-hidden="true" />,
       link: "/what-is-aba",
-      bgColor: "bg-brand-teal/5"
+      bgColor: "lp-c-leaf"
     },
     {
       title: "Insurance & Coverage",
       description: "Navigate plans, state requirements, and financial assistance options.",
-      icon: <Shield className="text-brand-mint" />,
+      icon: <Shield strokeWidth={1.75} aria-hidden="true" />,
       link: "/insurance-financial-assistance",
-      bgColor: "bg-brand-mint/5"
+      bgColor: "lp-c-grape"
     },
     {
       title: "Enrollment Process",
       description: "A step-by-step guide on how to begin your child's journey at Auvia.",
-      icon: <ClipboardList className="text-brand-ink" />,
+      icon: <ClipboardList strokeWidth={1.75} aria-hidden="true" />,
       link: "/contact",
-      bgColor: "bg-gray-50"
+      bgColor: "lp-c-coral"
     }
   ];
 
@@ -62,7 +63,8 @@ export const ParentHelpCenter = () => {
   ];
 
   return (
-    <div className="pt-20 lg:pt-24 pb-20 lg:pb-28 relative overflow-x-hidden min-h-screen">
+    <MotionConfig reducedMotion="user">
+    <div className="lp inner-public-page public-page pt-28 lg:pt-36 pb-20 lg:pb-24 relative overflow-x-hidden min-h-screen">
       <SEO
         title="Parent Help Center & Resources | Auvia"
         description="Explore curated guides, autism FAQs, and step-by-step enrollment info to help support your family's ABA therapy journey."
@@ -73,15 +75,15 @@ export const ParentHelpCenter = () => {
       <div className="blob-bg w-[500px] h-[500px] bg-brand-mint/20 top-[-10%] right-[-10%]" />
       <div className="blob-bg w-[400px] h-[400px] bg-brand-peach/20 bottom-[10%] left-[-10%]" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10" style={{ paddingTop: '50px' }}>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Hero Section */}
-        <div className="max-w-3xl mb-12 lg:mb-16">
+        <div className="route-title-block max-w-3xl mb-12 lg:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-teal/10 text-brand-teal text-xs font-bold uppercase tracking-widest mb-6"
           >
-            <BookOpen size={14} />
+            <BookOpen strokeWidth={1.75} aria-hidden="true" size={14} />
             Knowledge is Empowerment
           </motion.div>
           <motion.h1
@@ -90,13 +92,13 @@ export const ParentHelpCenter = () => {
             transition={{ delay: 0.1 }}
             className="text-display font-kids font-bold text-brand-ink mb-8 leading-tight"
           >
-            Parent <span className="text-brand-teal italic">Help Center.</span>
+            Parent <span className="lp-squig text-brand-teal italic">Help Center.</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl md:text-2xl text-brand-sage font-medium leading-relaxed"
+            className="text-lg md:text-xl lp-text font-medium leading-relaxed"
           >
             Explore our curated resources designed to guide you through diagnosis,
             therapy options, and the everyday joys of parenting.
@@ -104,27 +106,29 @@ export const ParentHelpCenter = () => {
         </div>
 
         {/* Categories Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+        <div className="lp-snap lp-snap--24 lp-tilt lp-count grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 lg:mb-20">
           {resources.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.08, duration: 0.45 }}
             >
-              <Link to={item.link} className={`group block h-full p-8 rounded-[40px] ${item.bgColor} border border-transparent hover:border-brand-teal/20 transition-all hover:shadow-xl`}>
-                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
-                  {React.cloneElement(item.icon as React.ReactElement, { size: 32 })}
+              <Link to={item.link} className={`lp-block lp-block--lift lp-block--clip ${item.bgColor} flex flex-col !p-7`}>
+                <span aria-hidden="true" className="lp-flower" style={{ '--c': '#ffffff', '--s': '130px', right: '-36px', top: '-40px', opacity: 0.45 } as React.CSSProperties} />
+                <span aria-hidden="true" className="lp-num" />
+                <div className="lp-chip relative mb-5">
+                  {React.cloneElement(item.icon as React.ReactElement, { size: 26 })}
                 </div>
-                <h3 className="text-2xl font-kids font-bold text-brand-ink mb-4 group-hover:text-brand-teal transition-colors">
+                <h3 className="lp-h3 relative font-kids font-bold text-brand-ink mb-3">
                   {item.title}
                 </h3>
-                <p className="text-brand-sage font-medium leading-relaxed mb-6">
+                <p className="relative font-medium leading-relaxed mb-5">
                   {item.description}
                 </p>
-                <div className="flex items-center gap-2 text-brand-teal font-bold text-sm">
-                  Learn more <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <div className="relative mt-auto flex items-center gap-2 text-brand-ink font-extrabold text-sm">
+                  Learn more <span className="lp-go"><ArrowRight strokeWidth={2} aria-hidden="true" size={16} /></span>
                 </div>
               </Link>
             </motion.div>
@@ -132,132 +136,140 @@ export const ParentHelpCenter = () => {
         </div>
 
         {/* Therapy Experience Section */}
-        <section className="mb-32">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div className="bg-brand-mint/10 rounded-[50px] p-10 md:p-14 border border-brand-mint/20">
-              <h2 className="text-section font-kids font-bold text-brand-ink mb-6">What is Autism Like?</h2>
-              <p className="text-brand-sage text-lg mb-8 leading-relaxed">
-                Autism is a spectrum of unique neurobiological differences. For children, it often means
-                experiencing the world with heightened sensitivity, incredible focus on interests,
-                and distinct ways of communicating and socializing.
-              </p>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center gap-3 font-bold text-brand-teal">
-                  <div className="w-2 h-2 rounded-full bg-brand-teal" />
-                  Sensory-rich experiences
-                </li>
-                <li className="flex items-center gap-3 font-bold text-brand-teal">
-                  <div className="w-2 h-2 rounded-full bg-brand-teal" />
-                  Visual learning strengths
-                </li>
-                <li className="flex items-center gap-3 font-bold text-brand-teal">
-                  <div className="w-2 h-2 rounded-full bg-brand-teal" />
-                  Unique social perspectives
-                </li>
-              </ul>
-              <Link to="/what-is-autism" className="text-brand-teal font-bold flex items-center gap-2 hover:underline">
-                Deep dive into the spectrum <ArrowRight size={16} />
-              </Link>
-            </div>
+        <section className="mb-16 lg:mb-20">
+          <div className="grid lg:grid-cols-2 gap-8">
+            <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+              <div className="lp-block lp-block--clip lp-c-lav lp-sh-grape md:!p-11">
+                <span aria-hidden="true" className="lp-flower lp-flower--float" style={{ '--c': 'var(--grape)', '--s': '76px', right: '-18px', bottom: '-18px' } as React.CSSProperties} />
+                <div aria-hidden="true" className="lp-photo lp-photo--circle lp-peek lp-sh-grape">
+                  <img src="/images/kids-diagnosis.webp" alt="" loading="lazy" decoding="async" />
+                </div>
+                <h2 className="text-section font-kids font-bold text-brand-ink mb-5 relative pr-20 md:pr-28 md:min-h-[84px]">What is Autism Like?</h2>
+                <p className="text-lg mb-7 leading-relaxed relative">
+                  Autism is a spectrum of unique neurobiological differences. For children, it often means
+                  experiencing the world with heightened sensitivity, incredible focus on interests,
+                  and distinct ways of communicating and socializing.
+                </p>
+                <ul className="lp-bullets mb-7" style={{ '--dot': 'var(--grape)' } as React.CSSProperties}>
+                  <li>
+                    Sensory-rich experiences
+                  </li>
+                  <li>
+                    Visual learning strengths
+                  </li>
+                  <li>
+                    Unique social perspectives
+                  </li>
+                </ul>
+                <Link to="/what-is-autism" className="lp-link">
+                  Deep dive into the spectrum <ArrowRight strokeWidth={2} aria-hidden="true" size={16} />
+                </Link>
+              </div>
+            </motion.div>
 
-            <div className="bg-brand-peach/10 rounded-[50px] p-10 md:p-14 border border-brand-peach/20">
-              <h2 className="text-section font-kids font-bold text-brand-ink mb-6">What is ABA Therapy Like?</h2>
-              <p className="text-brand-sage text-lg mb-8 leading-relaxed">
-                At Auvia, ABA therapy is playful, positive, and collaborative. Your child works
-                1-on-1 with a dedicated therapist in our "Sensory Sanctuary" centers, where
-                learning feels like play and every small win is celebrated.
-              </p>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center gap-3 font-bold text-[#c2410c]">
-                  <div className="w-2 h-2 rounded-full bg-[#c2410c]" />
-                  Play-based learning sessions
-                </li>
-                <li className="flex items-center gap-3 font-bold text-[#c2410c]">
-                  <div className="w-2 h-2 rounded-full bg-[#c2410c]" />
-                  Skill building through success
-                </li>
-                <li className="flex items-center gap-3 font-bold text-[#c2410c]">
-                  <div className="w-2 h-2 rounded-full bg-[#c2410c]" />
-                  Families are partners in care
-                </li>
-              </ul>
-              <Link to="/what-is-aba" className="text-[#c2410c] font-bold flex items-center gap-2 hover:underline">
-                See our approach in action <ArrowRight size={16} />
-              </Link>
-            </div>
+            <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
+              <div className="lp-block lp-block--clip lp-c-mint lp-sh-leaf md:!p-11">
+                <span aria-hidden="true" className="lp-flower lp-flower--float" style={{ '--c': 'var(--coral)', '--s': '76px', right: '-18px', bottom: '-18px' } as React.CSSProperties} />
+                <div aria-hidden="true" className="lp-photo lp-photo--circle lp-peek lp-sh-coral">
+                  <img src="/images/kids-Therapy.webp" alt="" loading="lazy" decoding="async" />
+                </div>
+                <h2 className="text-section font-kids font-bold text-brand-ink mb-5 relative pr-20 md:pr-28 md:min-h-[84px]">What is ABA Therapy Like?</h2>
+                <p className="text-lg mb-7 leading-relaxed relative">
+                  At Auvia, ABA therapy is playful, positive, and collaborative. Your child works
+                  1-on-1 with a dedicated therapist in our "Sensory Sanctuary" centers, where
+                  learning feels like play and every small win is celebrated.
+                </p>
+                <ul className="lp-bullets mb-7">
+                  <li>
+                    Play-based learning sessions
+                  </li>
+                  <li>
+                    Skill building through success
+                  </li>
+                  <li>
+                    Families are partners in care
+                  </li>
+                </ul>
+                <Link to="/what-is-aba" className="lp-link">
+                  See our approach in action <ArrowRight strokeWidth={2} aria-hidden="true" size={16} />
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </section>
 
         {/* Featured Guide Section */}
-        <section className="bg-brand-ink rounded-[60px] p-8 md:p-16 text-white mb-32 overflow-hidden relative">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-brand-teal/20 blur-[100px] rounded-full -mr-48 -mt-48" />
+        <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="lp-cta lp-c-sky !text-left mb-16 lg:mb-20 md:!p-14">
+          <span aria-hidden="true" className="lp-flower" style={{ '--c': 'var(--sun)', '--s': '130px', right: '-36px', top: '-36px' } as React.CSSProperties} />
+          <span aria-hidden="true" className="lp-spark" style={{ '--c': '#ffffff', '--s': '32px', left: '46%', top: '26px' } as React.CSSProperties} />
 
-          <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+          <div className="relative z-10 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-brand-peach text-xs font-bold uppercase tracking-widest mb-6">
-                <FileText size={14} />
+              <div className="lp-tag mb-5">
+                <FileText strokeWidth={1.75} aria-hidden="true" size={14} />
                 New Family Guide
               </div>
-              <h2 className="text-section font-kids font-bold mb-8">What to expect in your <span className="text-brand-teal italic">first 90 days.</span></h2>
-              <p className="text-white/70 text-lg mb-10 leading-relaxed max-w-xl">
+              <h2 className="text-section font-kids font-bold mb-5">What to expect in your <span className="text-brand-teal italic">first 90 days.</span></h2>
+              <p className="text-lg mb-8 leading-relaxed max-w-xl">
                 The early stages of ABA therapy can feel overwhelming. We've created a comprehensive
                 onboarding guide to help you understand the assessment phase, therapist matching,
                 and initial goal setting.
               </p>
-              <Link to="/parent-guide" className="inline-flex items-center gap-4 bg-brand-teal text-white px-10 py-5 rounded-2xl font-kids font-bold text-xl hover:bg-[#3d7a6f] transition-all shadow-lg active:scale-95">
-                View Family Guide <ArrowRight />
+              <Link to="/parent-guide" className="lp-btn lp-btn--teal">
+                View Family Guide <ArrowRight strokeWidth={1.75} aria-hidden="true" />
               </Link>
             </div>
             <div className="relative">
-              <div className="bg-white/5 backdrop-blur-xl rounded-[40px] p-8 border border-white/10">
-                <div className="space-y-6">
-                  <div className="flex gap-4">
-                    <div className="w-12 h-12 bg-brand-peach rounded-xl flex items-center justify-center shrink-0">
-                      <Users className="text-white" />
+              <div className="lp-block lp-c-white lp-sh-coral -rotate-1">
+                <div className="lp-mini-road space-y-5">
+                  <div className="flex gap-4 items-center">
+                    <div className="lp-chip lp-chip--sq lp-chip-sun">
+                      <Users strokeWidth={1.75} aria-hidden="true" />
                     </div>
                     <div>
-                      <p className="font-bold text-lg">Family Success Roadmap</p>
-                      <p className="text-white/60 text-sm">Week 1: Initial Assessment & Observation</p>
+                      <p className="lp-strong font-bold text-lg">Family Success Roadmap</p>
+                      <p className="text-sm">Week 1: Initial Assessment & Observation</p>
                     </div>
                   </div>
-                  <div className="flex gap-4">
-                    <div className="w-12 h-12 bg-brand-teal rounded-xl flex items-center justify-center shrink-0">
-                      <MessageCircle className="text-white" />
+                  <div className="flex gap-4 items-center">
+                    <div className="lp-chip lp-chip--sq lp-chip-coral">
+                      <MessageCircle strokeWidth={1.75} aria-hidden="true" />
                     </div>
                     <div>
-                      <p className="font-bold text-lg">Personalized Matching</p>
-                      <p className="text-white/60 text-sm">Week 2: BCBA & RBT Introduction</p>
+                      <p className="lp-strong font-bold text-lg">Personalized Matching</p>
+                      <p className="text-sm">Week 2: BCBA & RBT Introduction</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* FAQs */}
-        <section className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-section font-kids font-bold text-brand-ink mb-4">Common Questions</h2>
+        <section id="common-questions" className="max-w-4xl mx-auto">
+          <div className="lp-head">
+            <h2 className="text-section font-kids font-bold text-brand-ink">Common Questions</h2>
             <p className="text-brand-sage font-medium">Quick answers to help you navigate your options.</p>
           </div>
-          <div className="space-y-4">
+          <div className="lp-talk space-y-7">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white p-8 rounded-3xl border border-brand-teal/5 shadow-sm"
+                transition={{ delay: index * 0.08 }}
+                className="lp-faq lp-qa"
               >
                 <h4 className="text-xl font-kids font-bold text-brand-ink mb-3">{faq.q}</h4>
-                <p className="text-brand-sage font-medium leading-relaxed">{faq.a}</p>
+                <p className="font-medium leading-relaxed">{faq.a}</p>
               </motion.div>
             ))}
           </div>
         </section>
       </div>
     </div>
+    </MotionConfig>
   );
 };

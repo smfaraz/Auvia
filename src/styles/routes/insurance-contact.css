@@ -1,0 +1,532 @@
+/* Insurance pages and Contact: route-specific styling on top of vibrant.css. */
+
+/* ---------- Shared form pattern (mirrors the home interest form) ---------- */
+.vform-band { position: relative; padding: 64px 0 96px; background: var(--color-brand-sky); scroll-margin-top: 110px; }
+.vform-card { background: #fff; border: 2px solid var(--color-brand-ink); border-radius: 30px; box-shadow: 0 10px 0 0 var(--color-brand-ink); padding: 40px; }
+main .vform-label, main form.vform label.vform-label { display: inline-block; margin: 0; font-family: var(--font-sans); font-size: .875rem; line-height: 1.45; font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--color-brand-ink); }
+main form.vform :is(input:not([type='checkbox']), select, textarea) { width: 100%; min-height: 48px; padding-inline: 14px; color: var(--color-brand-ink); font-weight: 500; }
+main form.vform select { padding-right: 44px; }
+main form.vform textarea { min-height: 112px; }
+main form.vform :is(input:not([type='checkbox']), select, textarea):focus { border-color: var(--color-brand-teal) !important; box-shadow: 0 0 0 4px #ffc93c80 !important; outline: none; }
+main form.vform :is(input, select, textarea)[aria-invalid='true'] { border-color: #b42318 !important; }
+main form.vform .vform-field-error { margin: 0; font-size: 12px; line-height: 1.5; font-weight: 600; color: #b42318; }
+.vform-consent { border: 1px solid #16665b1a; background: #f6fbf9; }
+.vform-consent input[type='checkbox'] { width: 20px; height: 20px; }
+main form.vform .vform-consent label { font-size: .8rem; letter-spacing: 0; }
+main form.vform > button[type='submit'] { min-height: 56px; padding: 16px; font-family: var(--font-kids); font-size: 1rem; font-weight: 700; }
+.vform-intro__icon { display: grid; place-items: center; width: 64px; height: 64px; margin-bottom: 20px; border-radius: 50%; border: 2px solid var(--color-brand-ink); background: var(--coral); color: #fff; box-shadow: 0 4px 0 var(--color-brand-ink); }
+@media (min-width: 641px) {
+  main form.vform :is(input:not([type='checkbox']), select, textarea) { font-size: .95rem; }
+}
+@media (max-width: 640px) {
+  .vform-band { padding: 36px 0 56px; }
+  .vform-card { padding: 24px 20px; border-radius: 26px; box-shadow: 0 8px 0 0 var(--color-brand-ink); }
+}
+
+/* ---------- Shared bits ---------- */
+.ic-page { --ink: var(--color-brand-ink); }
+.ic-text-link { min-height: 44px; align-items: center; }
+.ic-photo-frame { position: relative; overflow: hidden; border: 3px solid var(--ink); border-radius: 32px; background: #fff; box-shadow: 10px 10px 0 0 var(--frame-pop, var(--coral)); }
+.ic-photo-frame img { display: block; }
+main .ic-page div.ic-chip { background-color: #fff; border: 2px solid var(--ink); color: var(--ink); box-shadow: 0 3px 0 var(--ink); }
+.ic-num { background: var(--coral); color: #fff; font-size: .85rem; }
+.ic-num--lg { font-size: 1.05rem; border: 2px solid var(--ink); box-shadow: 0 3px 0 var(--ink); }
+.ic-btn-ink, .ic-btn-sun, .ic-chip-link { border: 2px solid var(--ink); border-radius: 999px; color: var(--ink); box-shadow: 0 4px 0 var(--ink); transition: transform .18s cubic-bezier(.34,1.5,.64,1), box-shadow .18s, background-color .18s; }
+.ic-btn-ink { background: #fff; }
+.ic-btn-sun, .ic-chip-link { background: var(--sun); }
+.ic-btn-ink:hover, .ic-btn-sun:hover, .ic-chip-link:hover { transform: translateY(-2px); }
+.ic-btn-ink:active, .ic-btn-sun:active, .ic-chip-link:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+.ic-btn-sun:hover { background: #ffd666; }
+.ic-btn-ghost { border: 2px solid #fff; border-radius: 999px; color: #fff; min-height: 44px; transition: background-color .18s, transform .18s; }
+.ic-btn-ghost:hover { background: #ffffff24; transform: translateY(-2px); }
+
+/* Decorative photo in the title band (Contact, Insurance) */
+.ic-hero-photo { display: none; }
+@media (min-width: 1180px) {
+  .ic-hero-photo { display: block; position: absolute; z-index: 11; right: 56px; top: -6px; width: 290px; }
+  .ic-hero-photo::before { content: ''; position: absolute; inset: 0; border-radius: 150px 150px 34px 34px; background: var(--coral); transform: translate(14px, 10px) rotate(5deg); }
+  .ic-hero-photo img { position: relative; display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border: 3px solid var(--color-brand-ink); border-radius: 150px 150px 34px 34px; }
+  main:is([data-route='/contact'], [data-route='/insurance']) .inner-public-page .route-title-block:not(section .route-title-block)::after { right: 10px; top: 4px; width: 68px; }
+}
+
+/* ---------- /contact ---------- */
+main[data-route='/contact'] .inner-public-page .route-title-block:not(section .route-title-block) { margin-bottom: 0; }
+main[data-route='/contact'] .inner-public-page .route-title-block:not(section .route-title-block)::before { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 44' preserveAspectRatio='none'%3E%3Cpath fill='%23c8e7ff' d='M0 22c240 30 480 30 720 8s480-36 720-8v22H0z'/%3E%3C/svg%3E") bottom / 100vw 44px repeat-x, var(--route-hero); }
+main[data-route='/contact'] .ic-hero-photo::before { background: var(--grape); }
+.ic-touch-card { --pop: var(--sun); padding: 18px 20px; background: #fff; border: 2px solid var(--color-brand-ink); border-radius: 22px; transition: transform .25s cubic-bezier(.34,1.4,.64,1), box-shadow .25s; }
+.ic-touch-card:nth-child(2) { --pop: var(--coral); }
+.ic-touch-card:nth-child(3) { --pop: var(--grape); }
+main .ic-contact-info .ic-touch-card > div.ic-chip { width: 52px; height: 52px; border-radius: 50%; background-color: var(--pop); border: 2px solid var(--color-brand-ink); color: var(--color-brand-ink); box-shadow: none; }
+.ic-touch-card h4 { margin-bottom: 2px; font-size: 1.125rem; }
+.ic-touch-card p { margin-bottom: 4px; }
+.ic-touch-card a { display: inline-flex; align-items: center; min-height: 44px; }
+@media (hover: hover) {
+  .ic-touch-card:hover { transform: translateY(-4px); box-shadow: 0 8px 0 0 var(--pop); }
+}
+.ic-referral { padding: 28px; background: var(--sun); border: 2px solid var(--color-brand-ink); border-radius: 26px; box-shadow: 0 8px 0 0 var(--color-brand-ink); }
+.ic-referral p { color: #3d4a2a; }
+.ic-referral__link { min-height: 44px; padding: 10px 18px; background: #fff; border: 2px solid var(--color-brand-ink); border-radius: 999px; color: var(--color-brand-ink); box-shadow: 0 3px 0 var(--color-brand-ink); transition: transform .18s; }
+.ic-referral__link:hover { transform: translateY(-2px); }
+@media (max-width: 640px) {
+  .ic-touch-card { padding: 16px; }
+  .ic-referral { padding: 22px 20px; }
+}
+
+/* ---------- /insurance ---------- */
+.ic-panel { border: 2px solid var(--color-brand-ink); border-radius: 28px; }
+.ic-panel--white { background: #fff; box-shadow: 0 10px 0 0 var(--sun); }
+.ic-panel--teal { box-shadow: 0 10px 0 0 var(--color-brand-ink); }
+.ic-panel--teal > div:first-child svg { color: var(--sun); }
+.ic-panel--teal ul { color: #fff; }
+.ic-payer { min-height: 46px; padding: 10px 14px; border-radius: 14px; background: #fff1c2; }
+.ic-payer:nth-child(4n+2) { background: #c4f1dc; }
+.ic-payer:nth-child(4n+3) { background: #c8e7ff; }
+.ic-payer:nth-child(4n+4) { background: #ddd6ff; }
+.ic-payer svg { color: var(--color-brand-ink); }
+@media (max-width: 640px) {
+  .ic-panel { border-radius: 24px; }
+}
+
+/* ---------- /insurance-by-state ---------- */
+main[data-route='/insurance-by-state'] > .inner-public-page.public-page > section:first-of-type::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 44' preserveAspectRatio='none'%3E%3Cpath fill='%23c4f1dc' d='M0 22c240 30 480 30 720 8s480-36 720-8v22H0z'/%3E%3C/svg%3E"); }
+main[data-route='/insurance-by-state'] > .inner-public-page.public-page > section:first-of-type::before { top: auto; bottom: 74px; right: 7%; width: 84px; }
+main[data-route='/insurance-by-state'] .ic-state-hero .route-title-block { margin-bottom: 28px; }
+main[data-route='/insurance-by-state'] .ic-search input { min-height: 60px; border: 2px solid var(--color-brand-ink) !important; border-radius: 999px !important; box-shadow: 0 5px 0 var(--color-brand-ink); }
+main[data-route='/insurance-by-state'] .ic-search input:focus { box-shadow: 0 5px 0 var(--color-brand-ink), 0 0 0 4px #ffffffb3 !important; }
+main[data-route='/insurance-by-state'] select#insurance-state { min-height: 56px; background-image: none; border: 2px solid var(--color-brand-ink) !important; border-radius: 18px !important; }
+main[data-route='/insurance-by-state'] select#insurance-state:focus { box-shadow: 0 0 0 4px #ffffffb3 !important; }
+.ic-pill-btn { min-height: 56px; border-radius: 999px; box-shadow: 0 4px 0 #0b443c; }
+.ic-providers { padding-top: 48px; padding-bottom: 96px; background: #c4f1dc; }
+.ic-provider { --pop: var(--sun); border: 2px solid var(--color-brand-ink); border-radius: 24px; box-shadow: 0 6px 0 0 var(--pop); }
+.ic-provider:nth-child(4n+2) { --pop: var(--coral); }
+.ic-provider:nth-child(4n+3) { --pop: var(--sky); }
+.ic-provider:nth-child(4n+4) { --pop: var(--grape); }
+.ic-provider__logo { border: 2px solid #19332f1f; }
+.ic-badge { background: var(--leaf); color: var(--color-brand-ink); }
+.ic-empty { border: 2px dashed var(--color-brand-ink); }
+.ic-empty button { min-height: 44px; }
+@media (max-width: 1023px) {
+  main[data-route='/insurance-by-state'] > .inner-public-page.public-page > section:first-of-type::before { top: 6px; bottom: auto; right: 16px; width: 52px; }
+}
+@media (max-width: 640px) {
+  .ic-providers { padding-top: 28px; padding-bottom: 56px; }
+  .ic-provider__logo { width: 76px; height: 56px; }
+}
+
+/* ---------- /insurance-financial-assistance ---------- */
+main[data-route='/insurance-financial-assistance'] > .inner-public-page.public-page > section:first-of-type::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 44' preserveAspectRatio='none'%3E%3Cpath fill='%23ddd6ff' d='M0 22c240 30 480 30 720 8s480-36 720-8v22H0z'/%3E%3C/svg%3E"); }
+main[data-route='/insurance-financial-assistance'] > .inner-public-page.public-page > section:first-of-type::before { display: none; }
+main[data-route='/insurance-financial-assistance'] .ic-fa-hero .route-title-block { margin-bottom: 0; }
+.ic-fa-hero__media { max-width: 520px; width: 100%; margin: 8px auto 0; }
+.ic-fa-hero__media .ic-photo-frame { box-shadow: none; }
+.ic-fa-hero__pop { position: absolute; inset: 5% -3% -5% 4%; z-index: -1; border-radius: 36px; background: var(--coral); transform: rotate(-5deg); }
+.ic-fa-hero__flower { position: absolute; left: -34px; bottom: -22px; z-index: 2; width: 88px; aspect-ratio: 1; pointer-events: none; background: var(--grape); -webkit-mask: var(--flower-shape) center / contain no-repeat; mask: var(--flower-shape) center / contain no-repeat; animation: vibrant-float 6s ease-in-out infinite; }
+.ic-ticker { padding: 26px 0 30px; background: #ddd6ff; }
+main .ic-ticker { padding-top: 26px; padding-bottom: 30px; }
+.ic-ticker__pill { padding: 8px 16px; background: #fff; border: 2px solid var(--color-brand-ink); border-radius: 999px; font-family: var(--font-kids); font-size: 1rem; font-weight: 800; letter-spacing: -.01em; color: var(--color-brand-ink); }
+.ic-ticker__pill:nth-child(odd) { transform: rotate(-1.5deg); }
+.ic-ticker__pill:nth-child(even) { transform: rotate(1.5deg); }
+.ic-ticker__more { font-weight: 700; color: var(--color-brand-teal); }
+.ic-solid-card { height: 100%; background: #ffe08a; border: 2px solid var(--color-brand-ink); border-radius: 28px; box-shadow: 0 8px 0 0 var(--color-brand-ink); }
+.ic-solid-card:nth-child(3n+2) { background: #c8e7ff; }
+.ic-solid-card:nth-child(3n+3) { background: #ddd6ff; }
+.ic-solid-card__text { color: #33504a; }
+.ic-topics { background: #c4f1dc; }
+.ic-topic { --pop: var(--sun); padding: 30px; background: #fff; border: 2px solid var(--color-brand-ink); border-radius: 26px; box-shadow: 0 6px 0 0 var(--pop); }
+.ic-topic:nth-child(2) { --pop: var(--coral); }
+.ic-topic:nth-child(3) { --pop: var(--grape); }
+.ic-topic--sun { --pop: var(--color-brand-ink); background: #ffe08a; }
+.ic-topic--sun p { color: #3d4a2a; }
+main .ic-topic .ic-topic__title { font-size: clamp(1.25rem, 1.9vw, 1.6rem); line-height: 1.25; color: var(--color-brand-ink); }
+.ic-mark { background: #ffe08a; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.ic-chip-link { min-height: 48px; }
+.ic-note--sun { background: #fff1c2; }
+.ic-note--mint { background: #c4f1dc; }
+.ic-texas { background: #fff1c2; }
+.ic-texas__lead { color: #41524c; }
+.ic-texas__media { --frame-pop: var(--grape); padding-right: 12px; }
+.ic-texas__flower { position: absolute; left: -30px; top: -26px; z-index: 2; width: 76px; aspect-ratio: 1; pointer-events: none; background: var(--coral); -webkit-mask: var(--flower-shape) center / contain no-repeat; mask: var(--flower-shape) center / contain no-repeat; animation: vibrant-spin 28s linear infinite; }
+.ic-benefit { --pop: var(--sun); border: 2px solid var(--color-brand-ink); border-radius: 26px; box-shadow: 0 6px 0 0 var(--pop); }
+.ic-benefit:nth-child(4n+1) { --pop: var(--coral); }
+.ic-benefit:nth-child(4n+2) { --pop: var(--sky); }
+.ic-benefit:nth-child(4n+3) { --pop: var(--grape); }
+.ic-benefit:nth-child(4n+4) { --pop: var(--leaf); }
+main .ic-benefit .ic-benefit__title { font-size: clamp(1.2rem, 1.7vw, 1.45rem); line-height: 1.25; }
+.ic-quote { border: 2px solid var(--color-brand-ink); border-radius: 26px; box-shadow: 0 6px 0 0 var(--coral); }
+.ic-faq { background: #fff; border: 2px solid var(--color-brand-ink); border-radius: 22px; }
+.ic-faq:first-child { background: #ddd6ff; }
+.ic-faq:first-child p { color: #37424a; }
+@media (max-width: 1023px) {
+  .ic-fa-hero__flower { left: -14px; bottom: -18px; width: 64px; }
+}
+@media (max-width: 640px) {
+  .ic-topic { padding: 22px 20px; }
+  .ic-ticker__pill { font-size: .9rem; padding: 7px 13px; }
+  .ic-fa-hero__pop { inset: 5% -2% -4% 3%; }
+}
+.ic-ticker p { flex: none; }
+main .ic-faqs h2 { line-height: 1.12; }
+@media (max-width: 1023px) {
+  main:is([data-route='/contact'], [data-route='/insurance']) .inner-public-page .route-title-block:not(section .route-title-block)::after { top: 42px; bottom: auto; right: 0; }
+  main[data-route='/insurance-by-state'] > .inner-public-page.public-page > section:first-of-type::before { top: 46px; }
+}
+@media (max-width: 640px) {
+  .ic-fa-hero .route-title-block > div:first-of-type { justify-content: flex-start; }
+  .ic-fa-hero__pop { inset: 5% 0 -4% 3%; }
+  .ic-chip-link { gap: 8px; padding-inline: 16px; font-size: .9rem; }
+  .ic-benefit > div { flex-direction: column; gap: 12px; }
+}
+
+/* ================= Second pass: shapes, motion, section variety, mobile layouts ================= */
+
+/* ---------- Decorative shapes (always aria-hidden, never over a control) ---------- */
+.ic-page { --star-shape: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0c4 30 16 42 50 50-34 8-46 20-50 50-4-30-16-42-50-50 34-8 46-20 50-50z'/%3E%3C/svg%3E"); }
+.ic-deco { position: absolute; z-index: 0; display: block; width: var(--s, 56px); aspect-ratio: 1; pointer-events: none; background: var(--c, var(--sun)); -webkit-mask: var(--shape) center / contain no-repeat; mask: var(--shape) center / contain no-repeat; animation: vibrant-float 7s ease-in-out infinite; }
+.ic-deco--flower { --shape: var(--flower-shape); }
+.ic-deco--star { --shape: var(--star-shape); animation-duration: 5s; }
+.ic-deco--heart { --shape: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 92'%3E%3Cpath d='M50 92C12 62 0 42 0 26a25 25 0 0 1 50-9 25 25 0 0 1 50 9c0 16-12 36-50 66z'/%3E%3C/svg%3E"); animation-duration: 6s; animation-delay: -2s; }
+.ic-deco--squiggle { aspect-ratio: 4 / 1; --shape: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 124 30'%3E%3Cpath d='M5 15c10-14 18-14 28 0s18 14 28 0 18-14 28 0 18 14 30 0' fill='none' stroke='%23000' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E"); animation-duration: 9s; }
+@keyframes ic-wiggle { 0%, 100% { rotate: 0deg; } 25% { rotate: -12deg; } 60% { rotate: 10deg; } 80% { rotate: -4deg; } }
+@keyframes ic-pop { 0% { scale: .4; rotate: -20deg; } 70% { scale: 1.12; rotate: 6deg; } 100% { scale: 1; rotate: 0deg; } }
+@keyframes ic-mark { from { background-size: 0 .34em; } }
+
+/* Marker swipe under the key heading words */
+.ic-page :is(h1, h2) > span.italic { --mark: #fff; padding-inline: .1em; margin-inline: -.1em; border-radius: 6px; background: linear-gradient(var(--mark), var(--mark)) no-repeat 0 86% / 100% .34em; }
+.ic-page h1 > span.italic { animation: ic-mark .7s .4s cubic-bezier(.2, .8, .2, 1) both; }
+.ic-simplify h2 > span.italic { --mark: #ffe08a; }
+.ic-texas h2 > span.italic { --mark: #ffc93c; }
+.ic-faqs h2 > span.italic { --mark: #ddd6ff; }
+
+/* Breathing room between the navbar and the page title, the same on all four routes */
+.ic-page .route-title-block:not(section .route-title-block) { padding-top: 18px; }
+.ic-page > section:first-of-type > div { padding-top: 18px; }
+@media (max-width: 1023px) {
+  main:is([data-route='/contact'], [data-route='/insurance']) .inner-public-page .ic-hero-grid > .route-title-block:not(section .route-title-block)::after { top: 70px; }
+  main[data-route='/insurance-by-state'] > .inner-public-page.public-page.ic-page > section:first-of-type::before { top: 74px; }
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .ic-ins-bento > .ic-panel h2 { font-size: 1.4rem; }
+}
+@media (max-width: 640px) {
+  main:is([data-route='/contact'], [data-route='/insurance']) .inner-public-page .ic-hero-grid > .route-title-block:not(section .route-title-block)::after { top: 56px; }
+  main[data-route='/insurance-by-state'] > .inner-public-page.public-page.ic-page > section:first-of-type::before { top: 60px; }
+  .ic-page .route-title-block:not(section .route-title-block) { padding-top: 14px; }
+  .ic-page > section:first-of-type > div { padding-top: 14px; }
+}
+
+/* Title and arch photo share one grid; the photo is centred on the text, not on the wave */
+.ic-hero-grid { position: relative; z-index: 10; }
+.ic-hero-grid > .route-title-block { max-width: none; margin-bottom: 0 !important; }
+main[data-route="/insurance"] .ic-hero-grid { margin-bottom: 44px; }
+@media (min-width: 1024px) {
+  .ic-hero-grid > .route-title-block { align-self: stretch; justify-content: center; }
+  .ic-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) clamp(240px, 26vw, 330px); column-gap: clamp(32px, 5vw, 72px); align-items: center; }
+  .ic-hero-grid > .ic-hero-photo { display: block; position: relative; inset: auto; right: auto; top: auto; width: 100%; margin-top: 18px; margin-bottom: 84px; z-index: 11; }
+  .ic-hero-grid > .ic-hero-photo::before { content: ''; position: absolute; inset: 0; border-radius: 170px 170px 34px 34px; background: var(--coral); transform: translate(14px, 10px) rotate(5deg); }
+  .ic-hero-grid > .ic-hero-photo img { position: relative; display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border: 3px solid var(--color-brand-ink); border-radius: 170px 170px 34px 34px; }
+  main:is([data-route='/contact'], [data-route='/insurance']) .inner-public-page .ic-hero-grid > .route-title-block:not(section .route-title-block)::after { right: 0; top: 30px; width: 60px; }
+}
+
+/* Scalloped top edge: the band's own colour bites into the band above */
+.ic-scallop { position: relative; }
+.ic-scallop::before { content: ''; position: absolute; left: 0; right: 0; bottom: calc(100% - 1px); height: 15px; pointer-events: none; background: radial-gradient(circle at 15px 15px, var(--scallop, #fff) 14.5px, transparent 15px) 0 0 / 30px 15px repeat-x; }
+.ic-topics { --scallop: #c4f1dc; }
+.ic-texas { --scallop: #fff1c2; }
+.ic-faqs { --scallop: #fff; }
+
+/* ---------- Forms: friendly focus, error and success states ---------- */
+main form.vform .vform-label { border-radius: 4px; transition: background-color .2s, box-shadow .2s, translate .25s cubic-bezier(.34, 1.5, .64, 1); }
+main form.vform div:focus-within > .vform-label { background: var(--sun); box-shadow: 0 0 0 4px var(--sun); translate: 6px 0; }
+main form.vform :is(input:not([type='checkbox']), select, textarea):hover { border-color: #19332f66; }
+main form.vform :is(input, select, textarea)[aria-invalid='true'] { background-color: #fff5f2; box-shadow: 0 3px 0 #b42318; }
+main form.vform .vform-field-error { display: flex; align-items: center; gap: 6px; }
+main form.vform .vform-field-error::before { content: '!'; display: grid; place-items: center; flex: none; width: 16px; height: 16px; border-radius: 50%; background: #b42318; color: #fff; font-size: 11px; font-weight: 800; line-height: 1; }
+main form.vform .form-error { padding: 14px 16px; border: 2px solid #b42318; border-radius: 16px; background: #fff1ec; color: #7a271a; font-size: .9rem; font-weight: 600; box-shadow: 0 4px 0 #b42318; }
+.vform-consent { border: 2px dashed #19332f33; background: #f3fbf7; transition: border-color .2s, background-color .2s; }
+.vform-consent:has(input:checked) { border-style: solid; border-color: var(--leaf); background: #e3f8ee; }
+main form.vform > button[type='submit'] { border: 2px solid var(--color-brand-ink); box-shadow: 0 5px 0 var(--color-brand-ink); }
+main form.vform > button[type='submit']:active { box-shadow: 0 1px 0 var(--color-brand-ink); }
+.vform-success { position: relative; }
+.vform-success > div:first-child { background: var(--sun); color: var(--color-brand-ink); border: 2px solid var(--color-brand-ink); box-shadow: 0 5px 0 var(--color-brand-ink); animation: ic-pop .6s cubic-bezier(.34, 1.4, .64, 1) both; }
+.vform-success::before, .vform-success::after { content: ''; position: absolute; top: 34px; width: 46px; aspect-ratio: 1; pointer-events: none; -webkit-mask: var(--flower-shape) center / contain no-repeat; mask: var(--flower-shape) center / contain no-repeat; animation: vibrant-spin 18s linear infinite; }
+.vform-success::before { left: 8%; background: var(--coral); }
+.vform-success::after { right: 8%; top: 70px; width: 34px; background: var(--grape); }
+.vform-success .btn-friendly-outline { min-height: 48px; }
+.vform-intro:hover .vform-intro__icon { animation: ic-wiggle .6s; }
+@media (min-width: 1024px) {
+  .vform-intro { position: sticky; top: 132px; }
+}
+
+/* ---------- /contact ---------- */
+.ic-contact-band { overflow: hidden; }
+.ic-con-deco-a { --s: 92px; --c: var(--sun); right: -26px; top: 46%; }
+.ic-con-deco-b { --s: 40px; --c: var(--coral); left: 47.5%; top: 34px; }
+.ic-con-deco-c { --s: 130px; --c: var(--grape); left: 3%; bottom: 26px; }
+.ic-touch-card { box-shadow: 0 5px 0 0 var(--color-brand-ink); transition: translate .25s cubic-bezier(.34, 1.4, .64, 1), rotate .25s cubic-bezier(.34, 1.4, .64, 1), box-shadow .25s; }
+.ic-touch-card:nth-child(odd) { rotate: -.8deg; }
+.ic-touch-card:nth-child(even) { rotate: .8deg; margin-left: 18px; }
+@media (hover: hover) {
+  .ic-touch-card:hover { transform: none; translate: 0 -4px; rotate: 0deg; box-shadow: 0 9px 0 0 var(--pop); }
+  .ic-touch-card:hover > .ic-chip { animation: ic-wiggle .55s; }
+}
+.ic-touch-card a { text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 3px; text-underline-offset: 5px; transition: text-decoration-color .2s, color .2s; }
+.ic-touch-card a:hover { text-decoration-color: var(--pop); }
+.ic-referral { position: relative; rotate: .6deg; transition: rotate .3s cubic-bezier(.34, 1.4, .64, 1); }
+.ic-referral:hover { rotate: 0deg; }
+.ic-referral h3 { padding-right: 64px; }
+.ic-referral__badge { position: absolute; top: -20px; right: 22px; display: grid; place-items: center; width: 64px; height: 64px; border: 2px solid var(--color-brand-ink); border-radius: 50%; background: #fff; color: var(--color-brand-ink); box-shadow: 0 4px 0 var(--color-brand-ink); rotate: 10deg; }
+.ic-referral:hover .ic-referral__badge { animation: ic-wiggle .6s; }
+@media (max-width: 1023px) {
+  .ic-con-deco-b, .ic-con-deco-c { display: none; }
+  .ic-con-deco-a { --s: 60px; right: -18px; top: auto; bottom: 18px; }
+}
+@media (max-width: 640px) {
+  .ic-touch-card:nth-child(even) { margin-left: 0; }
+  .ic-contact-info > * + * { margin-top: 36px !important; }
+  .ic-referral__badge { width: 54px; height: 54px; right: 16px; }
+}
+
+/* ---------- /insurance: two matched panels, top-aligned, no dead space ---------- */
+.ic-ins-deco-a { --s: 44px; --c: var(--coral); left: calc(50% - 22px); top: -30px; z-index: 2; }
+.ic-ins-deco-b { --s: 130px; --c: var(--grape); left: 6%; bottom: -54px; }
+.ic-ins-deco-c { --s: 44px; --c: var(--coral); right: 4%; bottom: -54px; }
+.ic-ins-bento { align-items: stretch; padding-bottom: 36px; }
+.ic-ins-bento > .ic-panel { display: flex; flex-direction: column; box-shadow: 0 10px 0 0 var(--color-brand-ink); transition: translate .3s cubic-bezier(.34, 1.4, .64, 1), box-shadow .3s; }
+@media (hover: hover) {
+  .ic-ins-bento > .ic-panel--white:hover { translate: 0 -4px; box-shadow: 0 14px 0 0 var(--sun); }
+  .ic-ins-bento > .ic-panel--teal:hover { translate: 0 -4px; box-shadow: 0 14px 0 0 var(--coral); }
+}
+.ic-ins-bento > .ic-panel h2 { margin: 0; line-height: 1.2; }
+.ic-ins-bento > .ic-panel--white > div:first-child, .ic-ins-bento > .ic-panel--teal > div:first-child > div:first-child { min-height: 44px; margin-bottom: 20px; }
+.ic-ins-bento > .ic-panel--white > p, .ic-ins-bento > .ic-panel--teal > div:first-child > p { margin-bottom: 24px; font-size: 1rem; line-height: 1.65; }
+.ic-ins-bento > .ic-panel--white > div:last-child { margin-top: auto; }
+.ic-ins-bento > .ic-panel--white > .ic-payers { margin-bottom: 28px; }
+.ic-ins-bento > .ic-panel--teal { position: relative; overflow: hidden; isolation: isolate; }
+.ic-ins-bento > .ic-panel--teal > div:first-child { flex: 1; display: flex; flex-direction: column; }
+.ic-panel--teal::before { content: ''; position: absolute; z-index: -1; right: -70px; bottom: -80px; width: 230px; aspect-ratio: 1; background: #1f7a6d; -webkit-mask: var(--flower-shape) center / contain no-repeat; mask: var(--flower-shape) center / contain no-repeat; animation: vibrant-spin 40s linear infinite; }
+/* The three promises become full check rows that share the panel's spare height */
+.ic-ins-bento > .ic-panel--teal ul { flex: 1; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.ic-ins-bento > .ic-panel--teal ul > li { flex: 1 1 auto; min-height: 52px; margin: 0; padding: 10px 16px; border: 2px solid #ffffff40; border-radius: 16px; background: #ffffff17; color: #fff; font-size: 1rem; font-weight: 600; transition: background-color .2s, translate .25s cubic-bezier(.34, 1.5, .64, 1); }
+.ic-ins-bento > .ic-panel--teal ul > li::first-letter { color: var(--sun); }
+@media (hover: hover) { .ic-ins-bento > .ic-panel--teal ul > li:hover { background: #ffffff29; translate: 6px 0; } }
+.ic-panel:hover > div:first-child > svg, .ic-panel:hover > div:first-child > div:first-child > svg { animation: ic-wiggle .6s; }
+.ic-panel__actions > * { min-height: 56px; }
+main[data-route='/insurance'] .ic-payers.grid { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 14px 10px; }
+.ic-payer { min-height: 46px; padding: 9px 16px 9px 12px; border: 2px solid var(--color-brand-ink); border-radius: 999px; box-shadow: 0 3px 0 var(--color-brand-ink); cursor: default; transition: translate .22s cubic-bezier(.34, 1.5, .64, 1), rotate .22s cubic-bezier(.34, 1.5, .64, 1), box-shadow .22s; }
+.ic-payer:nth-child(odd) { rotate: -1.6deg; }
+.ic-payer:nth-child(even) { rotate: 1.4deg; }
+.ic-payer:nth-child(3n) { rotate: 0deg; }
+@media (hover: hover) {
+  .ic-payer:hover { translate: 0 -4px; rotate: 0deg; box-shadow: 0 7px 0 var(--color-brand-ink); }
+  .ic-payer:hover svg { animation: ic-wiggle .5s; }
+}
+.ic-ins-bento .ic-text-link svg { transition: translate .2s; }
+.ic-ins-bento .ic-text-link:hover svg { translate: 5px 0; }
+@media (max-width: 1023px) {
+  .ic-ins-deco-a { left: auto; right: 18px; top: -26px; --s: 36px; }
+  .ic-ins-deco-b { --s: 96px; bottom: -44px; }
+  .ic-ins-bento > .ic-panel--teal ul > li { flex: 0 0 auto; }
+}
+@media (max-width: 640px) {
+  main[data-route="/insurance"] .ic-hero-grid { margin-bottom: 28px; }
+  .ic-ins-bento { gap: 28px; }
+  .ic-payer { min-height: 42px; padding: 7px 13px 7px 10px; gap: 6px; }
+  main[data-route='/insurance'] .ic-payers.grid { gap: 12px 8px; }
+  .ic-ins-bento > .ic-panel--white > .ic-payers { margin-bottom: 20px; }
+}
+
+/* ---------- /insurance-by-state ---------- */
+.ic-providers { position: relative; overflow: hidden; }
+.ic-st-deco-a { --s: 110px; --c: #a6e6c8; left: -34px; top: 36%; }
+.ic-st-deco-b { --s: 44px; --c: var(--coral); right: 2.2%; top: 26px; }
+.ic-st-deco-c { --s: 52px; --c: var(--grape); right: 3%; bottom: 30px; }
+.ic-search:focus-within svg { animation: ic-wiggle .55s; }
+.ic-search input { transition: box-shadow .2s, translate .2s; }
+.ic-search input:focus { translate: 0 -2px; }
+.ic-provider { transition: box-shadow .25s; }
+.ic-provider__logo { border: 2px solid var(--color-brand-ink); rotate: -4deg; transition: rotate .3s cubic-bezier(.34, 1.5, .64, 1), scale .3s cubic-bezier(.34, 1.5, .64, 1); }
+.ic-provider:nth-child(even) .ic-provider__logo { rotate: 3deg; }
+.ic-badge { border: 2px solid var(--color-brand-ink); }
+@media (hover: hover) {
+  .ic-provider:hover { box-shadow: 0 11px 0 0 var(--pop); }
+  .ic-provider:hover .ic-provider__logo { rotate: 0deg; scale: 1.08; }
+  .ic-provider:hover .ic-badge svg { animation: ic-wiggle .55s; }
+}
+.ic-empty { position: relative; max-width: 640px; margin-inline: auto; box-shadow: 0 8px 0 0 var(--color-brand-ink); border-style: solid; }
+.ic-empty__icon { display: grid; place-items: center; width: 76px; height: 76px; margin: 0 auto 18px; border: 2px solid var(--color-brand-ink); border-radius: 50%; background: var(--sun); color: var(--color-brand-ink); box-shadow: 0 4px 0 var(--color-brand-ink); animation: ic-wiggle 1.2s .3s; }
+.ic-empty p { font-style: normal; color: var(--color-brand-ink); overflow-wrap: anywhere; }
+.ic-empty .ic-empty__clear { min-height: 48px; padding: 10px 24px; border: 2px solid var(--color-brand-ink); border-radius: 999px; background: var(--sun); color: var(--color-brand-ink); text-decoration: none; box-shadow: 0 4px 0 var(--color-brand-ink); transition: translate .18s cubic-bezier(.34, 1.5, .64, 1), box-shadow .18s; }
+.ic-empty .ic-empty__clear:hover { translate: 0 -2px; background: #ffd666; }
+.ic-empty .ic-empty__clear:active { translate: 0 3px; box-shadow: 0 1px 0 var(--color-brand-ink); }
+@media (max-width: 767px) {
+  .ic-st-deco-a, .ic-st-deco-c { display: none; }
+  .ic-st-deco-b { --s: 30px; top: 8px; right: 12px; }
+  .ic-provider-grid.grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 12px; }
+  .ic-provider-grid .ic-provider { flex-direction: column; align-items: flex-start; gap: 12px; padding: 14px; border-radius: 20px; }
+  .ic-provider-grid .ic-provider h3 { font-size: .95rem; line-height: 1.25; margin-bottom: 8px; overflow-wrap: anywhere; }
+  .ic-provider-grid .ic-provider__logo { width: 72px; height: 50px; }
+  .ic-provider-grid .ic-badge { padding: 3px 8px; font-size: 10px; letter-spacing: .04em; }
+  .ic-empty { padding: 32px 18px; }
+  .ic-empty p { font-size: 1.05rem; }
+}
+
+/* ---------- /insurance-financial-assistance ---------- */
+.ic-fa-deco-star { --s: 44px; --c: var(--sun); right: -14px; top: -20px; z-index: 2; }
+.ic-ticker__pill { box-shadow: 0 3px 0 var(--color-brand-ink); transition: translate .2s cubic-bezier(.34, 1.5, .64, 1), rotate .2s, background-color .2s; cursor: default; }
+.ic-ticker__pill:nth-child(odd) { transform: none; rotate: -2deg; }
+.ic-ticker__pill:nth-child(even) { transform: none; rotate: 2deg; }
+.ic-ticker__pill:nth-child(3n) { background: var(--sun); }
+@media (hover: hover) { .ic-ticker__pill:hover { translate: 0 -4px; rotate: 0deg; } }
+
+/* Simplify: three offset, tilted step cards with ghost numerals */
+.ic-simplify { overflow: hidden; }
+.ic-fa-deco-a { --s: 150px; --c: #ffd3c4; left: 3%; top: 70px; }
+.ic-fa-deco-b { --s: 54px; --c: #ddd6ff; right: 6%; top: 110px; }
+.ic-simplify__grid { counter-reset: ic-step; }
+.ic-solid-card { position: relative; overflow: hidden; counter-increment: ic-step; transition: rotate .3s cubic-bezier(.34, 1.4, .64, 1), box-shadow .3s; }
+.ic-solid-card::after { content: counter(ic-step); position: absolute; right: 18px; top: -18px; font-family: var(--font-kids); font-size: 7.5rem; font-weight: 800; line-height: 1; letter-spacing: -.05em; color: #19332f17; pointer-events: none; }
+.ic-solid-card > * { position: relative; z-index: 1; }
+@media (hover: hover) {
+  .ic-solid-card:hover { rotate: 0deg; box-shadow: 0 12px 0 0 var(--color-brand-ink); }
+  .ic-solid-card:hover .ic-chip { animation: ic-wiggle .55s; }
+}
+@media (min-width: 768px) {
+  .ic-simplify { padding-bottom: 104px; }
+  .ic-solid-card { height: auto; align-self: start; }
+  .ic-solid-card:nth-child(1) { rotate: -1.5deg; }
+  .ic-solid-card:nth-child(2) { rotate: 1deg; translate: 0 30px; }
+  .ic-solid-card:nth-child(3) { rotate: -1deg; }
+}
+
+/* Topics: mixed colour blocks, a dotted step path */
+.ic-fa-deco-c { --s: 96px; --c: #a6e6c8; right: -30px; top: 30%; }
+.ic-fa-deco-d { --s: 40px; --c: var(--coral); left: 1.4%; top: 52%; }
+.ic-topic { transition: translate .28s cubic-bezier(.34, 1.4, .64, 1), box-shadow .28s; }
+@media (hover: hover) { .ic-topic:hover { translate: 0 -5px; box-shadow: 0 11px 0 0 var(--pop); } }
+.ic-topic-col:first-child > .ic-topic:nth-child(2) { background: #ddd6ff; --pop: var(--color-brand-ink); }
+.ic-topic-col:last-child > .ic-topic:nth-child(2) { background: #c8e7ff; --pop: var(--color-brand-ink); }
+.ic-topic-col:last-child > .ic-topic:nth-child(3) { --pop: var(--sun); }
+.ic-topic-col > .ic-topic:nth-child(2) :is(p, li) { color: #2f4741; }
+.ic-topic-col > .ic-topic:nth-child(2) li::marker { color: var(--coral); }
+.ic-topic-col:first-child > .ic-topic:nth-child(2) li > svg { color: var(--color-brand-ink); }
+.ic-topic .ic-chip { rotate: -8deg; }
+.ic-topic:hover .ic-chip { animation: ic-wiggle .55s; }
+.ic-note { border: 2px solid var(--color-brand-ink); transition: translate .2s cubic-bezier(.34, 1.5, .64, 1); }
+.ic-note:hover { translate: 5px 0; }
+.ic-topic .space-y-4:has(> .flex > .ic-num) { position: relative; }
+.ic-topic .space-y-4:has(> .flex > .ic-num)::before { content: ''; position: absolute; left: 14px; top: 16px; bottom: 16px; border-left: 4px dotted var(--coral); }
+.ic-topic .ic-num { position: relative; border: 2px solid var(--color-brand-ink); background: var(--sun); color: var(--color-brand-ink); }
+.ic-topic .flex:nth-child(2) > .ic-num { background: var(--coral); color: #fff; }
+.ic-topic .flex:nth-child(3) > .ic-num { background: var(--sky); }
+.ic-topic .flex:nth-child(4) > .ic-num { background: var(--leaf); }
+
+/* Texas: big-numeral bento, speech-bubble quote with a photo sticker */
+.ic-benefit { position: relative; transition: translate .28s cubic-bezier(.34, 1.4, .64, 1), box-shadow .28s; }
+.ic-benefit > div { flex-direction: column; gap: 14px; }
+.ic-benefit .ic-num--lg { width: 58px; height: 58px; border-radius: 18px; background: var(--pop); color: var(--color-brand-ink); font-size: 1.7rem; rotate: -6deg; box-shadow: 0 4px 0 var(--color-brand-ink); transition: rotate .3s cubic-bezier(.34, 1.5, .64, 1), scale .3s; }
+.ic-benefit:nth-child(even) .ic-num--lg { rotate: 5deg; border-radius: 50%; }
+@media (hover: hover) {
+  .ic-benefit:hover { translate: 0 -5px; box-shadow: 0 11px 0 0 var(--pop); }
+  .ic-benefit:hover .ic-num--lg { rotate: 0deg; scale: 1.1; }
+}
+.ic-benefit:nth-child(5) { background: #ffe08a; --pop: var(--color-brand-ink); }
+.ic-benefit:nth-child(5) .ic-num--lg { background: #fff; }
+.ic-benefit:nth-child(5) p { color: #3d4a2a; }
+@media (min-width: 1024px) {
+  .ic-benefits.grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .ic-benefits > .ic-benefit { grid-column: span 2; }
+  .ic-benefits > .ic-benefit:nth-child(n+4) { grid-column: span 3; }
+}
+.ic-quote-wrap { position: relative; display: flex; align-items: center; justify-content: center; margin-top: 56px; }
+.ic-quote__photo { position: relative; z-index: 2; flex: none; width: 168px; aspect-ratio: 1; margin-right: -34px; border: 3px solid var(--color-brand-ink); border-radius: 50%; overflow: hidden; background: #fff; box-shadow: 7px 7px 0 0 var(--coral); }
+.ic-quote__photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 78% 30%; }
+.ic-quote { position: relative; max-width: 700px; border-radius: 34px; box-shadow: 0 8px 0 0 var(--color-brand-ink); rotate: 1deg; transition: rotate .3s cubic-bezier(.34, 1.4, .64, 1); }
+.ic-quote:hover { rotate: 0deg; }
+.ic-quote p:first-child { padding-left: 22px; }
+
+/* FAQ accordion */
+.ic-fa-deco-e { --s: 120px; --c: #ffe08a; left: 4%; bottom: 60px; }
+.ic-faq { transition: translate .25s cubic-bezier(.34, 1.4, .64, 1), box-shadow .25s, background-color .25s; }
+.ic-faq:first-child { box-shadow: 0 6px 0 0 var(--color-brand-ink); }
+.ic-faq:has(> h3 > button):hover { translate: 0 -3px; box-shadow: 0 6px 0 0 var(--sun); }
+.ic-faq:has(> h3 > button[aria-expanded='true']) { background: #fff1c2; box-shadow: 0 6px 0 0 var(--color-brand-ink); }
+main .ic-faq > h3 > button, main .ic-faq > h3 > button:hover { background: transparent; }
+main .ic-faq > h3 > button[aria-expanded='true'] { color: var(--color-brand-ink); }
+.ic-faq > h3 > button > svg { box-sizing: content-box; width: 22px; height: 22px; padding: 7px; border: 2px solid var(--color-brand-ink); border-radius: 50%; background: var(--sun); color: var(--color-brand-ink); box-shadow: 0 3px 0 var(--color-brand-ink); }
+.ic-faq > h3 > button[aria-expanded='true'] > svg { background: var(--coral); color: #fff; }
+.ic-faq:has(> h3 > button[aria-expanded='true']) [role='region'] > div > div { color: #3d4a2a; }
+
+/* Form band */
+.ic-fa-form { overflow: hidden; }
+.ic-fa-deco-f { --s: 48px; --c: var(--sun); left: 44%; top: 40px; }
+.ic-fa-deco-g { --s: 150px; --c: var(--grape); left: 5%; bottom: 60px; }
+
+@media (max-width: 1023px) {
+  .ic-fa-deco-e, .ic-fa-deco-f, .ic-fa-deco-g, .ic-fa-deco-d { display: none; }
+  .ic-quote__photo { width: 124px; }
+}
+
+/* Mobile: side-swipe rows with a peek of the next card, two-up controls, tighter bands */
+@media (max-width: 767px) {
+  .ic-snap, .ic-snap.grid { display: flex; align-items: stretch; gap: 14px; margin-inline: -24px; padding: 6px 24px 20px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 24px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .ic-snap::-webkit-scrollbar { display: none; }
+  .ic-snap > * { flex: 0 0 82%; margin-block: 0 !important; scroll-snap-align: start; height: auto; }
+  .ic-topic-col.ic-snap { align-items: flex-start; }
+  .ic-topic-col.ic-snap > * { flex-basis: 86%; }
+  .ic-benefits.ic-snap > * { flex-basis: 78%; }
+
+  .ic-fa-hero__cta { flex-direction: row; flex-wrap: nowrap; gap: 10px; }
+  .ic-fa-hero__cta > button { flex: 1 1 0; min-height: 52px; padding: 12px 8px; font-size: 1rem; white-space: nowrap; }
+  .ic-fa-hero__media { max-width: 330px; }
+  .ic-fa-hero__media img { aspect-ratio: 16 / 10; }
+  .ic-fa-deco-star { --s: 32px; right: -6px; top: -14px; }
+  main .ic-ticker { padding-top: 18px; padding-bottom: 22px; }
+  .ic-ticker > div { gap: 12px; }
+
+  .ic-fa-deco-a, .ic-fa-deco-b, .ic-fa-deco-c { display: none; }
+  .ic-simplify > div > div:first-child { margin-bottom: 18px; }
+  .ic-simplify h2 { margin-bottom: 12px; }
+  .ic-simplify p.font-bold { margin-top: 14px; }
+  .ic-solid-card { padding: 22px 20px; border-radius: 24px; box-shadow: 0 6px 0 0 var(--color-brand-ink); }
+  .ic-solid-card .ic-chip { width: 48px; height: 48px; margin-bottom: 14px; }
+  .ic-solid-card::after { font-size: 5.5rem; top: -10px; }
+
+  .ic-topics > div > .grid { gap: 6px; }
+  .ic-topic { padding: 20px 18px; border-radius: 22px; }
+  .ic-topic :is(p, li) { font-size: .95rem; line-height: 1.55; }
+  .ic-topic :is(p, ul).mb-6 { margin-bottom: 14px; }
+  .ic-topic .ic-topic__title { margin-bottom: 10px; }
+  .ic-note { padding: 12px; }
+
+  .ic-texas > div > div:first-child { margin-bottom: 16px; }
+  .ic-benefit { padding: 20px 18px; border-radius: 22px; }
+  .ic-benefit p { font-size: .95rem; line-height: 1.55; }
+  .ic-benefit .ic-num--lg { width: 48px; height: 48px; font-size: 1.4rem; border-radius: 15px; }
+  .ic-quote-wrap { flex-direction: column; align-items: stretch; margin-top: 10px; }
+  .ic-quote__photo { width: 92px; margin: 0 0 -30px 18px; box-shadow: 5px 5px 0 0 var(--coral); }
+  .ic-quote { padding: 40px 20px 24px; border-radius: 26px; rotate: 0deg; }
+  .ic-quote p:first-child { padding-left: 0; font-size: 1.3rem; line-height: 1.3; }
+
+  .ic-faqs > div { gap: 18px; }
+  .ic-faqs h2 { margin-bottom: 6px; }
+  .ic-faq > div:first-child { padding: 18px 20px; }
+  .ic-faq h4 { font-size: 1.1rem; }
+  .ic-faq > h3 > button { padding: 16px 18px; }
+}
+@media (max-width: 480px) {
+  main[data-route="/insurance"] .ic-payers.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 8px; }
+  .ic-payer { justify-content: center; min-height: 44px; padding: 6px 8px; text-align: center; }
+  .ic-payer > svg { display: none; }
+  .ic-payer > span { font-size: .8rem; line-height: 1.2; }
+  .ic-ins-bento > .ic-panel--teal ul > li { min-height: 48px; padding: 8px 14px; font-size: .95rem; }
+}
+.ic-fa-deco-e { --s: 84px; left: -40px; top: 40px; bottom: auto; }
+@media (max-width: 767px) {
+  /* Swipe rows: every card in a row is the same height; spare room at the bottom of a shorter card holds a flower */
+  .ic-topic-col.ic-snap { align-items: stretch; }
+  .ic-topic-col.ic-snap > .ic-topic { display: flex; flex-direction: column; }
+  .ic-topic-col.ic-snap > .ic-topic > :is(a, button, .ic-chip) { align-self: flex-start; flex: none; }
+  .ic-topic-col.ic-snap > .ic-topic::after { content: ''; flex: 1 1 0; align-self: flex-end; width: 96px; max-height: 96px; margin-top: auto; background: var(--pop); -webkit-mask: var(--flower-shape) right bottom / contain no-repeat; mask: var(--flower-shape) right bottom / contain no-repeat; }
+  .ic-topic-col.ic-snap > .ic-topic--sun::after, .ic-topic-col.ic-snap > .ic-topic:nth-child(2)::after { background: var(--coral); }
+  .ic-topic .ic-chip-link { min-height: 46px; padding: 8px 14px; gap: 6px; font-size: .84rem; white-space: nowrap; }
+}

@@ -1,59 +1,29 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import {
   MapPin, Phone, ArrowRight, ShieldCheck,
-  Filter, Search, Info, Sparkles, ChevronRight, Globe,
-  ListOrdered
+  Filter, Search, Info, Sparkles, ChevronRight,
+  ListOrdered, Navigation, ChevronDown, Heart, Star
 } from 'lucide-react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { GoogleCenterMap } from '../components/GoogleCenterMap';
 import { useLocation as useRouterLocation, Link, useNavigate } from 'react-router-dom';
-import L from 'leaflet';
 import { db } from '../lib/firebase';
 import { collection, query as firestoreQuery, onSnapshot, orderBy } from 'firebase/firestore';
 import { SEO } from '../components/SEO';
+import { knownCenters } from '../data/known-centers';
+import { normalizeCenter, centerAddress, centerSlug, type CenterRecord } from '../data/centers';
+import '../styles/locations.css';
+import { REVIEW_MODE } from '../lib/review';
 
-// Leaflet fix & custom icon
-import 'leaflet/dist/leaflet.css';
-
-const customIcon = new L.Icon({
-  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-});
-
-// Internal Map Component
-const InternalMap = ({ centers }: { centers: any[] }) => {
-  const mapCenter: [number, number] = centers.length > 0
-    ? [centers[0].lat, centers[0].lng]
-    : [39.8283, -98.5795];
-
-  return (
-    <div className="w-full h-full min-h-[400px]">
-      <MapContainer
-        center={mapCenter}
-        zoom={centers.length === 1 ? 12 : 4}
-        style={{ height: '100%', width: '100%' }}
-        className="z-0"
-      >
-        <TileLayer
-          attribution='&copy; OpenStreetMap contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {centers.map(center => (
-          <Marker key={center.id} position={[center.lat, center.lng]} icon={customIcon}>
-            <Popup>
-              <div className="font-sans p-1">
-                <p className="font-bold text-brand-teal">{center.name}</p>
-                <p className="text-xs text-gray-600">{center.address}</p>
-                <a href={`tel:${center.phone.replace(/[^0-9]/g, '')}`} className="text-xs text-brand-teal font-bold mt-1 block">{center.phone}</a>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
-      </MapContainer>
-    </div>
-  );
+// Preserve the locations list and map view; both use the selected center.
+const InternalMap = ({ centers }: { centers: CenterRecord[] }) => {
+  const [selected, setSelected] = useState('');
+  const center = centers.find((item) => item.id === selected) || centers[0];
+  if (!center) return <div className="h-full min-h-[400px] flex items-center justify-center bg-brand-sky/30 p-8 text-brand-sage">Choose a center from the locations list to view its map.</div>;
+  return <div className="h-full flex flex-col">
+    {centers.length > 1 && <label className="p-4 bg-white text-sm font-bold text-brand-ink">Map location<select value={center.id} onChange={(event) => setSelected(event.target.value)} className="ml-3 p-2 rounded-xl border border-brand-teal/20">{centers.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>}
+    <div className="flex-grow"><GoogleCenterMap name={center.name} address={center.address ? centerAddress(center) : ''} /></div>
+  </div>;
 };
 
 // Main Locations Page
@@ -64,25 +34,23 @@ export const Locations = () => {
   const [query, setQuery] = useState(initialQuery);
   const [program, setProgram] = useState('All');
   const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
-  const [allCenters, setAllCenters] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [allCenters, setAllCenters] = useState<CenterRecord[]>(knownCenters);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    if (REVIEW_MODE) return;
     const q = firestoreQuery(collection(db, 'locations'), orderBy('name', 'asc'));
     const unsubscribe = onSnapshot(q, (snapshot) => {
-      const centersData = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-      setAllCenters(centersData);
+      const centersData = snapshot.docs.map(doc => normalizeCenter(doc.id, doc.data()));
+      setAllCenters(centersData.length ? centersData : knownCenters);
       setLoading(false);
-    });
+    }, () => { setAllCenters(knownCenters); setLoading(false); });
     return () => unsubscribe();
   }, []);
 
   const filtered = useMemo(() => {
     return allCenters.filter(c => {
-      const q = query.toLowerCase();
+      const q = query.trim().toLowerCase();
       const matchesQuery = !q ||
         c.city.toLowerCase().includes(q) ||
         c.zip.includes(q) ||
@@ -111,16 +79,16 @@ export const Locations = () => {
           "address": {
             "@type": "PostalAddress",
             "streetAddress": center.address,
-            "addressLocality": center.city || "Houston",
-            "addressRegion": center.state || "TX",
+            "addressLocality": center.city || undefined,
+            "addressRegion": center.state || undefined,
             "postalCode": center.zip || "",
             "addressCountry": "US"
           },
-          "geo": {
+          "geo": typeof center.lat === 'number' && typeof center.lng === 'number' ? {
             "@type": "GeoCoordinates",
             "latitude": center.lat,
             "longitude": center.lng
-          },
+          } : undefined,
           "priceRange": "$$",
           "medicalSpecialty": "Pediatrics",
           "knowsAbout": "Applied Behavior Analysis, Autism Therapy, ASD Early Intervention"
@@ -134,8 +102,8 @@ export const Locations = () => {
   };
 
   return (
-    <div className="bg-brand-cream min-h-screen font-sans flex flex-col overflow-x-hidden">
-      <SEO 
+    <div className="public-page auvia-locations bg-brand-cream min-h-screen font-sans flex flex-col overflow-x-hidden">
+      <SEO
         title="Find an ABA Center Near You | Locations"
         description="Search for Auvia Behavior Centers across Texas and beyond. Find a sanctuary for center-based ABA therapy near your home."
         keywords="ABA therapy locations, autism center near me, Texas ABA therapy, finding an autism clinic, local BCBA services"
@@ -146,39 +114,43 @@ export const Locations = () => {
       {/* BRAND HERO */}
       <section className="pt-20 lg:pt-24 pb-16 px-6 lg:px-12 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-peach/30 relative">
         <div className="max-w-[1400px] mx-auto">
-          <motion.div
+          <motion.div className="route-title-block"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 bg-brand-teal/10 rounded-lg flex items-center justify-center text-brand-teal">
-                <Globe size={18} />
-              </div>
-              <span className="text-brand-teal text-xs font-bold uppercase tracking-widest">
-                Sanctuary Network
-              </span>
-            </div>
             <h1 className="text-section font-kids font-bold text-brand-ink mb-6 tracking-tight leading-none">
               Explore Our <br />
               <span className="text-brand-teal italic">Centers.</span>
             </h1>
           </motion.div>
         </div>
+        {/* Decorative collage: photo stickers on a dotted route with dropped pins */}
+        <div aria-hidden="true" className="loc-hero-art">
+          <svg className="loc-hero-route" viewBox="0 0 520 220" fill="none" preserveAspectRatio="none"><path d="M6 176C70 86 150 206 230 126S350 16 420 86s60 70 94 30" /></svg>
+          <span className="loc-hero-photo loc-hero-photo--a"><img src="/images/kids-team.webp" alt="" decoding="async" width={180} height={180} /></span>
+          <span className="loc-hero-photo loc-hero-photo--b"><img src="/images/kids-hero.webp" alt="" decoding="async" width={140} height={170} /></span>
+          <span className="loc-hero-pin loc-hero-pin--a"><MapPin size={22} strokeWidth={2.25} /></span>
+          <span className="loc-hero-pin loc-hero-pin--b"><MapPin size={18} strokeWidth={2.25} /></span>
+          <span className="loc-hero-bit loc-hero-bit--heart"><Heart size={26} strokeWidth={2.25} /></span>
+          <span className="loc-hero-bit loc-hero-bit--star"><Star size={24} strokeWidth={2.25} /></span>
+        </div>
       </section>
 
       {/* SPLIT-PANE HUB - RESPONSIVE ENHANCED */}
-      <section className="flex-grow flex flex-col md:flex-row border-t border-gray-100 min-h-[500px] md:min-h-[600px] relative">
-        
+      <section className="auvia-hub flex-grow flex flex-col md:flex-row border-t border-gray-100 min-h-[500px] md:min-h-[600px] relative">
+
         {/* Mobile View Toggle */}
-        <div className="md:hidden flex bg-white border-b border-gray-100 p-2 sticky top-[72px] md:top-[80px] z-30">
-          <button 
+        <div className="auvia-view-toggle md:hidden flex bg-white border-b border-gray-100 p-2 sticky top-[72px] md:top-[80px] z-30">
+          <button
+            type="button" aria-pressed={viewMode === 'list'}
             onClick={() => setViewMode('list')}
             className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm transition-all ${viewMode === 'list' ? 'bg-brand-teal text-white shadow-lg' : 'text-brand-sage hover:bg-gray-50'}`}
           >
             <ListOrdered size={18} /> View List
           </button>
-          <button 
+          <button
+            type="button" aria-pressed={viewMode === 'map'}
             onClick={() => setViewMode('map')}
             className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm transition-all ${viewMode === 'map' ? 'bg-brand-teal text-white shadow-lg' : 'text-brand-sage hover:bg-gray-50'}`}
           >
@@ -187,21 +159,21 @@ export const Locations = () => {
         </div>
 
         {/* LEFT PANE: SEARCH & RESULTS */}
-        <div className={`w-full md:w-[350px] lg:w-[450px] xl:w-[550px] bg-white md:border-r border-gray-100 flex flex-col ${viewMode === 'map' ? 'hidden md:flex' : 'flex'}`}>
+        <div className={`auvia-list-pane w-full md:w-[40%] lg:w-[42%] shrink-0 bg-white md:border-r border-gray-100 flex flex-col ${viewMode === 'map' ? 'hidden md:flex' : 'flex'}`}>
 
-          <div className="p-8 sticky top-0 bg-white/95 backdrop-blur-sm z-20 border-b border-gray-100">
+          <div className="auvia-search-panel p-6 sticky top-0 bg-white/95 backdrop-blur-sm z-20 border-b border-gray-100">
             <div className="space-y-4">
               <div className="flex flex-col gap-1.5">
-                <label className="text-brand-teal font-bold text-[10px] uppercase tracking-widest ml-1">Search Area</label>
+                <label htmlFor="center-search" className="text-brand-teal font-bold text-xs uppercase tracking-widest ml-1">Search Area</label>
                 <div className="glass-input w-full flex items-center px-5 py-4 gap-3 rounded-2xl">
-                  <MapPin className="text-brand-teal" size={20} />
+                  <Search className="text-brand-teal" size={20} />
                   <input
-                    type="text" value={query} onChange={(e) => setQuery(e.target.value)}
-                    className="bg-transparent w-full text-brand-ink text-lg outline-none"
+                    id="center-search" type="search" value={query} onChange={(e) => setQuery(e.target.value)}
+                    className="bg-transparent w-full min-w-0 text-brand-ink text-base outline-none"
                     placeholder="City, State, or Zip Code..."
                   />
                   {query && (
-                    <button onClick={() => setQuery('')} className="text-brand-sage hover:text-brand-teal transition-colors text-sm font-bold">
+                    <button type="button" aria-label="Clear location search" onClick={() => setQuery('')} className="text-brand-sage hover:text-brand-teal transition-colors text-sm font-bold">
                       Clear
                     </button>
                   )}
@@ -209,33 +181,34 @@ export const Locations = () => {
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-brand-teal font-bold text-[10px] uppercase tracking-widest ml-1">Program Type</label>
+                <label htmlFor="center-program" className="text-brand-teal font-bold text-xs uppercase tracking-widest ml-1">Program Type</label>
                 <div className="glass-input w-full flex items-center px-5 py-4 gap-3 rounded-2xl">
                   <Filter className="text-brand-teal" size={20} />
                   <select
-                    value={program} onChange={(e) => setProgram(e.target.value)}
-                    className="bg-transparent w-full text-brand-ink text-lg outline-none appearance-none cursor-pointer"
+                    id="center-program" value={program} onChange={(e) => setProgram(e.target.value)}
+                    className="bg-transparent w-full min-w-0 text-brand-ink text-base outline-none appearance-none cursor-pointer"
                   >
                     <option value="All">All Programs</option>
                     <option value="Center based care">In-Center Care</option>
                   </select>
+                  <ChevronDown size={16} aria-hidden="true" />
                 </div>
               </div>
 
-              <p className="text-xs text-brand-sage font-bold ml-1">{filtered.length} center{filtered.length !== 1 ? 's' : ''} found</p>
+              <p role="status" aria-live="polite" className="text-xs text-brand-sage font-semibold ml-1">{filtered.length} center{filtered.length !== 1 ? 's' : ''} found</p>
             </div>
           </div>
 
-          <div className="p-6 flex-grow overflow-y-auto">
+          <div className="auvia-results p-6 flex-grow overflow-y-auto">
             <AnimatePresence mode="wait">
               {filtered.length === 0 ? (
                 <motion.div
                   initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                  className="text-center py-20 bg-gray-50 rounded-3xl"
+                  className="auvia-empty text-center py-20 bg-gray-50 rounded-3xl"
                 >
                   <Info size={40} className="mx-auto mb-4 text-brand-teal opacity-50" />
                   <p className="text-gray-500 font-medium mb-2">No centers found in this area.</p>
-                  <button onClick={() => { setQuery(''); setProgram('All'); }} className="text-brand-teal font-bold text-sm hover:underline">
+                  <button type="button" onClick={() => { setQuery(''); setProgram('All'); }} className="text-brand-teal font-bold text-sm hover:underline">
                     Show all centers
                   </button>
                 </motion.div>
@@ -247,13 +220,13 @@ export const Locations = () => {
                       layout
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="group p-6 glass-panel premium-shadow rounded-[32px] hover:-translate-y-1 transition-all border-l-4 border-white/50 hover:border-l-brand-teal"
+                      className="auvia-center-card group p-6 glass-panel rounded-3xl transition-all border border-brand-teal/10 hover:border-brand-teal/25"
                     >
                       <div className="flex gap-5 mb-4">
-                        <img src={center.image} className="w-20 h-20 rounded-2xl object-cover shadow-sm" alt={center.name} />
-                        <div>
+                        <img src={center.image} loading="lazy" decoding="async" width={72} height={72} className="auvia-center-thumb w-18 h-18 shrink-0 rounded-2xl object-cover" alt={center.name} />
+                        <div className="min-w-0">
                           <h3 className="text-xl font-bold text-brand-ink group-hover:text-brand-teal transition-colors">{center.name}</h3>
-                          <div className="flex items-center gap-1.5 mt-1 text-brand-teal text-[10px] font-bold uppercase tracking-tighter">
+                          <div className="auvia-chip flex items-center gap-1.5 mt-1 text-brand-teal text-[10px] font-bold uppercase tracking-tighter">
                             <Sparkles size={12} /> Clinical Excellence
                           </div>
                         </div>
@@ -266,7 +239,7 @@ export const Locations = () => {
                         </div>
                         <div className="flex items-center gap-3">
                           <Phone size={16} className="text-brand-teal shrink-0" />
-                          <a href={`tel:${center.phone.replace(/[^0-9]/g, '')}`} className="hover:text-brand-teal transition-colors font-medium">{center.phone}</a>
+                          {center.phone ? <a href={`tel:${center.phone.replace(/[^0-9]/g, '')}`} className="hover:text-brand-teal transition-colors font-medium">{center.phone}</a> : <Link to="/contact">Ask for contact details</Link>}
                         </div>
                         <div className="flex items-center gap-3">
                           <ShieldCheck size={16} className="text-brand-teal shrink-0" />
@@ -283,18 +256,18 @@ export const Locations = () => {
                             Schedule Tour
                           </button>
                           <a
-                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(center.address)}`}
+                            href={center.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(centerAddress(center))}` : '/contact'}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-all flex items-center justify-center"
-                            aria-label="Get directions"
+                            className="auvia-directions px-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-all flex items-center justify-center"
+                            aria-label={center.address ? `Get directions to ${center.name} (new tab)` : 'Ask for location details'}
                           >
-                            <ChevronRight size={20} className="text-gray-400" />
+                            <Navigation size={18} className="text-brand-teal" />
                           </a>
                         </div>
                         <Link
-                          to={`/locations/${center.city.toLowerCase()}-${center.state.toLowerCase()}`}
-                          className="w-full text-center py-2.5 bg-brand-mint/20 hover:bg-brand-mint/40 text-brand-teal rounded-xl font-bold text-xs transition-colors flex items-center justify-center gap-1.5"
+                          to={centerSlug(center) ? `/locations/${centerSlug(center)}` : '/contact'}
+                          className="auvia-details-link w-full text-center py-2.5 bg-brand-mint/20 hover:bg-brand-mint/40 text-brand-teal rounded-xl font-bold text-xs transition-colors flex items-center justify-center gap-1.5"
                         >
                           View Clinic & Insurance Details <ArrowRight size={14} />
                         </Link>
@@ -308,18 +281,28 @@ export const Locations = () => {
         </div>
 
         {/* RIGHT PANE: MAP */}
-        <div className={`flex-grow h-[500px] md:h-auto relative ${viewMode === 'list' ? 'hidden md:block' : 'block'}`}>
+        <div className={`auvia-map-pane flex-grow h-[500px] md:h-auto relative ${viewMode === 'list' ? 'hidden md:block' : 'block'}`}>
           <InternalMap centers={filtered} />
+          <span aria-hidden="true" className="loc-pin-drop"><i /></span>
 
           {/* FLOATING STATUS BADGE */}
-          <div className="absolute top-6 right-6 z-[400] hidden md:block">
+          <div className="auvia-map-badge absolute top-6 right-6 z-20 hidden md:block">
             <div className="glass-panel px-5 py-3 rounded-2xl premium-shadow border border-white/60 flex items-center gap-3">
               <div className="w-2.5 h-2.5 bg-brand-teal rounded-full animate-pulse shadow-[0_0_8px_#4D9689]" />
-              <span className="text-[11px] font-extrabold text-brand-ink uppercase tracking-widest">Live System Active</span>
+              <span className="text-[11px] font-extrabold text-brand-ink uppercase tracking-widest">Center locations</span>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Decorative closing strip: shapes strolling along a dotted route */}
+      <div aria-hidden="true" className="loc-parade">
+        <span className="loc-parade-shape loc-parade-shape--a" />
+        <span className="loc-parade-icon loc-parade-icon--a"><MapPin size={20} strokeWidth={2.25} /></span>
+        <span className="loc-parade-shape loc-parade-shape--b" />
+        <span className="loc-parade-icon loc-parade-icon--b"><Heart size={20} strokeWidth={2.25} /></span>
+        <span className="loc-parade-shape loc-parade-shape--c" />
+      </div>
     </div>
   );
 };

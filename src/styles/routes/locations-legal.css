@@ -1,0 +1,204 @@
+/* Privacy, Terms, Accessibility and Not Found: route-specific styling on top of vibrant.css.
+   Locations and location detail live in ../locations.css (imported by those pages). */
+.legal-page, .auvia-404 { --ink: var(--color-brand-ink); --legal-text: #3a524c; }
+
+/* ---------- Reading pages: calm white cards with a colour stripe ---------- */
+.legal-page.legal-page { padding-bottom: 72px; }
+.legal-page .route-title-block > p { color: var(--legal-text); }
+/* Eyebrows stay plain text labels (site-wide rule in refinements.css); only their alignment is set here. */
+.legal-page .route-title-block.text-center .legal-eyebrow { align-self: center; }
+.legal-page .legal-badge { align-self: flex-start; background: #fff; border: 2px solid var(--ink); border-radius: 18px; }
+.legal-page .legal-badge > svg { flex: none; color: var(--coral); }
+.legal-page .legal-badge > span { color: var(--ink); line-height: 1.45; }
+
+.legal-page .legal-sheet { padding: 0; background: transparent; border: 0; border-radius: 0; box-shadow: none; }
+.legal-page :is(.legal-sheet > section, .legal-card) { --pop: var(--sun); margin-block: 0 20px; padding: 28px 32px 30px; background: #fff; border: 2px solid #19332f1f; border-top: 8px solid var(--pop); border-radius: 24px; box-shadow: none; }
+.legal-page :is(.legal-sheet > section, .legal-card):nth-child(5n+2) { --pop: var(--coral); }
+.legal-page :is(.legal-sheet > section, .legal-card):nth-child(5n+3) { --pop: var(--sky); }
+.legal-page :is(.legal-sheet > section, .legal-card):nth-child(5n+4) { --pop: var(--grape); }
+.legal-page :is(.legal-sheet > section, .legal-card):nth-child(5n+5) { --pop: var(--leaf); }
+.legal-page .legal-sheet > section:last-child { margin-bottom: 0; }
+.legal-page .legal-sheet > section[class*='bg-brand-mint'] { background: #dcf7ea; border: 2px solid var(--ink); }
+.legal-page .legal-sheet > section[class*='bg-brand-sky'] { background: #dff0ff; border: 2px solid var(--ink); }
+.legal-page :is(.legal-sheet, .legal-card) h2 { color: var(--ink); font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.3; }
+.legal-page .legal-sheet > section > div:first-child { gap: 14px; margin-bottom: 14px; }
+.legal-page .legal-sheet > section > div:first-child > svg { flex: none; width: 42px; height: 42px; padding: 8px; background: var(--pop); border-radius: 50%; color: var(--ink); }
+.legal-page .legal-sheet > section[class*='bg-brand-'] > div:first-child > svg { background: #fff; border: 2px solid var(--ink); }
+.legal-page :is(.legal-sheet, .legal-card) :is(p, li) { max-width: 68ch; color: var(--legal-text); line-height: 1.75; }
+.legal-page :is(.legal-sheet, .legal-card) p.text-brand-ink, .legal-page .legal-sheet .text-brand-ink > p { color: var(--ink); }
+.legal-page .legal-card li { font-size: .95rem; line-height: 1.6; }
+.legal-page :is(.legal-sheet, .legal-card) li > div.rounded-full { width: 8px; height: 8px; margin-top: 10px; background: var(--coral); }
+.legal-page .legal-card li > svg { margin-top: 4px; }
+.legal-page .legal-sheet ul { padding-left: 4px; }
+.legal-page .legal-sheet li { gap: 14px; }
+.legal-page .space-y-8:has(> .legal-card) > .legal-card:last-child { margin-bottom: 0; }
+.legal-page .grid:has(> .legal-card) { gap: 20px; margin-bottom: 20px; }
+.legal-page .grid > .legal-card { margin-bottom: 0; }
+
+.legal-page .legal-card .legal-feature-icon { width: 52px; height: 52px; margin-bottom: 16px; background: var(--pop); border-radius: 50%; }
+.legal-page .legal-card .legal-feature-icon > svg { padding: 0; background: none; width: 26px; height: 26px; color: var(--ink); }
+.legal-page .legal-card > .flex.gap-3 > svg { flex: none; width: 40px; height: 40px; padding: 8px; background: var(--pop); border-radius: 50%; color: var(--ink); }
+.legal-page .legal-tech { display: flex; align-items: center; justify-content: center; min-height: 54px; padding: 8px 12px; background: #ffe9a8; border-radius: 16px; color: var(--ink); line-height: 1.3; overflow-wrap: anywhere; }
+.legal-page .legal-tech:nth-child(4n+2) { background: var(--color-brand-mint); }
+.legal-page .legal-tech:nth-child(4n+3) { background: var(--color-brand-lavender); }
+.legal-page .legal-tech:nth-child(4n+4) { background: var(--color-brand-sky); }
+
+.legal-page .legal-cta { margin-top: 32px; padding: 32px; border-radius: 28px; box-shadow: 0 10px 0 0 var(--sun); }
+.legal-page .legal-cta :is(h2, h3) { color: #fff; }
+.legal-page .legal-cta p { max-width: 62ch; color: #ffffffd9; }
+.legal-page .legal-cta p.text-xs { color: #ffffffb3; }
+.legal-page .legal-cta a { min-height: 48px; padding: 0 20px; background: var(--sun); border-radius: 999px; box-shadow: 0 4px 0 #000; color: var(--ink); text-decoration: none; transition: transform .18s cubic-bezier(.34,1.5,.64,1), box-shadow .18s, background-color .18s; }
+.legal-page .legal-cta a svg { flex: none; color: var(--ink); }
+.legal-page .legal-cta a:hover { background: #ffd866; transform: translateY(-2px); }
+.legal-page .legal-cta a:active { transform: translateY(3px); box-shadow: 0 1px 0 #000; }
+.legal-page .legal-cta a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+
+.legal-page .legal-footnav { gap: 10px; margin-top: 44px; padding-top: 24px; border-top: 2px dashed #19332f2e; }
+.legal-page .legal-footnav > span { display: none; }
+.legal-page .legal-footnav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; background: #fff; border: 2px solid #19332f2e; border-radius: 999px; color: var(--ink); transition: border-color .18s, background-color .18s; }
+.legal-page .legal-footnav a:hover { background: var(--color-brand-mint); border-color: var(--ink); color: var(--ink); }
+
+@media (max-width: 640px) {
+  .legal-page .route-title-block.text-center .legal-eyebrow { align-self: flex-start; }
+  .legal-page :is(.legal-sheet > section, .legal-card) { padding: 22px 20px 24px; border-radius: 22px; margin-bottom: 16px; }
+  .legal-page .grid:has(> .legal-card) { gap: 16px; margin-bottom: 16px; }
+  .legal-page .legal-sheet > section > div:first-child > svg { width: 38px; height: 38px; }
+  .legal-page .legal-tech { font-size: 13px; padding: 8px; }
+  .legal-page .legal-cta { padding: 24px 20px 28px; border-radius: 24px; box-shadow: 0 8px 0 0 var(--sun); }
+  .legal-page .legal-cta > .flex.items-start { flex-direction: column; gap: 12px; }
+  .legal-page .legal-cta a { justify-content: center; }
+}
+
+/* ---------- Jump links: section chips built from the headings. Wrapping row on desktop, sticky side-scrolling pill bar on phones ---------- */
+.legal-page.legal-page { overflow-x: clip; }
+.legal-page :is(section, .legal-card, .legal-cta)[id] { scroll-margin-top: 124px; }
+.legal-page .legal-toc { position: relative; z-index: 20; margin: -8px 0 28px; }
+.legal-page .legal-toc ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.legal-page.legal-privacy .legal-toc ul { justify-content: center; }
+.legal-page .legal-toc li { --dot: var(--sun); flex: none; }
+.legal-page .legal-toc li:nth-child(5n+2) { --dot: var(--coral); }
+.legal-page .legal-toc li:nth-child(5n+3) { --dot: var(--sky); }
+.legal-page .legal-toc li:nth-child(5n+4) { --dot: var(--grape); }
+.legal-page .legal-toc li:nth-child(5n+5) { --dot: var(--leaf); }
+.legal-page .legal-toc a { position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px 0 12px; background: #fff; border: 2px solid #19332f24; border-radius: 999px; color: var(--ink); font-size: 13.5px; font-weight: 700; line-height: 1; white-space: nowrap; text-decoration: none; transition: transform .18s cubic-bezier(.34,1.5,.64,1), box-shadow .18s, border-color .18s; }
+.legal-page .legal-toc a::before { content: ''; flex: none; width: 11px; height: 11px; background: var(--dot); border: 1.5px solid var(--ink); border-radius: 50%; transition: transform .25s cubic-bezier(.34,1.6,.64,1); }
+.legal-page .legal-toc a:hover { border-color: var(--ink); box-shadow: 0 3px 0 var(--dot); transform: translateY(-2px); }
+.legal-page .legal-toc a:hover::before { transform: scale(1.35); }
+.legal-page .legal-toc a:active { transform: translateY(1px); box-shadow: none; }
+.legal-page .legal-toc a:focus-visible { outline: 3px solid var(--color-brand-teal); outline-offset: 2px; }
+/* Small, quiet touches: icons nod on hover, the card you jumped to gets its stripe colour as a ring */
+.legal-page .legal-sheet > section > div:first-child > svg, .legal-page .legal-card .legal-feature-icon { transition: rotate .3s cubic-bezier(.34,1.6,.64,1), scale .3s; }
+@media (hover: hover) {
+  .legal-page .legal-sheet > section:hover > div:first-child > svg, .legal-page .legal-card:hover .legal-feature-icon { rotate: -10deg; scale: 1.08; }
+  .legal-page .legal-tech { transition: translate .2s cubic-bezier(.34,1.5,.64,1), rotate .2s; }
+  .legal-page .legal-tech:hover { translate: 0 -3px; rotate: -1.5deg; }
+}
+.legal-page :is(section, .legal-card)[id]:target { border-color: var(--ink); box-shadow: 0 6px 0 0 var(--pop); }
+.legal-page :is(section, .legal-card, .legal-cta)[id]:focus { outline: none; }
+.legal-page :is(section, .legal-card, .legal-cta)[id]:focus-visible { outline: 3px solid var(--color-brand-teal); outline-offset: 4px; }
+.legal-page .legal-cta { position: relative; }
+.legal-page .legal-cta::after { content: ''; position: absolute; right: 26px; top: -30px; width: 64px; aspect-ratio: 1; pointer-events: none; background: var(--coral); -webkit-mask: var(--flower-shape) center / contain no-repeat; mask: var(--flower-shape) center / contain no-repeat; animation: vibrant-float 6s ease-in-out infinite; }
+@media (max-width: 767px) {
+  .legal-page :is(section, .legal-card, .legal-cta)[id] { scroll-margin-top: 158px; }
+  .legal-page > .max-w-4xl { padding-inline: 16px; }
+  .legal-page .legal-toc { position: sticky; top: 92px; margin: -4px -4px 18px; padding: 4px; background: #fffdf6; border: 2px solid var(--ink); border-radius: 999px; box-shadow: 0 4px 0 var(--ink); }
+  .legal-page .legal-toc ul, .legal-page.legal-privacy .legal-toc ul { flex-wrap: nowrap; justify-content: flex-start; gap: 6px; padding-right: 28px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-width: none; border-radius: 999px; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); }
+  .legal-page .legal-toc ul::-webkit-scrollbar { display: none; }
+  .legal-page .legal-toc li { scroll-snap-align: start; }
+  .legal-page .legal-toc a { min-height: 40px; padding: 0 14px 0 10px; background: #eef6f2; border-color: transparent; font-size: 13px; }
+  .legal-page .legal-toc a::after { content: ''; position: absolute; inset: -6px 0; }
+  .legal-page .legal-toc a:hover { box-shadow: none; transform: none; border-color: var(--ink); }
+  .legal-page .legal-cta::after { right: 18px; top: -24px; width: 48px; }
+}
+@media (max-width: 640px) {
+  /* Tighter reading cards so long policies take fewer screens */
+  .legal-page :is(.legal-sheet > section, .legal-card) { padding: 18px 16px 20px; margin-bottom: 14px; border-top-width: 6px; }
+  .legal-page :is(.legal-sheet, .legal-card) :is(p, li) { line-height: 1.62; }
+  .legal-page .legal-sheet > section > :not([hidden]) ~ :not([hidden]) { margin-top: 12px; }
+  .legal-page .legal-sheet > section > div:first-child { gap: 12px; margin-bottom: 10px; }
+  .legal-page .legal-sheet ul { padding-left: 0; }
+  .legal-page .legal-sheet ul > li { gap: 10px; }
+  .legal-page .legal-sheet ul > li + li { margin-top: 8px; }
+  .legal-page .legal-card > h2, .legal-page .legal-card > h3 { margin-bottom: 10px; }
+  .legal-page.inner-public-page .route-title-block:not(section .route-title-block) { padding-bottom: 56px; margin-bottom: 20px; }
+}
+
+/* ---------- Not found: a tumbling "404" (the mascot card is the zero), drifting flowers, a dotted trail ---------- */
+main:not([data-route='/']):not([data-route^='/admin']) > div.auvia-404 { isolation: isolate; min-height: 0; padding: 150px 24px 150px; background: var(--color-brand-lavender); }
+.auvia-404 > [class*='blur-'] { display: none; }
+.auvia-404::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 44px; pointer-events: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 44' preserveAspectRatio='none'%3E%3Cpath fill='%23fffdf6' d='M0 22c240 30 480 30 720 8s480-36 720-8v22H0z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+.auvia-404 .nf-shape { position: absolute; z-index: 0; aspect-ratio: 1; pointer-events: none; -webkit-mask: var(--flower-shape) center / contain no-repeat; mask: var(--flower-shape) center / contain no-repeat; }
+.auvia-404 .nf-shape--a { left: 9%; top: 190px; width: 124px; background: var(--sun); animation: vibrant-spin 28s linear infinite; }
+.auvia-404 .nf-shape--b { right: 11%; top: 300px; width: 92px; background: var(--coral); animation: nf-drift 9s ease-in-out infinite; }
+.auvia-404 .nf-shape--c { left: 20%; bottom: 130px; width: 60px; background: #fff; opacity: .85; animation: nf-drift 11s ease-in-out infinite reverse; }
+.auvia-404 .nf-shape--d { right: 23%; bottom: 190px; width: 72px; background: var(--leaf); animation: vibrant-spin 22s linear infinite reverse; }
+.auvia-404 .nf-bit { position: absolute; z-index: 0; display: block; pointer-events: none; color: var(--ink); animation: nf-twinkle 3.6s ease-in-out infinite; }
+.auvia-404 .nf-bit svg { display: block; fill: var(--sun); }
+.auvia-404 .nf-bit--star { right: 20%; top: 150px; }
+.auvia-404 .nf-bit--heart { left: 24%; top: 430px; animation-delay: -1.2s; }
+.auvia-404 .nf-bit--heart svg { fill: var(--coral); }
+.auvia-404 .nf-bit--star2 { left: 31%; top: 168px; animation-delay: -2.4s; }
+.auvia-404 .nf-bit--star2 svg { fill: #fff; }
+.auvia-404 .nf-trail { position: absolute; z-index: 0; left: 50%; bottom: 46px; width: min(920px, 92%); height: 84px; translate: -50% 0; pointer-events: none; overflow: visible; }
+.auvia-404 .nf-trail path { stroke: var(--ink); stroke-width: 4; stroke-linecap: round; stroke-dasharray: .1 15; opacity: .45; vector-effect: non-scaling-stroke; animation: nf-march 1.6s linear infinite; }
+.auvia-404 .nf-body { position: relative; }
+
+.auvia-404 .nf-stage::before, .auvia-404 .nf-stage::after { content: '4'; position: absolute; top: 50%; z-index: -1; font-family: var(--font-kids); font-size: 218px; font-weight: 800; line-height: .8; letter-spacing: -.04em; color: var(--sun); -webkit-text-stroke: 6px var(--ink); paint-order: stroke fill; text-shadow: 8px 8px 0 var(--ink); pointer-events: none; translate: 0 -50%; animation: nf-bob 5s ease-in-out infinite; }
+.auvia-404 .nf-stage::before { right: calc(100% + 26px); rotate: -9deg; }
+.auvia-404 .nf-stage::after { left: calc(100% + 26px); color: var(--coral); rotate: 9deg; animation-delay: -2.5s; }
+.auvia-404 .nf-card { border: 3px solid var(--ink); border-radius: 50%; box-shadow: 10px 10px 0 0 var(--ink); transform: rotate(-4deg); }
+.auvia-404 .nf-card > div { background: #c4f1dc; }
+.auvia-404 .nf-stage:hover .nf-card { animation: nf-wiggle .7s ease-in-out; }
+.auvia-404 .nf-eye { transform-box: fill-box; transform-origin: center; animation: nf-blink 4.6s infinite; }
+.auvia-404 .nf-card + div { top: -6px; right: -10px; width: 46px; height: 46px; background: var(--sun); border: 2px solid var(--ink); border-radius: 50%; box-shadow: 0 3px 0 var(--ink); }
+.auvia-404 .nf-card + div svg { color: var(--ink); }
+.auvia-404 .nf-eyebrow { background: #fff; border: 2px solid var(--ink); box-shadow: 0 3px 0 var(--ink); color: var(--ink); rotate: -3deg; }
+.auvia-404 h1 > span { padding-bottom: .16em; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8c10-8 18-8 28 0s18 8 28 0 18-8 28 0 18 8 30 0' fill='none' stroke='%23f25a34' stroke-width='4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") left bottom / 100% 12px no-repeat; }
+.auvia-404 .nf-body p { color: #2f4a45; }
+.auvia-404 .nf-help { flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 32px; }
+.auvia-404 .nf-help > span { display: none; }
+.auvia-404 .nf-help button { min-height: 46px; padding: 0 18px; background: #fff; border: 2px solid var(--ink); border-radius: 999px; box-shadow: 0 3px 0 var(--ink); color: var(--ink); font-size: 13px; transition: background-color .18s, transform .18s cubic-bezier(.34,1.5,.64,1), box-shadow .18s; }
+.auvia-404 .nf-help button:nth-of-type(1) { rotate: -2deg; }
+.auvia-404 .nf-help button:nth-of-type(2) { rotate: 2deg; }
+.auvia-404 .nf-help button:hover { background: var(--sun); color: var(--ink); transform: translateY(-3px); }
+.auvia-404 .nf-help button:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+.auvia-404 .nf-help button svg { transition: rotate .3s cubic-bezier(.34,1.6,.64,1); }
+.auvia-404 .nf-help button:hover svg { rotate: 18deg; }
+@keyframes nf-bob { 50% { translate: 0 calc(-50% - 12px); } }
+@keyframes nf-drift { 33% { transform: translate(14px, -16px) rotate(18deg); } 66% { transform: translate(-10px, 8px) rotate(-12deg); } }
+@keyframes nf-twinkle { 50% { transform: scale(1.25) rotate(18deg); } }
+@keyframes nf-wiggle { 0%, 100% { transform: rotate(-4deg); } 25% { transform: rotate(6deg) scale(1.04); } 50% { transform: rotate(-9deg) scale(1.04); } 75% { transform: rotate(3deg); } }
+@keyframes nf-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+@keyframes nf-march { to { stroke-dashoffset: -15.1; } }
+@media (max-width: 1023px) {
+  .auvia-404 .nf-bit--star { right: 8%; }
+  .auvia-404 .nf-bit--star2 { left: 10%; top: 130px; }
+  .auvia-404 .nf-bit--heart { left: 7%; }
+  .auvia-404 .nf-shape--d { right: 8%; }
+}
+@media (max-width: 767px) {
+  main:not([data-route='/']):not([data-route^='/admin']) > div.auvia-404 { padding: 118px 20px 112px; }
+  .auvia-404 .nf-shape--a { left: -22px; top: 300px; width: 64px; }
+  .auvia-404 .nf-shape--b { right: -18px; top: 96px; width: 56px; }
+  .auvia-404 .nf-shape--c, .auvia-404 .nf-shape--d, .auvia-404 .nf-bit--star2 { display: none; }
+  .auvia-404 .nf-bit--star { right: 14px; top: 300px; }
+  .auvia-404 .nf-bit--star svg { width: 24px; height: 24px; }
+  .auvia-404 .nf-bit--heart { left: 12px; top: 104px; }
+  .auvia-404 .nf-bit--heart svg { width: 22px; height: 22px; }
+  .auvia-404 .nf-trail { bottom: 34px; height: 56px; }
+  .auvia-404 .nf-stage { margin-bottom: 26px; }
+  .auvia-404 .nf-stage::before, .auvia-404 .nf-stage::after { font-size: 132px; -webkit-text-stroke-width: 5px; text-shadow: 5px 5px 0 var(--ink); }
+  .auvia-404 .nf-stage::before { right: calc(100% + 8px); }
+  .auvia-404 .nf-stage::after { left: calc(100% + 8px); }
+  .auvia-404 .nf-card { width: 148px; height: 148px; box-shadow: 7px 7px 0 0 var(--ink); }
+  .auvia-404 .nf-eyebrow { margin-bottom: 16px; }
+  .auvia-404 h1 { margin-bottom: 14px; }
+  .auvia-404 .nf-body p { margin-bottom: 24px; }
+  /* Auvie stands in the bottom-right corner, so the two help links stack on the left, beside him */
+  .auvia-404 .nf-help { flex-direction: column; flex-wrap: nowrap; align-items: stretch; align-self: flex-start; gap: 12px; width: calc(100% - 104px); margin-top: 24px; }
+  .auvia-404 .nf-help button { justify-content: flex-start; rotate: none !important; }
+}
+@media (max-width: 1023px) {
+  /* The title flower would sit behind the compliance badge on narrow screens */
+  .legal-page.inner-public-page .route-title-block:not(section .route-title-block):has(.legal-badge)::after { display: none; }
+}

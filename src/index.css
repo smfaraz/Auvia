@@ -1,28 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=Quicksand:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap');
 @import "tailwindcss";
-@import "leaflet/dist/leaflet.css";
+@import "./styles/refinements.css";
+@import "./styles/vibrant.css";
+@import "./styles/routes/brand-pages.css";
+@import "./styles/routes/learn-pages.css";
+@import "./styles/routes/insurance-contact.css";
+@import "./styles/routes/locations-legal.css";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-kids: "Quicksand", sans-serif;
   --font-serif: "Cormorant Garamond", serif;
-  
-  --color-brand-mint: #ccfbf1; /* Vibrant Mint */
-  --color-brand-peach: #ffedd5; /* Warm Peach */
-  --color-brand-lavender: #f3e8ff; /* Premium Lavender */
-  --color-brand-sky: #e0f2fe; /* Crisp Sky Blue */
-  --color-brand-teal: #0f766e; /* Deep, Rich Teal */
-  --color-brand-teal-light: #14b8a6; /* Bright Teal Accent */
-  --color-brand-cream: #fafaf9; /* Polished Cream */
-  --color-brand-ink: #0f172a; /* Sharp Slate Ink */
-  --color-brand-sage: #475569; /* Deep Slate Sage */
+
+  --color-brand-mint: #def0e7;
+  --color-brand-peach: #f8e8d9;
+  --color-brand-lavender: #eeeaf5;
+  --color-brand-sky: #e8f0f7;
+  --color-brand-teal: #16665b;
+  --color-brand-teal-light: #0f574f;
+  --color-brand-cream: #fbfaf6;
+  --color-brand-ink: #19332f;
+  --color-brand-sage: #526963;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
     @apply bg-brand-cream text-brand-ink font-sans antialiased selection:bg-brand-mint selection:text-brand-teal;
   }
@@ -38,27 +43,27 @@
 
 @layer components {
   .btn-friendly-primary {
-    @apply bg-brand-teal text-white px-8 py-4 rounded-[24px] font-kids font-bold transition-all duration-300 hover:bg-brand-teal-light hover:-translate-y-1 shadow-[0_10px_20px_-10px_rgba(15,118,110,0.6)] hover:shadow-[0_20px_30px_-10px_rgba(15,118,110,0.7)] active:scale-95;
+    @apply bg-brand-teal text-white px-7 py-3.5 rounded-2xl font-sans font-semibold transition-all duration-200 hover:bg-brand-teal-light hover:-translate-y-0.5 shadow-[0_6px_16px_-9px_rgba(22,102,91,0.4)] hover:shadow-[0_10px_22px_-10px_rgba(22,102,91,0.4)] active:scale-[0.98];
   }
-  
+
   .btn-friendly-outline {
-    @apply border-2 border-brand-teal/20 text-brand-teal px-8 py-4 rounded-[24px] font-kids font-bold transition-all duration-300 hover:bg-brand-teal hover:text-white hover:-translate-y-1 hover:shadow-xl active:scale-95;
+    @apply border border-brand-teal/25 text-brand-teal px-7 py-3.5 rounded-2xl font-sans font-semibold transition-all duration-200 hover:bg-brand-mint hover:border-brand-teal/40 hover:-translate-y-0.5 active:scale-[0.98];
   }
 
   .card-friendly {
-    @apply bg-white border border-slate-100 rounded-[40px] p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_20px_50px_rgb(0,0,0,0.08)] hover:-translate-y-2;
+    @apply bg-white border border-brand-teal/10 rounded-3xl p-8 shadow-[0_4px_20px_rgb(25,51,47,0.035)] transition-all duration-200 hover:shadow-[0_12px_28px_rgb(25,51,47,0.07)] hover:-translate-y-0.5;
   }
 
   .glass-panel {
-    @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)];
+    @apply bg-white/95 border border-brand-teal/10 shadow-[0_6px_24px_rgba(25,51,47,0.045)];
   }
 
   .glass-input {
-    @apply bg-white/60 backdrop-blur-md border border-white/50 focus:bg-white focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/10 shadow-sm transition-all duration-300;
+    @apply bg-white border border-brand-teal/15 focus:bg-white focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/10 shadow-sm transition-all duration-200;
   }
 
   .premium-shadow {
-    @apply shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)];
+    @apply shadow-[0_10px_32px_-16px_rgba(25,51,47,0.15)];
   }
 
   .blob-bg {
@@ -112,5 +117,5 @@
   @apply text-xs leading-relaxed;
 }
 .text-label-custom {
-    @apply text-[10px] uppercase tracking-wider font-semibold;
+    @apply text-xs uppercase tracking-wide font-semibold;
 }

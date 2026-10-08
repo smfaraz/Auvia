@@ -230,7 +230,7 @@ const indexHtml = fs.readFileSync(indexPath, 'utf-8');
 routes.forEach((route) => {
   let content = indexHtml;
   const siteName = 'Auvia Behavior Centers';
-  const fullTitle = route.path === '' ? route.title : `${route.title} | ${siteName}`;
+  const fullTitle = route.title.includes('Auvia') ? route.title : `${route.title} | ${siteName}`;
 
   // Replace primary title
   content = content.replace(

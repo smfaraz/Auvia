@@ -21,7 +21,7 @@ export const SEO: React.FC<SEOProps> = ({
   jsonLd
 }) => {
   const siteName = "Auvia Behavior Centers";
-  const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+  const fullTitle = title.includes('Auvia') ? title : `${title} | ${siteName}`;
   const currentUrl = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : 'https://auviatherapy.com');
   
   // Default extensive keywords if none provided

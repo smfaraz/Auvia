@@ -1,0 +1,67 @@
+/* Auvie's controls stay compact; the character itself remains the original model. */
+.auvia-character__stage:focus-visible { outline: 2px solid var(--color-brand-teal); outline-offset: 2px; border-radius: 24px; }
+.auvia-character__actions button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; border-radius: 999px; transition: background-color 180ms, box-shadow 180ms; }
+.auvia-character__actions button:hover { box-shadow: 0 5px 20px #19332f20; }
+.auvia-character__hello { width: min(260px, calc(100vw - 32px)); padding: 24px; border-radius: 24px 24px 8px 24px; }
+.auvia-character__hello p { color: var(--color-brand-sage); line-height: 1.55; }
+.auvia-character__close { min-width: 44px; min-height: 44px; display: grid; place-items: center; }
+.auvia-character__close:hover { background: var(--color-brand-mint); }
+.auvia-character__chat { min-height: 44px; font-weight: 650; }
+.auvia-character__care { min-height: 36px; display: flex; align-items: center; justify-content: center; text-underline-offset: 4px; }
+.auvia-character__intro-title { border: 1px solid #dce8e0; background: #fbfaf6f5; }
+.auvie-chat-dialog { border: 1px solid #d5e5dd; border-radius: 28px; background: #fbfaf6; box-shadow: 0 20px 70px #19332f30; max-height: min(680px, calc(100dvh - 40px)); }
+.auvie-chat-dialog > div:first-child { padding: 22px 24px; }
+.auvie-chat-dialog > div:first-child h3 { font-size: 21px; letter-spacing: -.02em; }
+.auvie-chat-dialog > div:first-child p { color: #fff; opacity: .8; font-size: 10px; line-height: 1.5; letter-spacing: .08em; }
+.auvie-chat-dialog button[aria-label='Close chat'] { width: 44px; height: 44px; flex-shrink: 0; }
+.auvie-chat-dialog > div:nth-child(2) { min-height: 0; background: #f5f8f4; padding: 24px; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #a4bdb0 transparent; }
+.auvie-chat-dialog .text-body-normal { font-size: 14px; line-height: 1.7; }
+.auvie-chat-dialog p { overflow-wrap: anywhere; }
+.auvie-chat-dialog .text-\[9px\] { font-size: 11px; opacity: 1; font-weight: 500; text-transform: none; letter-spacing: 0; }
+.auvie-chat__shortcuts { gap: 9px; }
+.auvie-chat__prompt { flex-basis: 100%; font-size: 12px; font-weight: 600; color: var(--color-brand-sage); margin: 0 0 4px; }
+.auvie-chat__shortcuts > a { width: calc(50% - 5px); min-height: 48px; padding: 10px 12px; border-radius: 14px; background: #fff; text-transform: none; font-size: 12px; letter-spacing: 0; display: flex; align-items: center; justify-content: space-between; gap: 6px; line-height: 1.4; transition: background-color 180ms, color 180ms; }
+.auvie-chat__input { flex-wrap: wrap; gap: 8px; padding: 18px 20px; }
+.auvie-chat__input > div { width: 100%; }
+.auvie-chat__input input { min-height: 48px; padding-right: 60px; }
+.auvie-chat__input button[aria-label='Send question'] { width: 44px; height: 44px; right: 4px; border-radius: 12px; }
+.auvie-chat__input > p { margin: 0; font-size: 11px; color: var(--color-brand-sage); line-height: 1.5; }
+.auvie-chat__input input:disabled { color: #526963; background: #f2f5f1; opacity: 1; cursor: not-allowed; }
+.auvie-chat__input button:disabled { opacity: .42; cursor: not-allowed; box-shadow: none; }
+@media (max-width: 640px) {
+  .auvia-character { bottom: max(12px, env(safe-area-inset-bottom)); }
+  .auvie-chat-dialog { bottom: max(12px, env(safe-area-inset-bottom)); right: 12px; width: calc(100vw - 24px); border-radius: 24px; max-height: calc(100dvh - 24px - env(safe-area-inset-bottom)); }
+  .auvie-chat-dialog > div:first-child { padding: 18px 20px; }
+  .auvie-chat-dialog > div:nth-child(2) { padding: 20px; }
+}
+@media (max-width: 360px) {
+  .auvie-chat-dialog > div:nth-child(2) { padding: 16px; }
+  .auvie-chat-dialog .text-body-normal { font-size: 14px; }
+  .auvie-chat__shortcuts > a { width: 100%; }
+  .auvie-chat__input { padding: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .auvia-character__stage { will-change: auto; } }
+@media (max-width: 640px) {
+  .auvia-character:not([data-intro='true']) { width: 68px; right: 8px; bottom: max(8px, env(safe-area-inset-bottom)); }
+  .auvia-character:not([data-intro='true']) .auvia-character__stage { height: 72px; }
+  .auvia-character:not([data-intro='true']) .auvia-character__actions button { min-height: 44px; padding: 8px 12px; font-size: 12px; gap: 5px; }
+  .auvia-character:not([data-intro='true']) .auvia-character__actions svg { width: 13px; height: 13px; }
+}
+/* Auvie's "looking for something?" bubble: appears five seconds into a page with that page's shortcuts. */
+.auvia-character__hello--prompt { width: min(290px, calc(100vw - 24px)); padding: 20px 18px 14px; border: 2px solid var(--color-brand-ink); border-radius: 24px 24px 6px 24px; box-shadow: 0 6px 0 var(--color-brand-ink); animation: auvie-pop .45s cubic-bezier(.34,1.56,.64,1) both; transform-origin: 85% 100%; }
+.auvia-character__hello--prompt strong { margin-bottom: 12px; }
+.auvia-character__options { display: grid; gap: 8px; }
+.auvia-character__options a { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 44px; padding: 9px 14px; border: 2px solid var(--color-brand-ink); border-radius: 999px; background: #fff; color: var(--color-brand-ink); font-size: 14px; font-weight: 600; line-height: 1.3; transition: background-color .15s, transform .15s; }
+.auvia-character__options a:nth-child(1) { background: #ffc93c; }
+.auvia-character__options a:nth-child(2) { background: #c8e7ff; }
+.auvia-character__options a:nth-child(3) { background: #c4f1dc; }
+.auvia-character__options a:hover { transform: translateX(3px); }
+button.auvia-character__care { width: 100%; background: none; border: 0; cursor: pointer; }
+@keyframes auvie-pop { from { opacity: 0; transform: translateY(12px) scale(.85) rotate(3deg); } }
+@media (max-width: 640px) {
+  .auvia-character__hello--prompt { width: min(236px, calc(100vw - 24px)); padding: 14px 12px 8px; border-radius: 20px 20px 6px 20px; }
+  .auvia-character__hello--prompt strong { font-size: 15px; margin-bottom: 8px; padding-right: 30px; }
+  .auvia-character__options { gap: 6px; }
+  .auvia-character__options a { font-size: 13px; padding: 6px 12px; }
+  .auvia-character__hello--prompt .auvia-character__care { min-height: 32px; margin-top: 4px; }
+}

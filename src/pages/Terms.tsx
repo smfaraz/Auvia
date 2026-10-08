@@ -1,5 +1,6 @@
+import '../styles/pages.css';
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { FileText, Shield, AlertCircle, Phone, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
@@ -57,7 +58,7 @@ export const Terms = () => {
   ];
 
   return (
-    <div className="pt-20 lg:pt-24 pb-20 lg:pb-32 bg-[#FCFAF7] min-h-screen overflow-x-hidden">
+    <div className="legal-page inner-public-page public-page pt-20 lg:pt-24 pb-20 lg:pb-32 bg-[#FCFAF7] min-h-screen overflow-x-hidden">
       <SEO
         title="Terms of Service | Auvia Behavior Centers"
         description="Read the Terms of Service for Auvia Behavior Centers. Understand your rights, our policies on services, appointments, insurance billing, and HIPAA compliance."
@@ -74,10 +75,10 @@ export const Terms = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-16"
+          className="route-title-block mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-teal/10 text-brand-teal text-xs font-bold uppercase tracking-widest mb-6">
-            <FileText size={14} />
+          <div className="legal-eyebrow inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-teal/10 text-brand-teal text-xs font-bold uppercase tracking-widest mb-6">
+            <FileText strokeWidth={1.75} aria-hidden="true" size={14} />
             Legal
           </div>
           <h1 className="text-display font-kids font-bold text-brand-ink mb-6 leading-tight">
@@ -86,22 +87,31 @@ export const Terms = () => {
           <p className="text-lg text-brand-sage font-medium leading-relaxed">
             Last updated: January 1, 2026. Please read these terms carefully before using our website or services.
           </p>
-          <div className="mt-6 inline-flex items-center gap-3 bg-brand-mint/20 px-5 py-3 rounded-2xl">
-            <Shield size={16} className="text-brand-teal" />
+          <div className="legal-badge mt-6 inline-flex items-center gap-3 bg-brand-mint/20 px-5 py-3 rounded-2xl">
+            <Shield strokeWidth={1.75} aria-hidden="true" size={16} className="text-brand-teal" />
             <span className="text-sm font-bold text-brand-teal">HIPAA Compliant · Licensed Professionals · Texas Regulated</span>
           </div>
         </motion.div>
+
+        <nav aria-label="On this page" className="legal-toc">
+          <ul>
+            {sections.map((section, index) => (
+              <li key={index}><a href={`#terms-section-${index + 1}`}>{section.title}</a></li>
+            ))}
+          </ul>
+        </nav>
 
         {/* Sections */}
         <div className="space-y-8">
           {sections.map((section, index) => (
             <motion.div
               key={index}
+              id={`terms-section-${index + 1}`}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.04 }}
-              className="bg-white rounded-[32px] p-8 border border-brand-teal/5 shadow-sm"
+              className="legal-card bg-white rounded-[32px] p-8 border border-brand-teal/5 shadow-sm"
             >
               <h2 className="text-xl font-kids font-bold text-brand-ink mb-4">{section.title}</h2>
               <p className="text-brand-sage font-medium leading-relaxed">{section.content}</p>
@@ -114,10 +124,10 @@ export const Terms = () => {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-12 bg-brand-ink rounded-[40px] p-10 text-white"
+          className="mt-12 legal-cta bg-brand-ink rounded-[32px] p-10 text-white"
         >
           <div className="flex items-start gap-4">
-            <AlertCircle size={24} className="text-brand-peach shrink-0 mt-1" />
+            <AlertCircle strokeWidth={1.75} aria-hidden="true" size={24} className="text-brand-peach shrink-0 mt-1" />
             <div>
               <h3 className="text-xl font-kids font-bold mb-3">Questions About These Terms?</h3>
               <p className="text-white/70 mb-6 leading-relaxed">
@@ -125,10 +135,10 @@ export const Terms = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a href="tel:9457581087" className="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-5 py-3 rounded-2xl transition-all font-bold text-sm">
-                  <Phone size={16} className="text-brand-teal" /> (945) 758-1087
+                  <Phone strokeWidth={1.75} aria-hidden="true" size={16} className="text-brand-teal" /> (945) 758-1087
                 </a>
                 <a href="mailto:admin@auviatherapy.com" className="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-5 py-3 rounded-2xl transition-all font-bold text-sm">
-                  <Mail size={16} className="text-brand-teal" /> admin@auviatherapy.com
+                  <Mail strokeWidth={1.75} aria-hidden="true" size={16} className="text-brand-teal" /> admin@auviatherapy.com
                 </a>
               </div>
             </div>
@@ -136,7 +146,7 @@ export const Terms = () => {
         </motion.div>
 
         {/* Footer nav */}
-        <div className="mt-12 pt-8 border-t border-brand-teal/10 flex flex-wrap gap-4 text-sm font-bold text-brand-sage">
+        <div className="legal-footnav mt-12 pt-8 border-t border-brand-teal/10 flex flex-wrap gap-4 text-sm font-bold text-brand-sage">
           <Link to="/privacy" className="hover:text-brand-teal transition-colors">Privacy Policy</Link>
           <span className="text-brand-teal/30">·</span>
           <Link to="/accessibility" className="hover:text-brand-teal transition-colors">Accessibility</Link>

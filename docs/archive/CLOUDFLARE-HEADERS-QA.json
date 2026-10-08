@@ -1,0 +1,30 @@
+{
+  "deployment": "https://392d5cf3.auvia-review.pages.dev",
+  "results": [
+    {
+      "path": "/",
+      "status": 200,
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' blob:; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'",
+      "robots": "noindex, nofollow"
+    },
+    {
+      "path": "/insurance-financial-assistance",
+      "status": 200,
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' blob:; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'",
+      "robots": "noindex, nofollow"
+    },
+    {
+      "path": "/locations/irving-tx",
+      "status": 200,
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' blob:; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'",
+      "robots": "noindex, nofollow"
+    },
+    {
+      "path": "/models/auvie-poster.png",
+      "status": 200,
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' blob:; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'",
+      "robots": "noindex, nofollow",
+      "posterMatchesLocal": true
+    }
+  ]
+}

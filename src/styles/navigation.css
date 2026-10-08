@@ -1,0 +1,59 @@
+.auvia-navigation-shell {
+  background: rgba(255, 253, 247, .94);
+  border: 1px solid rgba(40, 104, 96, .12);
+  box-shadow: 0 6px 24px rgba(33, 67, 62, .04);
+  backdrop-filter: blur(16px);
+}
+.auvia-navigation-shell.is-scrolled { box-shadow: 0 8px 28px rgba(33, 67, 62, .09); }
+.auvia-navigation :is(a, button):focus-visible,
+.auvia-scroll-top:focus-visible { outline: 3px solid #398780; outline-offset: 4px; }
+.auvia-logo { border-radius: 12px; flex-shrink: 0; }
+.auvia-nav-link { position: relative; border-radius: 8px; white-space: nowrap; }
+.auvia-desktop-nav { gap: 10px; }
+.auvia-desktop-nav .auvia-nav-link { font-size: 13px; }
+.auvia-desktop-nav .auvia-find-care { padding-left: 14px; padding-right: 14px; font-size: 13px; }
+.auvia-nav-link[aria-current="page"], .auvia-nav-link[data-active="true"] { color: #16665b; }
+.auvia-nav-link[aria-current="page"]::after, .auvia-nav-link[data-active="true"]::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 2px; background: #81b9a8; border-radius: 4px;
+}
+.auvia-submenu-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 36px; min-height: 40px; border-radius: 12px;
+  transition: background-color .18s ease;
+}
+.auvia-submenu-toggle:hover,
+.auvia-submenu-toggle[aria-expanded="true"] { background: #e7f2ec; }
+.auvia-submenu-toggle svg { transition: transform .2s ease; }
+.auvia-submenu-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.auvia-desktop-submenu[hidden] { display: none !important; }
+.auvia-desktop-submenu > div {
+  box-shadow: 0 12px 30px rgba(33, 67, 62, .1);
+  border-color: rgba(40, 104, 96, .13);
+}
+.auvia-desktop-submenu a[aria-current="page"],
+.auvia-mobile-panel a[aria-current="page"],
+.auvia-mobile-panel a[data-active="true"] { background: #eaf4ee; color: #16665b; }
+.auvia-find-care { display: inline-flex; align-items: center; gap: 9px; white-space: nowrap; }
+.auvia-find-care svg { transition: transform .2s ease; }
+.auvia-find-care:hover { background: #0f574f; }
+.auvia-find-care:hover svg { transform: translate(2px, -2px); }
+.auvia-menu-toggle { width: 44px; height: 44px; border-radius: 12px; background: #eaf4ee; }
+.auvia-mobile-panel { border-radius: 24px 0 0 24px; padding-bottom: max(24px, env(safe-area-inset-bottom)); overscroll-behavior: contain; }
+.auvia-mobile-panel > div:first-child { margin-top: 8px; margin-bottom: 24px; }
+.auvia-menu-caption { margin-top: 5px; color: #61776f; font-size: 12px; }
+.auvia-mobile-panel :is(a, button) { min-height: 44px; }
+.auvia-mobile-panel a { font-family: var(--font-sans); font-size: 17px; line-height: 1.45; font-weight: 600; }
+.auvia-mobile-panel a:hover { background-color: #eff6f2; }
+.auvia-mobile-panel > div:nth-child(2) > a { padding: 10px 8px; }
+.auvia-desktop-submenu a { line-height: 1.5; }
+.auvia-mobile-panel .auvia-submenu-toggle { min-width: 44px; }
+.auvia-mobile-link { flex: 1; padding: 10px 8px; border-radius: 12px; }
+.auvia-mobile-panel > div:nth-child(2) { gap: 8px; }
+.auvia-mobile-panel > div:nth-child(2) > a { padding-left: 8px; border-radius: 12px; }
+.auvia-menu-note { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 16px; color: #61776f; font-size: 12px; }
+.auvia-menu-note svg { color: #b8846c; flex-shrink: 0; }
+.auvia-scroll-top { min-width: 44px; min-height: 44px; box-shadow: 0 6px 20px rgba(33, 67, 62, .16); }
+@media (prefers-reduced-motion: reduce) {
+  .auvia-navigation *, .auvia-scroll-top { transition-duration: 0.01ms !important; }
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Smile, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { LocationMap } from './LocationMap';
 
 export const Footer = () => {
   return (
@@ -8,7 +9,7 @@ export const Footer = () => {
       <div className="blob-bg w-[300px] h-[300px] bg-brand-peach/20 bottom-[-5%] left-[-5%]" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-20 mb-32">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-20 mb-16">
           <div className="space-y-8">
             <Link to="/" className="flex items-center gap-3 group">
               <div className="w-10 h-10 bg-brand-teal rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:rotate-12 transition-transform duration-300">
@@ -75,6 +76,10 @@ export const Footer = () => {
               </li>
             </ul>
           </div>
+        </div>
+
+        <div className="footer-map">
+          <LocationMap />
         </div>
 
         <div className="pt-12 border-t border-brand-teal/10 flex flex-col md:flex-row justify-between items-center gap-8 text-xs font-bold text-brand-sage font-kids">

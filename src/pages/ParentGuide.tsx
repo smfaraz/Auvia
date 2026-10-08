@@ -1,5 +1,6 @@
+import '../styles/pages.css';
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, MotionConfig } from 'motion/react';
 import {
   FileText, CheckCircle, ArrowRight, Calendar, Users, Target, Heart,
   BookOpen, Clock, Star, ChevronDown, ChevronUp, Phone, Mail, Download
@@ -14,10 +15,10 @@ export const ParentGuide = () => {
     {
       week: "Week 1–2",
       phase: "Initial Assessment",
-      color: "bg-brand-peach",
-      textColor: "text-brand-peach",
+      color: "lp-c-sun",
+      textColor: "text-brand-teal",
       borderColor: "border-brand-peach/30",
-      icon: <Target size={20} className="text-white" />,
+      icon: <Target strokeWidth={1.75} aria-hidden="true" size={26} />,
       description: "Your child meets with a Board Certified Behavior Analyst (BCBA) for a comprehensive evaluation of their current skills, behaviors, and goals.",
       steps: [
         "Schedule your intake call with our care coordinator",
@@ -30,10 +31,10 @@ export const ParentGuide = () => {
     {
       week: "Week 3–4",
       phase: "Treatment Plan Design",
-      color: "bg-brand-teal",
+      color: "lp-c-sky",
       textColor: "text-brand-teal",
       borderColor: "border-brand-teal/30",
-      icon: <FileText size={20} className="text-white" />,
+      icon: <FileText strokeWidth={1.75} aria-hidden="true" size={26} />,
       description: "Your BCBA creates a customized Behavior Intervention Plan (BIP) and skill acquisition programs tailored specifically to your child.",
       steps: [
         "BCBA reviews assessment findings with your family",
@@ -46,10 +47,10 @@ export const ParentGuide = () => {
     {
       week: "Week 5–6",
       phase: "Therapist Introduction",
-      color: "bg-brand-mint",
+      color: "lp-c-leaf",
       textColor: "text-brand-ink",
       borderColor: "border-brand-mint/40",
-      icon: <Users size={20} className="text-white" />,
+      icon: <Users strokeWidth={1.75} aria-hidden="true" size={26} />,
       description: "Your child meets their primary Registered Behavior Technician (RBT) and begins gentle, play-based introduction sessions.",
       steps: [
         "Meet your child's dedicated RBT therapist",
@@ -62,10 +63,10 @@ export const ParentGuide = () => {
     {
       week: "Week 7–12",
       phase: "Active Therapy Begins",
-      color: "bg-brand-ink",
+      color: "lp-c-grape",
       textColor: "text-white",
       borderColor: "border-brand-ink/20",
-      icon: <Star size={20} className="text-brand-teal" />,
+      icon: <Star strokeWidth={1.75} aria-hidden="true" size={26} />,
       description: "Full therapy sessions begin. Your child works on skill acquisition goals daily while you receive weekly progress updates and parent coaching.",
       steps: [
         "Full ABA session schedule begins (typically 20–40 hrs/week)",
@@ -129,15 +130,16 @@ export const ParentGuide = () => {
   ];
 
   const tips = [
-    { icon: <Heart size={20} />, tip: "Celebrate every win, no matter how small. Progress in ABA is incremental — every step counts." },
-    { icon: <Clock size={20} />, tip: "Consistency is key. Try to maintain similar routines at home to reinforce skills your child learns in therapy." },
-    { icon: <BookOpen size={20} />, tip: "Attend all parent training sessions. The skills you learn will accelerate your child's progress dramatically." },
-    { icon: <Users size={20} />, tip: "Connect with other ABA families. Our parent community events are a wonderful source of support and shared wisdom." },
-    { icon: <Star size={20} />, tip: "Trust the process. ABA is evidence-based with 60+ years of research. Results come with time and consistency." }
+    { icon: <Heart strokeWidth={1.75} aria-hidden="true" size={20} />, tip: "Celebrate every win, no matter how small. Progress in ABA is incremental — every step counts." },
+    { icon: <Clock strokeWidth={1.75} aria-hidden="true" size={20} />, tip: "Consistency is key. Try to maintain similar routines at home to reinforce skills your child learns in therapy." },
+    { icon: <BookOpen strokeWidth={1.75} aria-hidden="true" size={20} />, tip: "Attend all parent training sessions. The skills you learn will accelerate your child's progress dramatically." },
+    { icon: <Users strokeWidth={1.75} aria-hidden="true" size={20} />, tip: "Connect with other ABA families. Our parent community events are a wonderful source of support and shared wisdom." },
+    { icon: <Star strokeWidth={1.75} aria-hidden="true" size={20} />, tip: "Trust the process. ABA is evidence-based with 60+ years of research. Results come with time and consistency." }
   ];
 
   return (
-    <div className="pt-20 lg:pt-24 pb-20 lg:pb-32 bg-[#FCFAF7] min-h-screen overflow-x-hidden">
+    <MotionConfig reducedMotion="user">
+    <div className="lp inner-public-page public-page pt-28 lg:pt-36 pb-20 lg:pb-24 bg-brand-cream min-h-screen overflow-x-hidden">
       <SEO
         title="New Family Guide — Your First 90 Days | Auvia"
         description="Everything you need to know about starting ABA therapy at Auvia. A comprehensive guide for new families covering the first 90 days, what to expect, and how to prepare."
@@ -149,72 +151,72 @@ export const ParentGuide = () => {
       <div className="blob-bg w-[500px] h-[500px] bg-brand-mint/15 top-[-5%] right-[-10%]" />
       <div className="blob-bg w-[400px] h-[400px] bg-brand-peach/20 bottom-[10%] left-[-10%]" />
 
-      <div className="max-w-5xl mx-auto px-6 lg:px-12 relative z-10">
+      <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-12 relative z-10">
 
         {/* Hero */}
-        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-20">
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} className="route-title-block text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-peach/20 text-brand-ink text-xs font-bold uppercase tracking-widest mb-6">
-            <FileText size={14} className="text-brand-peach" />
+            <FileText strokeWidth={1.75} aria-hidden="true" size={14} className="text-brand-teal" />
             New Family Guide
           </div>
           <h1 className="text-display font-kids font-bold text-brand-ink mb-6 leading-tight">
-            Your First <span className="text-brand-teal italic">90 Days.</span>
+            Your First <span className="lp-squig text-brand-teal italic">90 Days.</span>
           </h1>
-          <p className="text-xl text-brand-sage font-medium leading-relaxed max-w-2xl mx-auto mb-10">
+          <p className="text-lg md:text-xl lp-text font-medium leading-relaxed max-w-2xl mx-auto mb-8">
             Everything you need to know about starting your child's ABA therapy journey at Auvia. No surprises — just clarity, warmth, and a clear path forward.
           </p>
           <button
             onClick={() => window.print()}
-            className="inline-flex items-center gap-3 bg-brand-ink text-white px-8 py-4 rounded-2xl font-kids font-bold text-lg hover:bg-brand-teal transition-all shadow-xl group"
+            className="lp-btn lp-btn--teal group self-center"
           >
-            <Download size={20} className="group-hover:animate-bounce" />
+            <Download strokeWidth={1.75} aria-hidden="true" size={20} className="group-hover:animate-bounce" />
             Print / Save as PDF
           </button>
         </motion.div>
 
         {/* 90-Day Timeline */}
-        <section className="mb-24">
-          <div className="text-center mb-12">
-            <h2 className="text-section font-kids font-bold text-brand-ink mb-3">Your 90-Day Roadmap</h2>
+        <section className="mb-16 lg:mb-20">
+          <div className="lp-head">
+            <h2 className="text-section font-kids font-bold text-brand-ink">Your 90-Day Roadmap</h2>
             <p className="text-brand-sage font-medium">Four phases. Clear milestones. A supportive team every step of the way.</p>
           </div>
-          <div className="space-y-6">
+          <div className="lp-road space-y-6">
             {timeline.map((phase, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className={`bg-white rounded-[36px] border ${phase.borderColor} overflow-hidden shadow-sm`}
+                transition={{ delay: index * 0.08, duration: 0.45 }}
+                className={`lp-phase ${phase.color}`}
               >
                 <button
-                  className="w-full p-8 text-left flex items-center gap-6"
-                  onClick={() => setOpenSection(openSection === index ? null : index)}
+                  className="w-full text-left flex items-center"
+                  type="button" id={`guide-phase-${index}`} aria-expanded={openSection === index} aria-controls={`guide-details-${index}`} onClick={() => setOpenSection(openSection === index ? null : index)}
                 >
-                  <div className={`w-14 h-14 ${phase.color} rounded-2xl flex items-center justify-center shrink-0`}>
+                  <div className="lp-chip lp-chip--sq self-start sm:self-center">
                     {phase.icon}
                   </div>
-                  <div className="flex-1">
-                    <span className={`text-xs font-bold uppercase tracking-widest ${phase.textColor}`}>{phase.week}</span>
-                    <h3 className="text-2xl font-kids font-bold text-brand-ink">{phase.phase}</h3>
-                    <p className="text-brand-sage font-medium text-sm mt-1">{phase.description}</p>
+                  <div className="lp-phase__text flex-1 min-w-0">
+                    <span className="lp-phase__week">{phase.week}</span>
+                    <h3 className="text-xl sm:text-2xl font-kids font-bold text-brand-ink">{phase.phase}</h3>
+                    <p className="lp-phase__desc lp-text font-medium text-sm mt-1">{phase.description}</p>
                   </div>
-                  <div className="text-brand-sage">
-                    {openSection === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                  <div className="lp-phase__caret self-start sm:self-center">
+                    {openSection === index ? <ChevronUp strokeWidth={2} aria-hidden="true" size={20} /> : <ChevronDown strokeWidth={2} aria-hidden="true" size={20} />}
                   </div>
                 </button>
-                {openSection === index && (
+                {(
                   <motion.div
-                    initial={{ height: 0, opacity: 0 }}
+                    hidden={openSection !== index} id={`guide-details-${index}`} role="region" aria-labelledby={`guide-phase-${index}`} initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
-                    className="px-8 pb-8 border-t border-gray-50"
+                    className="px-6 sm:px-8 pb-7"
                   >
                     <ul className="space-y-3 mt-6">
                       {phase.steps.map((step, i) => (
                         <li key={i} className="flex items-start gap-3">
-                          <CheckCircle size={18} className="text-brand-teal shrink-0 mt-0.5" />
-                          <span className="text-brand-sage font-medium">{step}</span>
+                          <CheckCircle strokeWidth={2} aria-hidden="true" size={18} className="text-brand-teal shrink-0 mt-0.5" />
+                          <span className="lp-text font-medium">{step}</span>
                         </li>
                       ))}
                     </ul>
@@ -226,54 +228,58 @@ export const ParentGuide = () => {
         </section>
 
         {/* Checklists */}
-        <section className="mb-24">
-          <div className="text-center mb-12">
-            <h2 className="text-section font-kids font-bold text-brand-ink mb-3">Your Preparation Checklists</h2>
+        <section className="mb-16 lg:mb-20">
+          <div className="lp-head">
+            <h2 className="text-section font-kids font-bold text-brand-ink">Your Preparation Checklists</h2>
             <p className="text-brand-sage font-medium">Be ready. Feel confident. We've got you covered.</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="lp-snap lp-snap--clip lp-tilt grid md:grid-cols-3 gap-6 md:pt-4">
             {Object.entries(checklistItems).map(([title, items], index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-[32px] p-8 border border-brand-teal/5 shadow-sm"
+                transition={{ delay: index * 0.08, duration: 0.45 }}
               >
-                <h3 className="text-lg font-kids font-bold text-brand-ink mb-5">{title}</h3>
-                <ul className="space-y-3">
-                  {items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <CheckCircle size={15} className="text-brand-teal shrink-0 mt-0.5" />
-                      <span className="text-brand-sage font-medium text-sm">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className={`lp-block lp-block--lift lp-clip !p-7 !pt-10 ${['lp-c-sky', 'lp-c-leaf', 'lp-c-grape'][index % 3]}`}>
+                  <h3 className="text-xl font-kids font-bold text-brand-ink mb-5">{title}</h3>
+                  <ul className="space-y-3">
+                    {items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2.5">
+                        <CheckCircle strokeWidth={2} aria-hidden="true" size={17} className="text-brand-ink shrink-0 mt-0.5" />
+                        <span className="font-semibold text-sm">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
             ))}
           </div>
         </section>
 
         {/* Parent Tips */}
-        <section className="mb-24">
-          <div className="bg-brand-mint/20 rounded-[48px] p-10 md:p-14 border border-brand-mint/30">
-            <h2 className="text-section font-kids font-bold text-brand-ink mb-3 text-center">5 Tips from Experienced ABA Parents</h2>
-            <p className="text-brand-sage font-medium text-center mb-10">Wisdom from families who've been on this journey before you.</p>
-            <div className="space-y-5">
+        <section className="mb-16 lg:mb-20">
+          <div className="lp-cta lp-c-sun !text-left max-md:!px-4 md:!p-12">
+            <span aria-hidden="true" className="lp-flower" style={{ '--c': 'var(--coral)', '--s': '110px', right: '-30px', top: '-30px' } as React.CSSProperties} />
+            <span aria-hidden="true" className="lp-flower lp-flower--float" style={{ '--c': '#ffffff', '--s': '70px', left: '-20px', bottom: '40px', opacity: 0.7 } as React.CSSProperties} />
+            <span aria-hidden="true" className="lp-spark" style={{ '--c': '#ffffff', '--s': '30px', left: '7%', top: '30px' } as React.CSSProperties} />
+            <h2 className="text-section font-kids font-bold text-brand-ink mb-3 text-center relative">5 Tips from Experienced ABA Parents</h2>
+            <p className="font-medium text-center mb-8 relative">Wisdom from families who've been on this journey before you.</p>
+            <div className="lp-zig space-y-4 relative">
               {tips.map((item, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-4 bg-white rounded-2xl p-5"
+                  transition={{ delay: index * 0.08 }}
+                  className="lp-row lp-row--top !font-medium"
                 >
-                  <div className="w-10 h-10 bg-brand-teal rounded-xl flex items-center justify-center text-white shrink-0">
+                  <div className={`lp-chip lp-chip--sm ${['lp-chip-coral', 'lp-chip-sky', 'lp-chip-leaf', 'lp-chip-grape', 'lp-chip-sun'][index % 5]}`}>
                     {item.icon}
                   </div>
-                  <p className="text-brand-sage font-medium leading-relaxed">{item.tip}</p>
+                  <p className="font-medium leading-relaxed self-center">{item.tip}</p>
                 </motion.div>
               ))}
             </div>
@@ -281,12 +287,12 @@ export const ParentGuide = () => {
         </section>
 
         {/* FAQs */}
-        <section className="mb-24">
-          <div className="text-center mb-12">
-            <h2 className="text-section font-kids font-bold text-brand-ink mb-3">Frequently Asked Questions</h2>
+        <section className="mb-16 lg:mb-20">
+          <div className="lp-head">
+            <h2 className="text-section font-kids font-bold text-brand-ink">Frequently Asked Questions</h2>
             <p className="text-brand-sage font-medium">The questions every new family asks — answered honestly.</p>
           </div>
-          <div className="space-y-4">
+          <div className="lp-qa-cols space-y-7">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
@@ -294,10 +300,10 @@ export const ParentGuide = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-white p-8 rounded-3xl border border-brand-teal/5 shadow-sm"
+                className="lp-faq lp-qa"
               >
                 <h4 className="text-xl font-kids font-bold text-brand-ink mb-3">{faq.q}</h4>
-                <p className="text-brand-sage font-medium leading-relaxed">{faq.a}</p>
+                <p className="font-medium leading-relaxed">{faq.a}</p>
               </motion.div>
             ))}
           </div>
@@ -308,32 +314,34 @@ export const ParentGuide = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-brand-ink rounded-[48px] p-10 md:p-16 text-white text-center relative overflow-hidden"
+          className="lp-cta lp-c-teal"
         >
-          <div className="absolute top-0 right-0 w-96 h-96 bg-brand-teal/20 blur-[100px] rounded-full -mr-48 -mt-48" />
+          <span aria-hidden="true" className="lp-flower" style={{ '--c': 'var(--sun)', '--s': '110px', left: '-28px', top: '-28px' } as React.CSSProperties} />
+          <span aria-hidden="true" className="lp-flower lp-flower--float" style={{ '--c': 'var(--coral)', '--s': '72px', right: '5%', bottom: '-18px' } as React.CSSProperties} />
           <div className="relative z-10">
             <h2 className="text-section font-kids font-bold mb-4">Ready to Begin?</h2>
-            <p className="text-white/70 text-lg mb-8 max-w-xl mx-auto">
+            <p className="text-lg mb-8 max-w-xl mx-auto">
               Our care coordinators are ready to answer every question and guide you through enrollment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-3 bg-brand-teal text-white px-10 py-5 rounded-2xl font-kids font-bold text-lg hover:bg-white hover:text-brand-teal transition-all shadow-xl"
+                className="lp-btn"
               >
-                Start Enrollment <ArrowRight size={20} />
+                Start Enrollment <ArrowRight strokeWidth={1.75} aria-hidden="true" size={20} />
               </Link>
               <a
                 href="tel:9457581087"
-                className="inline-flex items-center justify-center gap-3 bg-white/10 text-white px-10 py-5 rounded-2xl font-kids font-bold text-lg hover:bg-white/20 transition-all"
+                className="lp-btn lp-btn--ghost"
               >
-                <Phone size={20} /> (945) 758-1087
+                <Phone strokeWidth={1.75} aria-hidden="true" size={20} /> (945) 758-1087
               </a>
             </div>
-            <p className="text-white/40 text-sm mt-6">We typically respond within 1 business day.</p>
+            <p className="text-sm mt-6">We typically respond within 1 business day.</p>
           </div>
         </motion.div>
       </div>
     </div>
+    </MotionConfig>
   );
 };

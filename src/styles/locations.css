@@ -1,0 +1,356 @@
+/* Locations hub and location detail: vibrant pass (flat colour blocks, ink outlines, solid offset shadows). */
+.auvia-locations, .auvia-location-detail, .auvia-location-soon { --ink: var(--color-brand-ink); }
+
+/* ---------- /locations ---------- */
+.auvia-locations > section:first-of-type { padding-bottom: 60px !important; }
+.auvia-locations .auvia-hub { align-items: flex-start; gap: 28px; width: 100%; max-width: 1496px; margin-inline: auto; padding: 4px 24px 72px; border-top: 0; min-height: 0; }
+.auvia-locations .auvia-list-pane { background: transparent; border: 0; min-width: 0; }
+
+.auvia-locations .auvia-search-panel { position: relative; top: auto; z-index: 1; padding: 22px; background: var(--sun); border: 2px solid var(--ink); border-radius: 28px; box-shadow: 0 8px 0 0 var(--ink); backdrop-filter: none; }
+.auvia-locations .auvia-search-panel label { color: var(--ink); }
+.auvia-locations .glass-input { padding: 0 18px; min-height: 52px; background: #fff; border: 2px solid var(--ink); border-radius: 999px; box-shadow: none; color: var(--ink); }
+.auvia-locations .glass-input:focus-within { border-color: var(--color-brand-teal); box-shadow: 0 0 0 4px #fff; }
+.auvia-locations .glass-input :is(input, select) { min-height: 44px; padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; }
+.auvia-locations .glass-input input:focus-visible, .auvia-locations .glass-input select:focus-visible { outline-offset: -3px; }
+.auvia-locations .glass-input button { min-width: 44px; min-height: 44px; color: var(--ink); }
+.auvia-locations .glass-input input::-webkit-search-cancel-button { display: none; }
+.auvia-locations .glass-input > svg { flex: none; }
+.auvia-locations .auvia-search-panel [role='status'] { display: inline-flex; align-items: center; width: fit-content; min-height: 30px; margin-left: 0; padding: 0 14px; background: #fff; border: 2px solid var(--ink); border-radius: 999px; color: var(--ink); }
+
+.auvia-locations .auvia-results { padding: 28px 0 0; overflow: visible; }
+.auvia-locations .auvia-center-card { --pop: var(--leaf); background: #fff; border: 2px solid var(--ink) !important; border-radius: 28px; box-shadow: 0 8px 0 0 var(--pop) !important; }
+.auvia-locations .space-y-6 > .auvia-center-card:nth-child(4n+2) { --pop: var(--coral); }
+.auvia-locations .space-y-6 > .auvia-center-card:nth-child(4n+3) { --pop: var(--sky); }
+.auvia-locations .space-y-6 > .auvia-center-card:nth-child(4n+4) { --pop: var(--grape); }
+@media (hover: hover) { .auvia-locations .auvia-center-card:hover { box-shadow: 0 12px 0 0 var(--pop) !important; } }
+.auvia-locations .auvia-center-card h3 { font-size: 1.2rem; line-height: 1.3; }
+.auvia-locations .auvia-center-card p { overflow-wrap: anywhere; }
+.auvia-locations .auvia-center-card :is(a, button) { font-family: var(--font-sans); }
+.auvia-locations .auvia-center-card a, .auvia-locations .auvia-center-card button { min-height: 48px; }
+.auvia-locations .auvia-center-card a[href^='tel:'] { display: inline-flex; align-items: center; min-height: 28px; }
+.auvia-locations .auvia-center-thumb { border: 2px solid var(--ink); border-radius: 20px; }
+.auvia-locations .auvia-chip { display: inline-flex; margin-top: 8px; padding: 4px 10px; background: var(--color-brand-lavender); border-radius: 999px; color: var(--ink); letter-spacing: .03em; }
+.auvia-locations .auvia-directions { flex: none; width: 56px; padding: 0; background: var(--sun); border: 2px solid var(--ink); border-radius: 999px; box-shadow: 0 4px 0 var(--ink); transition: transform .18s cubic-bezier(.34,1.5,.64,1), box-shadow .18s; }
+.auvia-locations .auvia-directions svg { color: var(--ink); }
+.auvia-locations .auvia-directions:hover { background: var(--sun); transform: translateY(-2px); }
+.auvia-locations .auvia-directions:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+.auvia-locations .auvia-details-link { margin-top: 6px; background: var(--color-brand-mint); border: 2px solid var(--ink); border-radius: 999px; color: var(--ink); font-size: 13px; }
+.auvia-locations .auvia-details-link:hover { background: #a6ebcd; }
+
+.auvia-locations .auvia-empty { padding: 48px 24px; background: var(--color-brand-lavender); border: 2px solid var(--ink); border-radius: 28px; }
+.auvia-locations .auvia-empty > svg { color: var(--coral); opacity: 1; }
+.auvia-locations .auvia-empty p { color: var(--ink); }
+.auvia-locations .auvia-empty button { min-height: 44px; margin-top: 8px; padding: 0 20px; background: #fff; border: 2px solid var(--ink); border-radius: 999px; box-shadow: 0 4px 0 var(--ink); color: var(--ink); text-decoration: none; }
+
+.auvia-locations .auvia-map-pane { min-width: 0; overflow: hidden; background: #eef5f1; border: 2px solid var(--ink); border-radius: 28px; box-shadow: 0 8px 0 0 var(--sky); }
+.auvia-locations .google-center-map { border-left: 0; }
+.auvia-locations .google-center-map > span { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 12px 18px; border: 2px solid var(--ink); border-radius: 999px; box-shadow: 0 4px 0 var(--ink); font-size: 14px; }
+.auvia-locations .auvia-map-badge { pointer-events: none; }
+.auvia-locations .auvia-map-badge > div { background: var(--sun); border: 2px solid var(--ink); border-radius: 999px; box-shadow: 0 4px 0 var(--ink); }
+.auvia-locations .auvia-map-badge > div > div { background: var(--coral); box-shadow: none; }
+
+@media (min-width: 768px) {
+  .auvia-locations .auvia-map-pane { position: sticky; top: 112px; align-self: flex-start; height: min(680px, calc(100vh - 148px)); min-height: 440px; }
+}
+@media (min-width: 1024px) { .auvia-locations .auvia-hub { padding-inline: 48px; } }
+@media (max-width: 767px) {
+  .auvia-locations > section:first-of-type { padding-bottom: 56px !important; }
+  .auvia-locations .auvia-list-pane { align-self: stretch; }
+  .auvia-locations .auvia-hub { gap: 20px; padding: 0 16px 48px; }
+  .auvia-locations .auvia-view-toggle { align-self: stretch; top: 92px; gap: 4px; padding: 4px; background: #fff; border: 2px solid var(--ink); border-radius: 999px; box-shadow: 0 4px 0 var(--ink); }
+  .auvia-locations .auvia-view-toggle button { min-height: 44px; padding-block: 0; border-radius: 999px; color: var(--ink); box-shadow: none !important; }
+  .auvia-locations .auvia-view-toggle button[aria-pressed='true'] { color: #fff; }
+  .auvia-locations .auvia-view-toggle button:hover, .auvia-locations .auvia-view-toggle button:active { transform: none; }
+  .auvia-locations .auvia-search-panel { padding: 18px; border-radius: 24px; box-shadow: 0 6px 0 0 var(--ink); }
+  .auvia-locations .auvia-results { padding-top: 24px; }
+  .auvia-locations .auvia-center-card { padding: 20px; border-radius: 24px; }
+  .auvia-locations .auvia-map-pane { flex: none; width: 100%; height: 500px; border-radius: 24px; }
+}
+
+/* ---------- /locations/:slug ---------- */
+.auvia-location-detail > section:first-of-type::before { display: none; }
+.auvia-location-detail .route-title-block > p { font-size: clamp(1rem, 1.15vw, 1.125rem); line-height: 1.75; color: #2f4a45; }
+.auvia-location-detail nav[aria-label='Breadcrumb'] { padding-bottom: 4px; }
+.auvia-location-detail nav[aria-label='Breadcrumb'] > div { flex-wrap: wrap; color: #2f4a45; }
+.auvia-location-detail nav[aria-label='Breadcrumb'] a { display: inline-flex; align-items: center; min-height: 44px; }
+.auvia-location-detail .loc-fact-icon { width: 44px; height: 44px; background: var(--sun); border: 2px solid var(--ink); border-radius: 50%; box-shadow: 0 3px 0 var(--ink); color: var(--ink); }
+.auvia-location-detail .space-y-4 > div:nth-child(2) > .loc-fact-icon { background: #ff9f8a; }
+.auvia-location-detail .space-y-4 > div:nth-child(3) > .loc-fact-icon { background: var(--color-brand-mint); }
+.auvia-location-detail .space-y-4 > div p { color: #2f4a45; }
+.auvia-location-detail .space-y-4 > div a { display: inline-flex; align-items: center; min-height: 28px; }
+.auvia-location-detail .loc-directions { min-height: 48px; border: 2px solid var(--ink); border-radius: 999px; box-shadow: 0 4px 0 var(--ink); transition: transform .18s cubic-bezier(.34,1.5,.64,1), box-shadow .18s, background-color .18s; }
+.auvia-location-detail .loc-directions:hover { background: var(--sun); transform: translateY(-2px); }
+.auvia-location-detail .loc-directions:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+
+.auvia-location-detail .loc-hero-media { align-self: center; padding: 8px 20px 20px 8px; }
+.auvia-location-detail .loc-hero-media > .blur-3xl { display: none; }
+.auvia-location-detail .loc-hero-media::before { content: ''; position: absolute; left: -22px; bottom: -6px; z-index: 11; width: 92px; aspect-ratio: 1; pointer-events: none; background: var(--grape); -webkit-mask: var(--flower-shape) center / contain no-repeat; mask: var(--flower-shape) center / contain no-repeat; animation: vibrant-float 6s ease-in-out infinite; }
+.auvia-location-detail .loc-hero-media::after { content: ''; position: absolute; right: -6px; top: -14px; z-index: 0; width: 84px; aspect-ratio: 1; pointer-events: none; border-radius: 50%; background: var(--sun); }
+.auvia-location-detail .location-image-frame { border: 3px solid var(--ink); border-radius: 32px; box-shadow: 12px 12px 0 0 var(--coral); transform: rotate(1.5deg); }
+
+.auvia-location-detail .loc-why { padding-block: 56px 72px; background: var(--color-brand-cream); border: 0; }
+.auvia-location-detail .loc-why > div > .text-center { margin-bottom: 36px; }
+.auvia-location-detail .loc-why-card { padding: 28px; background: #ffe08a; border: 2px solid var(--ink); border-radius: 28px; box-shadow: 0 8px 0 0 var(--ink); transition: translate .25s cubic-bezier(.34,1.4,.64,1), box-shadow .25s; }
+.auvia-location-detail .loc-why-card:nth-child(2) { background: #bdf0d8; }
+.auvia-location-detail .loc-why-card:nth-child(3) { background: #ddd6ff; }
+.auvia-location-detail .loc-why-card > div:first-child { width: 52px; height: 52px; background: #fff; border: 2px solid var(--ink); border-radius: 50%; color: var(--ink); }
+.auvia-location-detail .loc-why-card p { color: #2f4a45; font-size: .95rem; line-height: 1.65; }
+@media (hover: hover) { .auvia-location-detail .loc-why-card:hover { translate: 0 -5px; box-shadow: 0 13px 0 0 var(--ink); } }
+
+.auvia-location-detail .loc-insurance { padding-block: 64px 76px; background: var(--color-brand-mint); }
+.auvia-location-detail .loc-insurance p { color: #2f4a45; }
+.auvia-location-detail .loc-insurer { min-height: 46px; padding: 6px 14px 6px 10px; background: #fff; border: 2px solid var(--ink); border-radius: 999px; }
+.auvia-location-detail .loc-insurer > div { width: 24px; height: 24px; background: var(--coral); }
+.auvia-location-detail .loc-insurer > span { line-height: 1.25; }
+.auvia-location-detail .loc-map-frame { border: 3px solid var(--ink); border-radius: 28px; box-shadow: 10px 10px 0 0 var(--sun); }
+.auvia-location-detail .loc-map-frame .google-center-map > span { border: 2px solid var(--ink); border-radius: 999px; box-shadow: 0 4px 0 var(--ink); }
+
+.auvia-location-detail .loc-faq { padding-block: 64px 80px; background: #fff1c2; }
+.auvia-location-detail .loc-faq > div > .text-center { margin-bottom: 32px; }
+.auvia-location-detail .loc-faq > div > .text-center p { color: #2f4a45; }
+.auvia-location-detail .loc-faq-item { background: #fff; border: 2px solid var(--ink); border-radius: 22px; transition: box-shadow .2s; }
+.auvia-location-detail .loc-faq-item:has(button[aria-expanded='true']) { box-shadow: 0 6px 0 0 var(--ink); }
+.auvia-location-detail button[aria-expanded] { min-height: 64px; gap: 20px; padding: 16px 20px 16px 24px; transition: background-color .2s; }
+.auvia-location-detail button[aria-expanded]:hover { background: var(--color-brand-mint); }
+.auvia-location-detail button[aria-expanded='true'], .auvia-location-detail button[aria-expanded='true']:hover { background: var(--sun); }
+.auvia-location-detail button[aria-expanded]:focus-visible { outline: 3px solid var(--color-brand-teal); outline-offset: -5px; border-radius: 20px; }
+.auvia-location-detail button[aria-expanded] > svg { flex: none; width: 34px; height: 34px; padding: 5px; background: #fff; border: 2px solid var(--ink); border-radius: 50%; color: var(--ink); }
+.auvia-location-detail [role='region'] { padding-top: 16px; border-top: 2px solid var(--ink); color: #2f4a45; font-size: 1rem; line-height: 1.7; }
+
+@media (max-width: 1023px) {
+  .auvia-location-detail .loc-hero-media { max-width: 560px; width: 100%; margin-inline: auto; }
+}
+@media (max-width: 640px) {
+  .auvia-location-detail .loc-hero-media { padding: 4px 10px 12px 4px; }
+  .auvia-location-detail .loc-hero-media::before { left: -10px; width: 60px; }
+  .auvia-location-detail .loc-hero-media::after { right: -4px; top: -10px; width: 56px; }
+  .auvia-location-detail .location-image-frame { border-radius: 24px; box-shadow: 8px 8px 0 0 var(--coral); }
+  .auvia-location-detail .route-title-block .flex-wrap > a { flex: 1 1 100%; justify-content: center; }
+  .auvia-location-detail .loc-why { padding-block: 40px 56px; }
+  .auvia-location-detail .loc-why .grid { gap: 22px; }
+  .auvia-location-detail .loc-why-card { padding: 22px; border-radius: 24px; box-shadow: 0 6px 0 0 var(--ink); }
+  .auvia-location-detail .loc-insurance { padding-block: 48px 60px; }
+  .auvia-location-detail .loc-map-frame { height: 320px; border-radius: 24px; box-shadow: 0 8px 0 0 var(--sun); }
+  .auvia-location-detail .loc-faq { padding-block: 48px 64px; }
+  .auvia-location-detail button[aria-expanded] { padding: 14px 14px 14px 18px; gap: 12px; }
+  .auvia-location-detail button[aria-expanded] > span { font-size: 1rem; line-height: 1.35; }
+}
+@media (max-width: 419px) { .auvia-location-detail .loc-insurance .grid-cols-2 { grid-template-columns: 1fr; gap: 10px; } }
+
+/* ---------- Coming-soon and missing location states ---------- */
+main:not([data-route='/']):not([data-route^='/admin']) > div.auvia-location-soon { position: relative; isolation: isolate; overflow: hidden; min-height: 0; padding: 148px 24px 132px; background: var(--color-brand-sky); }
+.auvia-location-soon::before { content: ''; position: absolute; right: 7%; top: 132px; z-index: -1; width: 120px; aspect-ratio: 1; pointer-events: none; background: var(--coral); -webkit-mask: var(--flower-shape) center / contain no-repeat; mask: var(--flower-shape) center / contain no-repeat; animation: vibrant-spin 28s linear infinite; }
+.auvia-location-soon::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 44px; pointer-events: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 44' preserveAspectRatio='none'%3E%3Cpath fill='%23fffdf6' d='M0 22c240 30 480 30 720 8s480-36 720-8v22H0z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+main:not([data-route='/']):not([data-route^='/admin']) > div.auvia-location-soon > .route-title-block { position: relative; padding: 40px; background: #fff; border: 2px solid var(--ink); border-radius: 32px; box-shadow: 0 10px 0 0 var(--ink); }
+.auvia-location-soon > .route-title-block > h1 { margin-bottom: 16px; }
+.auvia-location-soon > .route-title-block::after { content: ''; position: absolute; right: 28px; bottom: -34px; width: 68px; aspect-ratio: 1; pointer-events: none; background: var(--sun); -webkit-mask: var(--flower-shape) center / contain no-repeat; mask: var(--flower-shape) center / contain no-repeat; animation: vibrant-float 6s ease-in-out infinite; }
+.auvia-location-soon :is(.btn-friendly-primary, .btn-friendly-outline) { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; }
+.auvia-location-soon .btn-friendly-outline { background: #fff; }
+.auvia-location-missing { padding-block: 176px 148px !important; }
+.auvia-location-missing > p { color: #2f4a45; }
+@media (max-width: 640px) {
+  main:not([data-route='/']):not([data-route^='/admin']) > div.auvia-location-soon { padding: 128px 16px 104px; }
+  .auvia-location-soon::before { right: -18px; top: 96px; width: 72px; }
+  main:not([data-route='/']):not([data-route^='/admin']) > div.auvia-location-soon > .route-title-block { padding: 26px 22px 30px; border-radius: 26px; box-shadow: 0 8px 0 0 var(--ink); }
+  .auvia-location-soon > .route-title-block > .flex-wrap > a { flex: 1 1 100%; }
+  .auvia-location-soon > .route-title-block::after { width: 52px; bottom: -26px; right: 20px; }
+}
+@media (min-width: 768px) and (max-width: 1023px) { .auvia-locations .auvia-map-badge { top: 108px; right: 16px; } }
+
+/* ==================== Second pass: collage hero, pin drops, bento, stickers ==================== */
+.auvia-locations, .auvia-location-detail, .auvia-location-soon { --squiggle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8c10-8 18-8 28 0s18 8 28 0 18-8 28 0 18 8 30 0' fill='none' stroke='%23f25a34' stroke-width='4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E"); }
+@keyframes loc-rise { from { opacity: 0; translate: 0 22px; } }
+@keyframes loc-hop { 0%, 60%, 100% { translate: 0 0; } 30% { translate: 0 -9px; } }
+@keyframes loc-pin-fall { from { opacity: 0; translate: 0 -70px; } }
+@keyframes loc-march { to { stroke-dashoffset: -12.1; } }
+@keyframes loc-sway { 50% { transform: translateY(-8px) rotate(6deg); } }
+
+/* Shared teardrop map pin that lands on the top edge of a map frame or card */
+.loc-pin-drop { position: absolute; z-index: 21; top: -48px; left: 40px; display: block; width: 44px; height: 56px; pointer-events: none; }
+.loc-pin-drop > i { position: relative; display: block; width: 40px; height: 40px; margin: 2px; background: var(--coral); border: 3px solid var(--ink); border-radius: 50% 50% 50% 0; box-shadow: -3px 3px 0 var(--ink); rotate: -45deg; animation: loc-hop 2.8s 1.6s ease-in-out infinite; }
+.loc-pin-drop > i::after { content: ''; position: absolute; inset: 9px; background: #fff; border: 3px solid var(--ink); border-radius: 50%; }
+
+/* ---------- /locations: hero collage ---------- */
+main:not([data-route='/']):not([data-route^='/admin']) > div.auvia-locations > section:first-of-type::before { display: none; }
+.auvia-locations h1 > span { padding-bottom: .14em; background: var(--squiggle) left bottom / 100% 11px no-repeat; }
+.auvia-locations .loc-hero-art { position: absolute; z-index: 6; top: -6px; right: max(48px, calc((100% - 1400px) / 2 + 48px)); width: 520px; height: 220px; pointer-events: none; }
+.auvia-locations .loc-hero-route { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.auvia-locations .loc-hero-route path { stroke: var(--ink); stroke-width: 3.5; stroke-linecap: round; stroke-dasharray: .1 12; opacity: .5; vector-effect: non-scaling-stroke; animation: loc-march 1.4s linear infinite; }
+.auvia-locations .loc-hero-photo { position: absolute; display: block; overflow: hidden; background: #fff; border: 3px solid var(--ink); }
+.auvia-locations .loc-hero-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.auvia-locations .loc-hero-photo--a { left: 150px; top: 18px; width: 172px; height: 172px; border-radius: 50%; box-shadow: 7px 7px 0 0 var(--coral); rotate: -5deg; animation: loc-rise .5s .1s both; }
+.auvia-locations .loc-hero-photo--a img { object-position: 62% 40%; }
+.auvia-locations .loc-hero-photo--b { right: 22px; top: 40px; width: 130px; height: 164px; border-radius: 999px 999px 22px 22px; box-shadow: 7px 7px 0 0 var(--sun); rotate: 5deg; animation: loc-rise .5s .22s both; }
+.auvia-locations .loc-hero-photo--b img { object-position: 58% 30%; }
+.auvia-locations .loc-hero-pin { position: absolute; display: grid; place-items: center; width: 48px; height: 48px; background: var(--sun); border: 2.5px solid var(--ink); border-radius: 50%; box-shadow: 0 4px 0 var(--ink); color: var(--ink); animation: loc-hop 2.8s ease-in-out infinite; }
+.auvia-locations .loc-hero-pin--a { left: 58px; top: 124px; }
+.auvia-locations .loc-hero-pin--b { left: 336px; top: 0; width: 40px; height: 40px; background: #fff; animation-delay: -1.3s; }
+.auvia-locations .loc-hero-bit { position: absolute; display: block; color: var(--ink); animation: loc-sway 5s ease-in-out infinite; }
+.auvia-locations .loc-hero-bit svg { display: block; }
+.auvia-locations .loc-hero-bit--heart { left: 16px; top: 34px; }
+.auvia-locations .loc-hero-bit--heart svg { fill: var(--coral); }
+.auvia-locations .loc-hero-bit--star { right: -6px; top: 4px; animation-delay: -2.2s; }
+.auvia-locations .loc-hero-bit--star svg { fill: var(--sun); }
+
+/* ---------- /locations: hub ---------- */
+.auvia-locations .auvia-search-panel { animation: loc-rise .5s .05s both; }
+.auvia-locations .auvia-search-panel::after { content: ''; position: absolute; top: -22px; right: 28px; width: 54px; aspect-ratio: 1; pointer-events: none; background: var(--coral); -webkit-mask: var(--flower-shape) center / contain no-repeat; mask: var(--flower-shape) center / contain no-repeat; animation: vibrant-spin 24s linear infinite; }
+.auvia-locations .glass-input > svg:first-child { transition: rotate .3s cubic-bezier(.34,1.6,.64,1), scale .3s; }
+.auvia-locations .glass-input:focus-within > svg:first-child { rotate: -14deg; scale: 1.15; }
+.auvia-locations .auvia-center-thumb { rotate: -4deg; box-shadow: 4px 4px 0 0 var(--pop); transition: rotate .35s cubic-bezier(.34,1.6,.64,1), scale .35s; }
+.auvia-locations .auvia-chip svg { transition: rotate .5s; }
+@media (hover: hover) {
+  .auvia-locations .auvia-center-card:hover .auvia-center-thumb { rotate: 4deg; scale: 1.06; }
+  .auvia-locations .auvia-center-card:hover .auvia-chip svg { rotate: 180deg; }
+}
+.auvia-locations .auvia-map-pane { overflow: visible; animation: loc-rise .5s .18s both; }
+.auvia-locations .auvia-map-pane > div:first-child { overflow: hidden; border-radius: 26px; }
+.auvia-locations .loc-pin-drop { animation: loc-pin-fall .7s .55s cubic-bezier(.34,1.56,.64,1) both; }
+@media (min-width: 768px) {
+  .auvia-locations .auvia-map-pane { top: 136px; height: min(680px, calc(100vh - 172px)); }
+}
+
+/* ---------- /locations: closing parade ---------- */
+.auvia-locations .loc-parade { position: relative; width: min(1400px, calc(100% - 48px)); height: 84px; margin: -30px auto 34px; pointer-events: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40'%3E%3Cpath d='M0 20c40-24 80-24 120 0s80 24 120 0' fill='none' stroke='%2319332f' stroke-opacity='.4' stroke-width='3' stroke-linecap='round' stroke-dasharray='.1 11'/%3E%3C/svg%3E") left center / 240px 40px repeat-x; }
+.auvia-locations .loc-parade > span { position: absolute; top: calc(50% - 22px); width: 44px; height: 44px; animation: loc-sway 4.5s ease-in-out infinite; }
+.auvia-locations .loc-parade-shape { -webkit-mask: var(--flower-shape) center / contain no-repeat; mask: var(--flower-shape) center / contain no-repeat; }
+.auvia-locations .loc-parade-shape--a { left: 6%; background: var(--sun); }
+.auvia-locations .loc-parade-shape--b { left: 48%; background: var(--grape); animation-delay: -1.8s; }
+.auvia-locations .loc-parade-shape--c { left: 88%; background: var(--coral); animation-delay: -3s; }
+.auvia-locations .loc-parade-icon { display: grid; place-items: center; background: #fff; border: 2.5px solid var(--ink); border-radius: 50%; box-shadow: 0 4px 0 var(--ink); color: var(--ink); }
+.auvia-locations .loc-parade-icon--a { left: 27%; background: var(--color-brand-mint); animation-delay: -.9s; }
+.auvia-locations .loc-parade-icon--b { left: 68%; animation-delay: -2.5s; }
+.auvia-locations .loc-parade-icon--b svg { fill: var(--coral); }
+
+@media (min-width: 1024px) {
+  .auvia-locations > section:first-of-type { padding-bottom: 92px !important; }
+}
+@media (min-width: 768px) and (max-width: 1099px) {
+  .auvia-locations .loc-hero-art { right: 16px; scale: .78; transform-origin: right top; }
+}
+@media (max-width: 767px) {
+  .auvia-locations .loc-hero-art { top: -4px; right: 14px; width: 140px; height: 140px; }
+  .auvia-locations .loc-hero-route, .auvia-locations .loc-hero-photo--b, .auvia-locations .loc-hero-pin--b, .auvia-locations .loc-hero-bit--star { display: none; }
+  .auvia-locations .loc-hero-photo--a { left: auto; right: 6px; top: 12px; width: 108px; height: 108px; box-shadow: 5px 5px 0 0 var(--coral); }
+  .auvia-locations .loc-hero-pin--a { left: 0; top: 84px; width: 42px; height: 42px; }
+  .auvia-locations .loc-hero-bit--heart { left: 8px; top: 8px; }
+  .auvia-locations .auvia-search-panel::after { top: -18px; right: 22px; width: 44px; }
+  .auvia-locations .auvia-map-pane { margin-top: 30px; }
+  .auvia-locations .auvia-map-pane > div:first-child { border-radius: 22px; }
+  .auvia-locations .loc-pin-drop { left: 30px; }
+  .auvia-locations .loc-parade { width: calc(100% - 32px); height: 68px; margin: -22px auto 22px; }
+  .auvia-locations .loc-parade > span { top: calc(50% - 18px); width: 36px; height: 36px; }
+  .auvia-locations .loc-parade-icon svg { width: 16px; height: 16px; }
+}
+@media (max-width: 359px) { .auvia-locations .loc-hero-pin--a, .auvia-locations .loc-hero-bit--heart { display: none; } }
+
+/* ---------- /locations/:slug: hero ---------- */
+.auvia-location-detail h1 > span { padding-bottom: .14em; background: var(--squiggle) left bottom / 100% 11px no-repeat; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.auvia-location-detail .route-title-block > .space-y-4 { max-width: 460px; padding: 4px 18px; background: #fff; border: 2px solid var(--ink); border-radius: 24px; box-shadow: 6px 6px 0 0 var(--sun); rotate: -1deg; transition: rotate .3s cubic-bezier(.34,1.5,.64,1); }
+.auvia-location-detail .route-title-block > .space-y-4 > div { align-items: center; margin-block: 0; padding-block: 12px; }
+.auvia-location-detail .route-title-block > .space-y-4 > div + div { border-top: 2px dashed #19332f33; }
+.auvia-location-detail .loc-fact-icon { transition: rotate .3s cubic-bezier(.34,1.6,.64,1), scale .3s; }
+@media (hover: hover) {
+  .auvia-location-detail .route-title-block > .space-y-4:hover { rotate: 0deg; }
+  .auvia-location-detail .route-title-block > .space-y-4 > div:hover > .loc-fact-icon { rotate: -14deg; scale: 1.1; }
+}
+.auvia-location-detail .location-image-frame { border-radius: 230px 230px 32px 32px; transform: none; }
+.auvia-location-detail .loc-sticker { position: absolute; z-index: 12; display: grid; place-items: center; border: 2.5px solid var(--ink); border-radius: 50%; box-shadow: 0 4px 0 var(--ink); color: var(--ink); pointer-events: none; }
+.auvia-location-detail .loc-sticker--pin { left: -10px; top: 20%; width: 60px; height: 60px; background: var(--sun); animation: loc-hop 2.8s ease-in-out infinite; }
+.auvia-location-detail .loc-sticker--heart { right: 2px; bottom: 24%; width: 50px; height: 50px; background: #fff; animation: loc-sway 5s ease-in-out infinite; }
+.auvia-location-detail .loc-sticker--heart svg { fill: var(--coral); }
+.auvia-location-detail .loc-sticker--star { right: 15%; top: 2px; width: 42px; height: 42px; background: var(--color-brand-mint); animation: loc-sway 6s -2s ease-in-out infinite; }
+.auvia-location-detail .loc-sticker--star svg { fill: #fff; }
+
+/* ---------- /locations/:slug: why (bento with big numerals) ---------- */
+.auvia-location-detail .loc-why .grid { counter-reset: why; }
+.auvia-location-detail .loc-why-card { position: relative; overflow: hidden; counter-increment: why; transition: translate .25s cubic-bezier(.34,1.4,.64,1), rotate .25s cubic-bezier(.34,1.4,.64,1), box-shadow .25s; }
+.auvia-location-detail .loc-why-card > * { position: relative; z-index: 1; }
+.auvia-location-detail .loc-why-card::after { content: counter(why); position: absolute; z-index: 0; top: 2px; right: 22px; font-family: var(--font-kids); font-size: 104px; font-weight: 800; line-height: 1; color: #fff; -webkit-text-stroke: 5px var(--ink); paint-order: stroke fill; opacity: .75; pointer-events: none; }
+.auvia-location-detail .loc-why-card > div:first-child { transition: rotate .3s cubic-bezier(.34,1.6,.64,1), scale .3s; }
+.auvia-location-detail .loc-why-card:nth-child(odd) { rotate: -.5deg; }
+.auvia-location-detail .loc-why-card:nth-child(even) { rotate: .5deg; }
+@media (hover: hover) {
+  .auvia-location-detail .loc-why-card:hover { rotate: 0deg; }
+  .auvia-location-detail .loc-why-card:hover > div:first-child { rotate: -12deg; scale: 1.1; }
+}
+@media (min-width: 1024px) {
+  .auvia-location-detail .loc-why .grid { grid-template-columns: 5fr 7fr; gap: 28px; }
+  .auvia-location-detail .loc-why-card:nth-child(1) { grid-row: span 2; display: flex; flex-direction: column; justify-content: flex-end; min-height: 380px; padding: 40px; rotate: -1deg; }
+  .auvia-location-detail .loc-why-card:nth-child(1)::before { content: ''; position: absolute; z-index: 0; top: -56px; left: -56px; width: 230px; aspect-ratio: 1; pointer-events: none; background: #fff; opacity: .6; -webkit-mask: var(--flower-shape) center / contain no-repeat; mask: var(--flower-shape) center / contain no-repeat; animation: vibrant-spin 40s linear infinite; }
+  .auvia-location-detail .loc-why-card:nth-child(1)::after { top: 12px; right: 30px; font-size: 190px; }
+  .auvia-location-detail .loc-why-card:nth-child(1) > div:first-child { width: 84px; height: 84px; }
+  .auvia-location-detail .loc-why-card:nth-child(1) > div:first-child svg { width: 36px; height: 36px; }
+  .auvia-location-detail .loc-why-card:nth-child(1) h3 { font-size: 2rem; line-height: 1.15; }
+  .auvia-location-detail .loc-why-card:nth-child(1) p { max-width: 34ch; font-size: 1.05rem; }
+  .auvia-location-detail .loc-why-card:nth-child(n+2) { display: grid; grid-template-columns: auto 1fr; column-gap: 22px; align-content: center; padding: 30px 150px 30px 32px; }
+  .auvia-location-detail .loc-why-card:nth-child(n+2) > * { margin-block: 0; }
+  .auvia-location-detail .loc-why-card:nth-child(n+2) > div:first-child { grid-row: 1 / span 2; width: 64px; height: 64px; }
+  .auvia-location-detail .loc-why-card:nth-child(n+2) > p { margin-top: 8px; }
+  .auvia-location-detail .loc-why-card:nth-child(n+2)::after { top: 50%; right: 34px; font-size: 120px; translate: 0 -50%; }
+  .auvia-location-detail .loc-why-card:nth-child(3) { margin-left: 36px; }
+}
+
+/* ---------- /locations/:slug: insurance band with a pin dropped on the map ---------- */
+.auvia-location-detail .loc-insurance { position: relative; padding-top: 96px; }
+.auvia-location-detail .loc-insurance::before { content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 40px; pointer-events: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath fill='%23fffdf6' d='M0 0h1440v16c-240 28-480 28-720 6S240-8 0 16z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+.auvia-location-detail .loc-insurer { --dot: var(--sun); transition: rotate .25s cubic-bezier(.34,1.5,.64,1), translate .25s cubic-bezier(.34,1.5,.64,1), box-shadow .25s; }
+.auvia-location-detail .loc-insurer:nth-child(odd) { rotate: -1.2deg; }
+.auvia-location-detail .loc-insurer:nth-child(even) { rotate: 1.2deg; }
+.auvia-location-detail .loc-insurer:nth-child(6n+2) { --dot: var(--sky); }
+.auvia-location-detail .loc-insurer:nth-child(6n+3) { --dot: #ff9f8a; }
+.auvia-location-detail .loc-insurer:nth-child(6n+4) { --dot: var(--color-brand-lavender); }
+.auvia-location-detail .loc-insurer:nth-child(6n+5) { --dot: var(--leaf); }
+.auvia-location-detail .loc-insurer:nth-child(6n+6) { --dot: var(--color-brand-peach); }
+.auvia-location-detail .loc-insurer > div { background: var(--dot); border: 2px solid var(--ink); color: var(--ink); }
+@media (hover: hover) { .auvia-location-detail .loc-insurer:hover { rotate: 0deg; translate: 0 -3px; box-shadow: 0 4px 0 var(--ink); } }
+.auvia-location-detail .loc-map-frame { position: relative; overflow: visible; }
+.auvia-location-detail .loc-map-frame > :first-child { overflow: hidden; border-radius: 24px; }
+
+/* ---------- /locations/:slug: FAQ with scalloped edge and question badges ---------- */
+.auvia-location-detail .loc-faq { position: relative; overflow: hidden; padding-top: 92px; }
+.auvia-location-detail .loc-faq::before { content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 22px; pointer-events: none; background: radial-gradient(circle at 20px 0, var(--color-brand-mint) 20px, transparent 21px) 0 0 / 40px 22px repeat-x; }
+.auvia-location-detail .loc-faq > .max-w-4xl { position: relative; z-index: 1; }
+.auvia-location-detail .loc-faq-shape { position: absolute; z-index: 0; aspect-ratio: 1; pointer-events: none; -webkit-mask: var(--flower-shape) center / contain no-repeat; mask: var(--flower-shape) center / contain no-repeat; }
+.auvia-location-detail .loc-faq-shape--a { left: 3.5%; top: 120px; width: 116px; background: var(--coral); animation: vibrant-spin 30s linear infinite; }
+.auvia-location-detail .loc-faq-shape--b { right: 4%; bottom: 150px; width: 84px; background: var(--grape); animation: vibrant-float 6s ease-in-out infinite; }
+.auvia-location-detail .loc-faq-mark { position: absolute; z-index: 0; right: 8.5%; top: 104px; display: grid; place-items: center; width: 76px; height: 76px; background: #fff; border: 3px solid var(--ink); border-radius: 50%; box-shadow: 5px 5px 0 0 var(--ink); color: var(--ink); rotate: 12deg; pointer-events: none; animation: loc-hop 3.4s ease-in-out infinite; }
+.auvia-location-detail .loc-faq-item { --pop: var(--sun); transition: box-shadow .2s, translate .2s cubic-bezier(.34,1.5,.64,1); }
+.auvia-location-detail .loc-faq-item:nth-child(4n+2) { --pop: #ff9f8a; }
+.auvia-location-detail .loc-faq-item:nth-child(4n+3) { --pop: var(--sky); }
+.auvia-location-detail .loc-faq-item:nth-child(4n+4) { --pop: var(--color-brand-lavender); }
+.auvia-location-detail .loc-faq-item > button::before { content: '?'; flex: none; display: grid; place-items: center; width: 38px; height: 38px; background: var(--pop); border: 2px solid var(--ink); border-radius: 50%; font-family: var(--font-kids); font-size: 20px; font-weight: 800; line-height: 1; color: var(--ink); transition: rotate .35s cubic-bezier(.34,1.6,.64,1), scale .35s; }
+.auvia-location-detail .loc-faq-item > button > span { flex: 1; }
+.auvia-location-detail .loc-faq-item > button[aria-expanded='true']::before { background: #fff; rotate: 360deg; }
+@media (hover: hover) {
+  .auvia-location-detail .loc-faq-item:hover { translate: 0 -2px; box-shadow: 0 6px 0 0 var(--pop); }
+  .auvia-location-detail .loc-faq-item:has(button[aria-expanded='true']):hover { box-shadow: 0 6px 0 0 var(--ink); }
+  .auvia-location-detail .loc-faq-item > button:hover::before { rotate: -14deg; scale: 1.12; }
+  .auvia-location-detail .loc-faq-item > button[aria-expanded='true']:hover::before { rotate: 346deg; }
+}
+@media (min-width: 900px) {
+  .auvia-location-detail .loc-faq-item:nth-child(odd) { margin-right: 40px; }
+  .auvia-location-detail .loc-faq-item:nth-child(even) { margin-left: 40px; }
+}
+@media (max-width: 1179px) {
+  .auvia-location-detail .loc-faq-shape--a, .auvia-location-detail .loc-faq-shape--b, .auvia-location-detail .loc-faq-mark { display: none; }
+}
+@media (max-width: 640px) {
+  .auvia-location-detail .route-title-block > .space-y-4 { padding-inline: 14px; box-shadow: 5px 5px 0 0 var(--sun); }
+  .auvia-location-detail .location-image-frame { border-radius: 150px 150px 24px 24px; }
+  .auvia-location-detail .loc-sticker--pin { left: -2px; width: 48px; height: 48px; }
+  .auvia-location-detail .loc-sticker--pin svg { width: 22px; height: 22px; }
+  .auvia-location-detail .loc-sticker--heart { right: 0; width: 42px; height: 42px; }
+  .auvia-location-detail .loc-sticker--star { width: 36px; height: 36px; }
+  .auvia-location-detail .loc-why-card::after { font-size: 84px; right: 16px; }
+  .auvia-location-detail .loc-insurance { padding-top: 76px; }
+  .auvia-location-detail .loc-map-frame { margin-top: 12px; }
+  .auvia-location-detail .loc-pin-drop { left: 28px; }
+  .auvia-location-detail .loc-faq { padding-top: 68px; }
+  .auvia-location-detail .loc-faq-item > button::before { width: 32px; height: 32px; font-size: 17px; }
+}
+
+/* ---------- Coming soon: a pin lands on the card ---------- */
+.auvia-location-soon .loc-pin-drop { left: auto; right: 48px; animation: loc-pin-fall .7s .35s cubic-bezier(.34,1.56,.64,1) both; }
+.auvia-location-soon > .route-title-block > h1 { align-self: flex-start; padding-bottom: .12em; background: var(--squiggle) left bottom / 100% 11px no-repeat; }
+@media (max-width: 640px) { .auvia-location-soon .loc-pin-drop { right: 26px; } }

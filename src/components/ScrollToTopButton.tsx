@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { ArrowUp } from 'lucide-react';
 
 export const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -14,14 +15,15 @@ export const ScrollToTopButton = () => {
       }
     };
 
-    window.addEventListener('scroll', toggleVisibility);
+    toggleVisibility();
+    window.addEventListener('scroll', toggleVisibility, { passive: true });
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: reduceMotion ? 'auto' : 'smooth',
     });
   };
 
@@ -29,13 +31,15 @@ export const ScrollToTopButton = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          initial={{ opacity: 0, scale: 0.5, y: 20 }}
+          type="button"
+          title="Back to top"
+          initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.95, y: reduceMotion ? 0 : 8 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.5, y: 20 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          exit={{ opacity: 0, scale: reduceMotion ? 1 : 0.95, y: reduceMotion ? 0 : 8 }}
+          whileHover={{ scale: reduceMotion ? 1 : 1.04 }}
+          whileTap={{ scale: reduceMotion ? 1 : 0.98 }}
           onClick={scrollToTop}
-          className="fixed bottom-4 right-18 sm:bottom-6 sm:right-28 z-50 p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-brand-teal text-white shadow-2xl hover:bg-teal-600 transition-colors border-2 sm:border-4 border-white"
+          className="auvia-scroll-top fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-brand-teal text-white hover:bg-teal-700 transition-colors border-2 border-white"
           aria-label="Scroll to top"
         >
           <ArrowUp className="w-5 h-5 sm:w-6 sm:h-6" />

@@ -1,13 +1,28 @@
+import '../styles/pages.css';
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ArrowRight, CheckCircle2, Sparkles, Home, Heart, 
-  ShieldCheck, Zap, Smile, BookOpen, Brain, 
+import { motion, AnimatePresence, MotionConfig } from 'motion/react';
+import {
+  ArrowRight, CheckCircle2, Sparkles, Home, Heart,
+  ShieldCheck, Zap, Smile, BookOpen, Brain,
   Users, Target, Award, Star, MessageCircle, Utensils, Baby, Compass
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { MagicMascot } from '../components/MagicMascot';
 import { SEO } from '../components/SEO';
+
+const Mark = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
+  <motion.span
+    className={`bp-mark ${className}`}
+    initial={{ backgroundSize: '0% 0.34em' }}
+    whileInView={{ backgroundSize: '100% 0.34em' }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6, delay: 0.35, ease: [0.2, 0.8, 0.2, 1] }}
+  >
+    {children}
+  </motion.span>
+);
+
+const ribbonIcons = [Compass, Star, Home, Heart, Users, Sparkles, Utensils, Smile, BookOpen, Baby];
 
 export const Services = () => {
   const navigate = useNavigate();
@@ -16,19 +31,19 @@ const pillars = [
     {
       title: "Evidence-Based",
       description: "ABA is widely recognized as a leading evidence-based therapy for autism, backed by decades of peer-reviewed clinical research and medical consensus.",
-      icon: <Target className="text-brand-teal" size={32} />,
+      icon: <Target strokeWidth={1.75} aria-hidden="true" className="text-brand-teal" size={32} />,
       details: ["Peer-reviewed methodology", "Scientifically supported outcomes", "Assent-based clinical care"]
     },
     {
       title: "Data-Driven Precision",
       description: "Every therapy session is tracked, measured, and analyzed by BCBAs to ensure consistent, measurable progress.",
-      icon: <Brain className="text-brand-teal" size={32} />,
+      icon: <Brain strokeWidth={1.75} aria-hidden="true" className="text-brand-teal" size={32} />,
       details: ["Real-time session data", "Individualized milestone tracking", "Dynamic protocol adjustments"]
     },
     {
       title: "Compassionate & Child-Centered",
       description: "We prioritize each child's emotional well-being, dignity, and autonomy, ensuring every interaction is rooted in empathy and joy.",
-      icon: <Heart className="text-brand-teal" size={32} />,
+      icon: <Heart strokeWidth={1.75} aria-hidden="true" className="text-brand-teal" size={32} />,
       details: ["Trauma-informed practices", "Play-based Natural Environment Teaching", "Sensory-safe learning suites"]
     }
   ];
@@ -44,9 +59,9 @@ const pillars = [
         "Socialization & Peer Interaction",
         "Sensory-Friendly Gross Motor Gyms"
       ],
-      image: "https://s33929.pcdn.co/wp-content/uploads/sites/638/2023/03/Benefits-of-Center-Based-Therapy.jpg",
+      image: "/images/aba-therapy-session.webp",
       color: "bg-brand-mint/20",
-      icon: <Sparkles className="text-brand-teal" size={24} />
+      icon: <Compass strokeWidth={1.75} aria-hidden="true" className="text-brand-teal" size={24} />
     },
     {
       title: "In-Home ABA Therapy",
@@ -59,9 +74,9 @@ const pillars = [
         "Natural Environment Teaching (NET)",
         "Adaptive Skill Acquisition & Regulation"
       ],
-      image: "https://learnbehavioral.com/wp-content/uploads/2024/11/ABA-Therapy-at-Home-with-LEARN.jpg",
-      color: "bg-[#fff3cd]/40", 
-      icon: <Home className="text-[#d9a01c]" size={24} />
+      image: "/images/kids-Therapy.webp",
+      color: "bg-[#fff3cd]/40",
+      icon: <Home strokeWidth={1.75} aria-hidden="true" className="text-brand-teal" size={24} />
     },
     {
       title: "Social Skills Groups & Peer Modeling",
@@ -74,9 +89,9 @@ const pillars = [
         "Perspective-Taking & Empathy",
         "Confidence in Group Settings"
       ],
-      image: "/images/about-kids.jpg",
-      color: "bg-[#E1F5FE]",
-      icon: <Users className="text-[#0288d1]" size={24} />
+      image: "/images/about-kids.webp",
+      color: "bg-brand-sky",
+      icon: <Users strokeWidth={1.75} aria-hidden="true" className="text-brand-teal" size={24} />
     },
     {
       title: "Adaptive Daily Living & Feeding Programs",
@@ -89,9 +104,9 @@ const pillars = [
         "Morning & Bedtime Routine Mastery",
         "Self-Care & Personal Hygiene"
       ],
-      image: "/images/kids-aba.jpg",
-      color: "bg-[#F3E5F5]",
-      icon: <Baby className="text-[#7b1fa2]" size={24} />
+      image: "/images/kids-aba.webp",
+      color: "bg-brand-lavender",
+      icon: <Utensils strokeWidth={1.75} aria-hidden="true" className="text-brand-teal" size={24} />
     },
     {
       title: "Caregiver Training & Family Empowerment",
@@ -104,277 +119,277 @@ const pillars = [
         "Home Milestone Tracking",
         "Transition & IEP Coordination Support"
       ],
-      image: "/images/kids-diagnosis.jpg",
+      image: "/images/kids-diagnosis.webp",
       color: "bg-brand-peach/30",
-      icon: <Heart className="text-brand-peach" size={24} />
+      icon: <Heart strokeWidth={1.75} aria-hidden="true" className="text-brand-peach" size={24} />
     }
   ];
 
   const abaCorePillars = [
     {
-      icon: <Target className="text-brand-teal" />,
+      icon: <Target strokeWidth={1.75} aria-hidden="true" className="text-brand-teal" />,
       title: "Evidence-Based",
       text: "ABA is a leading evidence-based approach to autism therapy, supported by decades of scientific research."
     },
     {
-      icon: <Brain className="text-brand-teal" />,
+      icon: <Brain strokeWidth={1.75} aria-hidden="true" className="text-brand-teal" />,
       title: "Data-Driven",
       text: "Every session is tracked and analyzed to ensure your child is making measurable progress."
     },
     {
-      icon: <Heart className="text-brand-teal" />,
+      icon: <Heart strokeWidth={1.75} aria-hidden="true" className="text-brand-teal" />,
       title: "Compassionate",
       text: "We prioritize the child's emotional well-being and dignity in every interaction."
     }
   ];
 
   return (
-    <div className="bg-brand-cream min-h-screen relative overflow-x-hidden">
-      <SEO 
+    <MotionConfig reducedMotion="user">
+    <div className="inner-public-page public-page bg-brand-cream min-h-screen relative overflow-x-hidden">
+      <SEO
         title="Our Services | ABA Therapy & In-Home Care"
         description="Auvia Behavior Centers offers comprehensive center-based ABA therapy and in-home autism care. Evidence-based, data-driven, and compassionate treatment."
         keywords="ABA therapy services, in-home ABA therapy, center-based autism care, autism treatment programs, BCBA supervision"
         canonicalUrl="https://auviatherapy.com/services"
       />
-      
-      {/* 1. HERO SECTION: Massive and Minimalist */}
-      <section className="relative min-h-[80vh] lg:min-h-screen flex items-center pt-20 lg:pt-24 bg-gradient-to-br from-brand-sky via-brand-cream to-brand-lavender/30 overflow-hidden">
-      
-      {/* --- 1. THE REFINED MERGED BACKGROUND IMAGE --- */}
-      <div className="absolute top-0 right-0 w-full lg:w-[65%] h-[50vh] lg:h-full z-0 overflow-hidden pointer-events-none opacity-50 lg:opacity-100">
-        <motion.div
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 2, ease: "easeOut" }}
-          className="relative w-full h-full"
-        >
-          {/* Refined Dual-Mask for Subtle Merge:
-              - Left to Right: Now fades out much slower, starting from 75% solid and completely transparent by 10%.
-              - Bottom to Top: Increased fade at the bottom (transparent 15%) for an expansive minimalist feel.
-          */}
-          <div 
-            className="w-full h-full bg-cover bg-center grayscale-[0.2] brightness-[1.05]"
-            style={{ 
-              backgroundImage: `url('https://www.catalight.org/wp-content/uploads/2023/11/shutterstock_1238624647-scaled-1.jpg')`,
-              maskImage: 'linear-gradient(to left, black 75%, transparent 10%), linear-gradient(to top, transparent 15%, black 40%)',
-              WebkitMaskImage: 'linear-gradient(to left, black 75%, transparent 10%), linear-gradient(to top, transparent 15%, black 40%)',
-              maskComposite: 'intersect',
-              WebkitMaskComposite: 'destination-in'
-            }}
-          />
-          
-          {/* Color Match Overlay: Tinting shadows to brand teal */}
-          <div className="absolute inset-0 bg-brand-teal/5 mix-blend-multiply opacity-40" />
-        </motion.div>
-      </div>
 
-      {/* --- 2. CONTENT LAYER (UNCHANGED) --- */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 w-full">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+      {/* 1. HERO SECTION: colour band with a shaped photo */}
+      <section className="svc-hero relative pt-28 lg:pt-36 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 w-full grid lg:grid-cols-[1.1fr_.9fr] gap-10 lg:gap-16 items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-4xl"
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="route-title-block max-w-4xl"
         >
-          <div className="flex items-center gap-4 mb-8">
-            <span className="w-12 h-[1px] bg-brand-teal"></span>
-            <span className="text-brand-teal text-sm font-bold uppercase tracking-[0.3em] font-kids">
-              Sanctuary Network
-            </span>
-          </div>
-          
-          <h1 className="text-display font-kids font-bold text-brand-ink mb-8 lg:mb-12 leading-[0.85] tracking-tighter text-center lg:text-left">
+          <h1 className="text-display font-kids font-bold text-brand-ink mb-6 lg:mb-8 leading-[0.95] tracking-tighter text-center lg:text-left">
             A New Standard <br className="hidden lg:block" />
-            <span className="text-brand-teal italic">in Autism Care.</span>
+            <Mark className="text-brand-teal italic">in Autism Care.</Mark>
           </h1>
-          
-          <p className="text-body-main text-brand-sage font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0 pl-6 border-l-2 border-brand-teal/20 text-center lg:text-left mb-6">
+
+          <p className="svc-hero__lead text-body-main font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0 text-center lg:text-left mb-6">
             We move beyond traditional therapy. By combining clinical precision with a nurturing environment, we empower children to communicate, connect, and thrive.
           </p>
-          <div className="bg-brand-teal/5 p-4 rounded-2xl border border-brand-teal/10 text-brand-teal font-bold text-sm max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
+          <div className="svc-hero__note p-4 rounded-2xl font-bold text-sm max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
             We will connect you with resources to have your child evaluated and receive a formal diagnosis report.
           </div>
         </motion.div>
-      </div>
 
-      {/* Subtle Glow (UNCHANGED) */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-transparent via-[#fdfcf0]/40 to-[#fdfcf0] z-[1] pointer-events-none" />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.94, rotate: -3 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="svc-hero__media"
+          aria-hidden="true"
+        >
+          <span className="svc-hero__ring" />
+          <img className="svc-hero__photo" src="/images/autism-therapy.webp" alt="" decoding="async" />
+          <span className="svc-hero__sticker"><img src="/images/kids-aba.webp" alt="" decoding="async" /></span>
+          <span className="svc-hero__chip"><Sparkles strokeWidth={2} aria-hidden="true" size={22} /></span>
+          <span className="svc-hero__chip svc-hero__chip--heart"><Heart strokeWidth={2} aria-hidden="true" size={20} /></span>
+          <span className="svc-hero__star"><Star strokeWidth={2} aria-hidden="true" size={30} /></span>
+        </motion.div>
+      </div>
     </section>
 
+      {/* Decorative icon ribbon between the hero and the programs */}
+      <div className="svc-ribbon" aria-hidden="true">
+        <div className="svc-ribbon__track">
+          {[0, 1, 2, 3, 4, 5].map(set => (
+            <div key={set} className="svc-ribbon__set">
+              {ribbonIcons.map((Icon, i) => (
+                <span key={i} className={`svc-ribbon__item svc-ribbon__item--${i % 5}`}>
+                  <Icon strokeWidth={2} aria-hidden="true" size={20} />
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* 2. CORE SERVICES: Rich Interactive Cards */}
-      <section className="py-20 lg:py-32 px-6 lg:px-12 bg-white rounded-t-[60px] lg:rounded-t-[100px] shadow-[0_-50px_100px_rgba(0,0,0,0.02)] relative z-20">
+      <section className="svc-programs py-12 lg:py-16 px-4 sm:px-6 lg:px-12 relative z-20">
         <div className="max-w-7xl mx-auto">
-          <div className="space-y-32 lg:space-y-60">
-            {services.map((service, idx) => (
-              <motion.div 
-                key={idx} 
-                initial={{ opacity: 0, y: 80 }}
+          <div className="svc-programs__grid grid grid-cols-1 lg:grid-cols-2 gap-9 lg:gap-x-10 lg:gap-y-14">
+            {services.map((service, idx) => {
+              const stacked = idx === 1 || idx === 2;
+              return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 onMouseEnter={() => setHoveredIndex(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className={`flex flex-col lg:flex-row gap-12 lg:gap-24 items-center ${idx % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+                className={`svc-program svc-program--${idx % 5} flex flex-col gap-6 items-center ${stacked ? 'svc-program--stack lg:gap-8' : `svc-program--wide lg:col-span-2 lg:gap-16 ${idx === 3 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}`}
               >
-                <div className="w-full lg:w-1/2 text-center lg:text-left">
-                  <div className={`inline-flex items-center gap-3 px-6 lg:px-8 py-2.5 lg:py-3 rounded-full ${service.color} text-brand-teal text-[10px] lg:text-xs font-bold font-kids mb-8 lg:mb-10 tracking-widest border border-brand-teal/10`}>
+                <span className="svc-program__num" aria-hidden="true">0{idx + 1}</span>
+                <div className={`svc-program__body w-full text-left ${stacked ? '' : 'lg:w-1/2'}`}>
+                  <div className="svc-program__age inline-flex items-center gap-3 px-5 lg:px-6 py-2.5 rounded-full text-[11px] lg:text-xs font-bold font-kids mb-5 lg:mb-6 tracking-widest">
                     {service.icon}
                     {service.age}
                   </div>
-                  <h2 className="text-section font-kids font-bold text-brand-ink mb-8 lg:mb-10 leading-tight">
+                  <h2 className="text-section font-kids font-bold text-brand-ink mb-4 lg:mb-5 leading-tight">
                     {service.title}
                   </h2>
-                  <p className="text-body-main text-brand-sage mb-10 lg:mb-12 leading-relaxed font-medium">
+                  <p className="svc-program__text text-body-main mb-5 lg:mb-8 leading-relaxed font-medium">
                     {service.description}
                   </p>
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 lg:gap-y-8 gap-x-8 lg:gap-x-12 mb-12 lg:mb-16 text-left">
+
+                  <div className="svc-features grid grid-cols-2 gap-2 sm:gap-3 mb-6 lg:mb-9 text-left">
                     {service.features.map(f => (
-                      <div key={f} className="flex items-center gap-4 lg:gap-5 text-sm lg:text-base font-bold text-brand-ink font-kids group">
-                        <div className="w-8 lg:w-10 h-8 lg:h-10 rounded-xl lg:rounded-2xl bg-brand-mint/30 flex items-center justify-center text-brand-teal group-hover:bg-brand-teal group-hover:text-white transition-all duration-500 shadow-sm shrink-0">
-                          <CheckCircle2 size={16} />
+                      <div key={f} className="svc-feature flex items-center gap-3 text-sm font-bold text-brand-ink font-kids">
+                        <div className="svc-feature__tick w-8 h-8 rounded-full flex items-center justify-center shrink-0">
+                          <CheckCircle2 strokeWidth={2.25} aria-hidden="true" size={16} />
                         </div>
                         {f}
                       </div>
                     ))}
                   </div>
-                  
-                  <div className="flex flex-col sm:flex-row flex-wrap gap-6 lg:gap-8 items-center justify-center lg:justify-start">
-                    <button 
-                      onClick={() => navigate('/contact')} 
-                      className="w-full sm:w-auto bg-brand-ink text-white px-10 lg:px-12 py-5 lg:py-6 rounded-[24px] lg:rounded-[30px] font-kids font-bold text-lg lg:text-xl hover:bg-brand-teal transition-all duration-500 flex items-center justify-center gap-4 shadow-2xl active:scale-95"
+
+                  <div className="flex flex-col sm:flex-row flex-wrap gap-4 lg:gap-7 items-center justify-center sm:justify-start">
+                    <button
+                      onClick={() => navigate('/contact')}
+                      className="w-full sm:w-auto bg-brand-ink text-white px-8 lg:px-9 py-3.5 font-kids font-bold text-base lg:text-lg hover:bg-brand-teal flex items-center justify-center gap-3"
                     >
-                      Enroll Now <ArrowRight size={22} />
+                      Enroll Now <ArrowRight strokeWidth={2} aria-hidden="true" size={20} />
                     </button>
-                    <div className="flex items-center gap-3 text-brand-sage font-bold text-[10px] lg:text-xs uppercase tracking-widest">
-                      <ShieldCheck size={18} className="text-brand-teal" />
+                    <div className="svc-program__badge flex items-center gap-2 font-bold text-[11px] lg:text-xs uppercase tracking-widest">
+                      <ShieldCheck strokeWidth={2} aria-hidden="true" size={18} />
                       Insurance Validated
                     </div>
                   </div>
                 </div>
 
-                <div className="w-full lg:w-1/2 relative">
-                  <motion.div 
-                    whileHover={{ scale: 1.03 }}
-                    transition={{ duration: 0.8 }}
-                    className="relative z-10"
-                  >
-                    <div className="absolute -inset-6 lg:-inset-10 bg-brand-mint/10 rounded-[60px] lg:rounded-[100px] -z-10 blur-3xl opacity-50" />
-                    <div className="rounded-[40px] lg:rounded-[80px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.1)] aspect-[4/5] lg:aspect-[4/3] border-[12px] lg:border-[20px] border-white relative group">
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[6s] ease-out"
-                        referrerPolicy="no-referrer"
-                      />
-                      <div className="absolute inset-0 bg-brand-ink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                    </div>
-                  </motion.div>
+                <div className={`svc-program__media w-full relative order-first ${stacked ? '' : 'lg:w-1/2 lg:order-none'}`}>
+                  <div className="svc-program__photo relative z-10">
+                    <img loading="lazy" decoding="async"
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <span className="svc-program__flower" aria-hidden="true" />
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* 3. DEEP DIVE: Understanding ABA Therapy */}
-      <section className="py-20 lg:py-32 bg-white relative overflow-hidden">
+      <section className="svc-focus py-14 lg:py-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-        
+
         {/* HEADER AREA */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center lg:items-end mb-16 lg:mb-24 text-center lg:text-left">
+        <div className="grid lg:grid-cols-2 gap-5 lg:gap-16 items-center lg:items-end mb-10 lg:mb-12 text-center lg:text-left">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.45 }}
           >
-            <span className="text-brand-teal text-[10px] lg:text-sm font-bold uppercase tracking-[0.3em] font-kids mb-4 lg:mb-6 block">
+            <span className="svc-focus__eyebrow text-xs lg:text-sm font-bold uppercase tracking-[0.2em] font-kids mb-3 lg:mb-4 block">
               The Auvia Standard
             </span>
             <h2 className="text-display font-kids font-bold text-brand-ink leading-tight">
               Our Clinical <br className="hidden lg:block" />
-              <span className="text-brand-teal italic">Focus.</span>
+              <Mark className="text-brand-teal italic">Focus.</Mark>
             </h2>
           </motion.div>
-          
-          <motion.p 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-lg lg:text-xl text-brand-sage font-medium leading-relaxed max-w-lg mx-auto lg:mx-0"
+            transition={{ duration: 0.45, delay: 0.08 }}
+            className="svc-focus__lead text-lg lg:text-xl font-medium leading-relaxed max-w-lg mx-auto lg:mx-0"
           >
             We combine rigorous behavioral science with a compassionate approach to help children reach their fullest potential.
           </motion.p>
         </div>
 
         {/* PILLARS GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="svc-pillars grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
           {pillars.map((pillar, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="glass-panel premium-shadow rounded-[40px] lg:rounded-[50px] p-8 lg:p-10 border border-white/60 flex flex-col h-full group hover:-translate-y-2 hover:bg-white/80 transition-all duration-500"
+              transition={{ duration: 0.45, delay: idx * 0.08 }}
+              className={`svc-pillar svc-pillar--${idx} rounded-[28px] p-7 lg:p-9 flex flex-col h-full`}
             >
-              <div className="w-12 lg:w-16 h-12 lg:h-16 bg-white rounded-2xl lg:rounded-3xl flex items-center justify-center mb-6 lg:mb-8 shadow-sm group-hover:bg-brand-teal/10 transition-colors">
+              <div className="svc-pillar__icon w-14 h-14 rounded-full flex items-center justify-center mb-5 lg:mb-6">
                 {React.cloneElement(pillar.icon as React.ReactElement, { size: 24 })}
               </div>
-              
-              <h3 className="text-small-heading font-kids font-bold text-brand-ink mb-4 lg:mb-6">{pillar.title}</h3>
-              <p className="text-base text-brand-sage font-medium mb-8 lg:mb-10 leading-relaxed">{pillar.description}</p>
-              
-              <div className="space-y-3 lg:space-y-4 mb-10 lg:mb-12 flex-grow text-left">
+
+              <h3 className="text-small-heading font-kids font-bold text-brand-ink mb-3 lg:mb-4">{pillar.title}</h3>
+              <p className="svc-pillar__text text-base font-medium mb-5 leading-relaxed">{pillar.description}</p>
+
+              <div className="svc-pillar__list space-y-3 mb-6 flex-grow text-left">
                 {pillar.details.map((detail, dIdx) => (
                   <div key={dIdx} className="flex items-center gap-3 text-xs lg:text-sm font-bold text-brand-ink/80 font-kids">
-                    <CheckCircle2 size={16} className="text-brand-teal shrink-0" />
+                    <CheckCircle2 strokeWidth={1.75} aria-hidden="true" size={16} className="text-brand-teal shrink-0" />
                     {detail}
                   </div>
                 ))}
               </div>
 
-              <button 
-                onClick={() => navigate('/services')}
-                className="mt-auto flex items-center gap-2 text-brand-teal font-bold font-kids group/btn"
+              <button
+                onClick={() => navigate('/what-is-aba')}
+                className="svc-pillar__more mt-auto self-start flex items-center gap-2 font-bold font-kids group/btn"
               >
-                Learn More <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+                Learn More <ArrowRight strokeWidth={1.75} aria-hidden="true" size={18} className="group-hover/btn:translate-x-1 transition-transform" />
               </button>
             </motion.div>
           ))}
         </div>
       </div>
 
-      {/* Subtle Background Glow */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-1/2 h-full bg-gradient-to-l from-brand-mint/20 to-transparent pointer-events-none" />
+      <span className="svc-focus__flower" aria-hidden="true" />
     </section>
 
       {/* 4. CLINICAL INTEGRITY: Large Quote Section */}
-      <section className="py-24 lg:py-40 px-6 lg:px-12 bg-white">
-        <div className="max-w-5xl mx-auto text-center">
-          <Star className="text-brand-teal mx-auto mb-8 lg:mb-12 opacity-30 w-10 lg:w-16" />
-          <h3 className="text-display font-kids font-bold text-brand-ink leading-tight italic">
-            "At Auvia, we don't just treat symptoms. We build foundations for a lifetime of independence, connection, and joy."
-          </h3>
-          <div className="mt-12 lg:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <section className="svc-quote py-14 lg:py-20 px-6 lg:px-12 relative overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="max-w-4xl mx-auto relative z-10"
+        >
+          <div className="svc-quote__bubble">
+            <span className="svc-quote__star"><Star strokeWidth={2} aria-hidden="true" size={26} /></span>
+            <span className="svc-quote__chat" aria-hidden="true"><MessageCircle strokeWidth={2} size={22} /></span>
+            <h3 className="svc-quote__text font-kids font-bold text-brand-ink italic">
+              "At Auvia, we don't just treat symptoms. We build foundations for a lifetime of independence, connection, and joy."
+            </h3>
+          </div>
+          <div className="svc-quote__by inline-flex flex-row items-center gap-3 sm:gap-4">
             {/* Clinical Professional Image */}
             <picture>
               <source srcSet="/images/kids-team.webp" type="image/webp" />
-              <img 
-                 src="/images/kids-team.jpg" 
-                 alt="Clinical Director" 
-                 className="w-14 h-14 lg:w-16 lg:h-16 rounded-full object-cover border-2 border-brand-teal" 
+              <img
+                 src="/images/kids-team.webp"
+                 alt="Clinical Director"
+                 className="w-14 h-14 lg:w-16 lg:h-16 rounded-full object-cover shrink-0"
                  loading="lazy"
                  decoding="async"
               />
             </picture>
-            <div className="text-center sm:text-left">
+            <div className="text-left">
               <p className="font-bold text-brand-ink font-kids">Clinical Leadership Team</p>
-              <p className="text-brand-sage text-[10px] lg:text-sm font-bold tracking-widest uppercase">Board Certified Behavior Analysts (BCBA / BCBA-D)</p>
+              <p className="svc-quote__role text-[11px] lg:text-sm font-bold tracking-widest uppercase">Board Certified Behavior Analysts (BCBA / BCBA-D)</p>
             </div>
           </div>
-        </div>
+        </motion.div>
+        <span className="svc-quote__flower" aria-hidden="true" />
       </section>
     </div>
+    </MotionConfig>
   );
 };

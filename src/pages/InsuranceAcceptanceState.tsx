@@ -1,7 +1,8 @@
+import '../styles/pages.css';
 import React, { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ChevronDown, ArrowRight, Search, MapPin 
+import { motion, AnimatePresence, MotionConfig } from 'motion/react';
+import {
+  ChevronDown, ArrowRight, Search, MapPin, SearchX, BadgeCheck
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
@@ -9,53 +10,53 @@ import { SEO } from '../components/SEO';
 // --- DATA: Full List of Insurance Providers per State ---
 const insuranceData: Record<string, any[]> = {
   "Texas": [
-    { 
-      name: "Blue Cross Blue Shield of Texas (BCBS TX)", 
+    {
+      name: "Blue Cross Blue Shield of Texas (BCBS TX)",
       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Blue_Cross_Blue_Shield_logo.svg/2560px-Blue_Cross_Blue_Shield_logo.svg.png",
       abbr: "BCBS"
     },
-    { 
-      name: "Aetna Commercial", 
+    {
+      name: "Aetna Commercial",
       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Aetna_logo.svg/2560px-Aetna_logo.svg.png",
       abbr: "Aetna"
     },
-    { 
-      name: "Cigna", 
+    {
+      name: "Cigna",
       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Cigna_logo.svg/2560px-Cigna_logo.svg.png",
       abbr: "Cigna"
     },
-    { 
-      name: "United Healthcare", 
+    {
+      name: "United Healthcare",
       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/UnitedHealthcare_logo.svg/2560px-UnitedHealthcare_logo.svg.png",
       abbr: "UHC"
     },
-    { 
-      name: "Wellpoint Medicaid", 
-      logo: "/images/insurers/wellpoint-logo.png",
+    {
+      name: "Wellpoint Medicaid",
+      logo: "/images/insurers/wellpoint-logo.webp",
       abbr: "WP"
     },
-    { 
-      name: "Aetna Medicaid", 
+    {
+      name: "Aetna Medicaid",
       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Aetna_logo.svg/2560px-Aetna_logo.svg.png",
       abbr: "Aetna"
     },
-    { 
-      name: "Superior Health", 
-      logo: "/images/insurers/superior-health-logo.png",
+    {
+      name: "Superior Health",
+      logo: "/images/insurers/superior-health-logo.webp",
       abbr: "SH"
     },
-    { 
-      name: "Molina Healthcare", 
+    {
+      name: "Molina Healthcare",
       logo: "https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Molina_Healthcare_Logo.svg/1200px-Molina_Healthcare_Logo.svg.png",
       abbr: "Molina"
     },
-    { 
-      name: "Carelon", 
-      logo: "/images/insurers/carelon-logo.png",
+    {
+      name: "Carelon",
+      logo: "/images/insurers/carelon-logo.webp",
       abbr: "Carelon"
     },
-    { 
-      name: "Tricare", 
+    {
+      name: "Tricare",
       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/TRICARE_logo.svg/2560px-TRICARE_logo.svg.png",
       abbr: "Tricare"
     }
@@ -69,28 +70,29 @@ export const InsuranceAcceptanceState = () => {
   // Functional filtering logic
   const filteredProviders = useMemo(() => {
     const providers = insuranceData[selectedState] || [];
-    return providers.filter(p => 
+    return providers.filter(p =>
       p.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
   }, [selectedState, searchQuery]);
 
   return (
-    <div className="bg-[#FCFAF7] selection:bg-brand-teal/20 text-[#1F2937] pt-20 lg:pt-24 font-sans min-h-screen overflow-x-hidden">
-      <SEO 
+    <MotionConfig reducedMotion="user">
+    <div className="inner-public-page public-page ic-page bg-brand-cream selection:bg-brand-teal/20 text-brand-ink pt-20 lg:pt-24 font-sans min-h-screen overflow-x-hidden">
+      <SEO
         title="Insurance Accepted by State | Auvia"
         description="Search our nationwide directory of accepted insurance providers for ABA therapy. We are in-network with over 120+ providers."
         keywords="aba therapy insurance, autism insurance coverage, in network aba providers, BCBS aba therapy, medicaid aba therapy"
         canonicalUrl="https://auviatherapy.com/insurance-by-state"
       />
-      
+
       {/* 1. Functional Header Section (Based on image 2) */}
-      <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-16">
-        <div className="flex flex-col lg:flex-row justify-between gap-12 items-start">
-          
+      <section className="ic-state-hero px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-8 lg:gap-12 items-start">
+
           {/* Left Side: Title & Search */}
-          <div className="flex-1 space-y-8">
-            <div>
-              <h1 className="text-display font-kids font-bold text-[#1F2937] leading-none mb-4">
+          <div className="flex-1 space-y-6 w-full">
+            <div className="route-title-block">
+              <h1 className="text-display font-kids font-bold text-brand-ink leading-none mb-4">
                 Insurance accepted <br />
                 <span className="text-brand-teal italic">by state.</span>
               </h1>
@@ -100,63 +102,67 @@ export const InsuranceAcceptanceState = () => {
             </div>
 
             {/* Search Input Box */}
-            <div className="relative max-w-2xl group">
-              <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-brand-teal transition-colors" size={24} />
-              <input 
+            <div className="ic-search relative max-w-2xl group">
+              <Search strokeWidth={1.75} aria-hidden="true" className="absolute left-5 top-1/2 -translate-y-1/2 text-brand-ink group-focus-within:text-brand-teal transition-colors" size={22} />
+              <input
                 type="text"
-                placeholder="Search providers in your state..."
+                aria-label="Search insurance providers in your selected state" placeholder="Search providers in your state..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-16 pr-8 py-6 bg-white border border-gray-100 rounded-[32px] shadow-sm focus:shadow-md focus:border-brand-teal outline-none transition-all text-xl"
+                className="w-full pl-14 pr-6 outline-none text-lg"
               />
             </div>
           </div>
 
           {/* Right Side: Functional State Selector */}
-          <div className="w-full lg:w-[380px] space-y-4">
-            <label className="text-[13px] font-bold text-brand-sage uppercase tracking-[0.2em] ml-2">Select Your State:</label>
-            
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="ic-state-picker w-full lg:w-[380px] space-y-3">
+            <label htmlFor="insurance-state" className="vform-label">Select Your State:</label>
+
             {/* State Dropdown Container */}
             <div className="relative group">
-              <div className="absolute left-5 top-1/2 -translate-y-1/2 text-brand-teal">
-                <MapPin size={22} />
+              <div className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-teal pointer-events-none">
+                <MapPin strokeWidth={1.75} aria-hidden="true" size={20} />
               </div>
-              <select 
+              <select id="insurance-state"
                 value={selectedState}
                 onChange={(e) => {
                   setSelectedState(e.target.value);
                   setSearchQuery(""); // Clear search when state changes
                 }}
-                className="w-full pl-14 pr-12 py-5 bg-white border border-gray-100 rounded-[24px] appearance-none font-bold text-xl text-[#1F2937] shadow-sm hover:border-brand-teal focus:border-brand-teal outline-none transition-all cursor-pointer"
+                className="w-full pl-12 pr-12 appearance-none font-bold text-lg text-brand-ink outline-none cursor-pointer"
               >
                 {Object.keys(insuranceData).map(state => (
                   <option key={state} value={state}>{state}</option>
                 ))}
               </select>
-              <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 group-hover:text-brand-teal transition-colors">
-                <ChevronDown size={24} />
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-brand-teal">
+                <ChevronDown strokeWidth={1.75} aria-hidden="true" size={20} />
               </div>
             </div>
 
             {/* Find a Center Button */}
-            <Link to="/contact" className="block">
-              <motion.button 
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-5 bg-[#76B56B] text-white rounded-[24px] font-kids font-bold text-xl flex items-center justify-center gap-3 shadow-lg shadow-[#76B56B]/20 hover:bg-[#659e5a] transition-all"
+            <Link to="/locations" className="block pt-1">
+              <motion.span
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 3 }}
+                className="ic-pill-btn w-full py-4 bg-brand-teal text-white font-kids font-bold text-lg flex items-center justify-center gap-3"
               >
-                Find a center <ArrowRight size={22} />
-              </motion.button>
+                Find a center <ArrowRight strokeWidth={1.75} aria-hidden="true" size={22} />
+              </motion.span>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* 2. Providers Grid Section */}
-      <section className="px-6 lg:px-12 max-w-7xl mx-auto pb-32">
-        <motion.div 
+      <section className="ic-providers px-6 lg:px-12">
+        <span aria-hidden="true" className="ic-deco ic-deco--flower ic-st-deco-a" />
+        <span aria-hidden="true" className="ic-deco ic-deco--star ic-st-deco-b" />
+        <span aria-hidden="true" className="ic-deco ic-deco--heart ic-st-deco-c" />
+        <div className="max-w-7xl mx-auto relative">
+        <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="ic-provider-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
         >
           <AnimatePresence mode="popLayout">
             {filteredProviders.map((provider) => (
@@ -167,30 +173,32 @@ export const InsuranceAcceptanceState = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="bg-white p-8 rounded-[32px] border border-gray-50 flex items-center gap-6 group hover:shadow-xl hover:border-brand-teal/10 transition-all cursor-default"
+                className="ic-provider bg-white p-5 lg:p-6 flex items-center gap-4 lg:gap-5 cursor-default"
               >
                 {/* Provider Logo */}
-                <div className="w-24 h-16 bg-white rounded-2xl flex items-center justify-center shrink-0 p-2 border border-gray-100 group-hover:border-brand-teal/20 transition-all overflow-hidden">
+                <div className="ic-provider__logo w-24 h-16 bg-white rounded-2xl flex items-center justify-center shrink-0 p-2 overflow-hidden">
                   {provider.logo ? (
-                    <img 
-                      src={provider.logo} 
+                    <> <img
+                      src={provider.logo}
                       alt={`${provider.name} logo`}
-                      className="max-w-full max-h-full object-contain filter group-hover:brightness-105 transition-all"
+                      className="max-w-full max-h-full object-contain"
                       onError={(e) => {
                         (e.target as HTMLImageElement).onerror = null;
-                        (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${provider.abbr}&background=F0FDF4&color=0D9488&bold=true`;
+                        (e.target as HTMLImageElement).style.display = 'none';
+                        (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
                       }}
-                    />
+                    /><span className="hidden text-brand-teal font-bold text-sm">{provider.abbr}</span></>
                   ) : (
                     <span className="text-xl font-bold text-brand-teal">{provider.abbr}</span>
                   )}
                 </div>
-                
+
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-[#1F2937] leading-tight mb-2">
+                  <h3 className="text-lg font-bold text-brand-ink leading-tight mb-2">
                     {provider.name}
                   </h3>
-                  <div className="inline-flex px-3 py-1 bg-brand-mint/30 rounded-full text-[10px] font-bold text-brand-teal uppercase tracking-widest">
+                  <div className="ic-badge inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider">
+                    <BadgeCheck strokeWidth={2} aria-hidden="true" size={14} />
                     In-Network
                   </div>
                 </div>
@@ -201,23 +209,27 @@ export const InsuranceAcceptanceState = () => {
 
         {/* Empty State */}
         {filteredProviders.length === 0 && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-24 bg-white rounded-[40px] border-2 border-dashed border-gray-100"
+          <motion.div
+            initial={{ opacity: 0, y: 16, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.35, ease: [0.34, 1.4, 0.64, 1] }}
+            className="ic-empty text-center py-14 px-6 bg-white rounded-[28px]"
           >
+            <div aria-hidden="true" className="ic-empty__icon"><SearchX strokeWidth={1.75} size={34} /></div>
             <p className="text-brand-sage font-medium text-xl italic">
               No providers found matching "{searchQuery}" in {selectedState}.
             </p>
-            <button 
+            <button
               onClick={() => setSearchQuery("")}
-              className="mt-4 text-brand-teal font-bold hover:underline"
+              className="ic-empty__clear mt-4 px-4 text-brand-teal font-bold underline underline-offset-4"
             >
               Clear search
             </button>
           </motion.div>
         )}
+        </div>
       </section>
     </div>
+    </MotionConfig>
   );
 };
